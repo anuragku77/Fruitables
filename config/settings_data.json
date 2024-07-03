@@ -158,6 +158,13 @@
               "menu": "footer"
             }
           },
+          "link_list_MyJ6fi": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Quick links",
+              "menu": "footer"
+            }
+          },
           "contact_info_3FFVXp": {
             "type": "contact_info",
             "settings": {
@@ -171,6 +178,7 @@
         "block_order": [
           "custom-footer-1",
           "custom-footer-0",
+          "link_list_MyJ6fi",
           "contact_info_3FFVXp"
         ],
         "settings": {
