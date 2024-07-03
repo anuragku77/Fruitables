@@ -86,34 +86,38 @@
                     </ul>
                   </div>
                 {%- endif -%}
-                {%- when 'contact_info' -%}
-                    <div class="footer-item">
-                      <h4 class="text-light mb-3">Contact</h4>
-                      
-                      {%- if block.settings.address != blank -%}
-                      <p>Address: {{ block.settings.address }}</p>
-                      {%- endif -%}
-                      
-                      {%- if block.settings.email != blank -%}
-                      <p>Email: <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a></p>
-                      {%- endif -%}
-                      
-                      {%- if block.settings.phone != blank -%}
-                      <p>Phone: <a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a></p>
-                      {%- endif -%}
-                      
-                      {%- if section.settings.payment_enable and block.settings.payment_accepted_text != blank -%}
-                      <p>{{ block.settings.payment_accepted_text }}</p>
-                      <ul class="list list-payment" role="list">
-                        {%- for type in shop.enabled_payment_types -%}
-                          <li class="list-payment__item">
-                            {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                      {%- endif -%}
-                    </div>
-                    
+              {%- when 'contact_info' -%}
+                <div class="footer-item">
+                  <h4 class="text-light mb-3">Contact</h4>
+
+                  {%- if block.settings.address != blank -%}
+                    <p>Address: {{ block.settings.address }}</p>
+                  {%- endif -%}
+
+                  {%- if block.settings.email != blank -%}
+                    <p>
+                      Email: <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+                    </p>
+                  {%- endif -%}
+
+                  {%- if block.settings.phone != blank -%}
+                    <p>
+                      Phone: <a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a>
+                    </p>
+                  {%- endif -%}
+
+                  {%- if section.settings.payment_enable and block.settings.payment_accepted_text != blank -%}
+                    <p>{{ block.settings.payment_accepted_text }}</p>
+                    <ul class="list list-payment" role="list">
+                      {%- for type in shop.enabled_payment_types -%}
+                        <li class="list-payment__item">
+                          {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+
               {%- when 'brand_information' -%}
                 <div class="footer-block__brand-info">
                   {%- if settings.brand_image != blank -%}
@@ -146,7 +150,6 @@
                   {%- endif -%}
                 </div>
             {%- endcase -%}
-
           </div>
         </div>
       {%- endfor -%}
@@ -467,6 +470,9 @@
       },
       {
         "type": "text"
+      },
+      {
+      "type": "contact_info"
       }
     ]
   }
