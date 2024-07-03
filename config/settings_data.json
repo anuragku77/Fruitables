@@ -157,11 +157,21 @@
               "heading": "Quick links",
               "menu": "footer"
             }
+          },
+          "contact_info_3FFVXp": {
+            "type": "contact_info",
+            "settings": {
+              "address": "123 Main Street, Anytown, USA",
+              "email": "contact@company.com",
+              "phone": "(123) 456-7890",
+              "payment_accepted_text": "Payment Accepted"
+            }
           }
         },
         "block_order": [
           "custom-footer-1",
-          "custom-footer-0"
+          "custom-footer-0",
+          "contact_info_3FFVXp"
         ],
         "settings": {
           "color_scheme": "",
