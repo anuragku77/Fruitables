@@ -112,10 +112,6 @@
                         {%- endfor -%}
                       </ul>
                       {%- endif -%}
-                      
-                      {%- if block.settings.payment_image != blank -%}
-                      <img src="{{ block.settings.payment_image | image_url }}" class="img-fluid" alt="{{ block.settings.payment_accepted_text }}">
-                      {%- endif -%}
                     </div>
                     
               {%- when 'brand_information' -%}
