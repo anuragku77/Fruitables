@@ -57,28 +57,35 @@
       </div>
     </div>
     <div class="row g-5">
-        {%- for block in section.blocks -%}
+      {%- for block in section.blocks -%}
         <div class="col-lg-3 col-md-6">
           <div class="footer-item">
             {%- if block.settings.heading != blank -%}
-            <h4 class="text-light mb-3">{{- block.settings.heading -}}</h4>
+              <h4 class="text-light mb-3">{{- block.settings.heading -}}</h4>
             {%- endif -%}
             {%- case block.type -%}
-            {%- when 'text' -%}
-            <p class="mb-4">{{ block.settings.subtext }}</p>
-            {%- if block.settings.button_text != blank -%}
-            <a href="{{ block.settings.button_link }}" class="btn border-secondary py-2 px-4 rounded-pill text-primary">{{ block.settings.button_text }}</a>
-            {%- endif -%}
-            {%- when 'link_list' -%}
-            {%- if block.settings.menu != blank -%}
-            <div class="d-flex flex-column text-start footer-item">
-              <ul class="list-unstyled">
-                {%- for link in block.settings.menu.links -%}
-                <li><a class="btn-link" href="{{ link.url }}">{{ link.title | escape }}</a></li>
-                {%- endfor -%}
-              </ul>
-            </div>
-            {%- endif -%}
+              {%- when 'text' -%}
+                <p class="mb-4">{{ block.settings.subtext }}</p>
+                {%- if block.settings.button_text != blank -%}
+                  <a
+                    href="{{ block.settings.button_link }}"
+                    class="btn border-secondary py-2 px-4 rounded-pill text-primary"
+                  >
+                    {{- block.settings.button_text -}}
+                  </a>
+                {%- endif -%}
+              {%- when 'link_list' -%}
+                {%- if block.settings.menu != blank -%}
+                  <div class="d-flex flex-column text-start footer-item">
+                    <ul class="list-unstyled">
+                      {%- for link in block.settings.menu.links -%}
+                        <li>
+                          <a class="btn-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
               {%- when 'brand_information' -%}
                 <div class="footer-block__brand-info">
                   {%- if settings.brand_image != blank -%}
@@ -266,35 +273,35 @@
       ]
     },
     {
-        "type": "contact_info",
-        "name": "Contact Information",
-        "settings": [
-          {
-            "type": "text",
-            "id": "address",
-            "label": "Address",
-            "default": "123 Main Street, Anytown, USA"
-          },
-          {
-            "type": "text",
-            "id": "email",
-            "label": "Email",
-            "default": "contact@company.com"
-          },
-          {
-            "type": "text",
-            "id": "phone",
-            "label": "Phone",
-            "default": "(123) 456-7890"
-          },
-          {
-            "type": "text",
-            "id": "payment_accepted_text",
-            "label": "Payment Accepted Text",
-            "default": "Payment Accepted"
-          }
-        ]
-      }
+      "type": "contact_info",
+      "name": "Contact Information",
+      "settings": [
+        {
+          "type": "text",
+          "id": "address",
+          "label": "Address",
+          "default": "123 Main Street, Anytown, USA"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email",
+          "default": "contact@company.com"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Phone",
+          "default": "(123) 456-7890"
+        },
+        {
+          "type": "text",
+          "id": "payment_accepted_text",
+          "label": "Payment Accepted Text",
+          "default": "Payment Accepted"
+        }
+      ]
+    }
   ],
   "settings": [
     {
