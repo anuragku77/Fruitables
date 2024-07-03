@@ -142,26 +142,26 @@
       "custom-footer": {
         "type": "custom-footer",
         "blocks": {
+          "custom-footer-1": {
+            "type": "text",
+            "settings": {
+              "heading": "Why People Like us!",
+              "subtext": "<p>typesetting, remaining essentially unchanged. It was                                 popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.<\/p>",
+              "button_text": "Read More",
+              "button_link": "shopify:\/\/pages\/contact"
+            }
+          },
           "custom-footer-0": {
             "type": "link_list",
             "settings": {
               "heading": "Quick links",
               "menu": "footer"
             }
-          },
-          "custom-footer-1": {
-            "type": "text",
-            "settings": {
-              "heading": "",
-              "subtext": "",
-              "button_text": "",
-              "button_link": ""
-            }
           }
         },
         "block_order": [
-          "custom-footer-0",
-          "custom-footer-1"
+          "custom-footer-1",
+          "custom-footer-0"
         ],
         "settings": {
           "color_scheme": "",
