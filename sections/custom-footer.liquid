@@ -108,6 +108,7 @@
 
                   {%- if section.settings.payment_enable and block.settings.payment_accepted_text != blank -%}
                     <p>{{ block.settings.payment_accepted_text }}</p>
+                    <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
                     <ul class="list list-payment" role="list">
                       {%- for type in shop.enabled_payment_types -%}
                         <li class="list-payment__item">
@@ -472,7 +473,7 @@
         "type": "text"
       },
       {
-      "type": "contact_info"
+        "type": "contact_info"
       }
     ]
   }
