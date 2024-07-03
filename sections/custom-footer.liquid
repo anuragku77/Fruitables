@@ -1,10 +1,13 @@
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+  rel="stylesheet"
+>
 
 <!-- Icon Font Stylesheet -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
 {{ 'custom-footer.css' | asset_url | stylesheet_tag }}
@@ -14,122 +17,147 @@
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-    <div class="container py-5">
-        <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
-            <div class="row g-4">
-                <div class="col-lg-3">
-                    <a href="#">
-                        <h1 class="text-primary mb-0">Fruitables</h1>
-                        <p class="text-secondary mb-0">Fresh products</p>
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <div class="position-relative mx-auto">
-                        <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" placeholder="Your Email">
-                        <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="d-flex justify-content-end pt-3">
-                        <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
+  <div class="container py-5">
+    <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+      <div class="row g-4">
+        <div class="col-lg-3">
+          <a href="#">
+            <h1 class="text-primary mb-0">Fruitables</h1>
+            <p class="text-secondary mb-0">Fresh products</p>
+          </a>
         </div>
-        <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-item">
-                    <h4 class="text-light mb-3">Why People Like us!</h4>
-                    <p class="mb-4">typesetting, remaining essentially unchanged. It was 
-                        popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.</p>
-                    <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read More</a>
-                </div>
-            </div>
-            {% comment %} <div class="row g-5"> {% endcomment %}
-                {%- for block in section.blocks -%}
-                <div class="col-lg-3 col-md-6">
-                  <div class="footer-item">
-                    {%- if block.settings.heading != blank -%}
-                    <h4 class="text-light mb-3">{{- block.settings.heading -}}</h4>
-                    {%- endif -%}
-                    {%- case block.type -%}
-                    {%- when 'text' -%}
-                    <p class="mb-4">{{ block.settings.subtext }}</p>
-                    {%- when 'link_list' -%}
-                    {%- if block.settings.menu != blank -%}
-                    <div class="d-flex flex-column text-start footer-item">
-                      <ul class="list-unstyled">
-                        {%- for link in block.settings.menu.links -%}
-                        <li><a class="btn-link" href="{{ link.url }}">{{ link.title | escape }}</a></li>
-                        {%- endfor -%}
-                      </ul>
-                    </div>
-                    {%- endif -%}
-                    {%- when 'brand_information' -%}
-                        <div class="footer-block__brand-info">
-                          {%- if settings.brand_image != blank -%}
-                            {%- assign brand_image_height = settings.brand_image_width
-                              | divided_by: settings.brand_image.aspect_ratio
-                            -%}
-                            <div
-                              class="footer-block__image-wrapper"
-                              style="max-width: min(100%, {{ settings.brand_image_width }}px);"
-                            >
-                              {{
-                                settings.brand_image
-                                | image_url: width: 1100
-                                | image_tag:
-                                  loading: 'lazy',
-                                  widths: '50, 100, 150, 200, 300, 400, 550, 800, 1100',
-                                  height: brand_image_height,
-                                  width: settings.brand_image_width
-                              }}
-                            </div>
-                          {%- endif -%}
-                          {%- if settings.brand_headline != blank -%}
-                            <h2 class="footer-block__heading rte">{{ settings.brand_headline }}</h2>
-                          {%- endif -%}
-                          {%- if settings.brand_description != blank -%}
-                            <div class="rte">{{ settings.brand_description }}</div>
-                          {%- endif -%}
-                          {%- if block.settings.show_social and has_social_icons -%}
-                            {%- render 'social-icons', class: 'footer__list-social' -%}
-                          {%- endif -%}
-                        </div>
-                    {%- endcase -%}
-                  </div>
-                </div>
-                {%- endfor -%}
+        <div class="col-lg-6">
+          <div class="position-relative mx-auto">
+            <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" placeholder="Your Email">
+            <button
+              type="submit"
+              class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white"
+              style="top: 0; right: 0;"
+            >
+              Subscribe Now
+            </button>
+          </div>
         </div>
+        <div class="col-lg-3">
+          <div class="d-flex justify-content-end pt-3">
+            <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="row g-5">
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-item">
+          <h4 class="text-light mb-3">Why People Like us!</h4>
+          <p class="mb-4">
+            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the like Aldus PageMaker
+            including of Lorem Ipsum.
+          </p>
+          <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read More</a>
+        </div>
+      </div>
+      {% comment %} <div class="row g-5"> {% endcomment %}
+      {%- for block in section.blocks -%}
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-item">
+            {%- if block.settings.heading != blank -%}
+              <h4 class="text-light mb-3">{{- block.settings.heading -}}</h4>
+            {%- endif -%}
+            {%- case block.type -%}
+              {%- when 'text' -%}
+                <p class="mb-4">{{ block.settings.subtext }}</p>
+              {%- when 'link_list' -%}
+                {%- if block.settings.menu != blank -%}
+                  <div class="d-flex flex-column text-start footer-item">
+                    <ul class="list-unstyled">
+                      {%- for link in block.settings.menu.links -%}
+                        <li>
+                          <a class="btn-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
+              {%- when 'brand_information' -%}
+                <div class="footer-block__brand-info">
+                  {%- if settings.brand_image != blank -%}
+                    {%- assign brand_image_height = settings.brand_image_width
+                      | divided_by: settings.brand_image.aspect_ratio
+                    -%}
+                    <div
+                      class="footer-block__image-wrapper"
+                      style="max-width: min(100%, {{ settings.brand_image_width }}px);"
+                    >
+                      {{
+                        settings.brand_image
+                        | image_url: width: 1100
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '50, 100, 150, 200, 300, 400, 550, 800, 1100',
+                          height: brand_image_height,
+                          width: settings.brand_image_width
+                      }}
+                    </div>
+                  {%- endif -%}
+                  {%- if settings.brand_headline != blank -%}
+                    <h2 class="footer-block__heading rte">{{ settings.brand_headline }}</h2>
+                  {%- endif -%}
+                  {%- if settings.brand_description != blank -%}
+                    <div class="rte">{{ settings.brand_description }}</div>
+                  {%- endif -%}
+                  {%- if block.settings.show_social and has_social_icons -%}
+                    {%- render 'social-icons', class: 'footer__list-social' -%}
+                  {%- endif -%}
+                </div>
+            {%- endcase -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
 </div>
 <!-- Footer End -->
 
 <!-- Copyright Start -->
 <div class="container-fluid copyright bg-dark py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
-            </div>
-            <div class="col-md-6 my-auto text-center text-md-end text-white">
-                <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+        <span class="text-light"
+          ><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span
+        >
+      </div>
+      <div class="col-md-6 my-auto text-center text-md-end text-white">
+        <!--
+          /*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/
+        -->
+        <!--
+          /*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/
+        -->
+        <!-- /*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/ -->
+        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By
+        <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+      </div>
     </div>
+  </div>
 </div>
 <!-- Copyright End -->
 
-
-
 <!-- Back to Top -->
-<a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a> 
+<a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"
+  ><i class="fa fa-arrow-up"></i
+></a>
 {% schema %}
 {
   "name": "t:sections.footer.name",
@@ -193,6 +221,17 @@
           "default": "t:sections.footer.blocks.text.settings.subtext.default",
           "label": "t:sections.footer.blocks.text.settings.subtext.label"
         },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Read More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
       ]
     },
     {
