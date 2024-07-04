@@ -43,18 +43,20 @@
         </div>
         <div class="col-lg-3">
           <div class="d-flex justify-content-end pt-3">
-            <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""
-              ><i class="fab fa-youtube"></i
-            ></a>
-            <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
+            {%- if section.settings.show_social -%}
+              {%- if settings.social_twitter_link != blank -%}
+              <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href="{{ settings.social_twitter_link }}"><i class="fab fa-twitter"></i></a>
+              {%- endif -%}
+              {%- if settings.social_facebook_link != blank -%}
+              <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href="{{ settings.social_facebook_link }}"><i class="fab fa-facebook-f"></i></a>
+              {%- endif -%}
+              {%- if settings.social_youtube_link != blank -%}
+              <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href="{{ settings.social_youtube_link }}"><i class="fab fa-youtube"></i></a>
+              {%- endif -%}
+              {%- if settings.social_linkedin_link != blank -%}
+              <a class="btn btn-outline-secondary btn-md-square rounded-circle" href="{{ settings.social_linkedin_link }}"><i class="fab fa-linkedin-in"></i></a>
+              {%- endif -%}
+            {%- endif -%}
           </div>
         </div>
       </div>
