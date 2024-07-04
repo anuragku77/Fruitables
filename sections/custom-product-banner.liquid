@@ -41,12 +41,16 @@
 {% endif %}
 
 <style>
-  /*** Banner Section Start ***/
-  .banner .banner-btn:hover {
-    background: var(--bs-primary);
-  }
-  /*** Banner Section End ***/
-</style>
+    /*** Banner Section Start ***/
+    .banner .banner-btn {
+      transition: background-color 0.3s;
+    }
+  
+    .banner .banner-btn:hover {
+      background: var(--bs-primary);
+    }
+    /*** Banner Section End ***/
+  </style>
 
 {% schema %}
 {
