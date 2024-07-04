@@ -28,4 +28,42 @@
         </div>
     </div>
   {% endif %}
+
+
+  
+  {% schema %}
+{
+  "name": "Banner",
+  "settings": [
+    {
+      "type": "product",
+      "id": "banner_product",
+      "label": "Select Banner Product"
+    },
+    {
+      "type": "text",
+      "id": "banner_paragraph_text",
+      "label": "Banner Paragraph Text",
+      "default": "The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
+    },
+    {
+      "type": "text",
+      "id": "banner_button_text",
+      "label": "Banner Button Text",
+      "default": "BUY"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default Banner",
+      "category": "Banner",
+      "settings": {
+        "banner_paragraph_text": "The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+        "banner_button_text": "BUY"
+      }
+    }
+  ]
+}
+{% endschema %}
+
   
