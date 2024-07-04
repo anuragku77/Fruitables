@@ -20,7 +20,8 @@
               src="{{ product.featured_image | img_url: 'master' }}"
               class="img-fluid w-100 rounded"
               alt="{{ product.title }} "
-              width="1200" height="1200"
+              width="1200"
+              height="1200"
             >
             <div
               class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
@@ -39,7 +40,13 @@
   </div>
 {% endif %}
 
-<style></style>
+<style>
+  /*** Banner Section Start ***/
+  .banner .banner-btn:hover {
+    background: var(--bs-primary);
+  }
+  /*** Banner Section End ***/
+</style>
 
 {% schema %}
 {
