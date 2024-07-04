@@ -28,7 +28,7 @@
             >
               <h1 style="font-size: 100px;">{{ product.variants.first.weight | divided_by: 1000 }}</h1>
               <div class="d-flex flex-column">
-                <span class="h2 mb-0">{{ product.price | money }}</span>
+                <span class="h2 mb-0">{{ product.price | money | floor}}</span>
                 <span class="h4 text-muted mb-0">{{ product.variants.first.weight_unit }}</span>
               </div>
             </div>
