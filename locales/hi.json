@@ -381,7 +381,72 @@
     "log_out": "लॉग आउट",
     "login_page": {
       "cancel": "रद्द करना",
-      "create_account": "खाता बनाएं"
+      "create_account": "खाता बनाएं",
+      "email": "ईमेल",
+      "forgot_password": "अपना कूट शब्द भूल गए?",
+      "guest_continue": "जारी रखना",
+      "guest_title": "अतिथि के रूप में जारी रखें",
+      "password": "पासवर्ड",
+      "title": "लॉग इन करें",
+      "sign_in": "दाखिल करना",
+      "submit": "जमा करना",
+      "alternate_provider_separator": "या"
+    },
+    "order": {
+      "title": "आदेश {{ name }}",
+      "date_html": "{{ date }} को रखा गया",
+      "cancelled_html": "{{ date }} को ऑर्डर रद्द कर दिया गया",
+      "cancelled_reason": "कारण: {{ reason }}",
+      "billing_address": "बिल भेजने का पता",
+      "payment_status": "भुगतान की स्थिति",
+      "shipping_address": "शिपिंग पता",
+      "fulfillment_status": "पूर्ति स्थिति",
+      "discount": "छूट",
+      "shipping": "शिपिंग",
+      "tax": "कर",
+      "product": "उत्पाद",
+      "sku": "एसकेयू",
+      "price": "कीमत",
+      "quantity": "मात्रा",
+      "total": "कुल",
+      "total_refunded": "वापसी की गई है",
+      "fulfilled_at_html": "पूर्ण {{ date }}",
+      "track_shipment": "शिपमेंट ट्रैक करना",
+      "tracking_url": "ट्रैकिंग लिंक",
+      "tracking_company": "वाहक",
+      "tracking_number": "ट्रैकिंग नंबर",
+      "subtotal": "उप-योग",
+      "total_duties": "कर्तव्य"
+    },
+    "orders": {
+      "title": "आदेश इतिहास",
+      "order_number": "आदेश",
+      "order_number_link": "आदेश संख्या {{ number }}",
+      "date": "तारीख",
+      "payment_status": "भुगतान की स्थिति",
+      "fulfillment_status": "पूर्ति स्थिति",
+      "total": "कुल",
+      "none": "आपने अभी तक कोई ऑर्डर नहीं दिया है."
+    },
+    "recover_password": {
+      "title": "अपना पासवर्ड रीसेट करें",
+      "subtext": "हम आपको अपना पासवर्ड रीसेट करने के लिए एक ईमेल भेजेंगे",
+      "success": "हमने आपको अपना पासवर्ड अपडेट करने के लिए एक लिंक सहित एक ईमेल भेजा है।"
+    },
+    "register": {
+      "title": "खाता बनाएं",
+      "first_name": "पहला नाम",
+      "last_name": "उपनाम",
+      "email": "ईमेल",
+      "password": "पासवर्ड",
+      "submit": "बनाएं"
+    },
+    "reset_password": {
+      "title": "खाता पासवर्ड रीसेट करें",
+      "subtext": "नया पारण शब्द भरे",
+      "password": "पासवर्ड",
+      "password_confirm": "पासवर्ड की पुष्टि कीजिये",
+      "submit": "पासवर्ड रीसेट"
     }
   },
   "newsletter": {
@@ -430,5 +495,37 @@
   "onboarding": {
     "product_title": "उदाहरण उत्पाद शीर्षक",
     "collection_title": "आपके संग्रह का नाम"
+  },
+  "gift_cards": {
+    "issued": {
+      "how_to_use_gift_card": "उपहार कार्ड कोड का उपयोग ऑनलाइन या स्टोर में QR कोड का उपयोग करें",
+      "title": "यहां {{ shop }} के लिए आपके {{ value }} उपहार कार्ड का शेष है!",
+      "subtext": "आपका उपहार कार्ड",
+      "gift_card_code": "उपहार कार्ड कोड",
+      "shop_link": "ऑनलाइन स्टोर पर जाएँ",
+      "add_to_apple_wallet": "एप्पल वॉलेट में जोड़ें",
+      "qr_image_alt": "क्यूआर कोड - उपहार कार्ड भुनाने के लिए स्कैन करें",
+      "copy_code": "उपहार कार्ड कोड कॉपी करें",
+      "expiration_date": "समाप्त हो रहा है {{ expires_on }}",
+      "copy_code_success": "कोड सफलतापूर्वक कॉपी किया गया",
+      "expired": "खत्म हो चुका"
+    }
+  },
+  "recipient": {
+    "form": {
+      "checkbox": "मैं इसे उपहार के रूप में भेजना चाहता हूं",
+      "expanded": "उपहार कार्ड प्राप्तकर्ता फ़ॉर्म विस्तृत किया गया",
+      "collapsed": "उपहार कार्ड प्राप्तकर्ता फ़ॉर्म संक्षिप्त किया गया",
+      "email_label": "प्राप्तकर्ता का ई - मेल",
+      "email_label_optional_for_no_js_behavior": "प्राप्तकर्ता ईमेल (वैकल्पिक)",
+      "email": "ईमेल",
+      "name_label": "प्राप्तकर्ता का नाम (वैकल्पिक)",
+      "name": "नाम",
+      "message_label": "संदेश (वैकल्पिक)",
+      "message": "संदेश",
+      "max_characters": "{{ max_chars }} वर्ण अधिकतम",
+      "send_on": "वर्ष-माह-दिन",
+      "send_on_label": "भेजें (वैकल्पिक)"
+    }
   }
 }
