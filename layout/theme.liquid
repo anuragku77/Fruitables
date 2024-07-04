@@ -8,20 +8,20 @@
     <link rel="canonical" href="{{ canonical_url }}">
 
     <!-- Google Web Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
-  rel="stylesheet"
->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+      rel="stylesheet"
+    >
 
-<!-- Icon Font Stylesheet -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-{{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
-{{ 'lightbox.min.css' | asset_url | stylesheet_tag }}
-{{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+    {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
+    {{ 'lightbox.min.css' | asset_url | stylesheet_tag }}
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
@@ -43,6 +43,16 @@
     {% endif %}
 
     {% render 'meta-tags' %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
@@ -310,7 +320,6 @@
       {%- render 'cart-drawer' -%}
     {%- endif -%}
 
-    
     {% sections 'header-group' %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
