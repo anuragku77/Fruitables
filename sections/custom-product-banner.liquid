@@ -7,8 +7,8 @@
         <div class="col-lg-6">
           <div class="py-4">
             <h1 class="display-3 text-white">{{ product.title }}</h1>
-            <p class="fw-normal display-3 text-dark mb-4"> {{ section.settings.banner_paragraph_text }} </p>
-            <p class="mb-4 text-dark"> {{ product.description }} </p>
+            <p class="fw-normal display-3 text-dark mb-4">{{ section.settings.banner_paragraph_text }}</p>
+            <p class="mb-4 text-dark">{{ product.description }}</p>
             <a href="{{ product.url }}" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">
               {{ section.settings.banner_button_text }}
             </a>
@@ -41,19 +41,30 @@
 {% endif %}
 
 <style>
-    .text-dark {
-        color: #45595b !important;
-    }
-    /*** Banner Section Start ***/
-    .banner .banner-btn {
-      transition: background-color 0.3s;
-    }
-  
-    .banner .banner-btn:hover {
-      background: var(--bs-primary);
-    }
-    /*** Banner Section End ***/
-  </style>
+  .text-dark {
+    color: #45595b !important;
+  }
+  .mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+  p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+  }
+  /*** Banner Section Start ***/
+  .banner .banner-btn {
+    transition: background-color 0.3s;
+  }
+
+  .banner .banner-btn:hover {
+    background: var(--bs-primary);
+  }
+  /*** Banner Section End ***/
+</style>
 
 {% schema %}
 {
