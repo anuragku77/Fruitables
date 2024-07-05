@@ -79,6 +79,8 @@
     "vegetable_shop": {
       "type": "vegetable-shop",
       "settings": {
+        "section_title": "Fresh Organic Vegetables",
+        "product_collection": "frontpage"
       }
     }
   },
