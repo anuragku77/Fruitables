@@ -76,14 +76,6 @@
         "padding_bottom": 36
       }
     },
-    "custom_product_banner_ajaPWy": {
-      "type": "custom-product-banner",
-      "settings": {
-        "banner_product": "fresh-exotic-fruits",
-        "banner_paragraph_text": "in Our Store",
-        "banner_button_text": "BUY"
-      }
-    },
     "feature_section_NgNNJH": {
       "type": "feature-section",
       "settings": {
@@ -100,12 +92,20 @@
         "title_3": "Exotic Vegetable",
         "promotion_3": "Discount $30"
       }
+    },
+    "custom_product_banner_ajaPWy": {
+      "type": "custom-product-banner",
+      "settings": {
+        "banner_product": "fresh-exotic-fruits",
+        "banner_paragraph_text": "in Our Store",
+        "banner_button_text": "BUY"
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "custom_product_banner_ajaPWy",
-    "feature_section_NgNNJH"
+    "feature_section_NgNNJH",
+    "custom_product_banner_ajaPWy"
   ]
 }
