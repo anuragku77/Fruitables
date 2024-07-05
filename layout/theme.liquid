@@ -7,35 +7,6 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
 
-    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
-
-    {{ 'style.css' | asset_url | stylesheet_tag }}
-
-    <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-<<<<<<< HEAD
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
-
-=======
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
-    
->>>>>>> 931512a22d5779c36f374f3c3161d91b50c51782
-    {{ 'lightbox.min.css' | asset_url | stylesheet_tag }}
-    
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
-      rel="stylesheet"
-    >
-
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
