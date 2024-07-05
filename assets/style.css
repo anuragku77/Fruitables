@@ -361,6 +361,7 @@
     transition: 0.5s;
 
 }
+
 carousel .owl-nav.disabled {
     /* display: none; */
     display: block;
