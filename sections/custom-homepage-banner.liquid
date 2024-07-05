@@ -67,6 +67,7 @@
               {% for block in section.blocks %}
                 {% if forloop.index == 1 %}
                   <div class="carousel-item active rounded">
+                    <img src="img/hero-img-1.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
                     {{
                       block.settings.image_slider
                       | image_url: width: 100 
