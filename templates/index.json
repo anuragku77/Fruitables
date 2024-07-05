@@ -9,6 +9,13 @@
 */
 {
   "sections": {
+    "custom_homepage_banner_gGbdb3": {
+      "type": "custom-homepage-banner",
+      "settings": {
+        "banner_header": "100% Organic Foods",
+        "banner_content": "Organic Veggies & Fruits Foods"
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -116,6 +123,7 @@
     }
   },
   "order": [
+    "custom_homepage_banner_gGbdb3",
     "image_banner",
     "featured_collection",
     "feature_section_RNmNax",
