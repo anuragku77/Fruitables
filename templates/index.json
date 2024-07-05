@@ -76,19 +76,6 @@
         "padding_bottom": 36
       }
     },
-    "vegetable_shop": {
-      "type": "vegetable-shop",
-      "settings": {
-        "section_title": "Fresh Organic Vegetables",
-        "product_collection": "vegetable-shop"
-      }
-    },
-    "bestseller_product": {
-      "type": "bestseller-product",
-      "settings": {
-        "product_collection": "bestseller-products"
-      }
-    },
     "feature_section_RNmNax": {
       "type": "feature-section",
       "settings": {
@@ -106,6 +93,13 @@
         "promotion_3": "Discount $30"
       }
     },
+    "vegetable_shop": {
+      "type": "vegetable-shop",
+      "settings": {
+        "section_title": "Fresh Organic Vegetables",
+        "product_collection": "vegetable-shop"
+      }
+    },
     "custom_product_banner_tkktLp": {
       "type": "custom-product-banner",
       "settings": {
@@ -113,14 +107,20 @@
         "banner_paragraph_text": "in Our Store",
         "banner_button_text": "BUY"
       }
+    },
+    "bestseller_product": {
+      "type": "bestseller-product",
+      "settings": {
+        "product_collection": "bestseller-products"
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "vegetable_shop",
-    "bestseller_product",
     "feature_section_RNmNax",
-    "custom_product_banner_tkktLp"
+    "vegetable_shop",
+    "custom_product_banner_tkktLp",
+    "bestseller_product"
   ]
 }
