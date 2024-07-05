@@ -24,7 +24,13 @@
                     <div class="col-md-6 col-lg-4">
                         <a href="{{ section.settings.link_2 }}">
                             <div class="service-item bg-dark rounded border border-dark">
-                                <img src="img/featur-2.jpg" class="img-fluid rounded-top w-100" alt="">
+                                <img
+                                    src="{{ section.settings.image_2 | img_url: 'master' }}"
+                                    class="img-fluid rounded-top w-100"
+                                    alt="{{ section.settings.title_2 }}"
+                                    width="1200"
+                                    height="1200"
+                                  >
                                 <div class="px-4 rounded-bottom">
                                     <div class="service-content bg-light text-center p-4 rounded">
                                         <h5 class="text-primary">Tasty Fruits</h5>
