@@ -361,6 +361,10 @@
     transition: 0.5s;
 
 }
+.owl-nav.disabled {
+    /* display: none; */
+    display: block;
+}
 
 .vesitable .owl-nav .owl-prev:hover {
     background: var(--bs-secondary);
