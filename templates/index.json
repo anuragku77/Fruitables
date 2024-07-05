@@ -76,8 +76,8 @@
         "padding_bottom": 36
       }
     },
-    "vegetable_shop": {
-      "type": "vegetable-shop",
+    "bestseller_product": {
+      "type": "bestseller-product",
       "settings": {
       }
     }
@@ -85,6 +85,6 @@
   "order": [
     "image_banner",
     "featured_collection",
-    "vegetable_shop"
+    "bestseller_product"
   ]
 }
