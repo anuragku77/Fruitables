@@ -60,7 +60,7 @@
 
 .owl-carousel .owl-dots.disabled,
 .owl-carousel .owl-nav.disabled {
-    display: block
+    display: none
 }
 
 .no-js .owl-carousel,
