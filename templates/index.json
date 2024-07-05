@@ -105,6 +105,14 @@
         "title_3": "Exotic Vegetable",
         "promotion_3": "Discount $30"
       }
+    },
+    "custom_product_banner_tkktLp": {
+      "type": "custom-product-banner",
+      "settings": {
+        "banner_product": "fresh-exotic-fruits",
+        "banner_paragraph_text": "in Our Store",
+        "banner_button_text": "BUY"
+      }
     }
   },
   "order": [
@@ -112,6 +120,7 @@
     "featured_collection",
     "vegetable_shop",
     "bestseller_product",
-    "feature_section_RNmNax"
+    "feature_section_RNmNax",
+    "custom_product_banner_tkktLp"
   ]
 }
