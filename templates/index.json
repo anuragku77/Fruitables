@@ -79,6 +79,7 @@
     "bestseller_product": {
       "type": "bestseller-product",
       "settings": {
+        "product_collection": "bestseller-products"
       }
     }
   },
