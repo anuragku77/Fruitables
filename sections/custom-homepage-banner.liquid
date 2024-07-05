@@ -68,7 +68,7 @@
                 {% if forloop.index == 1 %}
                   <div class="carousel-item active rounded">
                     {{
-                      block.settings.slider_image
+                      block.settings.image_slider
                       | image_url: width: 100
                       | image_tag: class: 'img-fluid w-100 h-100 bg-secondary rounded'
                     }}
@@ -79,7 +79,7 @@
                 {% else %}
                   <div class="carousel-item rounded">
                     {{
-                      block.settings.slider_image
+                      block.settings.image_slider
                       | image_url: width: 100
                       | image_tag: class: 'img-fluid w-100 h-100 bg-secondary rounded'
                     }}
