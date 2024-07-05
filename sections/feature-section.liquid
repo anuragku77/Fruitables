@@ -5,7 +5,13 @@
                     <div class="col-md-6 col-lg-4">
                         <a href="{{ section.settings.link_1 }}">
                             <div class="service-item bg-secondary rounded border border-secondary">
-                                <img src="img/featur-1.jpg" class="img-fluid rounded-top w-100" alt="">
+                                <img
+                                    src="{{ section.settings.image_1 | img_url: 'master' }}"
+                                    class="img-fluid rounded-top w-100"
+                                    alt="{{ section.settings.title_1 }}"
+                                    width="1200"
+                                    height="1200"
+                                  >
                                 <div class="px-4 rounded-bottom">
                                     <div class="service-content bg-primary text-center p-4 rounded">
                                         <h5 class="text-white">Fresh Apples</h5>
