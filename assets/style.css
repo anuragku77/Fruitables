@@ -178,7 +178,7 @@
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(../img/hero-img.jpg);
+    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(https://cdn.shopify.com/s/files/1/0885/0017/5122/files/hero-img.jpg?v=1720183793);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -361,7 +361,6 @@
     transition: 0.5s;
 
 }
-
 
 .vesitable .owl-nav .owl-prev:hover {
     background: var(--bs-secondary);
