@@ -79,11 +79,14 @@
     "vegetable_shop": {
       "type": "vegetable-shop",
       "settings": {
+        "section_title": "Fresh Organic Vegetables",
+        "product_collection": "vegetable-shop"
       }
     },
     "bestseller_product": {
       "type": "bestseller-product",
       "settings": {
+        "product_collection": "bestseller-products"
       }
     }
   },
