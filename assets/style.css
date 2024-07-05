@@ -362,10 +362,6 @@
 
 }
 
-.owl-nav.disabled {
-    /* display: none; */
-    display: block;
-}
 
 .vesitable .owl-nav .owl-prev:hover {
     background: var(--bs-secondary);
@@ -386,6 +382,11 @@
 .vesitable .owl-nav .owl-next:hover {
     background: var(--bs-secondary);
     color: var(--bs-white);
+}
+
+.owl-nav.disabled {
+    /* display: none; */
+    display: block;
 }
 /*** vesitable End ***/
 
