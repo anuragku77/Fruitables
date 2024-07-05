@@ -67,7 +67,7 @@
               {% for block in section.blocks %}
                 {% if forloop.index == 1 %}
                   <div class="carousel-item active rounded">
-                    <img src="{{ section.settings.image_2 | img_url: 'master' }}"
+                    <img src="{{ block.settings.image_slider | img_url: 'master' }}"
                     class="img-fluid rounded-top w-100"
                     alt="{{ section.settings.title_2 }}"
                     width="1200"
