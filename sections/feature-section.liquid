@@ -43,3 +43,120 @@
         </div>
     </div>
 </div>
+
+
+{% schema %}
+{
+  "name": "Featured Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Our Features"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Feature Image"
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Feature Link",
+          "default": "#"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "text",
+          "id": "promotion",
+          "label": "Feature Promotion",
+          "default": "Promotion"
+        },
+        {
+          "type": "select",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "bg-secondary",
+          "options": [
+            {
+              "value": "bg-secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "bg-dark",
+              "label": "Dark"
+            },
+            {
+              "value": "bg-primary",
+              "label": "Primary"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "border_color",
+          "label": "Border Color",
+          "default": "border-secondary",
+          "options": [
+            {
+              "value": "border-secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "border-dark",
+              "label": "Dark"
+            },
+            {
+              "value": "border-primary",
+              "label": "Primary"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "content_background_color",
+          "label": "Content Background Color",
+          "default": "bg-primary",
+          "options": [
+            {
+              "value": "bg-primary",
+              "label": "Primary"
+            },
+            {
+              "value": "bg-light",
+              "label": "Light"
+            },
+            {
+              "value": "bg-secondary",
+              "label": "Secondary"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "text-white"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Section",
+    }
+  ]
+}
+{% endschema %}
