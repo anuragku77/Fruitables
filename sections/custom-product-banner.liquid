@@ -1,0 +1,86 @@
+{% if section.settings.banner_product %}
+  {% assign product = all_products[section.settings.banner_product] %}
+  <!-- Banner Section with Dynamic Product -->
+  <div class="container-fluid banner bg-secondary my-5">
+    <div class="container py-5">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <div class="py-4">
+            <h1 class="display-3 text-white">{{ product.title }}</h1>
+            <p class="fw-normal display-3 text-dark mb-4"> {{ section.settings.banner_paragraph_text }} </p>
+            <p class="mb-4 text-dark"> {{ product.description }} </p>
+            <a href="{{ product.url }}" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">
+              {{ section.settings.banner_button_text }}
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="position-relative">
+            <img
+              src="{{ product.featured_image | img_url: 'master' }}"
+              class="img-fluid w-100 rounded"
+              alt="{{ product.title }} "
+              width="1200"
+              height="1200"
+            >
+            <div
+              class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
+              style="width: 140px; height: 140px; top: 0; left: 0;"
+            >
+              <h1 style="font-size: 100px;">{{ product.variants.first.weight | divided_by: 1000 }}</h1>
+              <div class="d-flex flex-column">
+                <span class="h2 mb-0">{{ product.price | money_without_trailing_zeros }}</span>
+                <span class="h4 text-muted mb-0">{{ product.variants.first.weight_unit }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<style>
+    /*** Banner Section Start ***/
+    .banner .banner-btn {
+      transition: background-color 0.3s;
+    }
+  
+    .banner .banner-btn:hover {
+      background: var(--bs-primary);
+    }
+    /*** Banner Section End ***/
+  </style>
+
+{% schema %}
+{
+  "name": "Product Banner",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "product",
+      "id": "banner_product",
+      "label": "Select Banner Product"
+    },
+    {
+      "type": "text",
+      "id": "banner_paragraph_text",
+      "label": "Banner Paragraph Text",
+      "default": "in Our Store"
+    },
+    {
+      "type": "text",
+      "id": "banner_button_text",
+      "label": "Banner Button Text",
+      "default": "BUY"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Banner"
+    }
+  ]
+}
+{% endschema %}

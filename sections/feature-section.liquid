@@ -1,0 +1,144 @@
+<!-- Featurs Start -->
+<div class="container-fluid service py-5">
+  <div class="container py-5">
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <a href="{{ section.settings.link_1 }}">
+          <div class="service-item bg-secondary rounded border border-secondary">
+            <img
+              src="{{ section.settings.image_1 | img_url: 'master' }}"
+              class="img-fluid rounded-top w-100"
+              alt="{{ section.settings.title_1 }}"
+              width="1200"
+              height="1200"
+            >
+            <div class="px-4 rounded-bottom">
+              <div class="service-content bg-primary text-center p-4 rounded">
+                <h5 class="text-white">{{ section.settings.title_1 }}</h5>
+                <h3 class="mb-0">{{ section.settings.promotion_1 }}</h3>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <a href="{{ section.settings.link_2 }}">
+          <div class="service-item bg-dark rounded border border-dark">
+            <img
+              src="{{ section.settings.image_2 | img_url: 'master' }}"
+              class="img-fluid rounded-top w-100"
+              alt="{{ section.settings.title_2 }}"
+              width="1200"
+              height="1200"
+            >
+            <div class="px-4 rounded-bottom">
+              <div class="service-content bg-light text-center p-4 rounded">
+                <h5 class="text-primary">{{ section.settings.title_2 }}</h5>
+                <h3 class="mb-0">{{ section.settings.promotion_2 }}</h3>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <a href="{{ section.settings.link_3 }}">
+          <div class="service-item bg-primary rounded border border-primary">
+            <img
+              src="{{ section.settings.image_3 | img_url: 'master' }}"
+              class="img-fluid rounded-top w-100"
+              alt="{{ section.settings.title_3 }}"
+              width="1200"
+              height="1200"
+            >
+            <div class="px-4 rounded-bottom">
+              <div class="service-content bg-secondary text-center p-4 rounded">
+                <h5 class="text-white">{{ section.settings.title_3 }}</h5>
+                <h3 class="mb-0">{{ section.settings.promotion_3 }}</h3>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Featurs End -->
+
+{% schema %}
+{
+  "name": "Featured Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Feature Image 1"
+    },
+    {
+      "type": "text",
+      "id": "link_1",
+      "label": "Feature Link 1"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Feature Title 1",
+      "default": "Fresh Apples"
+    },
+    {
+      "type": "text",
+      "id": "promotion_1",
+      "label": "Feature Promotion 1",
+      "default": "20% OFF"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Feature Image 2"
+    },
+    {
+      "type": "text",
+      "id": "link_2",
+      "label": "Feature Link 2"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Feature Title 2",
+      "default": "Tasty Fruits"
+    },
+    {
+      "type": "text",
+      "id": "promotion_2",
+      "label": "Feature Promotion 2",
+      "default": "Free delivery"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Feature Image 3"
+    },
+    {
+      "type": "text",
+      "id": "link_3",
+      "label": "Feature Link 3"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Feature Title 3",
+      "default": "Exotic Vegetable"
+    },
+    {
+      "type": "text",
+      "id": "promotion_3",
+      "label": "Feature Promotion 3",
+      "default": "Discount $30"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Section"
+    }
+  ]
+}
+{% endschema %}

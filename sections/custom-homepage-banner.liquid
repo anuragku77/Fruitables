@@ -1,0 +1,155 @@
+<div class="container-fluid py-5 mb-5 hero-header">
+  <div class="container py-5">
+    <div class="row g-5 align-items-center">
+      <div class="col-md-12 col-lg-7">
+        <h4 class="mb-3 text-secondary">{{ section.settings.banner_header }}</h4>
+        <h1 class="mb-5 display-3 text-primary">{{ section.settings.banner_content }}</h1>
+        <div class="position-relative mx-auto">
+          <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+            <div class="">
+              <input
+                class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
+                id="{{ input_id }}"
+                type="text"
+                name="q"
+                value="{{ search.terms | escape }}"
+                placeholder="Search"
+                {%- if settings.predictive_search_enabled -%}
+                  role="combobox"
+                  aria-expanded="false"
+                  aria-owns="predictive-search-results"
+                  aria-controls="predictive-search-results"
+                  aria-haspopup="listbox"
+                  aria-autocomplete="list"
+                  autocorrect="off"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                {%- endif -%}
+              >
+              <input type="hidden" name="options[prefix]" value="last">
+              <button
+                type="reset"
+                class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+                aria-label="{{ 'general.search.reset' | t }}"
+              >
+                <svg class="icon icon-close" aria-hidden="true" focusable="false">
+                  <use xlink:href="#icon-reset">
+                </svg>
+              </button>
+              <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+                <svg class="icon icon-search" aria-hidden="true" focusable="false">
+                  <use href="#icon-search">
+                </svg>
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
+                style="top: 0; right: 25%;"
+              >
+                Submit Now
+              </button>
+            </div>
+
+            {%- if settings.predictive_search_enabled -%}
+              <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+                {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+              </div>
+
+              <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+            {%- endif -%}
+          </form>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-5">
+        <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            {% for block in section.blocks %}
+              {% if forloop.index == 1 %}
+                <div class="carousel-item active rounded">
+                  <img
+                    src="{{ block.settings.image_slider | img_url: 'master' }}"
+                    class="img-fluid w-100 h-100 bg-secondary rounded"
+                    alt=""
+                    width="1200"
+                    height="1200"
+                  >
+                  <a href="{{ block.settings.slider_url }}" class="btn px-4 py-2 text-white rounded">
+                    {{- block.settings.button_text -}}
+                  </a>
+                </div>
+              {% else %}
+                <div class="carousel-item rounded">
+                  <img
+                    src="{{ block.settings.image_slider | img_url: 'master' }}"
+                    class="img-fluid w-100 h-100 bg-secondary rounded"
+                    alt=""
+                    width="1200"
+                    height="1200"
+                  >
+                  <a href="{{ block.settings.slider_url }}" class="btn px-4 py-2 text-white rounded">
+                    {{- block.settings.button_text -}}
+                  </a>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Custom HomePage Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "banner_header",
+      "label": "Banner Header"
+    },
+    {
+      "type": "text",
+      "id": "banner_content",
+      "label": "Banner Content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "homepage_banner_slider",
+      "name": "Banner Slider",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_slider",
+          "label": "Select Image"
+        },
+        {
+          "type": "url",
+          "id": "slider_url",
+          "label": "Banner Url"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom HomePage Banner"
+    }
+  ]
+}
+{% endschema %}

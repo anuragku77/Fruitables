@@ -1,0 +1,47 @@
+ <!-- Vesitable Shop Start-->
+<div class="container-fluid vesitable py-5">
+    <div class="container py-5">
+        <h1 class="mb-0">{{ section.settings.section_title }}</h1>
+        <div class="owl-carousel vegetable-carousel justify-content-center">
+            {% for product in section.settings.product_collection.products %}
+            <div class="border border-primary rounded position-relative vesitable-item">
+                <div class="vesitable-img">
+                    <img src="{{ product.featured_image | img_url: 'medium' }}" class="img-fluid w-100 rounded-top" alt="{{ product.title }} "
+                        width="1200"
+                        height="1200">
+                </div>
+                <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">{{product.tags}}</div>
+                <div class="p-4 rounded-bottom">
+                    <h4>{{ product.title }}</h4>
+                    <p>{{ product.description }}</p>
+                    <div class="d-flex justify-content-between flex-lg-wrap">
+                        <p class="text-dark fs-5 fw-bold mb-0">{{ product.price | money_without_trailing_zeros }} / {{product.variants.first.weight_unit}}</p>
+                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Vesitable Shop End -->
+
+{% schema %}
+{
+  "name": "Vegitable Shop",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Fresh Organic Vegetables"
+    },
+    {
+      "type": "collection",
+      "id": "product_collection",
+      "label": "Product Collection"
+    }
+  ]
+}
+{% endschema %}
+
