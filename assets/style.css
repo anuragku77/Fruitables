@@ -362,7 +362,7 @@
 
 }
 
-carousel .owl-nav.disabled {
+.owl-nav.disabled {
     /* display: none; */
     display: block;
 }
