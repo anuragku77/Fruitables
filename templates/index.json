@@ -80,7 +80,7 @@
       "type": "vegetable-shop",
       "settings": {
         "section_title": "Fresh Organic Vegetables",
-        "product_collection": "frontpage"
+        "product_collection": "vegetable-shop"
       }
     }
   },
