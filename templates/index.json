@@ -11,6 +11,19 @@
   "sections": {
     "custom_homepage_banner_gGbdb3": {
       "type": "custom-homepage-banner",
+      "blocks": {
+        "homepage_banner_slider_WmBrHw": {
+          "type": "homepage_banner_slider",
+          "settings": {
+            "image_slider": "shopify:\/\/shop_images\/hero-img-1.png",
+            "slider_url": "shopify:\/\/products\/fresh-exotic-fruits",
+            "button_text": "Fruites"
+          }
+        }
+      },
+      "block_order": [
+        "homepage_banner_slider_WmBrHw"
+      ],
       "settings": {
         "banner_header": "100% Organic Foods",
         "banner_content": "Organic Veggies & Fruits Foods"
