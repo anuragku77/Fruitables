@@ -81,14 +81,31 @@
       "settings": {
         "banner_product": "fresh-exotic-fruits",
         "banner_paragraph_text": "in Our Store",
-        "banner_button_text": "BUY",
-        "unit_label": "kg"
+        "banner_button_text": "BUY"
+      }
+    },
+    "feature_section_NgNNJH": {
+      "type": "feature-section",
+      "settings": {
+        "image_1": "shopify:\/\/shop_images\/featur-1.jpg",
+        "link_1": "",
+        "title_1": "Fresh Apples",
+        "promotion_1": "20% OFF",
+        "image_2": "shopify:\/\/shop_images\/featur-2.jpg",
+        "link_2": "",
+        "title_2": "Tasty Fruits",
+        "promotion_2": "Free delivery",
+        "image_3": "shopify:\/\/shop_images\/featur-3.jpg",
+        "link_3": "",
+        "title_3": "Exotic Vegetable",
+        "promotion_3": "Discount $30"
       }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "custom_product_banner_ajaPWy"
+    "custom_product_banner_ajaPWy",
+    "feature_section_NgNNJH"
   ]
 }
