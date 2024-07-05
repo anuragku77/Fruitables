@@ -17,8 +17,8 @@
                     src="{{ product.featured_image | img_url: 'medium' }}"
                     class="img-fluid rounded-circle w-100"
                     alt="{{ product.title }} "
-                        width="1200"
-                        height="1200"
+                    width="1200"
+                    height="1200"
                   >
                 </div>
                 <div class="col-6">
@@ -41,7 +41,13 @@
         {% else %}
           <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="text-center">
-              <img src="{{ product.featured_image | img_url: 'medium' }}" class="img-fluid rounded" alt="">
+              <img
+                src="{{ product.featured_image | img_url: 'medium' }}"
+                class="img-fluid rounded"
+                alt="{{ product.title }} "
+                width="1200"
+                height="1200"
+              >
               <div class="py-4">
                 <a href="{{ product.url }}" class="h5">{{ product.title }}</a>
                 <div class="d-flex my-3 justify-content-center">
