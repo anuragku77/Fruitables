@@ -79,23 +79,12 @@
     "vegetable_shop": {
       "type": "vegetable-shop",
       "settings": {
-        "section_title": "Fresh Organic Vegetables",
-        "product_collection": "vegetable-shop"
-      }
-    },
-    "custom_product_banner_ReirNt": {
-      "type": "custom-product-banner",
-      "settings": {
-        "banner_product": "raspberries-copy-copy-copy",
-        "banner_paragraph_text": "in Our Store",
-        "banner_button_text": "BUY"
       }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "vegetable_shop",
-    "custom_product_banner_ReirNt"
+    "vegetable_shop"
   ]
 }
