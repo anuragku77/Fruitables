@@ -19,10 +19,19 @@
             "slider_url": "shopify:\/\/products\/fresh-exotic-fruits",
             "button_text": "Fruites"
           }
+        },
+        "homepage_banner_slider_R6BMkf": {
+          "type": "homepage_banner_slider",
+          "settings": {
+            "image_slider": "shopify:\/\/shop_images\/hero-img-2.jpg",
+            "slider_url": "shopify:\/\/products\/raspberries-copy-copy",
+            "button_text": "Vegitables"
+          }
         }
       },
       "block_order": [
-        "homepage_banner_slider_WmBrHw"
+        "homepage_banner_slider_WmBrHw",
+        "homepage_banner_slider_R6BMkf"
       ],
       "settings": {
         "banner_header": "100% Organic Foods",
