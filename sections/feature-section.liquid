@@ -45,6 +45,30 @@
 </div>
 
 
+<div class="container-fluid service py-5">
+    <div class="container py-5">
+        <div class="row g-4 justify-content-center">
+            {% for block in section.blocks %}
+                <div class="col-md-6 col-lg-4">
+                    <a href="{{ block.settings.link }}">
+                        <div class="service-item {{ block.settings.background_color }} rounded {{ block.settings.border_color }}">
+                            {% if block.settings.image %}
+                                <img src="{{ block.settings.image | img_url: 'master' }}" class="img-fluid rounded-top w-100" alt="{{ block.settings.title }}">
+                            {% endif %}
+                            <div class="px-4 rounded-bottom">
+                                <div class="service-content {{ block.settings.content_background_color }} text-center p-4 rounded">
+                                    <h5 class="{{ block.settings.title_color }}">{{ block.settings.title }}</h5>
+                                    <h3 class="mb-0">{{ block.settings.promotion }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 {% schema %}
 {
   "name": "Featured Section",
