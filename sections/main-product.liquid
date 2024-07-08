@@ -244,7 +244,7 @@
                     | item_count_for_variant: product.selected_or_first_available_variant.id
                   -%}
                   {% # theme-check-enable %}
-                  {% comment %} <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
+                  <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
                     {{ 'products.product.quantity.label' | t }}
                     <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}">
                       {%- render 'loading-spinner' -%}
@@ -254,7 +254,7 @@
                         )</span
                       >
                     </span>
-                  </label> {% endcomment %}
+                  </label>
                   <div class="price-per-item__container">
                     <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
                       <button class="quantity__button" name="minus" type="button">
