@@ -251,7 +251,7 @@
         box-sizing: inherit;
       }
 
-      html {
+      /* html {
         box-sizing: border-box;
         font-size: calc(var(--font-body-scale) * 62.5%);
         height: 100%;
@@ -275,7 +275,7 @@
         body {
           font-size: 1.6rem;
         }
-      }
+      } */
     {% endstyle %}
     {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
 
@@ -286,7 +286,6 @@
     {{ 'lightbox.min.css' | asset_url | stylesheet_tag }}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-
 
 
     {%- unless settings.type_body_font.system? -%}
