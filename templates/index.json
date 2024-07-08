@@ -38,6 +38,24 @@
         "banner_content": "Organic Veggies & Fruits Foods"
       }
     },
+    "feature_section_area_z7F4cN": {
+      "type": "feature-section-area",
+      "blocks": {
+        "featured_section_qQLkYU": {
+          "type": "featured_section",
+          "settings": {
+            "featured_icon": "<i class=\"fas fa-car-side fa-3x text-white\"><\/i>",
+            "featured_heading": "Free Shipping",
+            "featured_content": "Free on order over $300"
+          }
+        }
+      },
+      "block_order": [
+        "featured_section_qQLkYU"
+      ],
+      "settings": {
+      }
+    },
     "product_collection_section_6iVDVC": {
       "type": "product-collection-section",
       "blocks": {
@@ -152,6 +170,7 @@
   },
   "order": [
     "custom_homepage_banner_gGbdb3",
+    "feature_section_area_z7F4cN",
     "product_collection_section_6iVDVC",
     "featured_collection",
     "feature_section_RNmNax",
