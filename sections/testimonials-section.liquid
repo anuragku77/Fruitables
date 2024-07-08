@@ -1,0 +1,89 @@
+<div class="container-fluid testimonial py-5">
+    <div class="container py-5">
+      <div class="testimonial-header text-center">
+        <h4 class="text-primary">{{ section.settings.testimonial_heading }}</h4>
+        <h1 class="display-5 mb-5 text-dark">{{ section.settings.testimonial_content }}</h1>
+      </div>
+      <div class="owl-carousel testimonial-carousel">
+        {% for block in section.blocks %}
+          <div class="testimonial-item img-border-radius bg-light rounded p-4">
+            <div class="position-relative">
+              <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+              <div class="mb-4 pb-4 border-bottom border-secondary">
+                <p class="mb-0">{{ block.settings.client_comment }}</p>
+              </div>
+              <div class="d-flex align-items-center flex-nowrap">
+                <div class="bg-secondary rounded">
+                  {{
+                    block.settings.client_image
+                    | image_url: width: 1800
+                    | image_tag: class: 'img-fluid w-100 h-100 bg-secondary rounded', style: 'width: 100px; height: 100px;'
+                  }}
+                </div>
+                <div class="ms-4 d-block">
+                  <h4 class="text-dark">{{ block.settings.client_name }}</h4>
+                  <p class="m-0 pb-3">{{ block.settings.client_profession }}</p>
+                  <div class="d-flex pe-5">
+                    {{ block.settings.client_rating }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Testimonial",
+    "settings": [
+      {
+        "type": "text",
+        "id": "testimonial_heading",
+        "label": "Testimonial Heading"
+      },
+      {
+        "type": "text",
+        "id": "testimonial_content",
+        "label": "Testimonial Content"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "client_section",
+        "name": "Client Section",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "text",
+            "id": "client_comment",
+            "label": "Client Comment"
+          },
+          {
+            "type": "text",
+            "id": "client_name",
+            "label": "Client Name"
+          },
+          {
+            "type": "text",
+            "id": "client_profession",
+            "label": "Client Profession"
+          },
+          {
+            "type": "image_picker",
+            "id": "client_image",
+            "label": "Client Image"
+          },
+          {
+            "type": "text",
+            "id": "client_rating",
+            "label": "Client Rating"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  
