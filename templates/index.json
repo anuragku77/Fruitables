@@ -210,6 +210,13 @@
       ],
       "settings": {
       }
+    },
+    "testimonials_section_nfMGL4": {
+      "type": "testimonials-section",
+      "settings": {
+        "testimonial_heading": "Our Testimonial",
+        "testimonial_content": "Our Client Saying!"
+      }
     }
   },
   "order": [
@@ -220,6 +227,7 @@
     "vegetable_shop",
     "custom_product_banner_tkktLp",
     "bestseller_product",
-    "store_fact_section_yj4wmA"
+    "store_fact_section_yj4wmA",
+    "testimonials_section_nfMGL4"
   ]
 }
