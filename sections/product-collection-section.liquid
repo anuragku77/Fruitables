@@ -43,7 +43,7 @@
                           <div class="fruite-img">
                             {% for image in product.images %}
                                 <img
-                                    src="{{ block.settings.image_slider | img_url: 'master' }}"
+                                    src="{{ image.src | img_url: 'master' }}"
                                     class="img-fluid w-100 h-100 bg-secondary rounded"
                                     alt=""
                                     width="1200"
