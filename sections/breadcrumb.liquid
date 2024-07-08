@@ -216,29 +216,37 @@
           {%- assign depth = '2' -%}
         {%- assign bc2_parent_list_handle = '' %}
 
-        {%- if bc3_parent_list_handle != '' -%}
+        {%- if bc3_parent_list_handle == '' -%}
           {%- for url in lurls -%}
-            {%- if object_urls contains url and llevels[forloop.index0] == '2' -%}
-              {%- if bc3_parent_list_handle == lhandles[forloop.index0] -%}
+            {%- if llevels[forloop.index0] == depth -%}
+              {%- if object_urls contains url -%}
                 {%- unless url == product.url or url == collection.url -%}
                   {%- capture bc2 -%}
-                    {{ ltitles[forloop.index0] | link_to: url }} - {{ lhandles[forloop.index0] }} - {{ lparents[forloop.index0] }}
-                  {%- endcapture -%}
-                {%- endunless -%}
+                  {{ ltitles[forloop.index0] | link_to: url, ltitles[forloop.index0] }}{%- endcapture -%}
+                {% endunless %}
+                {%- assign bc2_parent_list_handle = lparents[forloop.index0] -%}
+                {%- break -%}
               {%- endif -%}
             {%- endif -%}
           {%- endfor -%}
+        {%- else -%}
+          {%- for list_handle in lhandles -%}
+            {%- if list_handle == bc3_parent_list_handle -%}
+              {% assign bc2_list_handle = list_handle %}
+              {%- assign bc2_parent_list_handle = lparents[forloop.index0] -%}
+              {%- assign bc2_list_title = ltitles[forloop.index0] -%}
+              {%- for bc2_sibling_link in linklists[bc2_parent_list_handle].links -%}
+                {%- assign bc2_sibling_title_handleized = bc2_sibling_link.title | handle -%}
+                {% if bc2_sibling_title_handleized == bc2_list_handle %}
+                  {%- capture bc2 -%}
+                  {{ bc2_sibling_link.title | link_to: bc2_sibling_link.url, bc2_sibling_link.title }}{%- endcapture -%}
+                  {% break %}
+                {%- endif -%}
+              {%- endfor -%}
+              {% break %}
+            {%- endif -%}
+          {%- endfor -%}
         {%- endif -%}
-
-        {%- for url in lurls -%}
-          {%- if object_urls contains url and llevels[forloop.index0] == '1' -%}
-            {%- unless url == product.url or url == collection.url -%}
-              {%- capture bc1 -%}
-              {{ ltitles[forloop.index0] | link_to: url }} - {{ lhandles[forloop.index0] }} - {{ lparents[forloop.index0] }}
-              {%- endcapture -%}
-            {%- endunless -%}
-          {%- endif -%}
-        {%- endfor -%}
 
         {%- if bc1 != blank -%}
           <li class="breadcrumb-item">{{ bc1 | split: ' - ' | first }}</li>
