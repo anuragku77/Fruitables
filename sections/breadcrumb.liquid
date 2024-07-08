@@ -205,13 +205,13 @@
           {%- if object_urls contains url and llevels[forloop.index0] == depth -%}
             {%- unless url == product.url or url == collection.url -%}
               {%- capture bc3 -%}
-              {{ ltitles[forloop.index0] | link_to: url }} - {{ lhandles[forloop.index0] }} - {{ lparents[forloop.index0] }}
+              {{ ltitles[forloop.index0] | link_to: url }} - {{ lhandles[forloop.index0] }}
               {%- endcapture -%}
               {%- assign bc3_parent_list_handle = lparents[forloop.index0] -%}
             {%- endunless -%}
             {%- assign bc3_parent_list_handle = lparents[forloop.index0] -%}
             {%- assign bc3_list_handle = lhandles[forloop.index0] -%}
-            brea
+            
           {%- endif -%}
         {%- endfor -%}
 
