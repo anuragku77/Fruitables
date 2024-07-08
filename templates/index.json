@@ -193,6 +193,24 @@
       "settings": {
         "product_collection": "bestseller-products"
       }
+    },
+    "store_fact_section_yj4wmA": {
+      "type": "store-fact-section",
+      "blocks": {
+        "fact_section_rgFxXy": {
+          "type": "fact_section",
+          "settings": {
+            "icon": "<i class=\"fa fa-users text-secondary\"><\/i>",
+            "fact_name": "satisfied customers",
+            "fact_value": 1963
+          }
+        }
+      },
+      "block_order": [
+        "fact_section_rgFxXy"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -203,6 +221,7 @@
     "feature_section_RNmNax",
     "vegetable_shop",
     "custom_product_banner_tkktLp",
-    "bestseller_product"
+    "bestseller_product",
+    "store_fact_section_yj4wmA"
   ]
 }
