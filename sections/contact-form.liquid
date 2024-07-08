@@ -93,11 +93,10 @@
                         <label class="form__label field__label" for="ContactForm-body">
                           {{- 'templates.contact.form.comment' | t -}}
                         </label>
-                        <div class="contact__button">
                           <button type="submit" class="w-100 btn form-control border-secondary py-3 bg-white text-primary">
                             {{ 'templates.contact.form.send' | t }}
                           </button>
-                      <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Submit</button>
+                      {% comment %} <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Submit</button> {% endcomment %}
                   </form>
               </div>
               <div class="col-lg-5">
