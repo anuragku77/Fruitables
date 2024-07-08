@@ -213,6 +213,9 @@
             {%- endif -%}
           {%- endfor -%}
 
+          {%- assign depth = '2' -%}
+        {%- assign bc2_parent_list_handle = '' %}
+
         {%- if bc3_parent_list_handle != '' -%}
           {%- for url in lurls -%}
             {%- if object_urls contains url and llevels[forloop.index0] == '2' -%}
