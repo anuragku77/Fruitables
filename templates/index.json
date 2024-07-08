@@ -52,11 +52,18 @@
           "settings": {
             "product_collection": "vegetables"
           }
+        },
+        "product_collection_CRCKkx": {
+          "type": "product_collection",
+          "settings": {
+            "product_collection": "fruits"
+          }
         }
       },
       "block_order": [
         "product_collection_MzPeHe",
-        "product_collection_yafbP6"
+        "product_collection_yafbP6",
+        "product_collection_CRCKkx"
       ],
       "settings": {
       }
