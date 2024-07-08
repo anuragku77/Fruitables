@@ -95,7 +95,7 @@
                                     width="1200"
                                     height="1200"
                                   >
-                              {{ image.src | image_url: width: 300 | image_tag: class: 'img-fluid w-100 rounded-top' }}
+                              {% comment %} {{ image.src | image_url: width: 300 | image_tag: class: 'img-fluid w-100 rounded-top' }} {% endcomment %}
                             {% endfor %}
                           </div>
                           <div
