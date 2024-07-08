@@ -202,18 +202,16 @@
         {%- assign bc3_parent_list_handle = '' %}
 
         {%- for url in lurls -%}
-          {%- if object_urls contains url and llevels[forloop.index0] == depth -%}
-            {%- unless url == product.url or url == collection.url -%}
-              {%- capture bc3 -%}
-              {{ ltitles[forloop.index0] | link_to: url }} - {{ lhandles[forloop.index0] }}
-              {%- endcapture -%}
+            {%- if object_urls contains url and llevels[forloop.index0] == depth -%}
+              {%- unless url == product.url or url == collection.url -%}
+                {%- capture bc3 -%}
+                {{ ltitles[forloop.index0] | link_to: url, ltitles[forloop.index0] }}{%- endcapture -%}
+              {%- endunless -%}
               {%- assign bc3_parent_list_handle = lparents[forloop.index0] -%}
-            {%- endunless -%}
-            {%- assign bc3_parent_list_handle = lparents[forloop.index0] -%}
-            {%- assign bc3_list_handle = lhandles[forloop.index0] -%}
-            
-          {%- endif -%}
-        {%- endfor -%}
+              {%- assign bc3_list_handle = lhandles[forloop.index0] -%}
+              {% break %}
+            {%- endif -%}
+          {%- endfor -%}
 
         {%- if bc3_parent_list_handle != '' -%}
           {%- for url in lurls -%}
