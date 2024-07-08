@@ -48,10 +48,37 @@
             "featured_heading": "Free Shipping",
             "featured_content": "Free on order over $300"
           }
+        },
+        "featured_section_KdCcEE": {
+          "type": "featured_section",
+          "settings": {
+            "featured_icon": "<i class=\"fas fa-user-shield fa-3x text-white\"><\/i>",
+            "featured_heading": "Security Payment",
+            "featured_content": "100% security payment"
+          }
+        },
+        "featured_section_bDpaFB": {
+          "type": "featured_section",
+          "settings": {
+            "featured_icon": "",
+            "featured_heading": "",
+            "featured_content": ""
+          }
+        },
+        "featured_section_eApJq7": {
+          "type": "featured_section",
+          "settings": {
+            "featured_icon": "",
+            "featured_heading": "",
+            "featured_content": ""
+          }
         }
       },
       "block_order": [
-        "featured_section_qQLkYU"
+        "featured_section_qQLkYU",
+        "featured_section_KdCcEE",
+        "featured_section_bDpaFB",
+        "featured_section_eApJq7"
       ],
       "settings": {
       }
