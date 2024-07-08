@@ -131,9 +131,9 @@
               >
                           {{- form.body -}}
                         </textarea>
-              <label class="form__label" for="ContactForm-body">
+              {% comment %} <label class="form__label" for="ContactForm-body">
                 {{- 'templates.contact.form.comment' | t -}}
-              </label>
+              </label> {% endcomment %}
               <button type="submit" class="w-100 btn form-control border-secondary py-3 bg-white text-primary">
                 {{ 'templates.contact.form.send' | t }}
               </button>
