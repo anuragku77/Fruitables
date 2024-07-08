@@ -1,53 +1,57 @@
 <div class="container-fluid featurs py-5">
-    <div class="container py-5">
-      <div class="row g-4">
-        {% for block in section.blocks %}
-          <div class="col-md-6 col-lg-3">
-            <div class="featurs-item text-center rounded bg-light p-4">
-              <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                {{ block.settings.featured_icon }}
-              </div>
-              <div class="featurs-content text-center">
-                <h5>{{ block.settings.featured_heading }}</h5>
-                <p class="mb-0">{{ block.settings.featured_content }}</p>
-              </div>
+  <div class="container py-5">
+    <div class="row g-4">
+      {% for block in section.blocks %}
+        <div class="col-md-6 col-lg-3">
+          <div class="featurs-item text-center rounded bg-light p-4">
+            <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+              {{ block.settings.featured_icon }}
+            </div>
+            <div class="featurs-content text-center">
+              <h5>{{ block.settings.featured_heading }}</h5>
+              <p class="mb-0">{{ block.settings.featured_content }}</p>
             </div>
           </div>
-        {% endfor %}
-      </div>
+        </div>
+      {% endfor %}
     </div>
   </div>
-  
-  {% schema %}
-  {
-    "name": "Featured Section Area",
-    "enabled_on": {
+</div>
+
+{% schema %}
+{
+  "name": "Featured Section Area",
+  "enabled_on": {
     "templates": ["index"]
   },
-    "blocks": [
-      {
-        "type": "featured_section",
-        "name": "Featured Section",
-        "limit": 4,
-        "settings": [
-          {
-            "type": "text",
-            "id": "featured_icon",
-            "label": "Add Icon"
-          },
-          {
-            "type": "text",
-            "id": "featured_heading",
-            "label": "Add Heading"
-          },
-          {
-            "type": "text",
-            "id": "featured_content",
-            "label": "Add Content"
-          }
-        ]
-      }
-    ]
-  }
-  {% endschema %}
-  
+  "blocks": [
+    {
+      "type": "featured_section",
+      "name": "Featured Section",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "featured_icon",
+          "label": "Add Icon"
+        },
+        {
+          "type": "text",
+          "id": "featured_heading",
+          "label": "Add Heading"
+        },
+        {
+          "type": "text",
+          "id": "featured_content",
+          "label": "Add Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Collection"
+    }
+  ]
+}
+{% endschema %}
