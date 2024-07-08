@@ -18,6 +18,15 @@
               <div class="col-lg-7">
                   <form action="" class="">
                       <input type="text" class="w-100 form-control border-0 py-3 mb-4" placeholder="Your Name">
+                      <input
+                        class="field__input"
+                        autocomplete="name"
+                        type="text"
+                        id="ContactForm-name"
+                        name="contact[{{ 'templates.contact.form.name' | t }}]"
+                        value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                        placeholder="{{ 'templates.contact.form.name' | t }}"
+                      >
                       <input type="email" class="w-100 form-control border-0 py-3 mb-4" placeholder="Enter Your Email">
                       <textarea class="w-100 form-control border-0 mb-4" rows="5" cols="10" placeholder="Your Message"></textarea>
                       <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Submit</button>
