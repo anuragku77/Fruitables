@@ -281,6 +281,20 @@
           {%- endfor -%}
         {%- endif -%}
 
+        {%- if bc1 -%}
+            <span class="breadcrumb-delimeter" aria-hidden="true"></span>
+            <!-- Breadcrumb Delimeter -->
+            {{ bc1 }}
+          {%- endif -%}
+          {%- if bc2 -%}
+            <span class="breadcrumb-delimeter" aria-hidden="true"></span>
+            {{ bc2 }}
+          {%- endif -%}
+          {%- if bc3 -%}
+            <span class="breadcrumb-delimeter" aria-hidden="true"></span>
+            {{ bc3 }}
+          {%- endif -%}
+
         {%- if bc1 != blank -%}
           <li class="breadcrumb-item">{{ bc1 | split: ' - ' | first }}</li>
         {%- endif -%}
