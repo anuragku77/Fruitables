@@ -68,9 +68,9 @@
         "featured_section_eApJq7": {
           "type": "featured_section",
           "settings": {
-            "featured_icon": "",
-            "featured_heading": "",
-            "featured_content": ""
+            "featured_icon": "<i class=\"fa fa-phone-alt fa-3x text-white\"><\/i>",
+            "featured_heading": "24\/7 Support",
+            "featured_content": "Support every time fast"
           }
         }
       },
