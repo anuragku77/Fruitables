@@ -29,6 +29,9 @@
 {% schema %}
 {
   "name": "Vegitable Shop",
+  "enabled_on": {
+    "templates": ["index"]
+  },
   "settings": [
     {
       "type": "text",
@@ -40,6 +43,11 @@
       "type": "collection",
       "id": "product_collection",
       "label": "Product Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vegitable Shop"
     }
   ]
 }

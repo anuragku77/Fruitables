@@ -74,11 +74,19 @@
 {% schema %}
 {
   "name": "Bestseller Products",
+  "enabled_on": {
+    "templates": ["index"]
+  },
   "settings": [
     {
       "type": "collection",
       "id": "product_collection",
       "label": "Product Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bestseller Products"
     }
   ]
 }
