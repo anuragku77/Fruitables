@@ -38,6 +38,51 @@
         "banner_content": "Organic Veggies & Fruits Foods"
       }
     },
+    "product_collection_section_6iVDVC": {
+      "type": "product-collection-section",
+      "blocks": {
+        "product_collection_MzPeHe": {
+          "type": "product_collection",
+          "settings": {
+            "product_collection": "all-products"
+          }
+        },
+        "product_collection_yafbP6": {
+          "type": "product_collection",
+          "settings": {
+            "product_collection": "vegetables"
+          }
+        },
+        "product_collection_CRCKkx": {
+          "type": "product_collection",
+          "settings": {
+            "product_collection": "fruits"
+          }
+        },
+        "product_collection_VpNxEX": {
+          "type": "product_collection",
+          "settings": {
+            "product_collection": "bread"
+          }
+        },
+        "product_collection_MMEVVi": {
+          "type": "product_collection",
+          "settings": {
+            "product_collection": "meat"
+          }
+        }
+      },
+      "block_order": [
+        "product_collection_MzPeHe",
+        "product_collection_yafbP6",
+        "product_collection_CRCKkx",
+        "product_collection_VpNxEX",
+        "product_collection_MMEVVi"
+      ],
+      "settings": {
+        "product_collection_title": "Our Organic Products"
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -107,6 +152,7 @@
   },
   "order": [
     "custom_homepage_banner_gGbdb3",
+    "product_collection_section_6iVDVC",
     "featured_collection",
     "feature_section_RNmNax",
     "vegetable_shop",
