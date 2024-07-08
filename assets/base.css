@@ -293,7 +293,7 @@ h5,
   }
 }
 
-h1,
+/* h1,
 .h1 {
   font-size: calc(var(--font-heading-scale) * 3rem);
 }
@@ -303,7 +303,7 @@ h1,
   .h1 {
     font-size: calc(var(--font-heading-scale) * 4rem);
   }
-}
+} */
 
 h2,
 .h2 {
