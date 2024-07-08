@@ -38,6 +38,51 @@
         "banner_content": "Organic Veggies & Fruits Foods"
       }
     },
+    "feature_section_area_z7F4cN": {
+      "type": "feature-section-area",
+      "blocks": {
+        "featured_section_qQLkYU": {
+          "type": "featured_section",
+          "settings": {
+            "featured_icon": "<i class=\"fas fa-car-side fa-3x text-white\"><\/i>",
+            "featured_heading": "Free Shipping",
+            "featured_content": "Free on order over $300"
+          }
+        },
+        "featured_section_KdCcEE": {
+          "type": "featured_section",
+          "settings": {
+            "featured_icon": "<i class=\"fas fa-user-shield fa-3x text-white\"><\/i>",
+            "featured_heading": "Security Payment",
+            "featured_content": "100% security payment"
+          }
+        },
+        "featured_section_bDpaFB": {
+          "type": "featured_section",
+          "settings": {
+            "featured_icon": "<i class=\"fas fa-exchange-alt fa-3x text-white\"><\/i>",
+            "featured_heading": "30 Day Return",
+            "featured_content": "30 day money guarantee"
+          }
+        },
+        "featured_section_eApJq7": {
+          "type": "featured_section",
+          "settings": {
+            "featured_icon": "<i class=\"fa fa-phone-alt fa-3x text-white\"><\/i>",
+            "featured_heading": "24\/7 Support",
+            "featured_content": "Support every time fast"
+          }
+        }
+      },
+      "block_order": [
+        "featured_section_qQLkYU",
+        "featured_section_KdCcEE",
+        "featured_section_bDpaFB",
+        "featured_section_eApJq7"
+      ],
+      "settings": {
+      }
+    },
     "product_collection_section_6iVDVC": {
       "type": "product-collection-section",
       "blocks": {
@@ -152,6 +197,7 @@
   },
   "order": [
     "custom_homepage_banner_gGbdb3",
+    "feature_section_area_z7F4cN",
     "product_collection_section_6iVDVC",
     "featured_collection",
     "feature_section_RNmNax",
