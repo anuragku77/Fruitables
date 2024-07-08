@@ -2486,7 +2486,7 @@ input[type='checkbox'] {
   }
 }
 
-/* Header icons */
+/* Header icons 
 .header__icons {
   display: flex;
   grid-area: icons;
@@ -2561,6 +2561,7 @@ input[type='checkbox'] {
 account-icon {
   display: flex;
 }
+ */
 
 /* Search */
 menu-drawer + .header__search {
