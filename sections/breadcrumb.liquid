@@ -248,6 +248,39 @@
           {%- endfor -%}
         {%- endif -%}
 
+        %- assign depth = depth | minus: 1 | append: '' -%}
+        {%- assign bc1_parent_list_handle = '' %}
+
+        {%- if bc2_parent_list_handle == '' -%}
+          {% for url in lurls %}
+            {%- if object_urls contains url and llevels[forloop.index0] == depth -%}
+              {%- unless url == product.url or url == collection.url -%}
+                {%- capture bc1 -%}
+                {{ ltitles[forloop.index0] | link_to: url, ltitles[forloop.index0] }}{%- endcapture -%}
+              {% endunless %}
+              {%- assign bc1_parent_list_handle = lparents[forloop.index0] -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+        {%- else -%}
+          {%- for list_handle in lhandles -%}
+            {%- if bc2_parent_list_handle == list_handle -%}
+              {% assign bc1_list_handle = list_handle %}
+              {%- assign bc1_parent_list_handle = lparents[forloop.index0] -%}
+              {%- assign bc1_title = ltitles[forloop.index0] -%}
+              {%- for bc1_sibling_link in linklists[bc1_parent_list_handle].links -%}
+                {%- assign bc1_sibling_title_handleized = bc1_sibling_link.title | handle -%}
+                {% if bc1_sibling_title_handleized == bc1_list_handle %}
+                  {%- capture bc1 -%}
+                  {{ bc1_sibling_link.title | link_to: bc1_sibling_link.url, bc1_sibling_link.title }}{%- endcapture -%}
+                  {% break %}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+
         {%- if bc1 != blank -%}
           <li class="breadcrumb-item">{{ bc1 | split: ' - ' | first }}</li>
         {%- endif -%}
