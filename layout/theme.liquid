@@ -7,9 +7,7 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
 
-    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
-
-    {{ 'style.css' | asset_url | stylesheet_tag }}
+    
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
@@ -281,6 +279,9 @@
         }
       }
     {% endstyle %}
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+
+    {{ 'style.css' | asset_url | stylesheet_tag }}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
