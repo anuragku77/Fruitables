@@ -2562,7 +2562,6 @@ account-icon {
   display: flex;
 }
 
-
 /* Search */
 menu-drawer + .header__search {
   display: none;
