@@ -42,6 +42,7 @@
                         <div class="rounded position-relative fruite-item">
                           <div class="fruite-img">
                             {% for image in product.images %}
+                                
                               {{ image.src | image_url: width: 300 | image_tag: class: 'img-fluid w-100 rounded-top' }}
                             {% endfor %}
                           </div>
