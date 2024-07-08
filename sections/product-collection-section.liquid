@@ -118,13 +118,10 @@
 
 {% schema %}
 {
-  "name": "Product Collection",
-  "enabled_on": {
-    "templates": ["index"]
-  },
+  "name": "product_collection",
   "blocks": [
     {
-      "type": "Collection",
+      "type": "product_collection",
       "name": "Select Product Collection",
       "limit": 6,
       "settings": [
@@ -134,11 +131,6 @@
           "label": "Product Collection"
         }
       ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product Collection"
     }
   ]
 }
