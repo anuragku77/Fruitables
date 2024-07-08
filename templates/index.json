@@ -216,8 +216,9 @@
         "fact_section_AMaMW4": {
           "type": "fact_section",
           "settings": {
-            "icon": "",
-            "fact_name": ""
+            "icon": "<i class=\"fa fa-users text-secondary\"><\/i>",
+            "fact_name": "quality certificates",
+            "fact_value": 33
           }
         },
         "fact_section_ffw6Bz": {
