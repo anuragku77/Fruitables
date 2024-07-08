@@ -204,10 +204,35 @@
             "fact_name": "satisfied customers",
             "fact_value": 1963
           }
+        },
+        "fact_section_PkRkDc": {
+          "type": "fact_section",
+          "settings": {
+            "icon": "<i class=\"fa fa-users text-secondary\"><\/i>",
+            "fact_name": "quality of service",
+            "fact_value": 99
+          }
+        },
+        "fact_section_AMaMW4": {
+          "type": "fact_section",
+          "settings": {
+            "icon": "",
+            "fact_name": ""
+          }
+        },
+        "fact_section_ffw6Bz": {
+          "type": "fact_section",
+          "settings": {
+            "icon": "",
+            "fact_name": ""
+          }
         }
       },
       "block_order": [
-        "fact_section_rgFxXy"
+        "fact_section_rgFxXy",
+        "fact_section_PkRkDc",
+        "fact_section_AMaMW4",
+        "fact_section_ffw6Bz"
       ],
       "settings": {
       }
