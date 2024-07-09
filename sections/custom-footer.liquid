@@ -169,7 +169,7 @@
 
                   {%- if block.settings.email != blank -%}
                     <p>
-                      Email: <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+                      block.settings.email <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
                     </p>
                   {%- endif -%}
 
@@ -413,7 +413,7 @@
           "type": "text",
           "id": "phone",
           "label": "Phone",
-          "default": "(123) 456-7890"
+          "default": "Phone"
         },
         {
           "type": "text",
