@@ -1,4 +1,5 @@
-
+<div class="container-fluid py-5 mt-5">
+<div class="container py-5">
 <product-info
   id="MainProduct-{{ section.id }}"
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
@@ -74,7 +75,7 @@
   {%- endif -%}
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
-  <div class="page-width">
+  {% comment %} <div class="page-width"> {% endcomment %}
   
       <div class="row g-4 mb-5">
         <div class="col-lg-8 col-xl-9">
