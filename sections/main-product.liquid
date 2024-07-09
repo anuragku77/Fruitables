@@ -101,11 +101,11 @@
                       </p>
                     {%- when 'title' -%}
                       <div class="fw-bold mb-3" {{ block.shopify_attributes }}>
-                        <h1>{{ product.title | escape }}</h1>
+                        {% comment %} <h1>{{ product.title | escape }}</h1> {% endcomment %}
                         <a href="{{ product.url }}" class="fw-bold mb-3">
-                          {% comment %} <h2 class="h1">
+                          <h2 class="h1">
                             {{ product.title | escape }}
-                          </h2> {% endcomment %}
+                          </h2>
                         </a>
                       </div>
                     {%- when 'price' -%}
