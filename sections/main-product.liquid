@@ -76,6 +76,7 @@
   {% comment %} <div class="page-width"> {% endcomment %}
   <div class="container-fluid py-5 mt-5">
     <div class="container py-5">
+      
       <div class="row g-4--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
         <div class="grid__item product__media-wrapper">
           {% render 'product-media-gallery', variant_images: variant_images %}
