@@ -271,17 +271,15 @@
                           </span>
                         </label> {% endcomment %}
                         <div class="price-per-item__container">
-                          <quantity-input class="input-group quantity mb-5" style="width: 100px;" data-url="{{ product.url }}" data-section="{{ section.id }}">
-                            <div class="input-group-btn">
-                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" name="minus" type="button">
+                          <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
+                            <button class="quantity__button" name="minus" type="button">
                               <span class="visually-hidden">
                                 {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                               </span>
                               {% render 'icon-minus' %}
                             </button>
-                            
                             <input
-                              class="form-control form-control-sm text-center border-0"
+                              class="quantity__input"
                               type="number"
                               name="quantity"
                               id="Quantity-{{ section.id }}"
@@ -296,7 +294,7 @@
                               value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                               form="{{ product_form_id }}"
                             >
-                            <button class="btn btn-sm btn-plus rounded-circle bg-light border" name="plus" type="button">
+                            <button class="quantity__button" name="plus" type="button">
                               <span class="visually-hidden">
                                 {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                               </span>
