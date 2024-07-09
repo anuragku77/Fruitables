@@ -213,8 +213,8 @@
                       </p>
                     {%- when 'description' -%}
                       {%- if product.description != blank -%}
-                        <p class="mb-4"></p>
-                                <p class="mb-4"></p>
+                        <p class="mb-4">{{ product.description }}</p>
+                                <p class="mb-4">{{ product.description }}</p>
                         <p class="mb-4" {{ block.shopify_attributes }}>
                           {{ product.description }}
                         </p>
