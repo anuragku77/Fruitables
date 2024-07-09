@@ -215,13 +215,7 @@
                       {%- if product.description != blank -%}
                         <p class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                           {{ product.description }}
-                        </p><div class="d-flex mb-4">
-                          <i class="fa fa-star text-secondary"></i>
-                          <i class="fa fa-star text-secondary"></i>
-                          <i class="fa fa-star text-secondary"></i>
-                          <i class="fa fa-star text-secondary"></i>
-                          <i class="fa fa-star"></i>
-                      </div>
+                        </p>
                       {%- endif -%}
                     {%- when 'sku' -%}
                       <p
