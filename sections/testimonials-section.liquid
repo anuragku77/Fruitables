@@ -14,6 +14,13 @@
             </div>
             <div class="d-flex align-items-center flex-nowrap">
               <div class="bg-secondary rounded">
+                <img
+                    src="{{ product.featured_image | img_url: 'medium' }}"
+                    class="img-fluid rounded"
+                    alt="{{ product.title }} "
+                    width="1200"
+                    height="1200"
+                  >
                 {{
                   block.settings.client_image
                   | image_url: width: 1800
