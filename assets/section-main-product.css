@@ -250,7 +250,7 @@ a.product__text {
   margin: 0;
 }
 
-.product__title > a {
+.fw-bold mb-3 > a {
   display: none;
  }
 
