@@ -305,7 +305,7 @@
                               {% render 'icon-plus' %}
                             </button>
                           </div>
-                          <>
+                        </div>
                           </quantity-input>
                           {%- liquid
                             assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
