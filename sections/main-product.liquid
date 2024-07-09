@@ -279,7 +279,7 @@
                               </span>
                               {% render 'icon-minus' %}
                             </button>
-                            <>
+                            </div>
                             <input
                               class="form-control form-control-sm text-center border-0"
                               type="number"
@@ -296,12 +296,14 @@
                               value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                               form="{{ product_form_id }}"
                             >
+                              <div class="input-group-btn">
                             <button class="btn btn-sm btn-plus rounded-circle bg-light border" name="plus" type="button">
                               <span class="visually-hidden">
                                 {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                               </span>
                               {% render 'icon-plus' %}
                             </button>
+                          </d>
                           </quantity-input>
                           {%- liquid
                             assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
