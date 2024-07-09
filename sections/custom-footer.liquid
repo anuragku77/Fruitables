@@ -169,7 +169,7 @@
 
                   {%- if block.settings.email != blank -%}
                     <p>
-                      {{block.settings.email | append: ''}} <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+                      {{block.settings.email | append: ': '}} <a href="mailto:{{ shop.mail }}">{{ block.settings.email }}</a>
                     </p>
                   {%- endif -%}
 
