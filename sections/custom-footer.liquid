@@ -162,7 +162,7 @@
 
                   {%- if block.settings.address != blank -%}
                     <p>
-                      {{block.settings.add | append: ': '}}
+                      {{block.settings.address | append: ': '}}
                       {{- shop.address.address1 | append: ', ' | append: shop.address.city | append: ', ' | append: shop.address.state | append: ', ' | append: shop.address.country -}}
                     </p>
                   {%- endif -%}
@@ -175,7 +175,7 @@
 
                   {%- if block.settings.phone != blank -%}
                     <p>
-                      Phone: <a href="tel:{{ shop.phone }}">{{ shop.phone }}</a>
+                      {{block.settings.phone | append: ': '}} <a href="tel:{{ shop.phone }}">{{ shop.phone }}</a>
                     </p>
                   {%- endif -%}
 
