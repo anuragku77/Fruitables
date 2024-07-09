@@ -8,7 +8,7 @@
             <h1 class="text-primary">{{ section.settings.heading }}</h1>
             <p class="mb-4">
               {{ section.settings.contact_description }}
-              <a href="https://htmlcodex.com/contact-form">Download Now</a>.
+              {% comment %} <a href="https://htmlcodex.com/contact-form">Download Now</a> {% endcomment %}
             </p>
           {% endif %}
           </div>
@@ -53,21 +53,6 @@
                   </li>
                 </ul>
               {%- endif -%}
-              {% comment %}
-                <input type="text" class="w-100 form-control border-0 py-3 mb-4" placeholder="Your Name">
-                <input
-                  class="w-100 form-control border-0 py-3 mb-4"
-                  autocomplete="name"
-                  type="text"
-                  id="ContactForm-name"
-                  name="contact[{{ 'templates.contact.form.name' | t }}]"
-                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-                  placeholder="{{ 'templates.contact.form.name' | t }}"
-                >
-                <input type="email" class="w-100 form-control border-0 py-3 mb-4" placeholder="Enter Your Email">
-                <textarea class="w-100 form-control border-0 mb-4" rows="5" cols="10" placeholder="Your Message"></textarea>
-              {% endcomment %}
-
               <input
                 class="w-100 form-control border-0 py-3 mb-4"
                 autocomplete="name"
