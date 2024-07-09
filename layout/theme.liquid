@@ -7,17 +7,9 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
 
-    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
-
-    {{ 'style.css' | asset_url | stylesheet_tag }}
-
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
-
-    {{ 'lightbox.min.css' | asset_url | stylesheet_tag }}
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -249,7 +241,7 @@
         --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
       }
 
-      *,
+      /* *,
       *::before,
       *::after {
         box-sizing: inherit;
@@ -273,14 +265,25 @@
         font-family: var(--font-body-family);
         font-style: var(--font-body-style);
         font-weight: var(--font-body-weight);
-      }
+      } */
 
       @media screen and (min-width: 750px) {
-        body {
+        /* body {
           font-size: 1.6rem;
-        }
+        } */
       }
+
+      .section-header {
+          margin-bottom : 160px !important;
+        }
     {% endstyle %}
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+
+    {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
+
+    {{ 'lightbox.min.css' | asset_url | stylesheet_tag }}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
@@ -326,6 +329,7 @@
     {%- endif -%}
 
     {% sections 'header-group' %}
+    {% comment %} {% section 'breadcrumb' %} {% endcomment %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
