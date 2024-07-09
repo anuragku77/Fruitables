@@ -271,8 +271,8 @@
                           </span>
                         </label> {% endcomment %}
                         <div class="price-per-item__container">
-                          {% comment %} <quantity-input class="input-group quantity mb-5" style="width: 100px;" data-url="{{ product.url }}" data-section="{{ section.id }}"> {% endcomment %}
-                            <div class="input-group quantity mb-5" style="width: 100px;" data-url="{{ product.url }}" data-section="{{ section.id }}">
+                          <quantity-input class="input-group quantity mb-5" style="width: 100px;" data-url="{{ product.url }}" data-section="{{ section.id }}">
+                            <div class="input-group quantity mb-5" style="width: 100px;">
                             <div class="input-group-btn">
                             <button class="btn btn-sm btn-minus rounded-circle bg-light border" name="minus" type="button">
                               <span class="visually-hidden">
@@ -305,7 +305,7 @@
                               {% render 'icon-plus' %}
                             </button>
                           </div>
-                        </div>
+                        {% comment %} </div> {% endcomment %}
                           </quantity-input>
                           {%- liquid
                             assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
