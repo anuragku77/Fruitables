@@ -25,14 +25,11 @@
           </div>
         </div>
         <div class="col-lg-7">
-          {% comment %}
+          
             {%- liquid
               assign contact_form_class = 'isolate'
-              if settings.animations_reveal_on_scroll
-                assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
-              endif
             -%}
-          {% endcomment %}
+          
           {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
             <form action="" class="">
               {%- if form.posted_successfully? -%}
