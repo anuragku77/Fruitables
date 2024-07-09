@@ -53,9 +53,9 @@
                       placeholder="{{ 'newsletter.label' | t }}"
                       required
                     >
-                    <label class="field__label visually-hidden" for="NewsletterForm--{{ section.id }}">
+                    {% comment %} <label class="field__label visually-hidden" for="NewsletterForm--{{ section.id }}">
                       {{ 'newsletter.label' | t }}
-                    </label>
+                    </label> {% endcomment %}
                     <button
                       type="submit"
                       class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white"
