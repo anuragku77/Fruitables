@@ -103,9 +103,9 @@
                       <div class="fw-bold mb-3" {{ block.shopify_attributes }}>
                         <h1>{{ product.title | escape }}</h1>
                         <a href="{{ product.url }}" class="fw-bold mb-3">
-                          <h2 class="h1">
+                          {% comment %} <h2 class="h1">
                             {{ product.title | escape }}
-                          </h2>
+                          </h2> {% endcomment %}
                         </a>
                       </div>
                     {%- when 'price' -%}
