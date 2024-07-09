@@ -169,13 +169,13 @@
 
                   {%- if block.settings.email != blank -%}
                     <p>
-                      {{block.settings.email | append: ': '}} <a href="mailto:{{ shop.email }}">{{ block.settings.email }}</a>
+                      {{block.settings.email | append: ': '}} <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
                     </p>
                   {%- endif -%}
 
                   {%- if block.settings.phone != blank -%}
                     <p>
-                      Phone: <a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a>
+                      Phone: <a href="tel:{{ shop }}">{{ block.settings.phone }}</a>
                     </p>
                   {%- endif -%}
 
