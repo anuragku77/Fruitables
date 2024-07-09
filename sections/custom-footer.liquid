@@ -146,7 +146,7 @@
                   <h4 class="text-light mb-3">Contact</h4>
 
                   {%- if block.settings.address != blank -%}
-                    <p>Address: {{- shop.address.address1 | append: ', ' | append: shop.address.city -}}</p>
+                    <p>Address: {{- shop.address.address1 | append: ', ' | append: shop.address.city | append -}}</p>
                   {%- endif -%}
 
                   {%- if block.settings.email != blank -%}
