@@ -215,7 +215,6 @@
                       {%- if product.description != blank -%}
                         <p class="mb-4">{{ product.description }}</p>
                         <p class="mb-4">{{ product.description }}</p>
-                  
                       {%- endif -%}
                     {%- when 'sku' -%}
                       <p
@@ -687,6 +686,7 @@
                 </a>
               </section>
             </div>
+            
           </div>
 
           {% render 'product-media-modal', variant_images: variant_images %}
