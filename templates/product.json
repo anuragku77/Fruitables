@@ -36,6 +36,11 @@
             "swatch_shape": "circle"
           }
         },
+        "rating_jAhRtf": {
+          "type": "rating",
+          "settings": {
+          }
+        },
         "description": {
           "type": "description",
           "settings": {
@@ -65,6 +70,7 @@
         "title",
         "price",
         "variant_picker",
+        "rating_jAhRtf",
         "description",
         "quantity_selector",
         "buy_buttons",
