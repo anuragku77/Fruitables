@@ -26,9 +26,9 @@
         </div>
         <div class="col-lg-7">
           
-            {%- liquid
+            {% comment %} {%- liquid
               assign contact_form_class = 'isolate'
-            -%}
+            -%} {% endcomment %}
           
           {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
             <form action="" class="">
