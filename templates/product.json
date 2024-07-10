@@ -118,7 +118,7 @@
         "title": "Featured collection",
         "description": "",
         "show_description": false,
-        "collection": "all-products",
+        "collection": "bestseller-products",
         "products_to_show": 6,
         "show_view_all": true,
         "show_secondary_image": false,
