@@ -304,9 +304,10 @@ figure {
 
 img,
 svg {
-    vertical-align: middle;
-    width: 10px;
+    vertical-align: middle
 }
+
+svg
 
 table {
     caption-side: bottom;
