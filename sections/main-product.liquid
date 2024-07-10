@@ -271,7 +271,7 @@
                           </span>
                         </label> {% endcomment %}
                         <div class="price-per-item__container">
-                          <quantity-input class="input-group quantity mb-5" style="width: 100px;" data-url="{{ product.url }}" data-section="{{ section.id }}">
+                          <quantity-input class="" data-url="{{ product.url }}" data-section="{{ section.id }}">
                             {% comment %} <div class="input-group quantity mb-5" style="width: 100px;"> {% endcomment %}
                             <div class="input-group-btn">
                             <button class="btn btn-sm btn-minus rounded-circle bg-light border" name="minus" type="button">
@@ -867,19 +867,6 @@
                         spellcheck="false"
                       ></textarea>
                     </div>
-                  </div>
-                  <div class="border-bottom rounded my-4">
-                    <textarea
-                      cols="30"
-                      rows="8"
-                      id="ContactForm-body"
-                      class="form-control border-0"
-                      name="contact[{{ 'templates.contact.form.comment' | t }}]"
-                      placeholder="Your Review *"
-                      spellcheck="false"
-                    >
-                      {{- form.body -}}
-                    </textarea>
                   </div>
                   <div class="col-lg-12">
                     <div class="d-flex justify-content-between py-3 mb-5">
