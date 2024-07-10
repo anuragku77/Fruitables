@@ -80,11 +80,11 @@
       <div class="row g-4 mb-5">
         <div class="col-lg-8 col-xl-9">
           <div class="row g-4">
-            <div class="col-lg-6">
+            {% comment %} <div class="col-lg-6"> {% endcomment %}
               {% comment %} <div class="border rounded"> {% endcomment %}
               {% render 'product-media-gallery', variant_images: variant_images %}
               {% comment %} </div> {% endcomment %}
-            </div>
+            {% comment %} </div> {% endcomment %}
             <div class="col-lg-6">
               <section
                 id="ProductInfo-{{ section.id }}"
