@@ -5,12 +5,6 @@
       assign products_to_display = section.settings.products_to_show
       assign more_in_collection = true
     endif
-  
-    assign columns_mobile_int = section.settings.columns_mobile | plus: 0
-    assign show_mobile_slider = false
-    if section.settings.swipe_on_mobile and products_to_display > columns_mobile_int
-      assign show_mobile_slider = true
-    endif
   -%}
 
 <div class="container-fluid py-5 mt-5">
