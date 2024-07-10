@@ -852,10 +852,34 @@
                   </div>
                   <div class="col-lg-6">
                     <div class="border-bottom rounded">
-                      <input type="email" class="form-control border-0" placeholder="Your Email *">
+                      <input
+                        autocomplete="email"
+                        type="email"
+                        id="ContactForm-email"
+                        class="form-control border-0"
+                        name="contact[email]"
+                        spellcheck="false"
+                        autocapitalize="off"
+                        value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                        aria-required="true"
+                        {% if form.errors contains 'email' %}
+                          aria-invalid="true"
+                          aria-describedby="ContactForm-email-error"
+                        {% endif %}
+                        placeholder="Your Email *"
+                      >
+                      {%- if form.errors contains 'email' -%}
+                        <small class="contact__field-error" id="ContactForm-email-error">
+                          <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                          <span class="form__message">
+                            {%- render 'icon-error' -%}
+                            {{- form.errors.translated_fields.email | capitalize }}
+                            {{ form.errors.messages.email -}}
+                          </span>
+                        </small>
+                      {%- endif -%}
                     </div>
-                  </div>
-                  
+                  </div> 
                   <div class="col-lg-12">
                     <div class="border-bottom rounded my-4">
                       <textarea
