@@ -1,11 +1,4 @@
-{%- liquid
-    assign products_to_display = section.settings.collection.all_products_count
-  
-    if section.settings.collection.all_products_count > section.settings.products_to_show
-      assign products_to_display = section.settings.products_to_show
-      assign more_in_collection = true
-    endif
-  -%}
+
 
 <div class="container-fluid py-5 mt-5">
   <div class="container py-5">
