@@ -847,7 +847,15 @@
                 <div class="row g-4">
                   <div class="col-lg-6">
                     <div class="border-bottom rounded">
-                      <input type="text" class="form-control border-0 me-4" placeholder="Yur Name *">
+                      <input
+                        class="form-control border-0 me-4"
+                        autocomplete="name"
+                        type="text"
+                        id="ContactForm-name"
+                        name="contact[{{ 'templates.contact.form.name' | t }}]"
+                        value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                        placeholder="Your Name *"
+                      >
                     </div>
                   </div>
                   <div class="col-lg-6">
