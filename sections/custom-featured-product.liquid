@@ -16,7 +16,7 @@
             {%- if section.settings.title != blank -%}
             <h4 class="mb-4">{{ section.settings.title }}</h4>
             {% endif %}
-            {% assign collection = collections[section.settings.product_collection.handle] %}
+            {% assign collection = collections[section.settings.collection.handle] %}
             {%- for product in collection.products limit: section.settings.products_to_show -%}
             <div class="d-flex align-items-center justify-content-start">
               <div class="rounded" style="width: 100px; height: 100px;">
