@@ -78,7 +78,7 @@
       ],
       "settings": {
         "image_banner": "shopify:\/\/shop_images\/banner-fruits.jpg",
-        "banner_text": "Fresh Fruits Banner",
+        "banner_text": "Fresh,Fruits,Banner",
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_size": "large",
