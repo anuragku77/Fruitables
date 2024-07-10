@@ -41,13 +41,12 @@
     assign media_width = 0.45
   endif
 -%}
-{% comment %} <div class="col-lg-6">
-<div class="border rounded"> {% endcomment %}
+
 <media-gallery
   id="MediaGallery-{{ section.id }}"
   role="region"
   {% if section.settings.enable_sticky_info %}
-    class="col-lg-6 product__column-sticky"
+    class="product__column-sticky"
   {% endif %}
   aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
   data-desktop-layout="{{ section.settings.gallery_layout }}"
@@ -317,5 +316,3 @@
     </slider-component>
   {%- endif -%}
 </media-gallery>
-</div>
-</div>
