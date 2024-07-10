@@ -79,6 +79,13 @@
       "settings": {
         "image_banner": "shopify:\/\/shop_images\/banner-fruits.jpg",
         "banner_text": "Fresh,Fruits,Banner",
+        "title": "Featured collection",
+        "description": "",
+        "show_description": false,
+        "collection": "all-products",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "show_rating": false,
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_size": "large",
