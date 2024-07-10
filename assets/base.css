@@ -249,13 +249,13 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
 /* h1, */
 h2,
-h3,
+/* h3, */
 /* h4, */
 h5,
 .h0,
 .h1,
 .h2,
-.h3,
+/* .h3, */
 .h4
 /* .h5 { */
 {
@@ -318,7 +318,7 @@ h2,
   }
 }
 
-h3,
+/* h3,
 .h3 {
   font-size: calc(var(--font-heading-scale) * 1.7rem);
 }
@@ -328,7 +328,7 @@ h3,
   .h3 {
     font-size: calc(var(--font-heading-scale) * 1.8rem);
   }
-}
+} */
 
 /* h4,
 .h4 {
@@ -1870,7 +1870,7 @@ input[type='checkbox'] {
 
 .quantity:after {
   pointer-events: none;
-  content: '';
+  /* content: ''; */
   position: absolute;
   top: var(--inputs-border-width);
   right: var(--inputs-border-width);
@@ -1886,7 +1886,7 @@ input[type='checkbox'] {
 .quantity:before {
   background: rgb(var(--color-background));
   pointer-events: none;
-  content: '';
+  /* content: ''; */
   position: absolute;
   top: 0;
   right: 0;

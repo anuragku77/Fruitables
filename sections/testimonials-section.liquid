@@ -14,13 +14,13 @@
             </div>
             <div class="d-flex align-items-center flex-nowrap">
               <div class="bg-secondary rounded">
-                {{
-                  block.settings.client_image
-                  | image_url: width: 1800
-                  | image_tag:
-                    class: 'img-fluid w-100 h-100 bg-secondary rounded',
-                    style: 'width: 100px; height: 100px;'
-                }}
+                <img
+                    src="{{block.settings.client_image | img_url: 'medium' }}"
+                    class="img-fluid w-100 h-100 bg-secondary rounded"
+                    alt="{{ block.settings.client_name }} "
+                    width="1200"
+                    height="1200"
+                  >
               </div>
               <div class="ms-4 d-block">
                 <h4 class="text-dark">{{ block.settings.client_name }}</h4>
