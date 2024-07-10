@@ -318,7 +318,7 @@ h2,
   }
 }
 
-h3,
+/* h3,
 .h3 {
   font-size: calc(var(--font-heading-scale) * 1.7rem);
 }
@@ -328,7 +328,7 @@ h3,
   .h3 {
     font-size: calc(var(--font-heading-scale) * 1.8rem);
   }
-}
+} */
 
 /* h4,
 .h4 {
