@@ -855,49 +855,31 @@
                       <input type="email" class="form-control border-0" placeholder="Your Email *">
                     </div>
                   </div>
-                  <div class="border-bottom rounded">
-                    <input
-                      autocomplete="email"
-                      type="email"
-                      id="ContactForm-email"
-                      class="form-control border-0"
-                      name="contact[email]"
-                      spellcheck="false"
-                      autocapitalize="off"
-                      value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-                      aria-required="true"
-                      {% if form.errors contains 'email' %}
-                        aria-invalid="true"
-                        aria-describedby="ContactForm-email-error"
-                      {% endif %}
-                      placeholder="Your Email *"
-                    >
-
-                    {%- if form.errors contains 'email' -%}
-                      <small class="contact__field-error" id="ContactForm-email-error">
-                        <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-                        <span class="form__message">
-                          {%- render 'icon-error' -%}
-                          {{- form.errors.translated_fields.email | capitalize }}
-                          {{ form.errors.messages.email -}}
-                        </span>
-                      </small>
-                    {%- endif -%}
-                  </div>
                   <div class="col-lg-12">
                     <div class="border-bottom rounded my-4">
                       <textarea
+                        name=""
+                        id=""
+                        class="form-control border-0"
                         cols="30"
                         rows="8"
-                        id="ContactForm-body"
-                        class="form-control border-0"
-                        name="contact[{{ 'templates.contact.form.comment' | t }}]"
                         placeholder="Your Review *"
                         spellcheck="false"
-                      >
-                        {{- form.body -}}
-                      </textarea>
+                      ></textarea>
                     </div>
+                  </div>
+                  <div class="border-bottom rounded my-4">
+                    <textarea
+                      cols="30"
+                      rows="8"
+                      id="ContactForm-body"
+                      class="form-control border-0"
+                      name="contact[{{ 'templates.contact.form.comment' | t }}]"
+                      placeholder="Your Review *"
+                      spellcheck="false"
+                    >
+                      {{- form.body -}}
+                    </textarea>
                   </div>
                   <div class="col-lg-12">
                     <div class="d-flex justify-content-between py-3 mb-5">
