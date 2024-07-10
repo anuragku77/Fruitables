@@ -215,7 +215,7 @@
                     {%- when 'description' -%}
                       {%- if product.description != blank -%}
                         <p class="mb-4">{{ product.description }}</p>
-                        <p class="mb-4">{{ product.description }}</p>
+                        {% comment %} <p class="mb-4">{{ product.description }}</p> {% endcomment %}
                       {%- endif -%}
                     {%- when 'sku' -%}
                       <p
