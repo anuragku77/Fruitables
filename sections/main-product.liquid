@@ -275,16 +275,16 @@
                         <div class="price-per-item__container">
                           <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
                             <div class="input-group-btn">
-                            <button
-                              class="quantity__button btn btn-sm btn-minus rounded-circle bg-light border"
-                              name="minus"
-                              type="button"
-                            >
-                              <span class="visually-hidden">
-                                {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                              </span>
-                              {% render 'icon-minus' %}
-                            </button>
+                              <button
+                                class="quantity__button btn btn-sm btn-minus rounded-circle bg-light border"
+                                name="minus"
+                                type="button"
+                              >
+                                <span class="visually-hidden">
+                                  {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                                </span>
+                                {% render 'icon-minus' %}
+                              </button>
                             </div>
                             <input
                               class="quantity__input form-control form-control-sm text-center border-0"
