@@ -1132,12 +1132,11 @@
                   >
                   <div class="position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%);">
                     <h3 class="text-secondary fw-bold">
-                      {% assign beatles = 'John, Paul, George, Ringo' | split: ', ' %}
+                      {% assign beatles = section.settings.banner_text | split: ',' %}
 
                       {% for member in beatles %}
                         {{ member }}
                       {% endfor %}
-                      {{ section.settings.banner_text | split: ', ' }}
                     </h3>
                   </div>
                 </div>
