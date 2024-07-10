@@ -1133,9 +1133,8 @@
                   <div class="position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%);">
                     <h3 class="text-secondary fw-bold">
                       {% assign bannerText = section.settings.banner_text | split: ',' %}
-
-                      {% for member in bannerText %}
-                        {{ member | append: '<br>' }}
+                      {% for banner in bannerText %}
+                        {{ banner | append: '<br>' }}
                       {% endfor %}
                     </h3>
                   </div>
