@@ -83,7 +83,7 @@
         "description": "",
         "show_description": false,
         "collection": "all-products",
-        "products_to_show": 7,
+        "products_to_show": 6,
         "show_view_all": true,
         "show_rating": false,
         "enable_sticky_info": true,
