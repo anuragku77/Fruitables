@@ -79,7 +79,7 @@
 
       <div class="row g-4 mb-5">
         <div class="col-lg-8 col-xl-9">
-          <div class="row g-4" >
+          <div class="row g-4 product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
             <div class="col-lg-6">
               <div class="grid__item product__media-wrapper border rounded">
               {% render 'product-media-gallery', variant_images: variant_images %}
