@@ -120,7 +120,7 @@
         "show_description": false,
         "collection": "bestseller-products",
         "products_to_show": 6,
-        "show_view_all": true,
+        "show_view_all": false,
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false
