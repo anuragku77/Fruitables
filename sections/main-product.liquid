@@ -259,27 +259,38 @@
                           | item_count_for_variant: product.selected_or_first_available_variant.id
                         -%}
                         {% # theme-check-enable %}
-                        {% comment %} <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
-                          {{ 'products.product.quantity.label' | t }}
-                          <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}">
-                            {%- render 'loading-spinner' -%}
-                            <span
-                              >(
-                              {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
-                              )</span
-                            >
-                          </span>
-                        </label> {% endcomment %}
+                        {% comment %}
+                          <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
+                            {{ 'products.product.quantity.label' | t }}
+                            <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}">
+                              {%- render 'loading-spinner' -%}
+                              <span
+                                >(
+                                {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
+                                )</span
+                              >
+                            </span>
+                          </label>
+                        {% endcomment %}
                         <div class="price-per-item__container">
-                          <quantity-input class="input-group quantity mb-5" style="width: 100px;" data-url="{{ product.url }}" data-section="{{ section.id }}">
+                          <quantity-input
+                            class="input-group quantity mb-5"
+                            style="width: 100px;"
+                            data-url="{{ product.url }}"
+                            data-section="{{ section.id }}"
+                          >
                             {% comment %} <div class="input-group quantity mb-5" style="width: 100px;"> {% endcomment %}
                             <div class="input-group-btn">
-                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" name="minus" type="button">
-                              <span class="visually-hidden">
-                                {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                              </span>
-                              {% render 'icon-minus' %}
-                            </button>
+                              <button
+                                class="btn btn-sm btn-minus rounded-circle bg-light border"
+                                name="minus"
+                                type="button"
+                              >
+                                <span class="visually-hidden">
+                                  {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                                </span>
+                                {% render 'icon-minus' %}
+                              </button>
                             </div>
                             <input
                               class="form-control form-control-sm text-center border-0"
@@ -298,14 +309,18 @@
                               form="{{ product_form_id }}"
                             >
                             <div class="input-group-btn">
-                            <button class="btn btn-sm btn-plus rounded-circle bg-light border" name="plus" type="button">
-                              <span class="visually-hidden">
-                                {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-                              </span>
-                              {% render 'icon-plus' %}
-                            </button>
-                          </div>
-                        {% comment %} </div> {% endcomment %}
+                              <button
+                                class="btn btn-sm btn-plus rounded-circle bg-light border"
+                                name="plus"
+                                type="button"
+                              >
+                                <span class="visually-hidden">
+                                  {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                                </span>
+                                {% render 'icon-plus' %}
+                              </button>
+                            </div>
+                            {% comment %} </div> {% endcomment %}
                           </quantity-input>
                           {%- liquid
                             assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
@@ -2480,10 +2495,9 @@
   ],
   "settings": [
     {
-        "type": "image_picker",
-        "id": "image_1",
-        "label": "Feature Image 1"
-    
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Feature Image 1"
     },
     {
       "type": "checkbox",
