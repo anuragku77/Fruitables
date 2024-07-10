@@ -1135,7 +1135,7 @@
                       {% assign beatles = section.settings.banner_text | split: ',' %}
 
                       {% for member in beatles %}
-                        {{ member }}
+                        {{ member | append: '<br>'}}
                       {% endfor %}
                     </h3>
                   </div>
