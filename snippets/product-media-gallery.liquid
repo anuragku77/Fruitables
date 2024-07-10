@@ -47,7 +47,7 @@
   id="MediaGallery-{{ section.id }}"
   role="region"
   {% if section.settings.enable_sticky_info %}
-    class="product__column-sticky"
+    class="col-lg-6 product__column-sticky"
   {% endif %}
   aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
   data-desktop-layout="{{ section.settings.gallery_layout }}"
@@ -318,4 +318,4 @@
   {%- endif -%}
 </media-gallery>
 </div>
-<>
+</div>
