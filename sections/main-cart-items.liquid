@@ -52,6 +52,7 @@
       <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
         <div class="js-contents">
           {%- if cart != empty -%}
+            <div class="table-responsive">
             <table class="cart-items">
               <caption class="visually-hidden">
                 {{ 'sections.cart.title' | t }}
@@ -433,6 +434,7 @@
                 {%- endfor -%}
               </tbody>
             </table>
+            <>
           {%- endif -%}
         </div>
       </div>
