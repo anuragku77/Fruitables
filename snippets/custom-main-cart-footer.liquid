@@ -84,13 +84,13 @@
         {{ 'sections.cart.checkout' | t }}
       </button>
     </div>
-    {% comment %}
+    {% comment %} 
       {%- if additional_checkout_buttons -%}
           <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
             {{ content_for_additional_checkout_buttons }}
           </div>
       {% endif %}
     {% endcomment %}
-    {% comment %} <div id="cart-errors"></div> {% endcomment %}
+    <div id="cart-errors"></div>
   </div>
 </div>
