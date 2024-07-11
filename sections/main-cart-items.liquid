@@ -490,12 +490,11 @@
                           {%- if item.original_line_price != item.final_line_price -%}
                             <dl class="cart-item__discounted-prices">
                               <dt class="visually-hidden">
-                                {{ 'products.product.price.regular_price' | t }}
+                                <p class="mb-0 mt-4">{{ 'products.product.price.regular_price' | t }}<>
                               </dt>
                               <dd>
                                 <s class="cart-item__old-price price price--end">
                                   <p class="mb-0 mt-4">{{ item.original_line_price | money }}</p>
-                                  {{ item.original_line_price | money }}
                                 </s>
                               </dd>
                               <dt class="visually-hidden">
