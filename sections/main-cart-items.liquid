@@ -103,6 +103,21 @@
                         </div>
                       {% endif %}
                     </th>
+                    <th scope="row">
+                      {% if item.image %}
+                        <div class="d-flex align-items-center">
+                          <img
+                            src="{{ item.image | img_url: 'master' }}"
+                            class="img-fluid me-5 rounded-circle"
+                            alt="{{ item.image.alt | escape }}"
+                            loading="lazy"
+                            width="80px"
+                            style="width: 80px; height: 80px;"
+                            height="80px"
+                          >
+                        </div>
+                      {% endif %}
+                    </th>
 
                     <td>
                       {%- if settings.show_vendor -%}
