@@ -506,7 +506,7 @@
                             </dl>
                           {%- else -%}
                             {% comment %} <span class="price price--end"> {% endcomment %}
-                            <p class="mb-0 mt-4">{{ item.original_line_price | money }}</p>
+                              <p class="mb-0 mt-4">{{ item.original_line_price | money }}</p>
                             {% comment %} </span> {% endcomment %}
                           {%- endif -%}
 
@@ -527,11 +527,9 @@
                         </div>
                       </td>
                       <td>
-                        {% comment %}
-                          <button class="btn btn-md rounded-circle bg-light border mt-4" >
-                              <i class="fa fa-times text-danger"></i>
-                          </button>
-                        {% endcomment %}
+                        <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                            <i class="fa fa-times text-danger"></i>
+                        </button>
                         <cart-remove-button
                           id="Remove-{{ item.index | plus: 1 }}"
                           data-index="{{ item.index | plus: 1 }}"
@@ -541,17 +539,16 @@
                             class="btn btn-md rounded-circle bg-light border mt-4"
                             aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
                           >
-                            {% render 'icon-cart-item-remove' %}
+                            {% render 'icon-remove' %}
                           </a>
                         </cart-remove-button>
-                      </td>
+                    </td>
                     </tr>
                   {%- endfor -%}
                 </tbody>
               </table>
             </div>
           {%- endif -%}
-          {% comment %} {% render 'custom-main-cart-footer' %} {% endcomment %}
         </div>
       </div>
 
