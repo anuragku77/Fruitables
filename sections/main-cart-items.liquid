@@ -501,7 +501,7 @@
                                 <p class="mb-0 mt-4">{{ 'products.product.price.sale_price' | t }}</p>
                               </dt>
                               <dd class="price price--end">
-                                {{ item.final_line_price | money }}
+                                <p class="mb-0 mt-4">{{ item.final_line_price | money }}<p class="mb-0 mt-4">
                               </dd>
                             </dl>
                           {%- else -%}
