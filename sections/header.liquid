@@ -166,6 +166,7 @@
         <div class="d-flex m-3 me-0">
           {% render 'header-search', input_id: 'Search-In-Modal' %}
           <a href="{{ routes.cart_url }}" class="position-relative me-4 my-auto">
+            <div class="cart-count-bubble">
             <i class="fa fa-shopping-bag fa-2x"></i>
             {%- if cart != empty -%}
               {%- if cart.item_count < 100 -%}
