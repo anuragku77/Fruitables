@@ -27,11 +27,20 @@
             "slider_url": "shopify:\/\/products\/raspberries-copy-copy",
             "button_text": "Vegitables"
           }
+        },
+        "homepage_banner_slider_ycLLKC": {
+          "type": "homepage_banner_slider",
+          "settings": {
+            "image_slider": "shopify:\/\/shop_images\/best-product-2.jpg",
+            "slider_url": "shopify:\/\/products\/grapes-copy",
+            "button_text": "Fruits"
+          }
         }
       },
       "block_order": [
         "homepage_banner_slider_WmBrHw",
-        "homepage_banner_slider_R6BMkf"
+        "homepage_banner_slider_R6BMkf",
+        "homepage_banner_slider_ycLLKC"
       ],
       "settings": {
         "banner_header": "100% Organic Foods",
