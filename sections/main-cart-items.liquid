@@ -25,8 +25,8 @@
 
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
-<cart-items class="container-fluid py-5 gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
-  <div class="container py-5 page-width">
+<cart-items class="gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
+  <div class="page-width">
     <div class="title-wrapper-with-link">
       <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
       <a href="{{ routes.all_products_collection_url }}" class="underlined-link">
@@ -49,11 +49,11 @@
     </div>
 
     <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
-      <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
-        <div class="js-contents">
+      <div class="container-fluid py-5 cart__items" id="main-cart-items" data-id="{{ section.id }}">
+        <div class="container py-5 js-contents">
           {%- if cart != empty -%}
             <div class="table-responsive">
-              <table class="table cart-items">
+              <table class="table">
                 <caption class="visually-hidden">
                   {{ 'sections.cart.title' | t }}
                 </caption>
@@ -484,7 +484,7 @@
                         </div>
                       </td>
 
-                      <td class="cart-item__totals right small-hide">
+                      <td class="small-hide">
                         {%- render 'loading-spinner' -%}
                         <div class="cart-item__price-wrapper">
                           {%- if item.original_line_price != item.final_line_price -%}
@@ -505,9 +505,9 @@
                               </dd>
                             </dl>
                           {%- else -%}
-                            <span class="price price--end">
-                              {{ item.original_line_price | money }}
-                            </span>
+                            {% comment %} <span class="price price--end"> {% endcomment %}
+                            <p class="mb-0 mt-4">{{ item.original_line_price | money }}</p>
+                            {% comment %} </span> {% endcomment %}
                           {%- endif -%}
 
                           {%- if item.variant.available and item.unit_price_measurement -%}
@@ -526,12 +526,32 @@
                           {%- endif -%}
                         </div>
                       </td>
+                      <td>
+                        {% comment %}
+                          <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                              <i class="fa fa-times text-danger"></i>
+                          </button>
+                        {% endcomment %}
+                        <cart-remove-button
+                          id="Remove-{{ item.index | plus: 1 }}"
+                          data-index="{{ item.index | plus: 1 }}"
+                        >
+                          <a
+                            href="{{ item.url_to_remove }}"
+                            class="btn btn-md rounded-circle bg-light border mt-4"
+                            aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+                          >
+                            {% render 'icon-cart-item-remove' %}
+                          </a>
+                        </cart-remove-button>
+                      </td>
                     </tr>
                   {%- endfor -%}
                 </tbody>
               </table>
             </div>
           {%- endif -%}
+          {% comment %} {% render 'custom-main-cart-footer' %} {% endcomment %}
         </div>
       </div>
 
