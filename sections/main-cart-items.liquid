@@ -108,13 +108,13 @@
                       {%- if settings.show_vendor -%}
                         <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                       {%- endif -%}
-                      <p class="mb-0 mt-4"><a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a></p>
+                      <p class="mb-0 mt-4"><a href="{{ item.url }}">{{ item.product.title | escape }}</a></p>
                   </td>
                   <td>
                       <p class="mb-0 mt-4">2.99 $</p>
                   </td>
 
-                    <td class="cart-item__details">
+                    {% comment %} <td class="cart-item__details">
                       {%- if settings.show_vendor -%}
                         <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                       {%- endif -%}
@@ -186,7 +186,7 @@
                           </li>
                         {%- endfor -%}
                       </ul>
-                    </td>
+                    </td> {% endcomment %}
 
                     <td class="cart-item__totals right medium-hide large-up-hide">
                       {%- render 'loading-spinner' -%}
