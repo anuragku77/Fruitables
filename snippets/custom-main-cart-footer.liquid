@@ -8,12 +8,12 @@
                     <h5 class="mb-0 me-4">Subtotal:</h5>
                     <p class="mb-0">{{ cart.total_price | money_with_currency }}</p>
                 </div>
-                <div class="d-flex justify-content-between">
+                {% comment %} <div class="d-flex justify-content-between">
                     <h5 class="mb-0 me-4">Shipping</h5>
                     <div class="">
                         <p class="mb-0">Flat rate: $3.00</p>
                     </div>
-                </div>
+                </div> {% endcomment %}
                 <p class="mb-0 text-end"><small class="tax-note caption-large rte">
                     {%- if cart.duties_included and cart.taxes_included -%}
                       {%- if shop.shipping_policy.body == blank -%}
