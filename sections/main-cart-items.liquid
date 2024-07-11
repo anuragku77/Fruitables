@@ -505,9 +505,9 @@
                               </dd>
                             </dl>
                           {%- else -%}
-                            <span class="price price--end">
+                            {% comment %} <span class="price price--end"> {% endcomment %}
                               <p class="mb-0 mt-4">{{ item.original_line_price | money }}</p>
-                            </span>
+                            {% comment %} </span> {% endcomment %}
                           {%- endif -%}
 
                           {%- if item.variant.available and item.unit_price_measurement -%}
