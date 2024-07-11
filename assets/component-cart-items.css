@@ -206,10 +206,10 @@ cart-remove-button .icon-remove {
   margin-top: 0.4rem;
 }
 
-.product-option * {
+/* .product-option * {
   display: inline;
   margin: 0;
-}
+} */
 
 .cart-items thead th {
   text-transform: uppercase;
