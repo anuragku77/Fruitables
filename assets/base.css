@@ -1928,7 +1928,8 @@ input[type='checkbox'] {
   justify-content: center;
   color: rgb(var(--color-foreground));
   padding: 0;
-  width: ;
+  width: 25px;
+  height: ;
 }
 
 .quantity__button:first-child {
