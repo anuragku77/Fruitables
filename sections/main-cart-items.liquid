@@ -108,7 +108,7 @@
                       {%- if settings.show_vendor -%}
                         <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                       {%- endif -%}
-                      <p class="mb-0 mt-4"><a href="{{ item.url }}">{{ item.product.title | escape }}</a></p>
+                      <a href="{{ item.url }}"><p class="mb-0 mt-4">{{ item.product.title | escape }}</a>
                   </td>
                   <td>
                       <p class="mb-0 mt-4">2.99 $</p>
