@@ -54,7 +54,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
         }
@@ -73,8 +73,6 @@
         "image_banner": "shopify:\/\/shop_images\/banner-fruits.jpg",
         "banner_text": "Fresh,Fruits,Banner",
         "title": "Featured collection",
-        "description": "",
-        "show_description": false,
         "collection": "all-products",
         "products_to_show": 6,
         "show_view_all": true,
@@ -96,6 +94,7 @@
     },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
