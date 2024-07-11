@@ -11,17 +11,17 @@
         <div class="d-flex justify-content-between">
           <div class="">
             <p class="mb-0 text-end">
-                {%- if cart.cart_level_discount_applications.size > 0 -%}
-                  <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                    {%- for discount in cart.cart_level_discount_applications -%}
-                      <li class="discounts__discount discounts__discount--position">
-                        {%- render 'icon-discount' -%}
-                        {{ discount.title | escape }}
-                        (-{{ discount.total_allocated_amount | money }})
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-                {%- endif -%}
+              {%- if cart.cart_level_discount_applications.size > 0 -%}
+                <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                  {%- for discount in cart.cart_level_discount_applications -%}
+                    <li class="discounts__discount discounts__discount--position">
+                      {%- render 'icon-discount' -%}
+                      {{ discount.title | escape }}
+                      (-{{ discount.total_allocated_amount | money }})
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
             </p>
           </div>
         </div>
@@ -84,13 +84,11 @@
         {{ 'sections.cart.checkout' | t }}
       </button>
     </div>
-    {% comment %} 
-      {%- if additional_checkout_buttons -%}
-          <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
-            {{ content_for_additional_checkout_buttons }}
-          </div>
-      {% endif %}
-    {% endcomment %}
+    {%- if additional_checkout_buttons -%}
+      <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+        {{ content_for_additional_checkout_buttons }}
+      </div>
+    {% endif %}
     <div id="cart-errors"></div>
   </div>
 </div>
