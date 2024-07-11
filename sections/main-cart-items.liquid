@@ -87,11 +87,11 @@
               <tbody>
                 {%- for item in cart.items -%}
                   <tr class="" id="CartItem-{{ item.index | plus: 1 }}">
-                    <th class="row cart-item__media">
+                    <th class="row">
                       {% if item.image %}
                         {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
                         <a href="{{ item.url }}" class="cart-item__link" aria-hidden="true" tabindex="-1"> </a>
-                        <div class="d-flex align-items-center cart-item__image-container gradient global-media-settings">
+                        <div class="d-flex align-items-center">
                           <img
                             src="{{ item.image | image_url: width: 300 }}"
                             class="img-fluid me-5 rounded-circle"
