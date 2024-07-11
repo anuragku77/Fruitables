@@ -141,6 +141,7 @@
                             {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
                           {%- endif -%}
                         </div>
+                      </h5>
                       {%- endif -%}
                       <div {{ block.shopify_attributes }}>
                         {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
