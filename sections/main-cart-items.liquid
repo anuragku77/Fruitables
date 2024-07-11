@@ -87,7 +87,7 @@
               <tbody>
                 {%- for item in cart.items -%}
                   <tr class="" id="CartItem-{{ item.index | plus: 1 }}">
-                    <td class="row cart-item__media">
+                    <th class="row cart-item__media">
                       {% if item.image %}
                         {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
                         <a href="{{ item.url }}" class="cart-item__link" aria-hidden="true" tabindex="-1"> </a>
@@ -102,7 +102,7 @@
                           >
                         </div>
                       {% endif %}
-                    </td>
+                    </th>
 
                     <td class="cart-item__details">
                       {%- if settings.show_vendor -%}
