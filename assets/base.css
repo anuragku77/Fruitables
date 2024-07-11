@@ -1929,7 +1929,7 @@ input[type='checkbox'] {
   color: rgb(var(--color-foreground));
   padding: 0;
   width: 25px;
-  height: ;
+  height: 25px;
 }
 
 .quantity__button:first-child {
