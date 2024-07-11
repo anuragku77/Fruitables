@@ -50,7 +50,7 @@
 
     <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
       <div class="container-fluid py-5 cart__items" id="main-cart-items" data-id="{{ section.id }}">
-        <div class="js-contents">
+        <div class="container py-5 js-contents">
           {%- if cart != empty -%}
             <div class="table-responsive">
               <table class="table cart-items">
