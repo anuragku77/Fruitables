@@ -206,11 +206,11 @@
           "breadcrumbs_home_icon_bool": true,
           "breadcrumb_delimeter": "slash",
           "breadcrumb_bg_color": "#ffffff",
-          "breadcrumb_text_color": "#465076",
+          "breadcrumb_text_color": "#29cf42",
           "breadcrumb_accent_color_bool": true,
-          "breadcrumb_accent_color": "#4770db",
+          "breadcrumb_accent_color": "#29cf42",
           "enable_product_page": false,
-          "enable_collection_page": true,
+          "enable_collection_page": false,
           "enable_complete_site": true
         }
       }
