@@ -761,7 +761,8 @@
                       <div class="row g-4">
                         <div class="col-6">
                           {% assign product_info = product.metafields.custom.product_additional_descriptions.value | json %}
-     {{ product_info }}
+     {{ product_info.product_additional_description.country_of_origin }}
+
 {% if product.metafields.custom.product_additional_descriptions != blank %}
   {% for productdetails in product.metafields.custom.product_additional_descriptions.value %}
     hello
