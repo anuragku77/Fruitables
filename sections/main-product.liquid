@@ -764,7 +764,8 @@
      {{ product_info }}
 {% if product.metafields.custom.product_additional_descriptions != blank %}
   {% for productdetails in product.metafields.custom.product_additional_descriptions.value %}
-    {% assign check = productdetails.product_image.value %}
+    {% assign check = productdetails.check.value %}
+    {{check }}
     <p><strong>Name :</strong></p>
     <p><strong>Material :</strong></p>
     
