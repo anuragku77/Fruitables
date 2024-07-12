@@ -760,7 +760,7 @@
                     <div class="px-2">
                       <div class="row g-4">
                         <div class="col-6">
-                          {% assign product_info = product.metafields.custom.product_additional_descriptions.value | json %}
+                          {% comment %} {% assign product_info = product.metafields.custom.product_additional_descriptions.value | json %}
      {% comment %} {{ product_info.product_additional_description.country_of_origin }} {% endcomment %}
 {{ product_info }}
 {% comment %} {% if product.metafields.custom.product_additional_descriptions != blank %} {% endcomment %}
@@ -772,7 +772,7 @@
     <p><strong>Material :</strong></p>
     
   {% endfor %}
-{% comment %} {% endif %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %} {% endcomment %}
                           <div class="row bg-light align-items-center text-center justify-content-center py-2">
                             <div class="col-6">
                               <p class="mb-0">Weight</p>
