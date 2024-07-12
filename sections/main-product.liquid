@@ -779,7 +779,7 @@
 
 {% if product_info != blank %}
   {% for key in product_info %}
-    Hi <p><strong>{{ key.country_of_origin.value }}</strong></p>
+    <{{ key.country_of_origin.value }}</strong></p>
   {% endfor %}
 {% endif %}
 
