@@ -774,7 +774,8 @@
                           </div>
                           {% assign product_info = product.metafields.custom.product_additional_description.value | json %}
                           {% comment %} {{ product_info }} {% endcomment %}
-                           
+                          {% if product.metafields.custom.product_info != blank %}
+                            {% for productdetails in product.metafields.custom.product_info.value %}
                           <div class="row text-center align-items-center justify-content-center py-2">
                             <div class="col-6">
                               <p class="mb-0">Country of Origin</p>
@@ -807,6 +808,8 @@
                               <p class="mb-0">250 Kg</p>
                             </div>
                           </div>
+                        {% endfor %}
+                        {%endif %}
                         </div>
                       </div>
                     </div>
