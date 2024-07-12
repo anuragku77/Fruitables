@@ -1,5 +1,4 @@
-<div class="container-fluid py-5 mt-5">
-  <div class="container py-5 page-width">
+
     <product-info
       id="MainProduct-{{ section.id }}"
       class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
@@ -76,10 +75,12 @@
 
       {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
       {% comment %} <div class="page-width"> {% endcomment %}
-
+      <div class="page-width container-fluid py-5 mt-5">
+        <div class="container py-5">
       <div class="row g-4 mb-5 ">
         <div class="col-lg-8 col-xl-9">
-          <div class="row g-4 product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+          <div class="row g-4">
+            <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
             <div class="col-lg-6 grid__item product__media-wrapper">
               {% comment %} <div class="border rounded"> {% endcomment %}
               {% render 'product-media-gallery', variant_images: variant_images %}
@@ -104,15 +105,16 @@
                         {{- block.settings.text -}}
                       </p>
                     {%- when 'title' -%}
-                      <div class="fw-bold mb-3" {{ block.shopify_attributes }}>
-                        {% comment %} <h1>{{ product.title | escape }}</h1> {% endcomment %}
-                        <a href="{{ product.url }}" class="fw-bold mb-3">
-                          <h1>
+                      <div class="product__title" {{ block.shopify_attributes }}>
+                        <h4 class="fw-bold mb-3">{{ product.title | escape }}</h4>
+                        <a href="{{ product.url }}" class="product__title">
+                          <h2 class="h1">
                             {{ product.title | escape }}
-                          </h1>
+                          </h2>
                         </a>
                       </div>
                     {%- when 'price' -%}
+                      <h5 class="fw-bold mb-3">
                       <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                         {%- render 'price',
                           product: product,
@@ -121,6 +123,7 @@
                           price_class: 'price--large'
                         -%}
                       </div>
+                    </h5>
                       {%- if product.quantity_price_breaks_configured? -%}
                         <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                           <span>{{ 'products.product.volume_pricing.note' | t }}</span>
@@ -151,7 +154,7 @@
                           {{ form | payment_terms }}
                         {%- endform -%}
                       </div>
-
+                    
                       <div class="d-flex mb-4">
                         <i class="fa fa-star text-secondary"></i>
                         <i class="fa fa-star text-secondary"></i>
@@ -853,6 +856,7 @@
                   </p>
                 </div>
               </div>
+              </div>
               <form action="#">
                 <h4 class="mb-5 fw-bold">Leave a Reply</h4>
                 <div class="row g-4">
@@ -899,7 +903,8 @@
                 </div>
               </form>
             </div>
-          </div>
+            
+          
 
           {% render 'product-media-modal', variant_images: variant_images %}
 
@@ -952,6 +957,7 @@
           <script type="application/ld+json">
             {{ product | structured_data }}
           </script>
+        </div>
         </div>
         <div class="col-lg-4 col-xl-3">
           <div class="row g-4 fruite">
@@ -1223,10 +1229,11 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
       {% comment %} </div> {% endcomment %}
     </product-info>
-  </div>
-</div>
+  
 
 {% schema %}
 {
@@ -2598,6 +2605,7 @@
       "default": "t:sections.featured-collection.settings.title.default",
       "label": "t:sections.featured-collection.settings.title.label"
     },
+
     {
       "type": "collection",
       "id": "collection",
