@@ -763,15 +763,8 @@
                           {% assign product_info = product.metafields.custom.product_additional_descriptions.value | json %}
                           {{ product_info }}
                           {% if product.metafields.custom.product_info != blank %}
-                            {% for productdetails in product.metafields.custom.product_info.value %}
-                              <p><strong>Name :</strong> <span id="name-{{ forloop.index }}"></span></p>
-                              <p><strong>Material :</strong> <span id="material-{{ forloop.index }}"></span></p>
-                              <p><strong>Images :</strong> 
-                              {% assign images = productdetails.product_image.value  %}
-                              {% for image in images %}
-                                 <img src="{{ image | image_url: width:50 }}" width="70" height="70" />
-                              {% endfor %}
-                              </p>
+                            {% for productdetails in product.metafields.custom.product_additional_descriptions.value %}
+                
                               
                             {% endfor %}
                           {% endif %}
