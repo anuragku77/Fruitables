@@ -44,7 +44,7 @@
         "custom_liquid_fQHJjp": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{{ product.metafields.custom.product_long_description | metafield_tag }}"
+            "custom_liquid": "{% if product.metafields.custom.product_long_description != blank %}\n                      {{ product.metafields.custom.product_long_description | metafield_tag }}\n                      {% else %}\n                      {{ product.description }}\n                      {% endif %}"
           }
         },
         "description": {
