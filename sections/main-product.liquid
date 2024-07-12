@@ -780,7 +780,7 @@
 {% if product_info != blank %}
   {% for key in product_info %}
     {% assign country = key.country_of_origin.value %}
-    hi {{ country.value }}
+    hi {{ country | json }}
     {% for countrys in country %}
       hi
      Country  <p> {{ countrys }} </p>
