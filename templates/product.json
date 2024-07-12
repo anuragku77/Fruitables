@@ -41,8 +41,15 @@
           "settings": {
           }
         },
+        "custom_liquid_fQHJjp": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{ product.metafields.custom.product_long_description | metafield_tag }}"
+          }
+        },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {
           }
         },
@@ -57,12 +64,6 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
-        },
-        "custom_liquid_fQHJjp": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{{ product.metafields.custom.product_long_description | metafield_tag }}"
-          }
         }
       },
       "block_order": [
@@ -71,10 +72,10 @@
         "price",
         "variant_picker",
         "rating_jAhRtf",
+        "custom_liquid_fQHJjp",
         "description",
         "quantity_selector",
-        "buy_buttons",
-        "custom_liquid_fQHJjp"
+        "buy_buttons"
       ],
       "settings": {
         "image_banner": "shopify:\/\/shop_images\/banner-fruits.jpg",
