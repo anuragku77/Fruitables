@@ -780,8 +780,9 @@
 {% if product_info != blank %}
   {% for key in product_info %}
     {% assign country = key.country_of_origin.value %}
-    
+    {% for countrys in country %}
   {% endfor %}
+{% endfor %}
 {% endif %}
 
                           <div class="row bg-light align-items-center text-center justify-content-center py-2">
