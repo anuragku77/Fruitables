@@ -777,6 +777,7 @@
                           {% if product.metafields.custom.product_additional_description != blank %}
                             {% for productdetails in product.metafields.custom.product_additional_description.value %}
                               {{productdetails | json }}
+                              
                           <div class="row text-center align-items-center justify-content-center py-2">
                             <div class="col-6">
                               <p class="mb-0">Country of Origin</p>
