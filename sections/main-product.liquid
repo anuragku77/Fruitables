@@ -772,8 +772,8 @@
                               <p class="mb-0">1 kg</p>
                             </div>
                           </div>
-                          {% assign product_info = product.metafields.custom.product_additional_description | json %}
-                          {{ product }}
+                          {% assign product_info = product.metafields.custom.product_additional_description %}
+                          {{ product_info }}
                           <div class="row text-center align-items-center justify-content-center py-2">
                             <div class="col-6">
                               <p class="mb-0">Country of Origin</p>
