@@ -329,8 +329,14 @@
     {%- endif -%}
 
     {% sections 'header-group' %}
-    {}
-    {% section 'breadcrumb' %}
+    {% if template != "index" %}
+      <div class="container-fluid page-header py-5">
+        <h1 class="text-center text-white display-6">{{ page.title }}</h1>
+        <ol class="breadcrumb justify-content-center mb-0">
+          {% section 'breadcrumb' %}
+        </ol>
+    </div>
+  {% endif %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
