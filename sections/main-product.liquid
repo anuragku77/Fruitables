@@ -772,14 +772,12 @@
                               <p class="mb-0">1 kg</p>
                             </div>
                           </div>
-                          {% if product.metafields.custom.product_additional_description != blank %}
-                            {% for productdetails in product.metafields.custom.product_additional_description.value %}
                           <div class="row text-center align-items-center justify-content-center py-2">
                             <div class="col-6">
                               <p class="mb-0">Country of Origin</p>
                             </div>
                             <div class="col-6">
-                              <p class="mb-0">{{ productdetails.product_additional_description.value }}</p>
+                              <p class="mb-0">Agro Farm</p>
                             </div>
                           </div>
                           <div class="row bg-light text-center align-items-center justify-content-center py-2">
@@ -806,8 +804,6 @@
                               <p class="mb-0">250 Kg</p>
                             </div>
                           </div>
-                        {% endfor %}
-                        {%endif %}
                         </div>
                       </div>
                     </div>
