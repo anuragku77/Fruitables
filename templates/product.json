@@ -41,15 +41,15 @@
           "settings": {
           }
         },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
         "custom_liquid_fQHJjp": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "{{ product.metafields.custom.product_long_description | metafield_tag }}"
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
           }
         },
         "quantity_selector": {
@@ -71,8 +71,8 @@
         "price",
         "variant_picker",
         "rating_jAhRtf",
-        "custom_liquid_fQHJjp",
         "description",
+        "custom_liquid_fQHJjp",
         "quantity_selector",
         "buy_buttons"
       ],
