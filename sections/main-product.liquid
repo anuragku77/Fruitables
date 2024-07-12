@@ -779,7 +779,7 @@
 
 {% if product_info != blank %}
   {% for key in product_info %}
-    { key.country_of_origin.value %}
+    {% assign country = key.country_of_origin.value %}
   {% endfor %}
 {% endif %}
 
