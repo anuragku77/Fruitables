@@ -123,7 +123,7 @@
                             -%}
                           </div>
                         </h5>
-                        {% comment %} {%- if product.quantity_price_breaks_configured? -%}
+                        {%- if product.quantity_price_breaks_configured? -%}
                           <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                             <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                           </div>
@@ -152,7 +152,7 @@
                             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                             {{ form | payment_terms }}
                           {%- endform -%}
-                        </div> {% endcomment %}
+                        </div>
 
                         <div class="d-flex mb-4">
                           <i class="fa fa-star text-secondary"></i>
