@@ -773,6 +773,16 @@
     
   {% endfor %}
 {% comment %} {% endif %} {% endcomment %} {% endcomment %}
+
+{% assign product_info_json = product.metafields.custom.product_additional_descriptions.value %}
+{% assign product_info = product_info_json | json %}
+
+{% if product_info != blank %}
+  {% for key in product_info %}
+    <p><strong>{{ key | replace: '_', ' ' | capitalize }} :</strong> {{ value }}</p>
+  {% endfor %}
+{% endif %}
+
                           <div class="row bg-light align-items-center text-center justify-content-center py-2">
                             <div class="col-6">
                               <p class="mb-0">Weight</p>
