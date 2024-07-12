@@ -764,7 +764,7 @@
      {% comment %} {{ product_info.product_additional_description.country_of_origin }} {% endcomment %}
 
 {% comment %} {% if product.metafields.custom.product_additional_descriptions != blank %} {% endcomment %}
-  {% for productdetails in product.metafields.custom.product_additional_descriptions.value %}
+  {% for productdetails in product_info %}
     hello
     {% assign check = productdetails.check.value %}
    Del {{ check }}
