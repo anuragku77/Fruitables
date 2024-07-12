@@ -765,6 +765,8 @@
                           {% if product.metafields.custom.product_info != blank %}
                             {% for productdetails in product.metafields.custom.product_additional_descriptions.value %}
                 
+
+                              {{ productdetails }}
                               
                             {% endfor %}
                           {% endif %}
