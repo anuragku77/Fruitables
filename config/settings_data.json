@@ -205,12 +205,12 @@
         "settings": {
           "breadcrumbs_home_icon_bool": true,
           "breadcrumb_delimeter": "slash",
-          "breadcrumb_bg_color": "#fff",
+          "breadcrumb_bg_color": "#ffffff",
           "breadcrumb_text_color": "#465076",
           "breadcrumb_accent_color_bool": true,
           "breadcrumb_accent_color": "#4770db",
           "enable_product_page": false,
-          "enable_collection_page": false,
+          "enable_collection_page": true,
           "enable_complete_site": true
         }
       }
