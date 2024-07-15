@@ -41,6 +41,7 @@
     <div class="container-fluid fruite py-5">
       <div class="container py-5">
         <div class="row g-4">
+          <div class="col-lg-12">
           {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
           {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
             <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
@@ -189,6 +190,7 @@
                 </div>
               {%- endif -%}
             </div>
+          </div>
           </div>
         </div>
       </div>
