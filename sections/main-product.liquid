@@ -778,34 +778,40 @@
                               <p class="mb-0">Country of Origin</p>
                             </div>
                             <div class="col-6">
-                              <p class="mb-0">Agro Farm</p>
+                              <p class="mb-0">{{ product.metafields.custom.country_of_origin }}</p>
                             </div>
                           </div>
                         {% endif %}
+                        {% if product.metafields.custom.product_quality != blank %}
                           <div class="row bg-light text-center align-items-center justify-content-center py-2">
                             <div class="col-6">
                               <p class="mb-0">Quality</p>
                             </div>
                             <div class="col-6">
-                              <p class="mb-0">Organic</p>
+                              <p class="mb-0">{{ product.metafields.custom.product_quality }}</p>
                             </div>
                           </div>
+                        {% endif %}
+                        {% if product.metafields.custom.product_heck != blank %}
                           <div class="row text-center align-items-center justify-content-center py-2">
                             <div class="col-6">
                               <p class="mb-0">Сheck</p>
                             </div>
                             <div class="col-6">
-                              <p class="mb-0">Healthy</p>
+                              <p class="mb-0">{{ product.metafields.custom.product_heck }}</p>
                             </div>
                           </div>
+                        {% endif %}
+                        {% if product.metafields.custom.product_min_weight != blank %}
                           <div class="row bg-light text-center align-items-center justify-content-center py-2">
                             <div class="col-6">
                               <p class="mb-0">Min Weight</p>
                             </div>
                             <div class="col-6">
-                              <p class="mb-0">250 Kg</p>
+                              <p class="mb-0">{{ product.metafields.custom.product_min_weight }}</p>
                             </div>
                           </div>
+                        {% endif %}
                         </div>
                       </div>
                     </div>
