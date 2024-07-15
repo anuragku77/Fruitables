@@ -41,7 +41,7 @@
                 <div class="col-6">
                   <a href="{{ product.url }}" class="h5">{{ product.title }}</a>
                   {%- if section.settings.star_rating != -1 -%}
-                    <div class="d-flex my-3 justify-content-center">
+                    <div class="wbs__stars">
                       {%- for i in (1..5) -%}
                         <div class="wbs__star">
                           {%- if i <= section.settings.star_rating -%}
