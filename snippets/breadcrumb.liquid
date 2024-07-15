@@ -32,14 +32,14 @@
               <a href="{{ tag_url }}" aria-current="page">{{ current_tags | join: ' + ' }}</a>
             </li>
           {% else %}
-            <li>
+            <li class="breadcrumb-item">
               <a href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
             </li>
           {% endif %}
 
         {% when 'blog' %}
           {% if current_tags %}
-            <li>{{ blog.title | link_to: blog.url }}</li>
+            <li class="breadcrumb-item">{{ blog.title | link_to: blog.url }}</li>
             <li>
               {% capture tag_url %}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{% endcapture %}
               <a href="{{ tag_url }}" aria-current="page">{{ current_tags | join: ' + ' }}</a>
