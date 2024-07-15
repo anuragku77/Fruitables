@@ -170,7 +170,7 @@
                     aria-labelledby="verticalTitle"
                     class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
                     id="main-collection-filters"
-                    data-id="{{ section.id }}"
+                    data-id="{{ section.id }} style="margin: 21px 0 0 -142p""
                   >
                     {% render 'facets',
                       results: collection,
