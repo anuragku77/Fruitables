@@ -1568,8 +1568,13 @@
       "limit": 1,
       "settings": [
         {
-          "type": "paragraph",
-          "content": "t:sections.main-product.blocks.rating.settings.paragraph.content"
+            "type": "range",
+            "id": "star_rating",
+            "min": -1,
+            "max": 5,
+            "label": "Star rating",
+            "default": 5,
+            "info": "Set to -1 to hide star rating"
         }
       ]
     },
