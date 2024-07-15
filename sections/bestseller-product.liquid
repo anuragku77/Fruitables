@@ -63,13 +63,13 @@
                     {%- endfor -%}
                   </div>
                 {%- endif -%}
-                <div class="d-flex my-3 justify-content-center">
+                {% comment %} <div class="d-flex my-3 justify-content-center">
                   <i class="fas fa-star text-primary"></i>
                   <i class="fas fa-star text-primary"></i>
                   <i class="fas fa-star text-primary"></i>
                   <i class="fas fa-star text-primary"></i>
                   <i class="fas fa-star"></i>
-                </div>
+                </div> {% endcomment %}
                 <h4 class="mb-3">{{ product.price | money }}</h4>
                 <a onclick="addToCart({{ product.selected_or_first_available_variant.id }})" class="btn border border-secondary rounded-pill px-3 text-primary"
                   ><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a
