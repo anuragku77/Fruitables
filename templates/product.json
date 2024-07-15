@@ -39,6 +39,7 @@
         "rating_jAhRtf": {
           "type": "rating",
           "settings": {
+            "star_rating": 3
           }
         },
         "description": {
