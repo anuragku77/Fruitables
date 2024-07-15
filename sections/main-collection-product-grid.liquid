@@ -165,7 +165,7 @@
               <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
                 {{ 'component-facets.css' | asset_url | stylesheet_tag }}
                 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
-                <div class="col-lg-">
+                <div class="col-lg-3">
                 {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
                   <aside
                     aria-labelledby="verticalTitle"
@@ -182,7 +182,7 @@
                     %}
                   </aside>
                 {%- endif -%}
-
+                </div>
                 <div class="col-lg-9">
                   <div class="row g-4 justify-content-center">
                     <div
