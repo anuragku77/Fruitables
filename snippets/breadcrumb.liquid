@@ -40,18 +40,18 @@
         {% when 'blog' %}
           {% if current_tags %}
             <li class="breadcrumb-item">{{ blog.title | link_to: blog.url }}</li>
-            <li>
+            <li class="breadcrumb-item">
               {% capture tag_url %}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{% endcapture %}
               <a href="{{ tag_url }}" aria-current="page">{{ current_tags | join: ' + ' }}</a>
             </li>
           {% else %}
-            <li>
+            <li class="breadcrumb-item">
               <a href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
             </li>
           {% endif %}
 
         {% when 'article' %}
-          <li>{{ blog.title | link_to: blog.url }}</li>
+          <li class="breadcrumb-item">{{ blog.title | link_to: blog.url }}</li>
           <li>
             <a href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
           </li>
