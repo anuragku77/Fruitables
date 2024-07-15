@@ -52,12 +52,12 @@
 
         {% when 'article' %}
           <li class="breadcrumb-item">{{ blog.title | link_to: blog.url }}</li>
-          <li>
+          <li class="breadcrumb-item">
             <a href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
           </li>
 
         {% else %}
-          <li aria-current="page">
+          <li class="breadcrumb-item" aria-current="page">
             <a href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
           </li>
       {% endcase %}
