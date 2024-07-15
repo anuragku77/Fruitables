@@ -329,7 +329,14 @@
     {%- endif -%}
 
     {% sections 'header-group' %}
-    {% comment %} {% section 'breadcrumb' %} {% endcomment %}
+    {% if template.name != "index" %}
+      <div class="container-fluid page-header py-5">
+        <h1 class="text-center text-white display-6">{{ page_title}}</h1>
+        <ol class="breadcrumb justify-content-center mb-0">
+          {% render 'breadcrumb' %}
+        </ol>
+    </div>
+  {% endif %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
@@ -386,6 +393,29 @@
         recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
+    </script>
+    <script>
+      function addToCart(variant_id) {
+        let formData = {
+          items: [
+            {
+              id: variant_id.toString(),
+              quantity: 1,
+            },
+          ],
+        };
+        fetch(`${window.Shopify.routes.root}cart/add.js`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        })
+          .then((response) => {
+            window.location = window.routes.cart_url;
+          })
+          .catch((error) => console.error('Error:', error));
+      }
     </script>
 
     {%- if settings.predictive_search_enabled -%}
