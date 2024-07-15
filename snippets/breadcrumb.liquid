@@ -2,7 +2,7 @@
   {% assign t = template | split: '.' | first %}
 
   <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
-    <ol breadcrumb justify-content-center mb-0>
+    <ol>
       <li class="breadcrumb-item">
         <a href="/" title="Home">Home</a>
       </li>
@@ -65,7 +65,7 @@
   </nav>
 {% endunless %}
 
-{% comment %} <style>
+<style>
   .breadcrumbs {
     font-size: 0.85em;
     margin: 0 0 2em;
@@ -102,4 +102,4 @@
   .breadcrumbs [aria-current='page']:focus {
     text-decoration: underline;
   }
-</style> {% endcomment %}
+</style>
