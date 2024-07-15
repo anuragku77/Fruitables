@@ -20,14 +20,14 @@
             </li>
           {% endif %}
 
-          <li>
+          <li class="breadcrumb-item">
             <a href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
           </li>
 
         {% when 'collection' and collection.handle %}
           {% if current_tags %}
-            <li>{{ collection.title | link_to: collection.url }}</li>
-            <li>
+            <li class="breadcrumb-item">{{ collection.title | link_to: collection.url }}</li>
+            <li class="breadcrumb-item">
               {% capture tag_url %}{{ collection.url }}/{{ current_tags | join: "+"}}{% endcapture %}
               <a href="{{ tag_url }}" aria-current="page">{{ current_tags | join: ' + ' }}</a>
             </li>
