@@ -39,7 +39,6 @@
         "rating_jAhRtf": {
           "type": "rating",
           "settings": {
-            "star_rating": 2
           }
         },
         "description": {
@@ -118,10 +117,27 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "17210325629fed13c2": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_JJCDNX": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_JJCDNX"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "main",
-    "related-products"
+    "related-products",
+    "17210325629fed13c2"
   ]
 }
