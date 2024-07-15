@@ -187,7 +187,6 @@
                   </div>
                 </div>
                 <div class="col-lg-9">
-                  <div class = "">
                   <div
                     class="product-grid-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                     id="ProductGridContainer"
@@ -222,7 +221,7 @@
                           id="product-grid"
                           data-id="{{ section.id }}"
                           class="
-                            
+                            row g-4 justify-content-center
                             grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
                             grid--{{ section.settings.columns_desktop }}-col-desktop
                             {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
