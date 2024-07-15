@@ -159,7 +159,7 @@
                 </facet-filters-form>
               {%- endif -%}
             {% endcomment %}
-
+            <div class="row g-4">
             <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
               {{ 'component-facets.css' | asset_url | stylesheet_tag }}
               <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
@@ -251,6 +251,7 @@
                   </div>
                 {%- endif -%}
               </div>
+            
             </div>
           </div>
         </div>
