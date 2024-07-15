@@ -36,6 +36,11 @@
             "swatch_shape": "circle"
           }
         },
+        "judge_me_reviews_preview_badge_8UnPw4": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        },
         "rating_jAhRtf": {
           "type": "rating",
           "settings": {
@@ -64,11 +69,6 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
-        },
-        "judge_me_reviews_preview_badge_8UnPw4": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
         }
       },
       "block_order": [
@@ -76,12 +76,12 @@
         "vendor",
         "price",
         "variant_picker",
+        "judge_me_reviews_preview_badge_8UnPw4",
         "rating_jAhRtf",
         "description",
         "custom_liquid_fQHJjp",
         "quantity_selector",
-        "buy_buttons",
-        "judge_me_reviews_preview_badge_8UnPw4"
+        "buy_buttons"
       ],
       "settings": {
         "image_banner": "shopify:\/\/shop_images\/banner-fruits.jpg",
@@ -106,6 +106,28 @@
         "padding_bottom": 12
       }
     },
+    "17210325629fed13c2": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_JJCDNX": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        },
+        "judge_me_reviews_all_reviews_text_Cryey4": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/all_reviews_text\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_JJCDNX",
+        "judge_me_reviews_all_reviews_text_Cryey4"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -123,27 +145,11 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
-    },
-    "17210325629fed13c2": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_JJCDNX": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_JJCDNX"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
     "main",
-    "related-products",
-    "17210325629fed13c2"
+    "17210325629fed13c2",
+    "related-products"
   ]
 }
