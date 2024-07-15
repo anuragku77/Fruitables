@@ -3,19 +3,19 @@
 
   <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
     <ol>
-      <li>
+      <li class="breadcrumb-item">
         <a href="/" title="Home">Home</a>
       </li>
 
       {% case t %}
         {% when 'page' %}
-          <li>
+          <li class="breadcrumb-item">
             <a href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
           </li>
 
         {% when 'product' %}
           {% if collection.url %}
-            <li>
+            <li class="breadcrumb-item">
               {{ collection.title | link_to: collection.url }}
             </li>
           {% endif %}
