@@ -1,20 +1,4 @@
 <!-- Bestsaler Product Start -->
-<style>
-  .wbs__stars {
-    display: flex;
-    justify-content: center;
-    width: min(80%, 300px);
-  }
-
-  .wbs__star {
-    flex: 1 0 auto;
-    max-width: 30px;
-  }
-
-  .wbs__star svg path {
-    fill: {{ section.settings.star_color }};
-  }
-</style>
 
 <div class="container-fluid py-5">
   <div class="container py-5">
@@ -43,7 +27,6 @@
                   {%- if section.settings.star_rating != -1 -%}
                     <div class="d-flex my-3 justify-content-center">
                       {%- for i in (1..5) -%}
-                        {% comment %} <div class="wbs__star"> {% endcomment %}
                         {%- if i <= section.settings.star_rating -%}
                           <i class="fas fa-star text-primary"></i>
                         {%- else -%}
