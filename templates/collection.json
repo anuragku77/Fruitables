@@ -21,6 +21,12 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
+        "image_banner": "shopify:\/\/shop_images\/banner-fruits.jpg",
+        "banner_text": "Fresh Fruits Banner",
+        "title": "Featured collection",
+        "collection": "",
+        "products_to_show": 4,
+        "show_view_all": true,
         "products_per_page": 16,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
