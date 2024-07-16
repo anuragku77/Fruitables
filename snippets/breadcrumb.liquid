@@ -3,61 +3,61 @@
 
   <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
     <ol>
-      <li>
+      <li class="breadcrumb-item">
         <a href="/" title="Home">Home</a>
       </li>
 
       {% case t %}
         {% when 'page' %}
-          <li>
+          <li class="breadcrumb-item">
             <a href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
           </li>
 
         {% when 'product' %}
           {% if collection.url %}
-            <li>
+            <li class="breadcrumb-item">
               {{ collection.title | link_to: collection.url }}
             </li>
           {% endif %}
 
-          <li>
+          <li class="breadcrumb-item">
             <a href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
           </li>
 
         {% when 'collection' and collection.handle %}
           {% if current_tags %}
-            <li>{{ collection.title | link_to: collection.url }}</li>
-            <li>
+            <li class="breadcrumb-item">{{ collection.title | link_to: collection.url }}</li>
+            <li class="breadcrumb-item">
               {% capture tag_url %}{{ collection.url }}/{{ current_tags | join: "+"}}{% endcapture %}
               <a href="{{ tag_url }}" aria-current="page">{{ current_tags | join: ' + ' }}</a>
             </li>
           {% else %}
-            <li>
+            <li class="breadcrumb-item">
               <a href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
             </li>
           {% endif %}
 
         {% when 'blog' %}
           {% if current_tags %}
-            <li>{{ blog.title | link_to: blog.url }}</li>
-            <li>
+            <li class="breadcrumb-item">{{ blog.title | link_to: blog.url }}</li>
+            <li class="breadcrumb-item">
               {% capture tag_url %}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{% endcapture %}
               <a href="{{ tag_url }}" aria-current="page">{{ current_tags | join: ' + ' }}</a>
             </li>
           {% else %}
-            <li>
+            <li class="breadcrumb-item">
               <a href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
             </li>
           {% endif %}
 
         {% when 'article' %}
-          <li>{{ blog.title | link_to: blog.url }}</li>
-          <li>
+          <li class="breadcrumb-item">{{ blog.title | link_to: blog.url }}</li>
+          <li class="breadcrumb-item">
             <a href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
           </li>
 
         {% else %}
-          <li aria-current="page">
+          <li class="breadcrumb-item" aria-current="page">
             <a href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
           </li>
       {% endcase %}
@@ -86,14 +86,14 @@
   }
 
   .breadcrumbs li:not(:last-child):after {
-    content: '/';
+    {% comment %} content: '/'; {% endcomment %}
     display: inline-block;
     padding-left: 0.75ch;
     speak: none;
   }
 
   .breadcrumbs [aria-current='page'] {
-    color: inherit;
+    {% comment %} color: inherit; {% endcomment %}
     font-weight: normal;
     text-decoration: none;
   }

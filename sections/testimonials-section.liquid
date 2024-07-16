@@ -15,19 +15,27 @@
             <div class="d-flex align-items-center flex-nowrap">
               <div class="bg-secondary rounded">
                 <img
-                    src="{{block.settings.client_image | img_url: 'medium' }}"
-                    class="img-fluid w-100 h-100 bg-secondary rounded"
-                    alt="{{ block.settings.client_name }} "
-                    width="1200"
-                    height="1200"
-                  >
+                  src="{{block.settings.client_image | img_url: 'medium' }}"
+                  class="img-fluid w-100 h-100 bg-secondary rounded"
+                  alt="{{ block.settings.client_name }} "
+                  width="1200"
+                  height="1200"
+                >
               </div>
               <div class="ms-4 d-block">
                 <h4 class="text-dark">{{ block.settings.client_name }}</h4>
                 <p class="m-0 pb-3">{{ block.settings.client_profession }}</p>
-                <div class="d-flex pe-5">
-                  {{ block.settings.client_rating }}
-                </div>
+                {%- if block.settings.star_rating != -1 -%}
+                  <div class="d-flex pe-5">
+                    {%- for i in (1..5) -%}
+                      {%- if i <= block.settings.star_rating -%}
+                        <i class="fas fa-star text-primary"></i>
+                      {%- else -%}
+                        <i class="fas fa-star"></i>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
               </div>
             </div>
           </div>
@@ -45,12 +53,12 @@
   },
   "settings": [
     {
-      "type": "text",
+      "type": "inline_richtext",
       "id": "testimonial_heading",
       "label": "Testimonial Heading"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "testimonial_content",
       "label": "Testimonial Content"
     }
@@ -58,21 +66,21 @@
   "blocks": [
     {
       "type": "client_section",
-      "name": "Client Section",
+      "name": "Add Client",
       "limit": 5,
       "settings": [
         {
-          "type": "text",
+          "type": "richtext",
           "id": "client_comment",
           "label": "Client Comment"
         },
         {
-          "type": "text",
+          "type": "inline_richtext",
           "id": "client_name",
           "label": "Client Name"
         },
         {
-          "type": "text",
+          "type": "inline_richtext",
           "id": "client_profession",
           "label": "Client Profession"
         },
@@ -82,9 +90,13 @@
           "label": "Client Image"
         },
         {
-          "type": "text",
-          "id": "client_rating",
-          "label": "Client Rating"
+          "type": "range",
+          "id": "star_rating",
+          "min": -1,
+          "max": 5,
+          "label": "Star rating",
+          "default": 5,
+          "info": "Set to -1 to hide star rating"
         }
       ]
     }
