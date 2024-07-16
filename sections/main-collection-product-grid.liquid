@@ -183,21 +183,21 @@
                           paginate: paginate
                         %}
                       </aside>
-                      {% comment %} {%- liquid
+                      {%- liquid
                         assign products_to_display = section.settings.collection.all_products_count
-          
+
                         if section.settings.collection.all_products_count > section.settings.products_to_show
                           assign products_to_display = section.settings.products_to_show
                           assign more_in_collection = true
                         endif
-                      -%} {% endcomment %}
-                      {% comment %} <div class="col-lg-12">
+                      -%}
+                      <div class="col-lg-12">
                         {%- if section.settings.title != blank -%}
                           <h4 class="mb-4">{{ section.settings.title }}</h4>
                         {% endif %}
                         {% assign collection = collections[section.settings.collection.handle] %}
                         {%- for product in collection.products limit: section.settings.products_to_show -%}
-                        <div class="d-flex align-items-center justify-content-start">
+                          <div class="d-flex align-items-center justify-content-start">
                             <div class="rounded me-4" style="width: 100px; height: 100px;">
                               {% for image in product.images %}
                                 <img
@@ -210,20 +210,22 @@
                               {% endfor %}
                             </div>
                             <div>
-                                <h6 class="mb-2">{{ product.title }}</h6>
-                                <div class="d-flex mb-2">
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <h5 class="fw-bold me-2">{{ product.price | money_without_trailing_zeros }}</h5>
-                                    <h5 class="text-danger text-decoration-line-through">{{ product.variants.first.compare_at_price | money_without_trailing_zeros }}</h5>
-                                </div>
+                              <h6 class="mb-2">{{ product.title }}</h6>
+                              <div class="d-flex mb-2">
+                                <i class="fa fa-star text-secondary"></i>
+                                <i class="fa fa-star text-secondary"></i>
+                                <i class="fa fa-star text-secondary"></i>
+                                <i class="fa fa-star text-secondary"></i>
+                                <i class="fa fa-star"></i>
+                              </div>
+                              <div class="d-flex mb-2">
+                                <h5 class="fw-bold me-2">{{ product.price | money_without_trailing_zeros }}</h5>
+                                <h5 class="text-danger text-decoration-line-through">
+                                  {{ product.variants.first.compare_at_price | money_without_trailing_zeros }}
+                                </h5>
+                              </div>
                             </div>
-                        </div>
+                          </div>
                         {% endfor %}
                         <div class="d-flex justify-content-center my-4">
                           {%- if section.settings.show_view_all and more_in_collection -%}
@@ -236,26 +238,28 @@
                             </a>
                           {%- endif -%}
                         </div>
-                    </div> {% endcomment %}
-                    {% comment %} {% if section.settings.image_banner != blank %}
-                      <div class="col-lg-12">
-                        <div class="position-relative">
-                          <img
-                            src="{{ section.settings.image_banner | img_url: 'master' }}"
-                            class="img-fluid w-100 rounded"
-                            alt="{{ section.settings.banner_text }}"
-                            width="1200"
-                            height="1200"
-                          >
+                      </div>
+                      {% if section.settings.image_banner != blank %}
+                        <div class="col-lg-12">
+                          <div class="position-relative">
+                            <img
+                              src="{{ section.settings.image_banner | img_url: 'master' }}"
+                              class="img-fluid w-100 rounded"
+                              alt="{{ section.settings.banner_text }}"
+                              width="1200"
+                              height="1200"
+                            >
                             <div class="position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%);">
-                                <h3 class="text-secondary fw-bold">{% assign banner_text = section.settings.banner_text | split: ',' %}
+                              <h3 class="text-secondary fw-bold">
+                                {% assign banner_text = section.settings.banner_text | split: ',' %}
                                 {% for banner in banner_text %}
                                   {{ banner | append: '<br>' }}
-                                {% endfor %}</h3>
+                                {% endfor %}
+                              </h3>
                             </div>
+                          </div>
                         </div>
-                    </div>
-                  {%  endif %} {% endcomment %}
+                      {% endif %}
                     {%- endif -%}
                   </div>
                 </div>
@@ -298,7 +302,8 @@
                             grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
                             grid--{{ section.settings.columns_desktop }}-col-desktop
                             {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
-                           " style="margin: 24px 0 0 85px;"
+                          "
+                          style="margin: 24px 0 0 85px;"
                         >
                           {% assign skip_card_product_styles = false %}
                           {%- for product in collection.products -%}
