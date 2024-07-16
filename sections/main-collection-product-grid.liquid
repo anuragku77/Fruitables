@@ -191,7 +191,7 @@
                           assign more_in_collection = true
                         endif
                       -%}
-                      <div class="col-lg-12">
+                      {% comment %} <div class="col-lg-12">
                         {%- if section.settings.title != blank -%}
                           <h4 class="mb-4">{{ section.settings.title }}</h4>
                         {% endif %}
@@ -236,8 +236,8 @@
                             </a>
                           {%- endif -%}
                         </div>
-                    </div>
-                    {% if section.settings.image_banner != blank %}
+                    </div> {% endcomment %}
+                    {% comment %} {% if section.settings.image_banner != blank %}
                       <div class="col-lg-12">
                         <div class="position-relative">
                           <img
@@ -255,7 +255,7 @@
                             </div>
                         </div>
                     </div>
-                  {%  endif %}
+                  {%  endif %} {% endcomment %}
                     {%- endif -%}
                   </div>
                 </div>
