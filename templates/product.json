@@ -29,11 +29,6 @@
           "settings": {
           }
         },
-        "judge_me_reviews_preview_badge_8UnPw4": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -75,7 +70,6 @@
         "title",
         "vendor",
         "price",
-        "judge_me_reviews_preview_badge_8UnPw4",
         "variant_picker",
         "rating_jAhRtf",
         "description",
