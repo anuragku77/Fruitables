@@ -95,19 +95,9 @@
                       {%- else -%}
                         <i class="fas fa-star"></i>
                       {%- endif -%}
-                      {% comment %} </div> {% endcomment %}
                     {%- endfor -%}
                   </div>
                 {%- endif -%}
-                {% comment %}
-                  <div class="d-flex my-3 justify-content-center">
-                    <i class="fas fa-star text-primary"></i>
-                    <i class="fas fa-star text-primary"></i>
-                    <i class="fas fa-star text-primary"></i>
-                    <i class="fas fa-star text-primary"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                {% endcomment %}
                 <h4 class="mb-3">{{ product.price | money }}</h4>
                 <a
                   onclick="addToCart({{ product.selected_or_first_available_variant.id }})"
