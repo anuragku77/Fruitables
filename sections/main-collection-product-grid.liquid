@@ -182,7 +182,7 @@
                           filter_type: section.settings.filter_type,
                           paginate: paginate
                         %}
-                      </aside>
+                      {% comment %} </aside> {% endcomment %}
                       {%- liquid
                         assign products_to_display = section.settings.collection.all_products_count
           
@@ -259,6 +259,7 @@
                     {%- endif -%}
                   </div>
                 </div>
+              </aside>
                 <div class="col-lg-9">
                   <div
                     class="product-grid-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
