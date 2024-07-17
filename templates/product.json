@@ -82,13 +82,6 @@
           "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
           }
-        },
-        "tab_content_iee3UP": {
-          "type": "tab_content",
-          "settings": {
-            "tab_title": "Semini",
-            "tab_content": "This is the content for the tab."
-          }
         }
       },
       "block_order": [
@@ -103,8 +96,7 @@
         "buy_buttons",
         "tab_content_bfhUDV",
         "review_tab_TiT6nK",
-        "judge_me_reviews_review_widget_Mahbei",
-        "tab_content_iee3UP"
+        "judge_me_reviews_review_widget_Mahbei"
       ],
       "settings": {
         "image_banner": "shopify:\/\/shop_images\/banner-fruits.jpg",
