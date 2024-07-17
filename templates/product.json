@@ -72,13 +72,6 @@
             "tab_content": "<div class=\"tab-pane active\" id=\"nav-about\" role=\"tabpanel\" aria-labelledby=\"nav-about-tab\">\n                    <p>\n                      {% if product.metafields.custom.product_long_description != blank %}\n                        {{ product.metafields.custom.product_long_description | metafield_tag }}\n                      {% else %}\n                        {{ product.description }}\n                      {% endif %}\n                    <\/p>\n                    <div class=\"px-2\">\n                      <div class=\"row g-4\">\n                        <div class=\"col-6\">\n                          <div class=\"row bg-light align-items-center text-center justify-content-center py-2\">\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">Weight<\/p>\n                            <\/div>\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">{{ product.variants.first.weight_in_unit }} {{product.variants.first.weight_unit}}<\/p>\n                            <\/div>\n                          <\/div>\n                          {% if product.metafields.custom.country_of_origin != blank %}\n                          <div class=\"row text-center align-items-center justify-content-center py-2\">\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">Country of Origin<\/p>\n                            <\/div>\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">{{ product.metafields.custom.country_of_origin }}<\/p>\n                            <\/div>\n                          <\/div>\n                        {% endif %}\n                        {% if product.metafields.custom.product_quality != blank %}\n                          <div class=\"row bg-light text-center align-items-center justify-content-center py-2\">\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">Quality<\/p>\n                            <\/div>\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">{{ product.metafields.custom.product_quality }}<\/p>\n                            <\/div>\n                          <\/div>\n                        {% endif %}\n                        {% if product.metafields.custom.product_heck != blank %}\n                          <div class=\"row text-center align-items-center justify-content-center py-2\">\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">Сheck<\/p>\n                            <\/div>\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">{{ product.metafields.custom.product_heck }}<\/p>\n                            <\/div>\n                          <\/div>\n                        {% endif %}\n                        {% if product.metafields.custom.product_min_weight != blank %}\n                          <div class=\"row bg-light text-center align-items-center justify-content-center py-2\">\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">Min Weight<\/p>\n                            <\/div>\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">{{ product.metafields.custom.product_min_weight }}<\/p>\n                            <\/div>\n                          <\/div>\n                        {% endif %}\n                        <\/div>\n                      <\/div>\n                    <\/div>\n                  <\/div>"
           }
         },
-        "tab_content_rVmDjT": {
-          "type": "tab_content",
-          "settings": {
-            "tab_title": "Review",
-            "tab_content": ""
-          }
-        },
         "judge_me_reviews_review_widget_Mahbei": {
           "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
@@ -96,7 +89,6 @@
         "quantity_selector",
         "buy_buttons",
         "tab_content_bfhUDV",
-        "tab_content_rVmDjT",
         "judge_me_reviews_review_widget_Mahbei"
       ],
       "settings": {
