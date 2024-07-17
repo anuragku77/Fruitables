@@ -151,12 +151,15 @@
           {%- for link in section.settings.menu.links -%}
             {% if link.links.size > 0 %}
               <div class="nav-item dropdown">
+                {% assign link_last_part = link.url | split: '/' | last %}
+                {% if link_last_part == current_path %}
                 <a href="{{- link.url | escape -}}" class="nav-link dropdown-toggle">{{- link.title | escape -}}</a>
                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
                   {%- for childlink in link.links -%}
                     <a href="{{- childlink.url | escape -}}" class="dropdown-item">{{ childlink.title | escape }}</a>
                   {% endfor %}
                 </div>
+                {%endif %}
               </div>
             {% else %}
               <a href="{{- link.url | escape -}}" class="nav-item nav-link">{{- link.title | escape -}}</a>
