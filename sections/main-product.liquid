@@ -751,7 +751,9 @@
                         </div>
                       {%- when 'review_tab' -%}
                         <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                          
+                          {% if block.type == '@app' %}
+                             {% render block %}
+      {% endif %}
                         </div>
                     {%- endcase -%}
                   {%- endfor -%}
