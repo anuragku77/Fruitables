@@ -747,8 +747,8 @@
                   {% for block in section.blocks %}
                     {% if block.type == 'tab_content' %}
                       {{ block.settings.tab_content }}
-                    {% elsif block.type == '@app' %}
-                      {% render block %}
+                    {% comment %} {% elsif block.type == '@app' %}
+                      {% render block %} {% endcomment %}
                     {% endif %}
                   {% endfor %}
                   {% comment %} <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
