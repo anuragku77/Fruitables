@@ -749,9 +749,9 @@
                         <div class="tab-pane {% if forloop.first %}active{% endif %}" id="nav-content-{{ forloop.index }}" role="tabpanel" aria-labelledby="nav-tab-{{ forloop.index }}">
                           {{ block.settings.tab_content }}
                         </div>
-                      {%- when 'review_tab' -%}
+                      {%- when '@app' -%}
                         <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                          
+                          {% render block %}
                         </div>
                         {%- when '@app' -%}
                           {% render block %}
