@@ -751,19 +751,14 @@
                         <div class="tab-pane {% if forloop.first %}active{% endif %}" id="nav-content-{{ forloop.index }}" role="tabpanel" aria-labelledby="nav-tab-{{ forloop.index }}">
                           {{ block.settings.tab_content }}
                         </div>
-                      {%- when 'review_tab' -%}
-                        <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                          <!-- Include your review app content or placeholder -->
-                          {% comment %}
-                          Example:
-                          {% include 'product-reviews' %}
-                          {% endcomment %}
-                        </div>
-                      {%- when '@app' -%}
-                        <!-- Render your app content here if needed -->
-                        {% render block %}
-                    {%- endcase -%}
-                  {%- endfor -%}
+                        {%- when '@app' -%}
+                          <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
+                            {% render block %}
+                          </div>
+                          {% comment %} {%- when '@app' -%}
+                            {% render block %} {% endcomment %}
+                      {%- endcase -%}
+                    {%- endfor -%}
                 </div>
               </div>
               
