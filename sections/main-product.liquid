@@ -885,13 +885,13 @@
                   </div>
                   <div>
                     <h6 class="mb-2">{{ product.title }}</h6>
-                    <div class="d-flex mb-2">
+                    {% comment %} <div class="d-flex mb-2">
                       <i class="fa fa-star text-secondary"></i>
                       <i class="fa fa-star text-secondary"></i>
                       <i class="fa fa-star text-secondary"></i>
                       <i class="fa fa-star text-secondary"></i>
                       <i class="fa fa-star"></i>
-                    </div>
+                    </div> {% endcomment %}
                     <div class="d-flex mb-2">
                       <h5 class="fw-bold me-2">{{ product.price | money_without_trailing_zeros }}</h5>
                       <h5 class="text-danger text-decoration-line-through">
