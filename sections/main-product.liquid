@@ -709,19 +709,14 @@
               <div class="col-lg-12">
                 <nav>
                   <div class="nav nav-tabs mb-3">
-                    <button
-                      class="nav-link active border-white border-bottom-0"
-                      type="button"
-                      role="tab"
-                      id="nav-about-tab"
-                      data-bs-toggle="tab"
-                      data-bs-target="#nav-about"
-                      aria-controls="nav-about"
-                      aria-selected="true"
-                    >
-                      Description
-                    </button>
-                    <button
+                    {%- for block in section.blocks -%}
+                      {%- case block.type -%}
+                        {%- when 'tab_content' -%}
+                          <button class="nav-link {% if forloop.first %}active border-white border-bottom-0{% endif %}" type="button" role="tab"
+                            id="nav-tab-{{ forloop.index }}" data-bs-toggle="tab" data-bs-target="#nav-content-{{ forloop.index }}"
+                            aria-controls="nav-content-{{ forloop.index }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                          {{ block.settings.tab_title }}
+                    {% comment %} <button
                       class="nav-link border-white border-bottom-0"
                       type="button"
                       role="tab"
@@ -732,7 +727,9 @@
                       aria-selected="false"
                     >
                       Reviews
-                    </button>
+                    </button> {% endcomment %}
+                          {%  endcase %}
+                          {% endfor %}
                   </div>
                 </nav>
                 <div class="tab-content mb-5">
