@@ -71,6 +71,13 @@
             "tab_title": "Additional Description",
             "tab_content": ""
           }
+        },
+        "tab_content_rVmDjT": {
+          "type": "tab_content",
+          "settings": {
+            "tab_title": "Review",
+            "tab_content": "This is the content for the tab."
+          }
         }
       },
       "block_order": [
@@ -83,7 +90,8 @@
         "custom_liquid_fQHJjp",
         "quantity_selector",
         "buy_buttons",
-        "tab_content_bfhUDV"
+        "tab_content_bfhUDV",
+        "tab_content_rVmDjT"
       ],
       "settings": {
         "image_banner": "shopify:\/\/shop_images\/banner-fruits.jpg",
