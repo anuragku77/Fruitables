@@ -570,7 +570,21 @@
   </div>
 </cart-items>
 
-<style><>
+<style>
+  .cart-table tr {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.cart-table th, .cart-table td {
+    width: 100%;
+}
+
+.card-table tr:first-child{
+    width:120%;
+}
+</style>
 
 {% schema %}
 {
