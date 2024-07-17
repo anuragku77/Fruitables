@@ -151,6 +151,7 @@
           {%- for link in section.settings.menu.links -%}
             {% if link.links.size > 0 %}
               <div class="nav-item dropdown">
+                 hello :{{ current_page.url }}
                 <a href="{{- link.url | escape -}}" class="nav-link{% if link.url == current_page.url %} active{% endif %} dropdown-toggle">{{- link.title | escape -}}</a>
                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
                   {%- for childlink in link.links -%}
