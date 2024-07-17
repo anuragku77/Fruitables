@@ -132,7 +132,7 @@
                           </div>
                         {%- else -%}
                           <div class="product-option">
-                            <p class="mb-0 mt-4">{{ item.original_price | money }}</p>
+                            <p class="mb-0">{{ item.original_price | money }}</p>
                           </div>
                         {%- endif -%}
 
@@ -316,7 +316,7 @@
                         endif
                       -%}
                       <td class="cart-item__quantity{% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}">
-                        <div class="input-group quantity mt-4">
+                        <div class="input-group quantity ">
                           <quantity-popover>
                             <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
                               <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
