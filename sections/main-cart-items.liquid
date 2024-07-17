@@ -111,7 +111,7 @@
                           <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                         {%- endif -%}
                         <a href="{{ item.url }}" style="color:#747d88;">
-                          <p class="mb-0 mt-4">{{ item.product.title | escape }}</p>
+                          <p class="mb-0">{{ item.product.title | escape }}</p>
                         </a>
                       </td>
                       <td>
@@ -539,7 +539,7 @@
                         >
                           <a
                             href="{{ item.url_to_remove }}"
-                            class="btn btn-md rounded-circle bg-light border mt-4"
+                            class="btn btn-md rounded-circle bg-light border"
                             aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
                           >
                             {% render 'icon-cart-item-remove' %}
