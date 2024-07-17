@@ -753,8 +753,8 @@
                         <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
                           {% render block %}
                         </div>
-                        {%- when '@app' -%}
-                          {% render block %}
+                        {% comment %} {%- when '@app' -%}
+                          {% render block %} {% endcomment %}
                     {%- endcase -%}
                   {%- endfor -%}
                 </div>
