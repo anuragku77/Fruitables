@@ -121,13 +121,13 @@
                               {{ 'products.product.price.regular_price' | t }}
                             </span>
                             <s class="cart-item__old-price product-option">
-                              <p class="mb-0 mt-4">{{- item.original_price | money -}}</p>
+                              <p class="mb-0">{{- item.original_price | money -}}</p>
                             </s>
                             <span class="visually-hidden">
-                              <p class="mb-0 mt-4">{{ 'products.product.price.sale_price' | t }}</p>
+                              <p class="mb-0">{{ 'products.product.price.sale_price' | t }}</p>
                             </span>
                             <strong class="cart-item__final-price product-option">
-                              <p class="mb-0 mt-4">{{ item.final_price | money }}</p>
+                              <p class="mb-0">{{ item.final_price | money }}</p>
                             </strong>
                           </div>
                         {%- else -%}
