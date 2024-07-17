@@ -734,7 +734,10 @@
                   </div>
                 </nav>
                 <div class="tab-content mb-5">
-                  
+                  {% for block in section.blocks %}
+                    
+
+                    {%endfor %}
                   {% comment %} <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
                     <p>
                       {% if product.metafields.custom.product_long_description != blank %}
