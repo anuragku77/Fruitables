@@ -18,7 +18,8 @@
 }
 
 .rating-star {
-  --color-rating-star: rgb(var(--color-foreground));
+  --color-rating-star: #ffb524;
+  /* --color-rating-star: rgb(var(--color-foreground)); */
   --percent: calc(
     (
         var(--rating) / var(--rating-max) + var(--rating-decimal) * var(--font-size) /
