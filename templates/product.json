@@ -76,7 +76,7 @@
           "type": "tab_content",
           "settings": {
             "tab_title": "Review",
-            "tab_content": "This is the content for the tab."
+            "tab_content": ""
           }
         }
       },
