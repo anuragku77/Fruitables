@@ -300,7 +300,8 @@
                                 step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
                                 value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                                 form="{{ product_form_id }}"
-                                style = "flex: 0 0 40%";
+                                style="flex: 0 0 40%"
+                                ;
                               >
                               <button
                                 class="quantity__button btn btn-sm btn-plus rounded-circle bg-light border"
@@ -712,97 +713,109 @@
                     {%- for block in section.blocks -%}
                       {%- case block.type -%}
                         {%- when 'tab_content' -%}
-                          <button class="nav-link {% if forloop.first %}active border-white border-bottom-0{% endif %}" type="button" role="tab"
-                            id="nav-tab-{{ forloop.index }}" data-bs-toggle="tab" data-bs-target="#nav-content-{{ forloop.index }}"
-                            aria-controls="nav-content-{{ forloop.index }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
-                          {{ block.settings.tab_title }}
-                        </button>
-                    {% comment %} <button
-                      class="nav-link border-white border-bottom-0"
-                      type="button"
-                      role="tab"
-                      id="nav-mission-tab"
-                      data-bs-toggle="tab"
-                      data-bs-target="#nav-mission"
-                      aria-controls="nav-mission"
-                      aria-selected="false"
-                    >
-                      Reviews
-                    </button> {% endcomment %}
-                          {%  endcase %}
-                          {% endfor %}
+                          <button
+                            class="nav-link {% if forloop.first %}active border-white border-bottom-0{% endif %}"
+                            type="button"
+                            role="tab"
+                            id="nav-tab-{{ forloop.index }}"
+                            data-bs-toggle="tab"
+                            data-bs-target="#nav-content-{{ forloop.index }}"
+                            aria-controls="nav-content-{{ forloop.index }}"
+                            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                          >
+                            {{ block.settings.tab_title }}
+                          </button>
+                          {% comment %}
+                            <button
+                              class="nav-link border-white border-bottom-0"
+                              type="button"
+                              role="tab"
+                              id="nav-mission-tab"
+                              data-bs-toggle="tab"
+                              data-bs-target="#nav-mission"
+                              aria-controls="nav-mission"
+                              aria-selected="false"
+                            >
+                              Reviews
+                            </button>
+                          {% endcomment %}
+                      {% endcase %}
+                    {% endfor %}
                   </div>
                 </nav>
                 <div class="tab-content mb-5">
                   {% for block in section.blocks %}
                     {% if block.type == 'tab_content' %}
                       {{ block.settings.tab_content }}
-                      
+                    {% elsif block.type == '@app' %}
+                      {% render block %}
                     {% endif %}
-                    {%endfor %}
-                  {% comment %} <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                    <p>
-                      {% if product.metafields.custom.product_long_description != blank %}
-                        {{ product.metafields.custom.product_long_description | metafield_tag }}
-                      {% else %}
-                        {{ product.description }}
-                      {% endif %}
-                    </p>
-                    <div class="px-2">
-                      <div class="row g-4">
-                        <div class="col-6">
-                          <div class="row bg-light align-items-center text-center justify-content-center py-2">
-                            <div class="col-6">
-                              <p class="mb-0">Weight</p>
-                            </div>
-                            <div class="col-6">
-                              <p class="mb-0">{{ product.variants.first.weight_in_unit }} {{product.variants.first.weight_unit}}</p>
-                            </div>
-                          </div>
-                          {% if product.metafields.custom.country_of_origin != blank %}
-                          <div class="row text-center align-items-center justify-content-center py-2">
-                            <div class="col-6">
-                              <p class="mb-0">Country of Origin</p>
-                            </div>
-                            <div class="col-6">
-                              <p class="mb-0">{{ product.metafields.custom.country_of_origin }}</p>
-                            </div>
-                          </div>
+                  {% endfor %}
+                  {% comment %}
+                    <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                      <p>
+                        {% if product.metafields.custom.product_long_description != blank %}
+                          {{ product.metafields.custom.product_long_description | metafield_tag }}
+                        {% else %}
+                          {{ product.description }}
                         {% endif %}
-                        {% if product.metafields.custom.product_quality != blank %}
-                          <div class="row bg-light text-center align-items-center justify-content-center py-2">
-                            <div class="col-6">
-                              <p class="mb-0">Quality</p>
+                      </p>
+                      <div class="px-2">
+                        <div class="row g-4">
+                          <div class="col-6">
+                            <div class="row bg-light align-items-center text-center justify-content-center py-2">
+                              <div class="col-6">
+                                <p class="mb-0">Weight</p>
+                              </div>
+                              <div class="col-6">
+                                <p class="mb-0">{{ product.variants.first.weight_in_unit }} {{product.variants.first.weight_unit}}</p>
+                              </div>
                             </div>
-                            <div class="col-6">
-                              <p class="mb-0">{{ product.metafields.custom.product_quality }}</p>
+                            {% if product.metafields.custom.country_of_origin != blank %}
+                            <div class="row text-center align-items-center justify-content-center py-2">
+                              <div class="col-6">
+                                <p class="mb-0">Country of Origin</p>
+                              </div>
+                              <div class="col-6">
+                                <p class="mb-0">{{ product.metafields.custom.country_of_origin }}</p>
+                              </div>
                             </div>
+                          {% endif %}
+                          {% if product.metafields.custom.product_quality != blank %}
+                            <div class="row bg-light text-center align-items-center justify-content-center py-2">
+                              <div class="col-6">
+                                <p class="mb-0">Quality</p>
+                              </div>
+                              <div class="col-6">
+                                <p class="mb-0">{{ product.metafields.custom.product_quality }}</p>
+                              </div>
+                            </div>
+                          {% endif %}
+                          {% if product.metafields.custom.product_heck != blank %}
+                            <div class="row text-center align-items-center justify-content-center py-2">
+                              <div class="col-6">
+                                <p class="mb-0">Сheck</p>
+                              </div>
+                              <div class="col-6">
+                                <p class="mb-0">{{ product.metafields.custom.product_heck }}</p>
+                              </div>
+                            </div>
+                          {% endif %}
+                          {% if product.metafields.custom.product_min_weight != blank %}
+                            <div class="row bg-light text-center align-items-center justify-content-center py-2">
+                              <div class="col-6">
+                                <p class="mb-0">Min Weight</p>
+                              </div>
+                              <div class="col-6">
+                                <p class="mb-0">{{ product.metafields.custom.product_min_weight }}</p>
+                              </div>
+                            </div>
+                          {% endif %}
                           </div>
-                        {% endif %}
-                        {% if product.metafields.custom.product_heck != blank %}
-                          <div class="row text-center align-items-center justify-content-center py-2">
-                            <div class="col-6">
-                              <p class="mb-0">Сheck</p>
-                            </div>
-                            <div class="col-6">
-                              <p class="mb-0">{{ product.metafields.custom.product_heck }}</p>
-                            </div>
-                          </div>
-                        {% endif %}
-                        {% if product.metafields.custom.product_min_weight != blank %}
-                          <div class="row bg-light text-center align-items-center justify-content-center py-2">
-                            <div class="col-6">
-                              <p class="mb-0">Min Weight</p>
-                            </div>
-                            <div class="col-6">
-                              <p class="mb-0">{{ product.metafields.custom.product_min_weight }}</p>
-                            </div>
-                          </div>
-                        {% endif %}
                         </div>
                       </div>
                     </div>
-                  </div> {% endcomment %}
+                  {% endcomment %}
                   <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
                     <div class="d-flex">
                       <img
