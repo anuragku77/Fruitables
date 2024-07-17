@@ -76,6 +76,12 @@
           "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
           }
+        },
+        "review_tab_TiT6nK": {
+          "type": "review_tab",
+          "settings": {
+            "tab_title": "Review"
+          }
         }
       },
       "block_order": [
@@ -89,7 +95,8 @@
         "quantity_selector",
         "buy_buttons",
         "tab_content_bfhUDV",
-        "judge_me_reviews_review_widget_Mahbei"
+        "judge_me_reviews_review_widget_Mahbei",
+        "review_tab_TiT6nK"
       ],
       "settings": {
         "image_banner": "shopify:\/\/shop_images\/banner-fruits.jpg",
