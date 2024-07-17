@@ -20,99 +20,82 @@
   }
 {%- endstyle -%}
 
-{% comment %}
-  <div id="releted_product">
-  <div class="color-{{ section.settings.color_scheme }} gradient">
-    <product-recommendations
-      class="related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-      data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
-      data-section-id="{{ section.id }}"
-      data-product-id="{{ product.id }}"
-    >
-      {% if recommendations.performed and recommendations.products_count > 0 %}
-        <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
-          {{ section.settings.heading }}
-        </h2>
-        <div class="vesitable">
-        <ul
-          class="owl-carousel releated-product-carousel justify-content-center grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-          role="list"
-        >
-          {% assign skip_card_product_styles = false %}
-          {% for recommendation in recommendations.products %}
-            <li class="grid__item border border-primary rounded position-relative vesitable-item">
-              {% render 'card-product',
-                card_product: recommendation,
-                media_aspect_ratio: section.settings.image_ratio,
-                image_shape: section.settings.image_shape,
-                show_secondary_image: section.settings.show_secondary_image,
-                show_vendor: section.settings.show_vendor,
-                show_rating: section.settings.show_rating,
-                skip_styles: skip_card_product_styles
-              %}
-            </li>
-            {%- assign skip_card_product_styles = true -%}
-          {% endfor %}
-        </ul>
-        </div>
-      {% endif %}
-    </product-recommendations>
-    {% if section.settings.image_shape == 'arch' %}
-      {% render 'mask-arch' %}
-    {%- endif -%}
-  </div>
-  </div>
-{% endcomment %}
+<div id="related_product_container" class="section-{{ section.id }}-padding">
+  <h1 class="fw-bold mb-0">{{ section.settings.heading }}</h1>
+  <div id="related_products"></div>
+</div>
 
-<div id="releted_product">
-  <product-recommendations
-    class=""
-    data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
-    data-section-id="{{ section.id }}"
-    data-product-id="{{ product.id }}"
-  >
-    {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h1 class="fw-bold mb-0">Related products</h1>
-      <div class="vesitable">
-        <div class="owl-carousel releated-product-carousel justify-content-center">
-          {% for recommendation in recommendations.products %}
-            <div class="border border-primary rounded position-relative vesitable-item">
-              <div class="vesitable-img">
-                <img
-                  src="{{ recommendation.images.first.src | img_url: 'master' }}"
-                  class="img-fluid w-100 rounded-top"
-                  alt=""
-                  height="1200"
-                  width="1200"
-                >
-              </div>
-              <div
-                class="text-white bg-primary px-3 py-1 rounded position-absolute"
-                style="top: 10px; right: 10px;"
-              >
-                {{ recommendation.tags }}
-              </div>
-              <div class="p-4 pb-0 rounded-bottom">
-                <h4>{{ recommendation.title }}</h4>
-                <p>{{ recommendation.description }}</p>
-                <div class="d-flex justify-content-between flex-lg-wrap">
-                  <p class="text-dark fs-5 fw-bold">
-                    {{ recommendation.price | money }} / {{ recommendation.variants.first.weight_unit }}
-                  </p>
-                  <a
-                    onclick="addToCart({{ recommendation.selected_or_first_available_variant.id }})"
-                    class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"
-                    ><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a
-                  >
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var productId = "{{ product.id }}";
+    var sectionId = "{{ section.id }}";
+    var productsToShow = "{{ section.settings.products_to_show }}";
+    var recommendationsUrl = "{{ routes.product_recommendations_url }}?limit=" + productsToShow + "&section_id=" + sectionId + "&product_id=" + productId;
+
+    fetch(recommendationsUrl)
+      .then(response => response.json())
+      .then(data => {
+        var relatedProductsContainer = document.getElementById('related_products');
+        var htmlContent = '';
+
+        if (data.products.length > 0) {
+          htmlContent += '<div class="owl-carousel related-product-carousel justify-content-center">';
+          data.products.forEach(function(product) {
+            htmlContent += `
+              <div class="border border-primary rounded position-relative related-product-item">
+                <div class="related-product-img">
+                  <img src="${product.images[0].src}" class="img-fluid w-100 rounded-top" alt="${product.title}" height="1200" width="1200">
+                </div>
+                <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">
+                  ${product.tags.join(', ')}
+                </div>
+                <div class="p-4 pb-0 rounded-bottom">
+                  <h4>${product.title}</h4>
+                  <p>${product.body_html}</p>
+                  <div class="d-flex justify-content-between flex-lg-wrap">
+                    <p class="text-dark fs-5 fw-bold">${Shopify.formatMoney(product.price)}</p>
+                    <a href="/cart/add?id=${product.variants[0].id}" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary">
+                      <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}
-  </product-recommendations>
-</div>
+            `;
+          });
+          htmlContent += '</div>';
+        }
+
+        relatedProductsContainer.innerHTML = htmlContent;
+        initializeCarousel(); // Initialize the carousel after content is loaded
+      })
+      .catch(error => console.error('Error loading related products:', error));
+  });
+
+  function initializeCarousel() {
+    $('.related-product-carousel').owlCarousel({
+      autoplay: true,
+      smartSpeed: 1500,
+      center: false,
+      dots: true,
+      loop: true,
+      margin: 25,
+      nav: true,
+      navText: [
+        '<i class="bi bi-arrow-left"></i>',
+        '<i class="bi bi-arrow-right"></i>',
+      ],
+      responsiveClass: true,
+      responsive: {
+        0: { items: 1 },
+        576: { items: 1 },
+        768: { items: 2 },
+        992: { items: 3 },
+        1200: { items: 4 },
+      },
+    });
+  }
+</script>
+
 {% schema %}
 {
   "name": "t:sections.related-products.name",
@@ -283,33 +266,167 @@
         {
           "value": "2",
           "label": "t:sections.related-products.settings.columns_mobile.options__2.label"
+        },
+        {
+          "value": "3",
+          "label": "t:sections.related-products.settings.columns_mobile.options__3.label"
         }
       ]
     },
     {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
+      "type": "select",
+      "id": "image_ratio_mobile",
+      "default": "square",
+      "label": "t:sections.related-products.settings.image_ratio_mobile.label",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.related-products.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.related-products.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.related-products.settings.image_ratio.options__3.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
     {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "name": "t:sections.related-products.presets.name",
+      "category": "t:sections.related-products.presets.category"
     }
   ]
 }
 {% endschema %}
+
+{% javascript %}
+<script>
+  (function ($) {
+    "use strict";
+
+    // Spinner
+    var spinner = function () {
+      setTimeout(function () {
+        if ($("#spinner").length > 0) {
+          $("#spinner").removeClass("show");
+        }
+      }, 1);
+    };
+    spinner(0);
+
+    // Fixed Navbar
+    $(window).scroll(function () {
+      if ($(window).width() < 992) {
+        if ($(this).scrollTop() > 55) {
+          $(".fixed-top").addClass("shadow");
+        } else {
+          $(".fixed-top").removeClass("shadow");
+        }
+      } else {
+        if ($(this).scrollTop() > 55) {
+          $(".fixed-top").addClass("shadow").css("top", -55);
+        } else {
+          $(".fixed-top").removeClass("shadow").css("top", 0);
+        }
+      }
+    });
+
+    // Back to top button
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 300) {
+        $(".back-to-top").fadeIn("slow");
+      } else {
+        $(".back-to-top").fadeOut("slow");
+      }
+    });
+    $(".back-to-top").click(function () {
+      $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
+      return false;
+    });
+
+    // Testimonial carousel
+    $(".testimonial-carousel").owlCarousel({
+      autoplay: true,
+      smartSpeed: 2000,
+      center: false,
+      dots: true,
+      loop: true,
+      margin: 25,
+      nav: true,
+      navText: [
+        '<i class="bi bi-arrow-left"></i>',
+        '<i class="bi bi-arrow-right"></i>',
+      ],
+      responsiveClass: true,
+      responsive: {
+        0: { items: 1 },
+        576: { items: 1 },
+        768: { items: 1 },
+        992: { items: 2 },
+        1200: { items: 2 },
+      },
+    });
+
+    // vegetable carousel
+    $(".vegetable-carousel").owlCarousel({
+      autoplay: true,
+      smartSpeed: 1500,
+      center: false,
+      dots: true,
+      loop: true,
+      margin: 25,
+      nav: true,
+      navText: [
+        '<i class="bi bi-arrow-left"></i>',
+        '<i class="bi bi-arrow-right"></i>',
+      ],
+      responsiveClass: true,
+      responsive: {
+        0: { items: 1 },
+        576: { items: 1 },
+        768: { items: 2 },
+        992: { items: 3 },
+        1200: { items: 4 },
+      },
+    });
+
+    // Modal Video
+    $(document).ready(function () {
+      $("#releted_product").prependTo("#releted_product_section");
+      var $videoSrc;
+      $(".btn-play").click(function () {
+        $videoSrc = $(this).data("src");
+      });
+      console.log($videoSrc);
+
+      $("#videoModal").on("shown.bs.modal", function (e) {
+        $("#video").attr("src", $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+      });
+
+      $("#videoModal").on("hide.bs.modal", function (e) {
+        $("#video").attr("src", $videoSrc);
+      });
+    });
+
+    // Product Quantity
+    // $('.quantity button').on('click', function () {
+    //     var button = $(this);
+    //     var oldValue = button.parent().parent().find('input').val();
+    //     if (button.hasClass('btn-plus')) {
+    //         var newVal = parseFloat(oldValue) + 1;
+    //     } else {
+    //         if (oldValue > 0) {
+    //             var newVal = parseFloat(oldValue) - 1;
+    //         } else {
+    //             newVal = 0;
+    //         }
+    //     }
+    //     button.parent().parent().find('input').val(newVal);
+    // });
+  })(jQuery);
+</script>
+{% endjavascript %}
