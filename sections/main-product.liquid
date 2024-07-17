@@ -734,7 +734,7 @@
                   </div>
                 </nav>
                 <div class="tab-content mb-5">
-                  <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                  {% comment %} <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
                     <p>
                       {% if product.metafields.custom.product_long_description != blank %}
                         {{ product.metafields.custom.product_long_description | metafield_tag }}
@@ -796,7 +796,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> {% endcomment %}
                   <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
                     <div class="d-flex">
                       <img
