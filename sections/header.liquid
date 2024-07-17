@@ -151,6 +151,7 @@
           {%- for link in section.settings.menu.links -%}
             {% if link.links.size > 0 %}
               <div class="nav-item dropdown">
+                {% assign current_path = canonical_url | split: '/' | last %}
                 {% assign link_last_part = link.url | split: '/' | last %}
                 {% if link_last_part == current_path %}
                 <a href="{{- link.url | escape -}}" class="nav-link dropdown-toggle">{{- link.title | escape -}}</a>
