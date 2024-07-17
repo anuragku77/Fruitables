@@ -722,6 +722,7 @@
                             data-bs-target="#nav-content-{{ forloop.index }}"
                             aria-controls="nav-content-{{ forloop.index }}"
                             aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                            onclick="setActiveTab('{{ forloop.index }}')"
                           >
                             {{ block.settings.tab_title }}
                           </button>
@@ -735,6 +736,7 @@
                             data-bs-target="#nav-mission"
                             aria-controls="nav-mission"
                             aria-selected="false"
+                            onclick="setActiveTab('mission')"
                           >
                             {{ block.settings.tab_title }}
                           </button>
@@ -749,16 +751,50 @@
                         <div class="tab-pane {% if forloop.first %}active{% endif %}" id="nav-content-{{ forloop.index }}" role="tabpanel" aria-labelledby="nav-tab-{{ forloop.index }}">
                           {{ block.settings.tab_content }}
                         </div>
-                      {%- when '@app' -%}
+                      {%- when 'review_tab' -%}
                         <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                          {% render block %}
+                          <!-- Include your review app content or placeholder -->
+                          {% comment %}
+                          Example:
+                          {% include 'product-reviews' %}
+                          {% endcomment %}
                         </div>
-                        {% comment %} {%- when '@app' -%}
-                          {% render block %} {% endcomment %}
+                      {%- when '@app' -%}
+                        <!-- Render your app content here if needed -->
+                        {% render block %}
                     {%- endcase -%}
                   {%- endfor -%}
                 </div>
               </div>
+              
+              <script>
+                function setActiveTab(index) {
+                  localStorage.setItem('activeTab', index);
+                }
+              
+                document.addEventListener('DOMContentLoaded', function () {
+                  var activeTab = localStorage.getItem('activeTab');
+                  if (activeTab) {
+                    document.querySelectorAll('.nav-link').forEach(function (tab) {
+                      tab.classList.remove('active', 'border-white', 'border-bottom-0');
+                      tab.setAttribute('aria-selected', 'false');
+                    });
+                    document.querySelectorAll('.tab-pane').forEach(function (pane) {
+                      pane.classList.remove('active');
+                    });
+              
+                    var activeNavLink = document.getElementById('nav-tab-' + activeTab) || document.getElementById('nav-mission-tab');
+                    var activeTabPane = document.getElementById('nav-content-' + activeTab) || document.getElementById('nav-mission');
+              
+                    if (activeNavLink && activeTabPane) {
+                      activeNavLink.classList.add('active', 'border-white', 'border-bottom-0');
+                      activeNavLink.setAttribute('aria-selected', 'true');
+                      activeTabPane.classList.add('active');
+                    }
+                  }
+                });
+              </script>
+              
             </div>
 
             {% render 'product-media-modal', variant_images: variant_images %}
