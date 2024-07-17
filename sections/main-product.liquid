@@ -751,10 +751,11 @@
                         </div>
                       {%- when 'review_tab' -%}
                         <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                          {%- when '@app' -%}
-                            {% render block %}
-                            {}
+                          
                         </div>
+                        {%- when '@app' -%}
+                          <!-- Render your app content here if needed -->
+                          {% render block %}
                     {%- endcase -%}
                   {%- endfor -%}
                 </div>
