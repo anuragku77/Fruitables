@@ -709,7 +709,7 @@
               </div>
               <div class="col-lg-12">
                 <nav>
-                  <div class="nav nav-tabs mb-3">
+                  <div class="nav nav-tabs mb-3" role="tablist">
                     {%- for block in section.blocks -%}
                       {%- case block.type -%}
                         {%- when 'tab_content' -%}
@@ -725,20 +725,21 @@
                           >
                             {{ block.settings.tab_title }}
                           </button>
-                            <button
-                              class="nav-link border-white border-bottom-0"
-                              type="button"
-                              role="tab"
-                              id="nav-mission-tab"
-                              data-bs-toggle="tab"
-                              data-bs-target="#nav-mission"
-                              aria-controls="nav-mission"
-                              aria-selected="false"
-                            >
-                              Reviews
-                            </button>
-                      {% endcase %}
-                    {% endfor %}
+                        {%- when 'review_tab' -%}
+                          <button
+                            class="nav-link border-white border-bottom-0"
+                            type="button"
+                            role="tab"
+                            id="nav-mission-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#nav-mission"
+                            aria-controls="nav-mission"
+                            aria-selected="false"
+                          >
+                            {{ block.settings.tab_title }}
+                          </button>
+                      {%- endcase -%}
+                    {%- endfor -%}
                   </div>
                 </nav>
                 <div class="tab-content mb-5">
