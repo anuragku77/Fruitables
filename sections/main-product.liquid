@@ -749,10 +749,11 @@
                       {{ block.settings.tab_content }}
                     {% comment %} {% elsif block.type == '@app' %}
                       {% render block %} {% endcomment %}
-                    {% endif %}
-                  {% endfor %}
+                    
                   <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-
+                    
+                  {% endif %}
+                {% endfor %}
                   </div>
                   <div class="tab-pane" id="nav-vision" role="tabpanel">
                     <p class="text-dark">
