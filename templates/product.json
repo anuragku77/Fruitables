@@ -64,6 +64,13 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
+        },
+        "tab_content_bfhUDV": {
+          "type": "tab_content",
+          "settings": {
+            "tab_title": "Description",
+            "tab_content": ""
+          }
         }
       },
       "block_order": [
@@ -75,7 +82,8 @@
         "description",
         "custom_liquid_fQHJjp",
         "quantity_selector",
-        "buy_buttons"
+        "buy_buttons",
+        "tab_content_bfhUDV"
       ],
       "settings": {
         "image_banner": "shopify:\/\/shop_images\/banner-fruits.jpg",
