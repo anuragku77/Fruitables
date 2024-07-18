@@ -159,6 +159,12 @@
                 </div>
               </div>
             {% else %}
+            {% assign is_active = '' %}
+              {% if page_title == link.title %}
+                {% assign class = 'active' %}
+              {% elsif template.name == 'index' and link.url == '/' %}
+                {% assign class = 'active' %}
+              {% endif %}
               <a href="{{- link.url | escape -}}" class="nav-item nav-link">{{- link.title | escape -}}</a>
             {% endif %}
           {% endfor %}
