@@ -148,9 +148,9 @@
       </a>
       <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
-          {% assign is_active = '' %}
           {%- for link in section.settings.menu.links -%}
-              {% if link.url == request.path %}
+            {% assign is_active = '' %}
+              {% if link.ur == link.title %}
                 {% assign is_active = ' active' %}
               {% elsif template.name == 'index' and link.url == '/' %}
                 {% assign is_active = ' active' %}
