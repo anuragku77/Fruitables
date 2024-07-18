@@ -1,0 +1,12 @@
+{
+    "sections": {
+      "testimonials_section": {
+        "type": "testimonials-section",
+        "settings": {}
+      }
+    },
+    "order": [
+      "testimonials_section"
+    ]
+  }
+  

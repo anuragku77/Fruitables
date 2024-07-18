@@ -1,6 +1,5 @@
 {% comment %}
   Renders facets (filtering and sorting)
-
   Accepts:
   - results: {Object} Collection or Search object
   - enable_filtering: {Boolean} Show filtering when true
@@ -187,6 +186,7 @@
                         <ul
                           class="{{ visual_layout_class }}{% if filter_type == 'vertical' %} facets__list--vertical{% else %} facets__list{% endif %} list-unstyled"
                           role="list"
+                          id="main-collection-product-grid"
                         >
                           {%- for value in sorted_values -%}
                             {% liquid
@@ -552,7 +552,11 @@
                               </span>
                             {%- endif -%}
                           </button>
-                          <ul class="{{ visual_layout_class }} mobile-facets__list list-unstyled" role="list">
+                          <ul
+                            class="{{ visual_layout_class }} mobile-facets__list list-unstyled"
+                            role="list"
+                            id="main-collection-product-grid"
+                          >
                             {%- liquid
                               assign sorted_values = filter.values
                               # Keep the selected values grouped together when operator is AND

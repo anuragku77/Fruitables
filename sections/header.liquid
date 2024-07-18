@@ -159,7 +159,13 @@
                 </div>
               </div>
             {% else %}
-              <a href="{{- link.url | escape -}}" class="nav-item nav-link">{{- link.title | escape -}}</a>
+              {% assign is_active = '' %}
+              {% if request.path == link.url %}
+                {% assign is_active = 'active' %}
+              {% endif %}
+              <a href="{{- link.url | escape -}}" class="nav-item nav-link {{ is_active }}">
+                {{- link.title | escape -}}
+              </a>
             {% endif %}
           {% endfor %}
         </div>

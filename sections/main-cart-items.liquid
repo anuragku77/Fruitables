@@ -53,7 +53,7 @@
         <div class="container py-5 js-contents">
           {%- if cart != empty -%}
             <div class="table-responsive">
-              <table class="table">
+              <table class="table cart-table">
                 <caption class="visually-hidden">
                   {{ 'sections.cart.title' | t }}
                 </caption>
@@ -111,7 +111,7 @@
                           <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                         {%- endif -%}
                         <a href="{{ item.url }}" style="color:#747d88;">
-                          <p class="mb-0 mt-4">{{ item.product.title | escape }}</p>
+                          <p class="mb-0">{{ item.product.title | escape }}</p>
                         </a>
                       </td>
                       <td>
@@ -121,18 +121,18 @@
                               {{ 'products.product.price.regular_price' | t }}
                             </span>
                             <s class="cart-item__old-price product-option">
-                              <p class="mb-0 mt-4">{{- item.original_price | money -}}</p>
+                              <p class="mb-0">{{- item.original_price | money -}}</p>
                             </s>
                             <span class="visually-hidden">
-                              <p class="mb-0 mt-4">{{ 'products.product.price.sale_price' | t }}</p>
+                              <p class="mb-0">{{ 'products.product.price.sale_price' | t }}</p>
                             </span>
                             <strong class="cart-item__final-price product-option">
-                              <p class="mb-0 mt-4">{{ item.final_price | money }}</p>
+                              <p class="mb-0">{{ item.final_price | money }}</p>
                             </strong>
                           </div>
                         {%- else -%}
                           <div class="product-option">
-                            <p class="mb-0 mt-4">{{ item.original_price | money }}</p>
+                            <p class="mb-0">{{ item.original_price | money }}</p>
                           </div>
                         {%- endif -%}
 
@@ -316,7 +316,7 @@
                         endif
                       -%}
                       <td class="cart-item__quantity{% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}">
-                        <div class="input-group quantity mt-4">
+                        <div class="input-group quantity ">
                           <quantity-popover>
                             <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
                               <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
@@ -491,23 +491,23 @@
                           {%- if item.original_line_price != item.final_line_price -%}
                             <dl class="cart-item__discounted-prices">
                               <dt class="visually-hidden">
-                                <p class="mb-0 mt-4">{{ 'products.product.price.regular_price' | t }}</p>
+                                <p class="mb-0">{{ 'products.product.price.regular_price' | t }}</p>
                               </dt>
                               <dd>
                                 <s class="cart-item__old-price price price--end">
-                                  <p class="mb-0 mt-4">{{ item.original_line_price | money }}</p>
+                                  <p class="mb-0">{{ item.original_line_price | money }}</p>
                                 </s>
                               </dd>
                               <dt class="visually-hidden">
-                                <p class="mb-0 mt-4">{{ 'products.product.price.sale_price' | t }}</p>
+                                <p class="mb-0">{{ 'products.product.price.sale_price' | t }}</p>
                               </dt>
                               <dd class="price price--end">
-                                <p class="mb-0 mt-4">{{ item.final_line_price | money }}</p>
+                                <p class="mb-0">{{ item.final_line_price | money }}</p>
                               </dd>
                             </dl>
                           {%- else -%}
                             {% comment %} <span class="price price--end"> {% endcomment %}
-                            <p class="mb-0 mt-4">{{ item.original_line_price | money }}</p>
+                            <p class="mb-0">{{ item.original_line_price | money }}</p>
                             {% comment %} </span> {% endcomment %}
                           {%- endif -%}
 
@@ -539,7 +539,7 @@
                         >
                           <a
                             href="{{ item.url_to_remove }}"
-                            class="btn btn-md rounded-circle bg-light border mt-4"
+                            class="btn btn-md rounded-circle bg-light border"
                             aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
                           >
                             {% render 'icon-cart-item-remove' %}
@@ -569,6 +569,25 @@
     </form>
   </div>
 </cart-items>
+
+<style>
+  .cart-table tr {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.cart-table th, .cart-table td {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.card-table tr:first-child{
+    width:140%;
+}
+
+</style>
 
 {% schema %}
 {
