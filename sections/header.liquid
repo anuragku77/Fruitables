@@ -160,10 +160,8 @@
                 </div>
               </div>
             {% else %}
-            {% if request.path == link.url %}
+              {% if request.path == link.url %}
               {% assign is_active = ' active' %}
-            {% comment %} {% elsif template.name == 'index' and link.url == '/' %}
-              {% assign is_active = ' active' %} {% endcomment %}
             {% endif %}
               <a href="{{- link.url | escape -}}" class="nav-item nav-link{{ is_active }}">{{- link.title | escape -}}</a>
             {% endif %}
