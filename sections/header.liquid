@@ -157,10 +157,10 @@
               {% endif %}
             {% if link.links.size > 0 %}
               <div class="nav-item dropdown">
-                <a href="{{- link.url | escape -}}" class="nav-link dropdown-toggle">{{- link.title | escape -}}</a>
+                <a href="{{- link.url | escape -}}" class="nav-link dropdown-toggle{{ is_active }}">{{- link.title | escape -}}</a>
                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
                   {%- for childlink in link.links -%}
-                    <a href="{{- childlink.url | escape -}}" class="dropdown-item">{{ childlink.title | escape }}</a>
+                    <a href="{{- childlink.url | escape -}}" class="dropdown-item{{ is_active }}">{{ childlink.title | escape }}</a>
                   {% endfor %}
                 </div>
               </div>
