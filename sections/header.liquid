@@ -149,7 +149,6 @@
       <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
           {%- for link in section.settings.menu.links -%}
-            {{ link }}
             {% assign is_active = '' %}
               {% if link.url == request.path %}
                 {% assign is_active = ' active' %}
