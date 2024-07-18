@@ -149,6 +149,12 @@
       <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
           {%- for link in section.settings.menu.links -%}
+            {% assign is_active = '' %}
+              {% if page_title == link.title %}
+                {% assign is_active = ' active' %}
+              {% elsif template.name == 'index' and link.url == '/' %}
+                {% assign is_active = ' active' %}
+              {% endif %}
             {% if link.links.size > 0 %}
               <div class="nav-item dropdown">
                 <a href="{{- link.url | escape -}}" class="nav-link dropdown-toggle">{{- link.title | escape -}}</a>
@@ -159,12 +165,6 @@
                 </div>
               </div>
             {% else %}
-            {% assign is_active = '' %}
-              {% if page_title == link.title %}
-                {% assign is_active = ' active' %}
-              {% elsif template.name == 'index' and link.url == '/' %}
-                {% assign is_active = ' active' %}
-              {% endif %}
               <a href="{{- link.url | escape -}}" class="nav-item nav-link{{ is_active }}">{{- link.title | escape -}}</a>
             {% endif %}
           {% endfor %}
