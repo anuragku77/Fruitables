@@ -150,7 +150,7 @@
         <div class="navbar-nav mx-auto">
           {% assign is_active = '' %}
           {%- for link in section.settings.menu.links -%}
-              {% if request == link.title %}
+              {% if request.path == link.url %}
                 {% assign is_active = ' active' %}
               {% elsif template.name == 'index' and link.url == '/' %}
                 {% assign is_active = ' active' %}
