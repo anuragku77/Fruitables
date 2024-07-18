@@ -159,9 +159,6 @@
                 </div>
               </div>
             {% else %}
-              {% comment %} {%  is_active = '' %}
-              {% assign is_active = link.url == current_page.Url %}
-              {{  current_page.Url }} {% endcomment %}
               <a href="{{ link.url | escape }}" class="nav-item nav-link{% if link.url == current_page.url %} active{% endif %}">{{ link.title | escape }}</a>
               {% comment %} <a href="{{- link.url | escape -}}" class="nav-item nav-link">{{- link.title | escape -}}</a> {% endcomment %}
             {% endif %}
