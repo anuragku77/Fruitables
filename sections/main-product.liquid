@@ -850,20 +850,26 @@
             <div class="col-lg-12">
               <div class="input-group w-100 mx-auto d-flex mb-4">
                 <input
+                  class="search__input field__input"
+                  id="{{ input_id }}"
                   type="search"
                   name="q"
                   value="{{ search.terms | escape }}"
                   placeholder="{{ 'general.search.search' | t }}"
-                  role="combobox"
-                  aria-autocomplete="list"
-                  aria-owns="predictive-search-results"
-                  aria-expanded="false"
-                  aria-label="{{ 'general.search.search' | t }}"
-                  aria-haspopup="listbox"
-                  class="form-control p-3 search-form__input"
-                  data-search-page-predictive-search-input
-                  />
-                <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                  {%- if settings.predictive_search_enabled -%}
+                    role="combobox"
+                    aria-expanded="false"
+                    aria-owns="predictive-search-results"
+                    aria-controls="predictive-search-results"
+                    aria-haspopup="listbox"
+                    aria-autocomplete="list"
+                    autocorrect="off"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                  {%- endif -%}
+                >
+                {% comment %} <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1"> {% endcomment %}
                 <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
               </div>
               <div class="mb-4">
