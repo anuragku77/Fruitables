@@ -148,7 +148,6 @@
       </a>
       <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
-          {% assign is_active = '' %}
           {%- for link in section.settings.menu.links -%}
             {% if link.links.size > 0 %}
               <div class="nav-item dropdown">
@@ -161,9 +160,11 @@
               </div>
             {% else %}
               {% if request.path == link.url %}
-              {% assign is_active = ' active' %}
-            {% endif %}
-              <a href="{{- link.url | escape -}}" class="nav-item nav-link{{ is_active }}">{{- link.title | escape -}}</a>
+                {% assign is_active = ' active' %}
+              {% endif %}
+              <a href="{{- link.url | escape -}}" class="nav-item nav-link{{ is_active }}">
+                {{- link.title | escape -}}
+              </a>
             {% endif %}
           {% endfor %}
         </div>
