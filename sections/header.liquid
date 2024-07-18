@@ -159,7 +159,7 @@
                 </div>
               </div>
             {% else %}
-            { }}
+              {% assign is_active = '' %}
               {% if request.path == link.url %}
                 {% assign is_active = 'active' %}
               {% endif %}
