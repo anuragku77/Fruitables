@@ -571,11 +571,11 @@
 </cart-items>
 
 <style>
-  .cart-table tr {
+  {% comment %} .cart-table tr {
     display: flex;
     width: 100%;
     justify-content: space-between;
-}
+} {% endcomment %}
 
 .cart-table th, .cart-table td {
     width: 100%;
@@ -583,9 +583,9 @@
     align-items: center;
 }
 
-.card-table tr:first-child{
+{% comment %} .card-table tr:first-child{
     width:140%;
-}
+} {% endcomment %}
 
 {% comment %} .cart-table th, .cart-table td {
   width: 100%;
