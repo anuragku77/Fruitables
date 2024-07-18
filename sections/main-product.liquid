@@ -867,14 +867,7 @@
                     >
                     <i class="fa fa-search"></i>
                     </button>
-      
-                  {%- if settings.predictive_search_enabled -%}
-                    <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
-                      {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
-                    </div>
-      
-                    <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
-                  {%- endif -%}
+                  </div>
                 </form>
                 {% comment %} <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1"> {% endcomment %}
                 {% comment %} <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span> {% endcomment %}
