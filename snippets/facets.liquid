@@ -186,6 +186,7 @@
                         <ul
                           class="{{ visual_layout_class }}{% if filter_type == 'vertical' %} facets__list--vertical{% else %} facets__list{% endif %} list-unstyled"
                           role="list"
+                          id="main-collection-product-grid"
                         >
                           {%- for value in sorted_values -%}
                             {% liquid
