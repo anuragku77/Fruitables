@@ -67,7 +67,7 @@
             <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
             <input type="hidden" name="options[prefix]" value="last">
             <button type="button" class="btn-close{% if search.terms == blank %} hidden{% endif %}" data-bs-dismiss="modal" aria-label="{{ 'general.search.reset' | t }}"></button>
-            <button
+            {% comment %} <button
               type="reset"
               class="btn-close reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
               aria-label="{{ 'general.search.reset' | t }}"
@@ -75,7 +75,7 @@
               <svg class="icon icon-close" aria-hidden="true" focusable="false">
                 <use xlink:href="#icon-reset">
               </svg>
-            </button>
+            </button> {% endcomment %}
             <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
               {% comment %} <svg class="icon icon-search" aria-hidden="true" focusable="false">
                 <use href="#icon-search">
