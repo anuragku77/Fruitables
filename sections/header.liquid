@@ -148,7 +148,6 @@
       </a>
       <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
-          {{ request.npath }}
           {%- for link in section.settings.menu.links -%}
             {% assign is_active = '' %}
               {% if link.url == request.path %}
