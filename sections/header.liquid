@@ -151,6 +151,7 @@
           {%- for link in section.settings.menu.links -%}
             {% assign is_active = '' %}
               {% if link.url == request.path %}
+                {{ re }}
                 {% assign is_active = ' active' %}
               {% elsif template.name == 'index' and link.url == '/' %}
                 {% assign is_active = ' active' %}
