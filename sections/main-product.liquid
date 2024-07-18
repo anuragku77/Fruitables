@@ -724,6 +724,9 @@
                             aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
                             onclick="setActiveTab('{{ forloop.index }}')"
                           >
+                            <button class="nav-link active border-white border-bottom-0" type="button" role="tab"
+                              id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
+                              aria-controls="nav-about" aria-selected="true">Description</button>
                             {{ block.settings.tab_title }}
                           </button>
                         {%- when 'review_tab' -%}
