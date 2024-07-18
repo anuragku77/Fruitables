@@ -546,7 +546,7 @@
                           >
                             {% render 'icon-arrow' %}
                             <span>{{ filter.label | escape }}</span>
-                            {%- if filter.operator == 'AND' -%}
+                            {%- if filter.operator == 'AND' -%}s
                               <span class="facets__and-helptext">
                                 {{ 'products.facets.filter_and_operator_subtitle' | t }}
                               </span>

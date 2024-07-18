@@ -13,6 +13,11 @@
             <a href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
           </li>
 
+          {% when 'cart' %}
+            <li class="breadcrumb-item">
+              <a href="{{ cart.url }}" aria-current="page">{{ cart.title }}</a>
+            </li>
+
         {% when 'product' %}
           {% if collection.url %}
             <li class="breadcrumb-item">
