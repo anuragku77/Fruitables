@@ -65,9 +65,9 @@
             <span>
               <s class="price-item price-item--regular variant-item__old-price">
                 {% if settings.currency_code_enabled %}
-                  {{ compare_at_price | mone }}
+                  {{ compare_at_price | money_without_currency }}
                 {% else %}
-                  {{ compare_at_price | money }}
+                  {{ compare_at_price | money_without_currency }}
                 {% endif %}
               </s>
             </span>
@@ -92,7 +92,7 @@
             {% if settings.currency_code_enabled %}
               {{ compare_at_price | money_without_currency }}
             {% else %}
-              {{ compare_at_price | money }}
+              {{ compare_at_price | money_without_currency }}
             {% endif %}
           </s>
         </span>
