@@ -165,7 +165,7 @@
               {% elsif template.name == 'index' and link.url == '/' %}
                 {% assign is_active = 'active' %}
               {% endif %}
-              <a href="{{- link.url | escape -}}" class="nav-item nav-link{{  }}">{{- link.title | escape -}}</a>
+              <a href="{{- link.url | escape -}}" class="nav-item nav-link{{ is_active }}">{{- link.title | escape -}}</a>
             {% endif %}
           {% endfor %}
         </div>
