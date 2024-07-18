@@ -27,8 +27,8 @@
         "client_section_khitKd"
       ],
       "settings": {
-        "testimonial_heading": "",
-        "testimonial_content": ""
+        "testimonial_heading": "Our Testimonial",
+        "testimonial_content": "<p>Our Client Saying!<\/p>"
       }
     }
   },
