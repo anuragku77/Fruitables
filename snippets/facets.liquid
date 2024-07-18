@@ -552,7 +552,7 @@
                               </span>
                             {%- endif -%}
                           </button>
-                          <ul class="{{ visual_layout_class }} mobile-facets__list list-unstyled" role="list">
+                          <ul class="{{ visual_layout_class }} mobile-facets__list list-unstyled" role="list" id="main-collection-product-grid">
                             {%- liquid
                               assign sorted_values = filter.values
                               # Keep the selected values grouped together when operator is AND
