@@ -152,8 +152,8 @@
           {%- for link in section.settings.menu.links -%}
               {% if request.path == link.url %}
                 {% assign is_active = ' active' %}
-              {% elsif template.name == 'index' and link.url == '/' %}
-                {% assign is_active = ' active' %}
+              {% comment %} {% elsif template.name == 'index' and link.url == '/' %}
+                {% assign is_active = ' active' %} {% endcomment %}
               {% endif %}
             {% if link.links.size > 0 %}
               <div class="nav-item dropdown">
