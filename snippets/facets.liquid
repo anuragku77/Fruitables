@@ -546,13 +546,17 @@
                           >
                             {% render 'icon-arrow' %}
                             <span>{{ filter.label | escape }}</span>
-                            {%- if filter.operator == 'AND' -%}
+                            {%- if filter.operator == 'AND' -%}s
                               <span class="facets__and-helptext">
                                 {{ 'products.facets.filter_and_operator_subtitle' | t }}
                               </span>
                             {%- endif -%}
                           </button>
-                          <ul class="{{ visual_layout_class }} mobile-facets__list list-unstyled" role="list" id="main-collection-product-grid">
+                          <ul
+                            class="{{ visual_layout_class }} mobile-facets__list list-unstyled"
+                            role="list"
+                            id="main-collection-product-grid"
+                          >
                             {%- liquid
                               assign sorted_values = filter.values
                               # Keep the selected values grouped together when operator is AND
