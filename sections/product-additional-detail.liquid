@@ -16,7 +16,7 @@
               >
                 {{ block.settings.tab_title }}
               </button>
-            {% else %}
+            {% comment %} {% else %}
               <button
                 class="nav-link border-white border-bottom-0"
                 type="button"
@@ -28,7 +28,7 @@
                 aria-selected="true"
               >
                 {{ block.settings.tab_title }}
-              </button>
+              </button> {% endcomment %}
             {% endif %}
           {% endif %}
         {% endfor %}
