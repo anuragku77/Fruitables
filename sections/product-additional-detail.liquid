@@ -2,7 +2,7 @@
     <nav>
       <div class="nav nav-tabs mb-3">
         {% for block in section.blocks %}
-            
+            {% case block.type %}
           {% if block.type == 'product_content' %}
             {% comment %} {% if forloop.index == 1 %} {% endcomment %}
               <button
@@ -32,6 +32,7 @@
               </button> {% endcomment %}
             {% comment %} {% endif %} {% endcomment %}
           {% endif %}
+          {% endcase %}
         {% endfor %}
         {% for block in section.blocks %}
           {% case block.type %}
