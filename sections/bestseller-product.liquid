@@ -56,11 +56,11 @@
               >
               <div class="py-4">
                 <a href="{{ product.url }}" class="h5">{{ product.title }}</a>
-                  <div class="d-flex my-3 justify-content-center">
-                    <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                  {% comment %} <div class="d-flex my-3 justify-content-center"> {% endcomment %}
+                    <div class="jdgm-widget jdgm-preview-badge d-flex my-3 justify-content-center" data-id="{{ product.id }}">
                       {{ product.metafields.judgeme.badge }}
                     </div>
-                  </div>
+                  {% comment %} </div> {% endcomment %}
                 <h4 class="mb-3">{{ product.price | money }}</h4>
                 <a
                   onclick="addToCart({{ product.selected_or_first_available_variant.id }})"
