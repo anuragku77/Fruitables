@@ -44,7 +44,7 @@
         "featured_section_qQLkYU": {
           "type": "featured_section",
           "settings": {
-            "featured_icon": "<i class=\"fas fa-car-side fa-3x text-white\"><\/i>",
+            "featured_icon": "",
             "featured_heading": "Free Shipping",
             "featured_content": "Free on order over $300"
           }
@@ -163,8 +163,7 @@
     "bestseller_product": {
       "type": "bestseller-product",
       "settings": {
-        "product_collection": "bestseller-products",
-        "star_rating": 4
+        "product_collection": "bestseller-products"
       }
     },
     "store_fact_section_yj4wmA": {
