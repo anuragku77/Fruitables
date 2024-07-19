@@ -175,10 +175,7 @@
     // Modal Video
     $(document).ready(function () {
         $("#releted_product").prependTo("#releted_product_section");
-<<<<<<< HEAD
         $("#products_detail_content").prependTo("#product_additional_details");
-=======
-        $("#products_detail_content  product_addi
         var $videoSrc;
         $(".btn-play").click(function () {
             $videoSrc = $(this).data("src");
