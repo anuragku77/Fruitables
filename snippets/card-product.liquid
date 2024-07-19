@@ -42,7 +42,7 @@
   -%}
   <div class="card-wrapper product-card-wrapper underline-links-hover">
     <div
-      class="
+      class="rounded position-relative fruite-item 
         card card--{{ settings.card_style }}
         {% if card_product.featured_media %} card--media{% else %} card--text{% endif %}
         {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
@@ -143,9 +143,12 @@
           </div>
         </div>
       </div>
-      <div class="card__content">
+      <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
+        {{ card_product.tags }}
+      </div>
+      <div class="p-4 border border-secondary border-top-0 rounded-bottom card__content">
         <div class="card__information">
-          <h3
+          <h4
             class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
             {% if card_product.featured_media or settings.card_style == 'card' %}
               id="title-{{ section_id }}-{{ card_product.id }}"
@@ -159,7 +162,8 @@
             >
               {{ card_product.title | escape }}
             </a>
-          </h3>
+          </h4>
+          <p>{{ card_product.description }}</p>
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
@@ -572,7 +576,7 @@
       assign ratio = 0.8
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper product-card-wrapper underline-links-hover rounded position-relative fruite-item">
     <div
       class="
         card card--{{ settings.card_style }}
