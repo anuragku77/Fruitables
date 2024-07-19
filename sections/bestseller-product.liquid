@@ -24,7 +24,6 @@
                 </div>
                 <div class="col-6">
                   <a href="{{ product.url }}" class="h5">{{ product.title }}</a>
-                  {%- if section.settings.star_rating != -1 -%}
                     <div class="d-flex my-3 justify-content-center">
                       {%- for i in (1..5) -%}
                         {%- if i <= section.settings.star_rating -%}
@@ -34,7 +33,6 @@
                         {%- endif -%}
                       {%- endfor -%}
                     </div>
-                  {%- endif -%}
                   <h4 class="mb-3">{{ product.price | money }}</h4>
                   <a
                     onclick="addToCart({{ product.selected_or_first_available_variant.id }})"
