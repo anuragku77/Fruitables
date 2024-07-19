@@ -1,24 +1,23 @@
 <div class="col-lg-12" id="products_detail_content">
-  <nav>
-    <div class="nav nav-tabs mb-3">
-      {% for block in section.blocks %}
-        {% case block.type %}
-          {% when 'product_content' %}
+    <nav>
+      <div class="nav nav-tabs mb-3">
+        {% for block in section.blocks %}
+            
+          {% if block.type == 'product_content' %}
             {% comment %} {% if forloop.index == 1 %} {% endcomment %}
-            <button
-              class="nav-link active border-white border-bottom-0"
-              type="button"
-              role="tab"
-              id="nav-about-tab-{{ forloop.index }}"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-about-{{ forloop.index }}"
-              aria-controls="nav-about-{{ forloop.index }}"
-              aria-selected="true"
-            >
-              {{ block.settings.tab_title }}
-            </button>
-            {% comment %}
-              {% else %}
+              <button
+                class="nav-link active border-white border-bottom-0"
+                type="button"
+                role="tab"
+                id="nav-about-tab-{{ forloop.index }}"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-about-{{ forloop.index }}"
+                aria-controls="nav-about-{{ forloop.index }}"
+                aria-selected="true"
+              >
+                {{ block.settings.tab_title }}
+              </button>
+            {% comment %} {% else %}
               <button
                 class="nav-link border-white border-bottom-0"
                 type="button"
@@ -30,64 +29,61 @@
                 aria-selected="true"
               >
                 {{ block.settings.tab_title }}
+              </button> {% endcomment %}
+            {% comment %} {% endif %} {% endcomment %}
+          {% endif %}
+        {% endfor %}
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when '@app' %}
+              <button
+                class="nav-link border-white border-bottom-0"
+                type="button"
+                role="tab"
+                id="nav-mission-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-mission"
+                aria-controls="nav-mission"
+                aria-selected="false"
+              >
+                {{ 'Reviews' }}
               </button>
-            {% endcomment %}
-            {% comment %} {% endif %} {% endcomment %}
-            {% comment %} {% endif %} {% endcomment %}
-        {% endcase %}
-      {% endfor %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </nav>
+    <div class="tab-content mb-5">
       {% for block in section.blocks %}
+        {% if forloop.index == 1 %}
+          <div
+            class="tab-pane active"
+            id="nav-about-{{ forloop.index }}"
+            role="tabpanel"
+            aria-labelledby="nav-about-tab-{{ forloop.index }}"
+          >
+            {{ block.settings.tab_content }}
+          </div>
+        {% else %}
+          <div
+            class="tab-pane"
+            id="nav-about-{{ forloop.index }}"
+            role="tabpanel"
+            aria-labelledby="nav-about-tab-{{ forloop.index }}"
+          >
+            {{ block.settings.tab_content }}
+          </div>
+        {% endif %}
         {% case block.type %}
           {% when '@app' %}
-            <button
-              class="nav-link border-white border-bottom-0"
-              type="button"
-              role="tab"
-              id="nav-mission-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-mission"
-              aria-controls="nav-mission"
-              aria-selected="false"
-            >
-              {{ 'Reviews' }}
-            </button>
+            <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
+              {% render block %}
+            </div>
         {% endcase %}
       {% endfor %}
     </div>
-  </nav>
-  {% for block in section.blocks %}
-  <div class="tab-content mb-5">
-    
-        {% case block.type %}
-      {% comment %} {% if forloop.index == 1 %} {% endcomment %}
-        <div
-          class="tab-pane active"
-          id="nav-about-{{ forloop.index }}"
-          role="tabpanel"
-          aria-labelledby="nav-about-tab-{{ forloop.index }}"
-        >
-          {{ block.settings.tab_content }}
-        </div>
-      {% comment %} {% else %}
-        <div
-          class="tab-pane"
-          id="nav-about-{{ forloop.index }}"
-          role="tabpanel"
-          aria-labelledby="nav-about-tab-{{ forloop.index }}"
-        >
-          {{ block.settings.tab_content }}
-        </div> {% endcomment %}
-      {% comment %} {% endif %} {% endcomment %}
-      {% comment %} {% case block.type %} {% endcomment %}
-        {% when '@app' %}
-          <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-            {% render block %}
-          </div>
-      {% endcase %}
-    
   </div>
-  {% endfor %}
-</div>
+
+
 
 {% schema %}
 {
@@ -122,4 +118,5 @@
     }
   ]
 }
+
 {% endschema %}
