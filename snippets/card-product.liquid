@@ -146,7 +146,7 @@
       <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
         {{ card_product.tags }}
       </div>
-      <div class="card__content">
+      <div class="card__content p-4 border border-secondary border-top-0 rounded-bottom">
         <div class="card__information">
           <h4
             class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
@@ -163,7 +163,6 @@
               {{ card_product.title | escape }}
             </a>
           </h4>
-          <br>
           <p>{{ card_product.description }}</p>
           <div class="card-information">
             {%- if show_vendor -%}
