@@ -52,7 +52,7 @@
         "featured_section_KdCcEE": {
           "type": "featured_section",
           "settings": {
-            "featured_icon": "",
+            "featured_icon": "<i class=\"fas fa-user-shield fa-3x text-white\"><\/i>",
             "featured_heading": "Security Payment",
             "featured_content": "100% security payment"
           }
