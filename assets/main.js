@@ -178,8 +178,7 @@
 <<<<<<< HEAD
         $("#products_detail_content").prependTo("#product_additional_details");
 =======
-        $("#products_detail_content  product_additional_details").prependTo("#product_additional_details");
->>>>>>> f6dac69a97cb691a8d89ff29d86ff0ef2e83ee40
+        $("#products_detail_content  product_addi
         var $videoSrc;
         $(".btn-play").click(function () {
             $videoSrc = $(this).data("src");
