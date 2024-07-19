@@ -23,13 +23,13 @@
                 </div>
                 <div class="col-6">
                   <a href="{{ product.url }}" class="h5">{{ product.title }}</a>
-                  {%- if section.settings.star_rating != -1 -%}
-                    <div class="d-flex my-3 justify-content-center">
+                  {% comment %} {%- if section.settings.star_rating != -1 -%} {% endcomment %}
+                    {% comment %} <div class="d-flex my-3 justify-content-center"> {% endcomment %}
                       <div class="d-flex my-3 justify-content-center" data-id="{{ product.id }}">
                         {{ product.metafields.judgeme.badge }}
                       </div>
-                    </div>
-                  {%- endif -%}
+                    {% comment %} </div> {% endcomment %}
+                  {% comment %} {%- endif -%} {% endcomment %}
                   <h4 class="mb-3">{{ product.price | money }}</h4>
                   <a
                     onclick="addToCart({{ product.selected_or_first_available_variant.id }})"
