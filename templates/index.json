@@ -44,7 +44,7 @@
         "featured_section_qQLkYU": {
           "type": "featured_section",
           "settings": {
-            "featured_icon": "",
+            "featured_icon": "<i class=\"fas fa-car-side fa-3x text-white\"><\/i>",
             "featured_heading": "Free Shipping",
             "featured_content": "Free on order over $300"
           }
@@ -52,7 +52,7 @@
         "featured_section_KdCcEE": {
           "type": "featured_section",
           "settings": {
-            "featured_icon": "<i class=\"fas fa-user-shield fa-3x text-white\"><\/i>",
+            "featured_icon": "",
             "featured_heading": "Security Payment",
             "featured_content": "100% security payment"
           }
@@ -60,7 +60,7 @@
         "featured_section_bDpaFB": {
           "type": "featured_section",
           "settings": {
-            "featured_icon": "<i class=\"fas fa-exchange-alt fa-3x text-white\"><\/i>",
+            "featured_icon": "",
             "featured_heading": "30 Day Return",
             "featured_content": "30 day money guarantee"
           }
@@ -217,7 +217,7 @@
         "client_section_brwdDb": {
           "type": "client_section",
           "settings": {
-            "client_comment": "<p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,<\/p>",
+            "text": "",
             "client_name": "Client Name",
             "client_profession": "Profession",
             "client_image": "shopify:\/\/shop_images\/testimonial-1.jpg",
@@ -227,7 +227,7 @@
         "client_section_zRHV39": {
           "type": "client_section",
           "settings": {
-            "client_comment": "<p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,<\/p>",
+            "text": "",
             "client_name": "Client Name",
             "client_profession": "Profession",
             "client_image": "shopify:\/\/shop_images\/testimonial-1.jpg",
