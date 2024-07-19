@@ -175,7 +175,11 @@
     // Modal Video
     $(document).ready(function () {
         $("#releted_product").prependTo("#releted_product_section");
+<<<<<<< HEAD
+        $("#products_detail_content").prependTo("#product_additional_details");
+=======
         $("#products_detail_content  product_additional_details").prependTo("#product_additional_details");
+>>>>>>> f6dac69a97cb691a8d89ff29d86ff0ef2e83ee40
         var $videoSrc;
         $(".btn-play").click(function () {
             $videoSrc = $(this).data("src");
