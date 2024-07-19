@@ -2,6 +2,7 @@
     <nav>
       <div class="nav nav-tabs mb-3">
         {% for block in section.blocks %}
+            
           {% if block.type == 'product_content' %}
             {% comment %} {% if forloop.index == 1 %} {% endcomment %}
               <button
