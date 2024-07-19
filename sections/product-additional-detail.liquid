@@ -3,7 +3,7 @@
       <div class="nav nav-tabs mb-3">
         {% for block in section.blocks %}
             {% case block.type %}
-          {% if block.type == 'product_content' %}
+          {% when == 'product_content' %}
             {% comment %} {% if forloop.index == 1 %} {% endcomment %}
               <button
                 class="nav-link active border-white border-bottom-0"
@@ -31,7 +31,7 @@
                 {{ block.settings.tab_title }}
               </button> {% endcomment %}
             {% comment %} {% endif %} {% endcomment %}
-          {% endif %}
+          {% comment %} {% endif %} {% endcomment %}
           {% endcase %}
         {% endfor %}
         {% for block in section.blocks %}
