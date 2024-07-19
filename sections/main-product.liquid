@@ -762,34 +762,7 @@
                 </div>
               </div>
               
-              <script>
-                function setActiveTab(index) {
-                  localStorage.setItem('activeTab', index);
-                }
-              
-                document.addEventListener('DOMContentLoaded', function () {
-                  var activeTab = localStorage.getItem('activeTab');
-                  if (activeTab) {
-                    document.querySelectorAll('.nav-link').forEach(function (tab) {
-                      tab.classList.remove('active', 'border-white', 'border-bottom-0');
-                      tab.setAttribute('aria-selected', 'false');
-                    });
-                    document.querySelectorAll('.tab-pane').forEach(function (pane) {
-                      pane.classList.remove('active');
-                    });
-              
-                    var activeNavLink = document.getElementById('nav-tab-' + activeTab) || document.getElementById('nav-mission-tab');
-                    var activeTabPane = document.getElementById('nav-content-' + activeTab) || document.getElementById('nav-mission');
-              
-                    if (activeNavLink && activeTabPane) {
-                      activeNavLink.classList.add('active', 'border-white', 'border-bottom-0');
-                      activeNavLink.setAttribute('aria-selected', 'true');
-                      activeTabPane.classList.add('active');
-                    }
-                  }
-                });
-              </script>
-              
+                          
             </div>
 
             {% render 'product-media-modal', variant_images: variant_images %}
