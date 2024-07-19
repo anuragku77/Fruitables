@@ -55,9 +55,11 @@
       {% endfor %}
     </div>
   </nav>
+  {% for block in section.blocks %}
   <div class="tab-content mb-5">
-    {% for block in section.blocks %}
-      {% if forloop.index == 1 %}
+    
+        {% case block.type %}
+      {% comment %} {% if forloop.index == 1 %} {% endcomment %}
         <div
           class="tab-pane active"
           id="nav-about-{{ forloop.index }}"
@@ -66,7 +68,7 @@
         >
           {{ block.settings.tab_content }}
         </div>
-      {% else %}
+      {% comment %} {% else %}
         <div
           class="tab-pane"
           id="nav-about-{{ forloop.index }}"
@@ -74,9 +76,9 @@
           aria-labelledby="nav-about-tab-{{ forloop.index }}"
         >
           {{ block.settings.tab_content }}
-        </div>
-      {% endif %}
-      {% case block.type %}
+        </div> {% endcomment %}
+      {% comment %} {% endif %} {% endcomment %}
+      {% comment %} {% case block.type %} {% endcomment %}
         {% when '@app' %}
           <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
             {% render block %}
