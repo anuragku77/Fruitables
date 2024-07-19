@@ -59,7 +59,6 @@
   <div class="tab-content mb-5">
     
         {% case block.type %}
-            {%  when "product_content" %}
       {% comment %} {% if forloop.index == 1 %} {% endcomment %}
         <div
           class="tab-pane active"
@@ -87,7 +86,7 @@
       {% endcase %}
     
   </div>
-{% endfor %}
+  {% endfor %}
 </div>
 
 {% schema %}
