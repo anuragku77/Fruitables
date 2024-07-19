@@ -114,11 +114,19 @@
           "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
           }
+        },
+        "product_content_y7Kzyf": {
+          "type": "product_content",
+          "settings": {
+            "tab_title": "Add itional Description",
+            "tab_content": "This is the content for the tab."
+          }
         }
       },
       "block_order": [
         "product_content_Y7jDyk",
-        "judge_me_reviews_review_widget_PBkYF4"
+        "judge_me_reviews_review_widget_PBkYF4",
+        "product_content_y7Kzyf"
       ],
       "settings": {
       }
