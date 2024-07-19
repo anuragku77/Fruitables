@@ -29,8 +29,8 @@
         "show_view_all": true,
         "products_per_page": 16,
         "columns_desktop": 3,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
+        "color_scheme": "scheme-2",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
@@ -39,7 +39,7 @@
         "enable_filtering": true,
         "filter_type": "vertical",
         "enable_sorting": true,
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "padding_top": 36,
         "padding_bottom": 36
       }
