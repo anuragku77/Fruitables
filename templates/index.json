@@ -24,7 +24,7 @@
           "type": "homepage_banner_slider",
           "settings": {
             "image_slider": "shopify:\/\/shop_images\/hero-img-2.jpg",
-            "slider_url": "shopify:\/\/products\/raspberries-copy-copy",
+            "slider_url": "shopify:\/\/products\/brocoli",
             "button_text": "Vegitables"
           }
         }
