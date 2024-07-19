@@ -1,4 +1,5 @@
 <!-- Bestsaler Product Start -->
+
 <div class="container-fluid py-5">
   <div class="container py-5">
     {% assign collection = collections[section.settings.product_collection] %}
@@ -23,17 +24,11 @@
                 </div>
                 <div class="col-6">
                   <a href="{{ product.url }}" class="h5">{{ product.title }}</a>
-                  {%- if section.settings.star_rating != -1 -%}
-                    <div class="d-flex my-3 justify-content-center">
-                      {%- for i in (1..5) -%}
-                        {%- if i <= section.settings.star_rating -%}
-                          <i class="fas fa-star text-primary"></i>
-                        {%- else -%}
-                          <i class="fas fa-star"></i>
-                        {%- endif -%}
-                      {%- endfor -%}
+                  <div class="d-flex my-3 justify-content-center">
+                    <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                      {{ product.metafields.judgeme.badge }}
                     </div>
-                  {%- endif -%}
+                  </div>
                   <h4 class="mb-3">{{ product.price | money }}</h4>
                   <a
                     onclick="addToCart({{ product.selected_or_first_available_variant.id }})"
@@ -56,17 +51,11 @@
               >
               <div class="py-4">
                 <a href="{{ product.url }}" class="h5">{{ product.title }}</a>
-                {%- if section.settings.star_rating != -1 -%}
-                  <div class="d-flex my-3 justify-content-center">
-                    {%- for i in (1..5) -%}
-                      {%- if i <= section.settings.star_rating -%}
-                        <i class="fas fa-star text-primary"></i>
-                      {%- else -%}
-                        <i class="fas fa-star"></i>
-                      {%- endif -%}
-                    {%- endfor -%}
+                <div class="d-flex my-3 justify-content-center">
+                  <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                    {{ product.metafields.judgeme.badge }}
                   </div>
-                {%- endif -%}
+                </div>
                 <h4 class="mb-3">{{ product.price | money }}</h4>
                 <a
                   onclick="addToCart({{ product.selected_or_first_available_variant.id }})"
@@ -94,15 +83,6 @@
       "type": "collection",
       "id": "product_collection",
       "label": "Product Collection"
-    },
-    {
-      "type": "range",
-      "id": "star_rating",
-      "min": -1,
-      "max": 5,
-      "label": "Star rating",
-      "default": 5,
-      "info": "Set to -1 to hide star rating"
     }
   ],
   "presets": [

@@ -175,6 +175,7 @@
     // Modal Video
     $(document).ready(function () {
         $("#releted_product").prependTo("#releted_product_section");
+        $("#products_detail_content").prependTo("#product_additional_details");
         var $videoSrc;
         $(".btn-play").click(function () {
             $videoSrc = $(this).data("src");

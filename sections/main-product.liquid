@@ -707,89 +707,9 @@
                   </a>
                 </section>
               </div>
-              <div class="col-lg-12">
-                <nav>
-                  <div class="nav nav-tabs mb-3" role="tablist">
-                    {%- for block in section.blocks -%}
-                      {%- case block.type -%}
-                        {%- when 'tab_content' -%}
-                          <button
-                            class="nav-link {% if forloop.first %}active border-white border-bottom-0{% endif %}"
-                            type="button"
-                            role="tab"
-                            id="nav-tab-{{ forloop.index }}"
-                            data-bs-toggle="tab"
-                            data-bs-target="#nav-content-{{ forloop.index }}"
-                            aria-controls="nav-content-{{ forloop.index }}"
-                            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
-                            onclick="setActiveTab('{{ forloop.index }}')"
-                          >
-                            {{ block.settings.tab_title }}
-                          </button>
-                        {%- when 'review_tab' -%}
-                          <button
-                            class="nav-link border-white border-bottom-0"
-                            type="button"
-                            role="tab"
-                            id="nav-mission-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#nav-mission"
-                            aria-controls="nav-mission"
-                            aria-selected="false"
-                            onclick="setActiveTab('mission')"
-                          >
-                            {{ block.settings.tab_title }}
-                          </button>
-                      {%- endcase -%}
-                    {%- endfor -%}
-                  </div>
-                </nav>
-                <div class="tab-content mb-5">
-                  {%- for block in section.blocks -%}
-                    {%- case block.type -%}
-                      {%- when 'tab_content' -%}
-                        <div class="tab-pane {% if forloop.first %}active{% endif %}" id="nav-content-{{ forloop.index }}" role="tabpanel" aria-labelledby="nav-tab-{{ forloop.index }}">
-                          {{ block.settings.tab_content }}
-                        </div>
-                        {%- when '@app' -%}
-                          <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                            {% render block %}
-                          </div>
-                          {% comment %} {%- when '@app' -%}
-                            {% render block %} {% endcomment %}
-                      {%- endcase -%}
-                    {%- endfor -%}
-                </div>
-              </div>
-              
-              <script>
-                function setActiveTab(index) {
-                  localStorage.setItem('activeTab', index);
-                }
-              
-                document.addEventListener('DOMContentLoaded', function () {
-                  var activeTab = localStorage.getItem('activeTab');
-                  if (activeTab) {
-                    document.querySelectorAll('.nav-link').forEach(function (tab) {
-                      tab.classList.remove('active', 'border-white', 'border-bottom-0');
-                      tab.setAttribute('aria-selected', 'false');
-                    });
-                    document.querySelectorAll('.tab-pane').forEach(function (pane) {
-                      pane.classList.remove('active');
-                    });
-              
-                    var activeNavLink = document.getElementById('nav-tab-' + activeTab) || document.getElementById('nav-mission-tab');
-                    var activeTabPane = document.getElementById('nav-content-' + activeTab) || document.getElementById('nav-mission');
-              
-                    if (activeNavLink && activeTabPane) {
-                      activeNavLink.classList.add('active', 'border-white', 'border-bottom-0');
-                      activeNavLink.setAttribute('aria-selected', 'true');
-                      activeTabPane.classList.add('active');
-                    }
-                  }
-                });
-              </script>
-              
+             
+             <div id="product_additional_details"></div>
+                          
             </div>
 
             {% render 'product-media-modal', variant_images: variant_images %}
@@ -899,11 +819,9 @@
                   <div>
                     <h6 class="mb-2">{{ product.title }}</h6>
                     <div class="d-flex mb-2">
-                      <i class="fa fa-star text-secondary"></i>
-                      <i class="fa fa-star text-secondary"></i>
-                      <i class="fa fa-star text-secondary"></i>
-                      <i class="fa fa-star text-secondary"></i>
-                      <i class="fa fa-star"></i>
+                      <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                        {{ product.metafields.judgeme.badge }}
+                      </div>
                     </div>
                     <div class="d-flex mb-2">
                       <h5 class="fw-bold me-2">{{ product.price | money_without_trailing_zeros }}</h5>
@@ -964,35 +882,6 @@
   "blocks": [
     {
       "type": "@app"
-    },
-    {
-      "type": "tab_content",
-      "name": "Additional Content Tab",
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "tab_title",
-          "label": "Tab Title",
-          "default": "Description"
-        },
-        {
-          "type": "liquid",
-          "id": "tab_content",
-          "label": "Tab Content",
-          "default": "This is the content for the tab."
-        }
-      ]
-    },
-    {
-      "type": "review_tab",
-      "name": "Review Tab",
-      "settings": [
-        {
-          "type": "text",
-          "id": "tab_title",
-          "label": "Tab Title"
-        }
-      ]
     },
     {
       "type": "text",
