@@ -117,10 +117,28 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "product_additional_detail_4fm4y4": {
+      "type": "product-additional-detail",
+      "blocks": {
+        "product_content_Y7jDyk": {
+          "type": "product_content",
+          "settings": {
+            "tab_title": "Description",
+            "tab_content": "<div class=\"tab-pane active\" id=\"nav-about\" role=\"tabpanel\" aria-labelledby=\"nav-about-tab\">\n                    <p>\n                      {% if product.metafields.custom.product_long_description != blank %}\n                        {{ product.metafields.custom.product_long_description | metafield_tag }}\n                      {% else %}\n                        {{ product.description }}\n                      {% endif %}\n                    <\/p>\n                    <div class=\"px-2\">\n                      <div class=\"row g-4\">\n                        <div class=\"col-6\">\n                          <div class=\"row bg-light align-items-center text-center justify-content-center py-2\">\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">Weight<\/p>\n                            <\/div>\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">{{ product.variants.first.weight_in_unit }} {{product.variants.first.weight_unit}}<\/p>\n                            <\/div>\n                          <\/div>\n                          {% if product.metafields.custom.country_of_origin != blank %}\n                          <div class=\"row text-center align-items-center justify-content-center py-2\">\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">Country of Origin<\/p>\n                            <\/div>\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">{{ product.metafields.custom.country_of_origin }}<\/p>\n                            <\/div>\n                          <\/div>\n                        {% endif %}\n                        {% if product.metafields.custom.product_quality != blank %}\n                          <div class=\"row bg-light text-center align-items-center justify-content-center py-2\">\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">Quality<\/p>\n                            <\/div>\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">{{ product.metafields.custom.product_quality }}<\/p>\n                            <\/div>\n                          <\/div>\n                        {% endif %}\n                        {% if product.metafields.custom.product_heck != blank %}\n                          <div class=\"row text-center align-items-center justify-content-center py-2\">\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">Сheck<\/p>\n                            <\/div>\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">{{ product.metafields.custom.product_heck }}<\/p>\n                            <\/div>\n                          <\/div>\n                        {% endif %}\n                        {% if product.metafields.custom.product_min_weight != blank %}\n                          <div class=\"row bg-light text-center align-items-center justify-content-center py-2\">\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">Min Weight<\/p>\n                            <\/div>\n                            <div class=\"col-6\">\n                              <p class=\"mb-0\">{{ product.metafields.custom.product_min_weight }}<\/p>\n                            <\/div>\n                          <\/div>\n                        {% endif %}\n                        <\/div>\n                      <\/div>\n                    <\/div>\n                  <\/div>"
+          }
+        }
+      },
+      "block_order": [
+        "product_content_Y7jDyk"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
     "main",
-    "related-products"
+    "related-products",
+    "product_additional_detail_4fm4y4"
   ]
 }
