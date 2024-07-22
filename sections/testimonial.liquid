@@ -26,11 +26,10 @@
                 <div class="ms-4 d-block">
                   <h4 class="text-dark">{{ block.settings.client_name }}</h4>
                   <p class="m-0 pb-3">{{ block.settings.client_profession }}</p>
-                  {%- if section.settings.star_rating != -1 -%}
+                  {%- if block.settings.star_rating != -1 -%}
                     <div class="d-flex pe-5">
                       {%- for i in (1..5) -%}
-                        {%- if i <= section.settings.star_rating -%}
-                          {{ section.settings.star_rating }}
+                        {%- if i <= block.settings.star_rating -%}
                           <i class="fas fa-star text-primary"></i>
                         {%- else -%}
                           <i class="fas fa-star"></i>
@@ -53,7 +52,7 @@
 {
   "name": "Testimonials Section",
   "enabled_on": {
-    "templates": ["index","page"]
+    "templates": ["index", "page"]
   },
   "settings": [
     {
