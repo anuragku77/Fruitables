@@ -221,7 +221,7 @@
             "client_name": "Client Name",
             "client_profession": "Profession",
             "client_image": "shopify:\/\/shop_images\/testimonial-1.jpg",
-            "star_ratingOne": 3
+            "star_rating": 4
           }
         },
         "client_section_WyVNrQ": {
@@ -231,7 +231,7 @@
             "client_name": "Client Name",
             "client_profession": "Profession",
             "client_image": "shopify:\/\/shop_images\/testimonial-1.jpg",
-            "star_ratingOne": 2
+            "star_rating": 3
           }
         }
       },
