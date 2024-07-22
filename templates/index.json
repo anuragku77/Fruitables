@@ -132,7 +132,7 @@
       "type": "feature-section",
       "settings": {
         "image_1": "shopify:\/\/shop_images\/featur-1.jpg",
-        "link_1": "",
+        "link_1": "shopify:\/\/products\/apple",
         "title_1": "Fresh Apples",
         "promotion_1": "20% OFF",
         "image_2": "shopify:\/\/shop_images\/featur-2.jpg",
