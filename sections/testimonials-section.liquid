@@ -29,8 +29,8 @@
                   {%- if section.settings.star_rating != -1 -%}
                     <div class="d-flex pe-5">
                       {%- for i in (1..5) -%}
-                        {{ section.settings.star_rating }}
                         {%- if i <= section.settings.star_rating -%}
+                          {{ section.settings.star_rating }}
                           <i class="fas fa-star text-primary"></i>
                         {%- else -%}
                           <i class="fas fa-star"></i>
