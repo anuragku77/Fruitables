@@ -210,6 +210,27 @@
       ],
       "settings": {
       }
+    },
+    "testimonial_bwnBBi": {
+      "type": "testimonial",
+      "blocks": {
+        "client_section_98mf3E": {
+          "type": "client_section",
+          "settings": {
+            "text": "",
+            "client_name": "",
+            "client_profession": "",
+            "star_rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "client_section_98mf3E"
+      ],
+      "settings": {
+        "testimonial_heading": "Our Testimonial",
+        "testimonial_content": "Our Client Saying!"
+      }
     }
   },
   "order": [
@@ -220,6 +241,7 @@
     "vegetable_shop",
     "custom_product_banner_tkktLp",
     "bestseller_product",
-    "store_fact_section_yj4wmA"
+    "store_fact_section_yj4wmA",
+    "testimonial_bwnBBi"
   ]
 }
