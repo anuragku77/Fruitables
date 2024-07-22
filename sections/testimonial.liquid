@@ -26,7 +26,7 @@
                 <div class="ms-4 d-block">
                   <h4 class="text-dark">{{ block.settings.client_name }}</h4>
                   <p class="m-0 pb-3">{{ block.settings.client_profession }}</p>
-                  {{ 'test' }}{{ section.settings.star_rating | json }}
+                  {{ 'test' }}{{ block.settings.star_rating | json }}
                   {%- if section.settings.star_rating != -1 -%}
                     <div class="d-flex pe-5">
                       {%- for i in (1..5) -%}
