@@ -214,15 +214,6 @@
     "testimonial_bwnBBi": {
       "type": "testimonial",
       "blocks": {
-        "client_section_98mf3E": {
-          "type": "client_section",
-          "settings": {
-            "text": "",
-            "client_name": "",
-            "client_profession": "",
-            "star_rating": 5
-          }
-        },
         "client_section_NDaDkh": {
           "type": "client_section",
           "settings": {
@@ -245,7 +236,6 @@
         }
       },
       "block_order": [
-        "client_section_98mf3E",
         "client_section_NDaDkh",
         "client_section_WyVNrQ"
       ],
