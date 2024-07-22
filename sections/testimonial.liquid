@@ -26,11 +26,11 @@
                 <div class="ms-4 d-block">
                   <h4 class="text-dark">{{ block.settings.client_name }}</h4>
                   <p class="m-0 pb-3">{{ block.settings.client_profession }}</p>
-                  {%- if section.settings.star_ratingOne != -1 -%}
+                  {%- if section.settings.star_rating != -1 -%}
                     <div class="d-flex pe-5">
                       {%- for i in (1..5) -%}
-                        {%- if i <= section.settings.star_ratingOne -%}
-                          {{ section.settings.star_ratingOne }}
+                        {%- if i <= section.settings.star_rating -%}
+                          {{ section.settings.star_rating }}
                           <i class="fas fa-star text-primary"></i>
                         {%- else -%}
                           <i class="fas fa-star"></i>
@@ -95,7 +95,7 @@
         },
         {
           "type": "range",
-          "id": "star_ratingOne",
+          "id": "star_rating",
           "min": -1,
           "max": 5,
           "label": "Star rating",
