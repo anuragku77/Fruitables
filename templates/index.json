@@ -227,11 +227,11 @@
         "client_section_zRHV39": {
           "type": "client_section",
           "settings": {
-            "text": "",
+            "text": "Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,",
             "client_name": "Client Name",
             "client_profession": "Profession",
             "client_image": "shopify:\/\/shop_images\/testimonial-1.jpg",
-            "star_rating": 4
+            "star_rating": 3
           }
         }
       },
