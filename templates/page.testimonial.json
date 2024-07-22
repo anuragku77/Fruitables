@@ -9,13 +9,6 @@
 */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
     "testimonial_DyxzLe": {
       "type": "testimonial",
       "blocks": {
@@ -51,7 +44,6 @@
     }
   },
   "order": [
-    "main",
     "testimonial_DyxzLe"
   ]
 }
