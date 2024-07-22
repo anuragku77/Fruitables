@@ -232,11 +232,22 @@
             "client_image": "shopify:\/\/shop_images\/testimonial-1.jpg",
             "star_rating": 4
           }
+        },
+        "client_section_WyVNrQ": {
+          "type": "client_section",
+          "settings": {
+            "text": "Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,",
+            "client_name": "Client Name",
+            "client_profession": "Profession",
+            "client_image": "shopify:\/\/shop_images\/testimonial-1.jpg",
+            "star_rating": 3
+          }
         }
       },
       "block_order": [
         "client_section_98mf3E",
-        "client_section_NDaDkh"
+        "client_section_NDaDkh",
+        "client_section_WyVNrQ"
       ],
       "settings": {
         "testimonial_heading": "Our Testimonial",
