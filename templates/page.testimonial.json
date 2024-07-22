@@ -15,9 +15,31 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "testimonial_DyxzLe": {
+      "type": "testimonial",
+      "blocks": {
+        "client_section_Tq43hd": {
+          "type": "client_section",
+          "settings": {
+            "text": "",
+            "client_name": "",
+            "client_profession": "",
+            "star_rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "client_section_Tq43hd"
+      ],
+      "settings": {
+        "testimonial_heading": "Our Testimonial",
+        "testimonial_content": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "testimonial_DyxzLe"
   ]
 }
