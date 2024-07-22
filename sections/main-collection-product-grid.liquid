@@ -242,7 +242,7 @@
                               {%- endif -%}
                             </div>
                         </div> {% endcomment %}
-                        {% if section.settings.image_banner != blank %}
+                        {% comment %} {% if section.settings.image_banner != blank %}
                             <div class="col-lg-12">
                               <div class="position-relative">
                                 <img
@@ -260,7 +260,7 @@
                                   </div>
                               </div>
                           </div>
-                        {%  endif %}
+                        {%  endif %} {% endcomment %}
                     {%- endif -%}
                   </div>
                 </div>
