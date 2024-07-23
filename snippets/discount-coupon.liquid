@@ -96,18 +96,23 @@
           e.preventDefault();
           clearDiscount();
         });
+  
       function clearDiscount() {
         discountCodeValue.innerHTML = '';
         discountCodeError.innerHTML = '';
         clearLocalStorage();
-        fetch('/discount/CLEAR');
+        fetch('/discount/CLEAR').then(() => {
+          window.location.reload();
+        });
       }
+  
       function clearLocalStorage() {
         if (discountCodeWrapper) discountCodeWrapper.style.display = 'none';
         if (appliedDiscountCode) appliedDiscountCode.style.display = 'none';
         if (totalCartSelector) totalCartSelector.innerHTML = JSON.parse(localStorage.discountCode).totalCart;
         localStorage.removeItem('discountCode');
       }
+  
       function applyDiscount(code) {
         if (applyBtn) {
           applyBtn.innerHTML = "APPLYING <div class='loader'></div>";
@@ -179,6 +184,7 @@
                       if (totalCartSelector)
                         totalCartSelector.innerHTML =
                           '<s>' + data.checkout.total_line_items_price + '</s>' + data.checkout.total_price;
+                      window.location.reload();
                     } else {
                       if (discountCodeValue) discountCodeValue.innerHTML = '';
                       clearLocalStorage();
