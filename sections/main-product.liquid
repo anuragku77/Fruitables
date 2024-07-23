@@ -123,6 +123,11 @@
                             -%}
                           </div>
                         </h5>
+                        <div class="d-flex my-3">
+                          <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                            {{ product.metafields.judgeme.badge }}
+                          </div>
+                        </div>
                         {%- if product.quantity_price_breaks_configured? -%}
                           <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                             <span>{{ 'products.product.volume_pricing.note' | t }}</span>
@@ -824,9 +829,8 @@
                       </div>
                     </div>
                     <div class="d-flex mb-2">
-                      <h5 class="fw-bold me-2">{{ product.price | money_without_trailing_zeros }}</h5>
-                      <h5 class="text-danger text-decoration-line-through">
-                        {{ product.variants.first.compare_at_price | money_without_trailing_zeros }}
+                      <h5 class="fw-bold me-2">
+                        {% render 'price', product: product, price_class: '', show_compare_at_price: true %}
                       </h5>
                     </div>
                   </div>
