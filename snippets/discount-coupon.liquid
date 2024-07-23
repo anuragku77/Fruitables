@@ -119,7 +119,7 @@
       discountCodeValue.innerHTML = "";
       discountCodeError.innerHTML = "";
       clearLocalStorage();
-      fetch("/checkout?discount=%20");
+      fetch("/discount/CLEAR");
     }
     function clearLocalStorage() {
       if(discountCodeWrapper) discountCodeWrapper.style.display = "none";
