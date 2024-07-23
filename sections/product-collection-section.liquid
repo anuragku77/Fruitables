@@ -68,7 +68,7 @@
                                 class="btn border border-secondary rounded-pill px-3 text-primary"
                                 ><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a
                               > {% endcomment %}
-                                {% render 'qu' %}
+                                {% render 'quick-add' %}
                             </div>
                           </div>
                         </div>
@@ -110,11 +110,12 @@
                             <p>{{ product.description }}</p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
                               <p class="text-dark fs-5 fw-bold mb-0">{{ product.price | money }} / kg</p>
-                              <a
+                              {% comment %} <a
                                 onclick="addToCart({{ product.selected_or_first_available_variant.id }})"
                                 class="btn border border-secondary rounded-pill px-3 text-primary"
                                 ><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a
-                              >
+                              > {% endcomment %}
+                              {% render 'quick-add' %}
                             </div>
                           </div>
                         </div>
