@@ -1,0 +1,548 @@
+Skip to content
+ 
+Search Gists
+Search...
+All gists
+Back to GitHub
+@elghorfi
+elghorfi/snippet-gf-discount-code-updated.liquid
+Last active 20 hours ago • Report abuse
+Code
+Revisions
+18
+Stars
+14
+Forks
+7
+Clone this repository at &lt;script src=&quot;https://gist.github.com/elghorfi/ce7e5b1080aae37d0a415643f33bc79e.js&quot;&gt;&lt;/script&gt;
+<script src="https://gist.github.com/elghorfi/ce7e5b1080aae37d0a415643f33bc79e.js"></script>
+snippet-gf-discount-code-updated.liquid
+{%comment%}
+#############################################
+#  Mohamed El-Ghorfi Discount Code on Cart  #
+#                  [UPDATED]                #
+#############################################
+# Paypal Me: https://paypal.me/elghorfimed  #
+#              Buy Me A Coffee:             #
+#    https://www.buymeacoffee.com/elghorfi  #
+############################################# 
+#           elghorfi.med@gmail.com          #
+#############################################
+{%endcomment%}
+
+<style>
+  .cart-sidebar-discount {
+    display: flex;
+    flex-direction: column;
+    width:300px;
+    margin: 20px auto;
+  }
+  .cart-sidebar-discount input {
+    margin-top:20px;
+    background: #eee;
+    border: 1px solid #eee;
+    height:50px;
+    outline: none;
+    font-size: 18px;
+    letter-spacing: .75px;
+    text-align: center;
+  }
+  #apply-discount-btn {
+    background-color: #000;
+    color:#fff;
+    border: 0;
+    height: 60px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .75px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  span.applied-discount-code-value>small {
+    background: #eee;
+    padding: 0px 10px;
+    color: #000;
+    font-weight: bold;
+    border-radius: 20px;
+  }
+  .loader {
+    border: 5px solid #f3f3f3;
+    border-top: 4px solid #000;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    animation: spin .5s linear infinite;
+  }
+  #discount-code-error {
+    background: #ff00004f;
+    color: #e22120;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1;
+  }
+  .applied-discount-code-wrapper {
+    display: none;
+    background: #ddd;
+    padding: 3px 6px;
+    border-radius: 25px;
+  }
+  .applied-discount-code-value {
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  
+  #discount-code-error:empty {
+    display: none;
+  }
+  .applied-discount-code-value:empty+button {
+    display: none;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+<div class="cart-sidebar-discount">
+  <span id="applied-discount-code">
+    Discount Code:
+    <span class="applied-discount-code-wrapper">
+      <span class="applied-discount-code-value"></span>
+      <button id="clear-discount-btn">X</button>
+    </span>
+  </span>
+  <small id="discount-code-error"></small>
+  <input type="text" id="discount-code-input" autocomplete="on" value="">
+  <button id="apply-discount-btn">APPLY</button>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+  let clearBtn = document.querySelector("#clear-discount-btn");
+  let applyBtn = document.querySelector("#apply-discount-btn");
+  let discountCodeError = document.querySelector("#discount-code-error");
+  let discountCodeWrapper = document.querySelector("#applied-discount-code .applied-discount-code-wrapper");
+  let discountCodeValue = document.querySelector("#applied-discount-code .applied-discount-code-value");
+  let discountCodeInput = document.querySelector("#discount-code-input");
+  let totalCartSelector = document.querySelector(".cart__subtotal .money"); // Total Cart Selector to update the total amount. 
+  let authorization_token;
+  
+  let checkoutContainer = document.createElement('div');
+  document.body.appendChild(checkoutContainer);
+  if (localStorage.discountCode) applyDiscount( JSON.parse(localStorage.discountCode).code);
+  if(applyBtn)
+  applyBtn.addEventListener("click", function(e){
+    e.preventDefault()
+    applyDiscount(discountCodeInput.value);
+  });
+  if(clearBtn)
+  clearBtn.addEventListener("click", function(e){
+    e.preventDefault()
+    clearDiscount();
+  });
+  function clearDiscount() {
+    discountCodeValue.innerHTML = "";
+    discountCodeError.innerHTML = "";
+    clearLocalStorage();
+    fetch("/checkout?discount=%20");
+  }
+  function clearLocalStorage() {
+    if(discountCodeWrapper) discountCodeWrapper.style.display = "none";
+    if(totalCartSelector) totalCartSelector.innerHTML = JSON.parse(localStorage.discountCode).totalCart;
+    localStorage.removeItem("discountCode");
+  }
+  function applyDiscount(code) {
+    if(applyBtn) {
+      applyBtn.innerHTML = "APPLYING <div class='loader'></div>";
+      applyBtn.style.pointerEvents = "none";
+    }
+    fetch("/payments/config", {"method": "GET"})
+    .then(function(response) { return response.json() })
+    .then(function(data) {
+        const checkout_json_url = '/wallets/checkouts/';
+        authorization_token = btoa(data.paymentInstruments.accessToken)
+        fetch('/cart.js', {}).then(function(res){return res.json();})
+        .then(function(data){
+        let body = {"checkout": { "country": Shopify.country,"discount_code": code,"line_items": data.items, 'presentment_currency': Shopify.currency.active } }
+        fetch(checkout_json_url, {
+          "headers": {
+            "accept": "*/*", "cache-control": "no-cache",
+            "authorization": "Basic " + authorization_token,
+            "content-type": "application/json, text/javascript",
+            "pragma": "no-cache", "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors", "sec-fetch-site": "same-origin"
+          },
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "method": "POST", "mode": "cors", "credentials": "include",
+          "body": JSON.stringify(body)
+      })
+      .then(function(response) { return response.json() })
+      .then(function(data) {
+        console.log(data.checkout);
+        if(data.checkout && data.checkout.applied_discounts.length > 0){
+          let discountApplyUrl = "/discount/"+code+"?v="+Date.now()+"&redirect=/checkout/";
+          fetch(discountApplyUrl, {}).then(function(response) { return response.text(); })
+          if(discountCodeWrapper) discountCodeWrapper.style.display = "inline";
+          if(discountCodeError) discountCodeError.innerHTML = "";
+          if(discountCodeValue) discountCodeValue.innerHTML = data.checkout.applied_discounts[0].title + " (" + data.checkout.applied_discounts[0].amount + ' ' + Shopify.currency.active + ")";
+          let localStorageValue = {
+            'code': code.trim(),
+            'totalCart': data.checkout.total_line_items_price
+          };
+          localStorage.setItem("discountCode", JSON.stringify(localStorageValue));
+          if(totalCartSelector) totalCartSelector.innerHTML = "<s>" + data.checkout.total_line_items_price + "</s>" + data.checkout.total_price;
+        }else{
+          if(discountCodeValue) discountCodeValue.innerHTML = "";
+          clearLocalStorage();
+          if(discountCodeError) discountCodeError.innerHTML = "Please Enter Valid Coupon Code."
+        }
+      }).finally(function(params) {
+        if(applyBtn){
+          applyBtn.innerHTML = "APPLY";
+          applyBtn.style.pointerEvents = "all";
+        }
+    });
+    });
+  });
+}
+});
+</script>
+Load earlier comments...
+@elghorfi
+Author
+elghorfi commented on May 16, 2023
+@samo1508 can you reach out to me via email, attach your store url with those coupon codes, and I will check that
+
+@samo1508
+samo1508 commented on May 16, 2023
+OK. I send you email...
+
+@bekahmcdonald
+bekahmcdonald commented on Aug 3, 2023
+@elghorfi Thank you so much for sharing this. How did you come across these endpoints? I can't find documentation on them anywhere!
+
+/discount/...
+/payments/config
+/wallets/checkouts
+@muraliavarma
+muraliavarma commented on Aug 7, 2023
+First of all, amazing work finding all these endpoints! My question is - what is the point of the last step where you redirect to /discount/code=...&redirect=/checkout/? Is that to attach the discount code to the current cart session?
+
+@elghorfi
+Author
+elghorfi commented on Aug 8, 2023
+@muraliavarma Basically yes, it's to apply the discount, and then we check if the discount is applied.
+
+@elghorfi
+Author
+elghorfi commented on Aug 8, 2023
+@bekahmcdonald well, you'll not find it, cuz it's not official from Shopify, we just hack the system! (well, not literary hacking)
+
+@jabel-riera
+jabel-riera commented on Aug 26, 2023
+Hi @elghorfi,
+
+First of all, thanks a lot for this snippet. It has come really handy in times of need. Not sure if you prefer us to leave a comment here or contact you any other way.
+
+We are facing a problem however because the discount seems that is being applied to the items and cart subtotal prices. For example, we have an item which costs 51$ so a 10OFF coupon would be a 5,1$ discount, however it is applying a 4,3$ discount.
+
+I have checked the store settings but everything seems fine (Prices include VAT and there is no override in that config from the Shopify Markets admin). It would be really helpful if you can help us narrow this down so we can have it fixed.
+
+Happy to by not one but several coffees once it's fixed :)
+
+@elghorfi
+Author
+elghorfi commented on Aug 26, 2023 • 
+@jabel-riera thank you for your reply.
+Kindly contact me Here I'll be glad to help.
+
+@Jainishsakhidas
+Jainishsakhidas commented on Sep 10, 2023
+How do I remove the applied discount coupon, the clearDiscount() doesn't work
+
+@elghorfi
+Author
+elghorfi commented on Sep 11, 2023
+@Jainishsakhidas can you share your store preview link
+
+@tamburyn
+tamburyn commented on Sep 27, 2023 • 
+Hi @elghorfi I have the same problem. after adding a coupon, the button doesn't change the name to clear and I don't see the option to remove the coupon - I can only do it after passing the checkout using stripe.
+
+another problem is that after adding the wrong code does not display error.
+
+website preview mode: https://bangproof.myshopify.com/cart password: ohfroh - please use promo code VALID for testing
+
+@WeimingSuVego
+WeimingSuVego commented on Oct 19, 2023
+How do I remove the applied discount coupon, the clearDiscount() doesn't work
+
+Eventhough the fetch("/checkout?discount=%20"); invoked, the discount actually still works on the cart when you refresh your page or go to checkout page. Can you help us check the issue?
+@elghorfi
+
+@mo-bai
+mo-bai commented on Oct 19, 2023
+I'm curious to know how the interface '/wallets/checkouts/' is known, I didn't find anything about it in the official documentation. @elghorfi
+
+@elghorfi
+Author
+elghorfi commented on Oct 19, 2023
+Thank you for replying, please reach out to me via email, with all the details and I will be glad to support you!
+
+@Bucck7
+Bucck7 commented on Oct 26, 2023
+I've made some improvements to the script, and it now showcases enhanced functionality:
+
+The coupon is recalculated whenever the quantity of products in the cart is updated.
+The applied discount is clearly displayed in the cart.
+The total value is recalculated when the coupon is removed.
+Various other modifications were implemented during testing.
+It's worth mentioning that some comments are in Portuguese. Also, I changed the currency formatting to Brazilian real using JavaScript. I acknowledge that I could have retrieved this information directly from Shopify. If preferred, this modification can be removed.
+
+Currently, I'm facing challenges in automatically populating the coupon field when users access the URL store.com/discount/code.
+
+Here's the link: https://cdn.shopify.com/s/files/1/0613/9455/0952/files/discount.txt?v=1698271402
+discount
+
+@elghorfi
+Author
+elghorfi commented on Oct 26, 2023
+I've made some improvements to the script, and it now showcases enhanced functionality:
+
+The coupon is recalculated whenever the quantity of products in the cart is updated. The applied discount is clearly displayed in the cart. The total value is recalculated when the coupon is removed. Various other modifications were implemented during testing. It's worth mentioning that some comments are in Portuguese. Also, I changed the currency formatting to Brazilian real using JavaScript. I acknowledge that I could have retrieved this information directly from Shopify. If preferred, this modification can be removed.
+
+Currently, I'm facing challenges in automatically populating the coupon field when users access the URL store.com/discount/code.
+
+Here's the link: https://cdn.shopify.com/s/files/1/0613/9455/0952/files/discount.txt?v=1698271402 discount
+Good work,
+do you mind sharing your store URL with theme ID that has the snippet installed on so I can test it.
+
+@Bucck7
+Bucck7 commented on Oct 26, 2023
+Good work,
+do you mind sharing your store URL with theme ID that has the snippet installed on so I can test it.
+
+Of course, here is the url: https://acausto.com/?_ab=0&_fd=0&_sc=1&preview_theme_id=133593858216
+
+Coupons to test: nsued or marcosvaz
+
+A part of the code that I did not include in the txt is the HTML to display the values
+<span class="myclassdiscount" data-cart-discount-value>0,00</span>
+<span class="myclasstvalue" data-cart-total-value>0,00</span>
+
+@pur100
+pur100 commented on Oct 30, 2023
+Hello @elghorfi !
+Thanks for all the work !
+Since discount codes are now stackable, do you believe this code can be adapted so that multiple discount can be added ?
+Thanks
+
+@MaxDesignFR
+MaxDesignFR commented on Dec 7, 2023 • 
+Great piece of work (but I think less is more). I do it with a more simple approach but I'm curious what could be some advantages of the method exposed here?
+
+I will explain my way in a super simplified way. This is an html cart (inside a section):
+
+{% assign is_manual_discount_applied = cart.discount_applications | where: 'type', 'discount_code' %}
+
+<cart-foo {% if is_manual_discount_applied != blank %}manual-discount{% endif %}>
+   ...
+  {%- for discount_application in cart.discount_applications -%}
+     {{ discount_application.title }}: − {{ discount_application.total_allocated_amount | money }}
+  {%- endfor -%}
+   ...
+</cart-foo>
+And for the JS code:
+
+Call /discount API with code variable
+Fetch and replace the html cart dynamically
+Check if attribute manual-discount exist in the new cart
+The manual-discount attribute:
+- Exist: means the code was applied, job done!
+- Do not exist: means the code is not valid (you can show an error message)
+fetch(`/discount/${input.value}`).then(async () => {
+   // update cart
+   const data = await fetch(`/cart?section_id=${sectionId}`).then(response => response.text());
+   const newCart = new DOMParser().parseFromString(data, 'text/html').querySelector('cart-foo');
+   document.querySelector('cart-foo').replaceWith(newCart);
+  
+  // error handling if manual discount is not applied
+  if (!document.querySelector('cart-foo').hasAttribute('manual-discount')) {
+    ...
+  }
+});
+Obviously it's over simplified, I added some complexities for myself but that's the gist of it, all in a single call and 100% compatible with liquid discount_allocation and discount_application objects. One advantage I could see with @elghorfi way is that you could access the exact error message in case it fails. But even in my case, I could output two types of errors:
+
+Discount code does not exist or isn't valid for the items in your cart
+Discount code does not exist or could not be used with your existing (automatic) discounts.
+Let me know your thoughts, and really I'm curious if those endpoints (/payments/config and /wallets/checkout) really bring more value here?
+
+@TemurbekRuziyev
+TemurbekRuziyev commented on Dec 29, 2023
+Hello @elghorfi Thank you for your great code
+May I ask if this is secure? I mean there are some kind of tokens in here so I just wonder about the security
+
+@prgmtc-flx
+prgmtc-flx commented on Feb 28
+@elghorfi nice work! Does this snippet now work with multiple discount codes? :)
+
+@ddegroot1985
+ddegroot1985 commented on Apr 16
+Great piece of work (but I think less is more). I do it with a more simple approach but I'm curious what could be some advantages of the method exposed here?
+
+I will explain my way in a super simplified way. This is an html cart (inside a section):
+
+{% assign is_manual_discount_applied = cart.discount_applications | where: 'type', 'discount_code' %}
+
+<cart-foo {% if is_manual_discount_applied != blank %}manual-discount{% endif %}>
+   ...
+  {%- for discount_application in cart.discount_applications -%}
+     {{ discount_application.title }}: − {{ discount_application.total_allocated_amount | money }}
+  {%- endfor -%}
+   ...
+</cart-foo>
+And for the JS code:
+
+Call /discount API with code variable
+Fetch and replace the html cart dynamically
+Check if attribute manual-discount exist in the new cart
+The manual-discount attribute:
+- Exist: means the code was applied, job done!
+- Do not exist: means the code is not valid (you can show an error message)
+fetch(`/discount/${input.value}`).then(async () => {
+   // update cart
+   const data = await fetch(`/cart?section_id=${sectionId}`).then(response => response.text());
+   const newCart = new DOMParser().parseFromString(data, 'text/html').querySelector('cart-foo');
+   document.querySelector('cart-foo').replaceWith(newCart);
+  
+  // error handling if manual discount is not applied
+  if (!document.querySelector('cart-foo').hasAttribute('manual-discount')) {
+    ...
+  }
+});
+Obviously it's over simplified, I added some complexities for myself but that's the gist of it, all in a single call and 100% compatible with liquid discount_allocation and discount_application objects. One advantage I could see with @elghorfi way is that you could access the exact error message in case it fails. But even in my case, I could output two types of errors:
+
+Discount code does not exist or isn't valid for the items in your cart
+Discount code does not exist or could not be used with your existing (automatic) discounts.
+Let me know your thoughts, and really I'm curious if those endpoints (/payments/config and /wallets/checkout) really bring more value here?
+
+This method looks a lot cleaner but how do you detect different types of errors?
+
+@MaxDesignFR
+MaxDesignFR commented on Apr 16 • 
+@ddegroot1985 I believe there is still room for improvement in my own code. First of all, we could use /checkout/code1,code2,... instead of /discount/code1 to be able to handle multiple discounts and not erase currently applied manual discounts.
+
+For the error handling, my way is more of a workaround than anything else... You see in 4., I check if a manual discount is applied. If yes, it (most likely) worked, if not, you can display 2 types of errors, either:
+
+if {{ cart.total_discount > 0 }}: [code] discount code does not exist or could not be used with your existing discounts.
+else: [code] discount code does not exist or isn't valid for the items in your cart.
+That's not perfect by any mean, but it's not easy to get it right without any documentation. I've also started exploring /wallets/checkouts/ which is most likely the way to go, here's some code I've been playing around with, but haven't implemented into a full working solution yet, I believe this could be used in combination with /checkout/code1,code2,.... Feel free to share if you come up with more:
+
+async playgroud() {
+   const discount = 'code1';
+   const shopify_features_script = document.querySelector("script[id='shopify-features']");
+   const shopify_features_json = JSON.parse(shopify_features_script.innerHTML);
+   const cart = await fetch(`${Shopify.routes.root}cart.js`).then(response => response.json());
+   const headers = {
+      Authorization: 'Basic ' + btoa(shopify_features_json.accessToken),
+      Accept: '*/*',
+      'Content-Type': 'application/json',
+    };
+    const body = {
+      checkout: {
+        line_items: cart.items,
+        discount_code: discount,
+        country: Shopify.country,
+        presentment_currency: cart.currency,
+      },
+    };
+    const wallet = await fetch('/wallets/checkouts/', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+      referrerPolicy: 'no-referrer',
+    });
+    const response = await wallet.json();
+    console.log('🚀 ~ response:', response);
+}
+@ddegroot1985
+ddegroot1985 commented on Apr 18
+@MaxDesignFR Thank you for those insights, I have been playing with it this past two days and believe I have a pretty decent solution. It is not 100% bullet proof yet. As far as I can tell the /wallets/checkouts/ endpoint seems some sort of pre-flight validation check to see if the discount code can be applied. Unfortunately as far as I can tell this only works for single discounts, it does not return any errors when trying to apply a discount that does not stack with an already applied discount.
+
+Applying multiple discounts is possible using fetch(`${Shopify.routes.root}checkout?discount=${[newDiscountCode, ...alreadyAppliedDiscounts].join(',')}&=${Date.now()}`);
+
+This seems to never return any errors, even when no discounts are applied so you still have to check if the discount is actually applied. So far the best way I found is by creating a application/json script tag in the html when re-rendering the section, parsing that and cross referencing that with the code that was just added.
+
+@MaxDesignFR
+MaxDesignFR commented on Apr 18 • 
+As far as I can tell the /wallets/checkouts/ endpoint seems some sort of pre-flight validation check to see if the discount code can be applied
+
+Something like that. In my testing, it seems it can be more than that though. For instance, you could verify a shipping discount with /wallets/checkouts/ to pre-apply it in cart page, whereas /checkout/ won't let you know if this shipping discount even exist (since shipping discount can't be outputed with liquid, while order and product discounts can). Less popular, but nevertheless can't be ignored.
+
+I also have not tried gift card codes. Those are technically processed as payment methods and not discount codes, so they can't be outputed with liquid in cart page. If /wallets/checkouts/ can verify those, then it's one more thing /checkout/ can't do. I have no idea, but that's something worth checking.
+
+And lastly, I have sometimes noticed issue where fetching /checkout/ + re-rendering cart section can be prone to error when called multiple times in a row. My guess is that Shopify starts caching the cart section after a while, and at some point it will not be in sync with newly added or removed discounts, it's confusing when it happens. To edge against this scenario, the cart could be updated (line item quantity, random cart attribute or cart note). I have not checked if fetching /wallets/checkouts/ before fetching /checkout/ avoids this caching issue.
+
+Those are a few things I have noticed and still need to investigate more, let me know if you find out more, it's a tedious process for sure ;)
+
+@ddegroot1985 what's the reason for this parameter &=${Date.now()}?
+
+@pramathesh
+pramathesh commented on Apr 30
+This worked flawlessly for me on Dawn 14.0.0. However, the cart amount is not updated to factor the coupon discount unless the page is refreshed, any workaround for that? Same for when the coupon is deleted, the cart value still shows the discounted amount until the page is refreshed.
+
+@esangcap
+esangcap commented 3 weeks ago • 
+Hi @elghorfi This works perfectly fine on our store but the problem is we lately had an issue on mobile device. When user inputs discount code and clicks apply, nothing happens. This only happens on mobile devices, but works fine on desktop. It's so weird. Please help
+
+@elghorfi
+Author
+elghorfi commented 3 weeks ago
+hey everyone,
+
+Thank you for contributing to this.
+If you need any assistance, please reach out to me, so I can help you with that,
+
+@OS4
+OS4 commented 2 weeks ago • 
+This works partially with Dawn 14. The code is applied, but I see 403 being returned by the call to /cart/change and /checkouts/cn/Z2NwLWV1cm9wZS13ZXN0MTowMUoyQkZGWjlCODZSRVpXVFE5NzNFR1lNRA?v=1720531825116.
+
+The coupon removal doesn't work at all and a 403 is seen here as well, /checkouts/cn/Z2NwLWV1cm9wZS13ZXN0MTowMUoyQkZGWjlCODZSRVpXVFE5NzNFR1lNRA?discount=
+
+Also, the coupon keeps coming back. Go to checkout and remove the coupon. Click on the cart icon, no coupon. Refresh the page and the coupon comes back.
+
+And the coupon can take up to 3 or 4 attempts to finally stick!
+
+@ThomasB-Sunology
+ThomasB-Sunology commented 20 hours ago • 
+@OS4 I found a solution for the coupon removal :
+
+Replace :
+fetch("/checkout?discount=%20");
+
+By this :
+fetch("/discount/CLEAR");
+
+@anuragku77
+Comment
+ 
+Leave a comment
+ 
+Footer
+© 2024 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact
+Manage cookies
+Do not share my personal information
