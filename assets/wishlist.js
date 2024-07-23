@@ -1,6 +1,3 @@
-Instruction:
-1. Create a "wishlist.js" file in Assets folder then put this code
-
 // Function to fetch wishlist items from local storage
 function getWishlistFromLocalStorage() {
   const previousProduct = localStorage.getItem("wishListAdd");
