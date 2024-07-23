@@ -424,6 +424,23 @@
           }
         }
       }
+
+      function searchFilterPlp() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('filterSearchKeywords');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("main-collection-product-grid");
+        li = ul.getElementsByTagName('li');
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      }
     </script>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" defer></script>
