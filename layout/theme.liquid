@@ -410,9 +410,9 @@
     <script>
       function searchFilterPdp() {
         var input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById('filterSearchKeywords');
+        input = document.getElementById('filterSearchKeywords_pdp');
         filter = input.value.toUpperCase();
-        ul = document.getElementById("main-collection-product-grid");
+        ul = document.getElementById("main-collection-product-grid_");
         li = ul.getElementsByTagName('li');
         for (i = 0; i < li.length; i++) {
           a = li[i].getElementsByTagName("a")[0];
