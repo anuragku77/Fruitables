@@ -29,16 +29,17 @@
           "settings": {
           }
         },
+        "rating_jAhRtf": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
-          }
-        },
-        "rating_jAhRtf": {
-          "type": "rating",
-          "settings": {
           }
         },
         "description": {
@@ -70,8 +71,8 @@
         "title",
         "vendor",
         "price",
-        "variant_picker",
         "rating_jAhRtf",
+        "variant_picker",
         "description",
         "custom_liquid_fQHJjp",
         "quantity_selector",
