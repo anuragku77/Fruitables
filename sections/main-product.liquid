@@ -123,6 +123,11 @@
                             -%}
                           </div>
                         </h5>
+                        <div class="d-flex my-3">
+                          <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                            {{ product.metafields.judgeme.badge }}
+                          </div>
+                        </div>
                         {%- if product.quantity_price_breaks_configured? -%}
                           <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                             <span>{{ 'products.product.volume_pricing.note' | t }}</span>
