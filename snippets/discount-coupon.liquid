@@ -86,7 +86,9 @@
   
       if (localStorage.discountCode && !discountApplied) {
         sessionStorage.setItem('discountApplied', 'true');
-        applyDiscount(JSON.parse(localStorage.discountCode).code, true);
+        let discountCode = JSON.parse(localStorage.discountCode);
+        applyDiscount(discountCode.code, true);
+        applyBtn.innerText = 'Remove Coupon';
       }
   
       if (applyBtn) {
@@ -190,7 +192,6 @@
                           '<s>' + data.checkout.total_line_items_price + '</s>' + data.checkout.total_price;
                       if (!isReload) {
                         applyBtn.innerText = 'Remove Coupon';
-                        applyBtn.style.pointerEvents = 'all';
                       }
                     } else {
                       if (discountCodeValue) discountCodeValue.innerHTML = '';
@@ -199,9 +200,12 @@
                     }
                   })
                   .finally(function (params) {
-                    if (applyBtn && !isReload) {
+                    if (applyBtn) {
                       applyBtn.innerHTML = 'Apply Coupon';
                       applyBtn.style.pointerEvents = 'all';
+                      if (!isReload && discountCodeValue.innerHTML) {
+                        applyBtn.innerText = 'Remove Coupon';
+                      }
                     }
                   });
               });
