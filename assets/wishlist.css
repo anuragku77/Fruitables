@@ -1,4 +1,4 @@
-.wishlist_count_number {
+/* .wishlist_count_number {
   position: absolute;
   background-color: rgb(var(--color-button));
   color: rgb(var(--color-button-text));
@@ -12,7 +12,7 @@
   bottom: 0.8rem;
   left: 2.5rem;
   line-height: calc(1 + 0.1 / var(--font-body-scale));
-}
+} */
 
 .wishlist_btn {
   position: absolute;
