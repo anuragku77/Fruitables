@@ -1,0 +1,504 @@
+Instruction:
+1. Create a "wishlist.liquid" file in seaction folder then put this code
+
+<style>
+  .wishlist_section_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px 15px;
+  }
+  .skeleton_animation {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loadingAnimation 1.5s infinite;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @keyframes loadingAnimation {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  /* product quick view  */
+  .product_name {
+    width: 200px;
+    height: 200px;
+    margin-top: 100px;
+    margin-bottom: 500px;
+  }
+  .wishlist_product_container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    row-gap: 4px;
+    margin-bottom: 150px;
+    margin-top: 50px;
+    column-gap: 4px;
+  }
+  .skeleton_container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    row-gap: 4px;
+    margin-bottom: 150px;
+    margin-top: 50px;
+    column-gap: 4px;
+  }
+  .single_wishlist_product {
+    position: relative;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 90%);
+    z-index: 1;
+    overflow: hidden;
+  }
+  .wishlist_product_name {
+    position: relative;
+    font-size: 13px;
+  }
+  .wishlist_product_price {
+    font-size: 16px;
+  }
+
+  .single_wishlist_product:hover .wishlist_product_name {
+    text-decoration: underline;
+  }
+  .wishlist_product_img {
+    transition: all 0.3s linear;
+  }
+  .wishlist_product_img {
+    transform: scale(1);
+    overflow: hidden;
+  }
+  .single_wishlist_product:hover .wishlist_product_img {
+    transform: scale(1.02);
+  }
+
+  .remove_wishlist_icon {
+    height: 40px;
+    width: 40px;
+    /* background-color: rgb(255, 255, 255); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+  }
+
+  svg {
+    display: flex;
+  }
+  .empty_wishlist_message_wrapper {
+    display: none;
+    margin-bottom: 170px;
+    margin-top: 7rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .empty_wishlist_message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .view_details_button {
+    padding: 5px 10px;
+  }
+  .wishlist_product_information_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 13px 0px;
+  }
+  .wishlist_product_img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: -10;
+    height: 200px;
+  }
+  .wishlist_product_info_wrapper {
+    text-decoration: none;
+    color: unset;
+  }
+  .wishlist_product_compare_price {
+    font-size: 13px;
+  }
+  .title_wrapper_with_link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wishlist_empty_text_ {
+    margin: 0px 0px 3rem 0px;
+  }
+  .skeleton {
+    visibility: hidden;
+  }
+
+  @media screen and (min-width: 500px) {
+    .wishlist_product_container {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .skeleton_container {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    @media screen and (min-width: 749px) {
+      .wishlist_section_container {
+        padding: 0px 50px;
+      }
+      .wishlist_product_container {
+        row-gap: 8px;
+        column-gap: 8px;
+      }
+      .skeleton_container {
+        row-gap: 8px;
+        column-gap: 8px;
+      }
+    }
+  }
+  @media screen and (min-width: 800px) {
+    .wishlist_product_container {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+    .skeleton_container {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+  @media screen and (min-width: 1124px) {
+    .wishlist_product_container {
+      grid-template-columns: repeat(4, 1fr) !important;
+    }
+    .skeleton_container {
+      grid-template-columns: repeat(4, 1fr) !important;
+    }
+  }
+</style>
+<div class="page-width wishlist_page_heading">
+  <div class="title_wrapper_with_link">
+    <h1 class="title title--primary">Your Wishlist</h1>
+    <a href="{{ routes.all_products_collection_url }}" class="underlined-link">
+      {{- 'general.continue_shopping' | t -}}
+    </a>
+  </div>
+</div>
+<div class="skeleton_container" style="display:none !important"></div>
+<div
+  class="wishlist_section_container wishlist_product_container"
+  shop-currency="{{ shop.money_format }}"
+  currency-data="{{ shop.currency }}"
+></div>
+<div class="text-center mt-5 txt empty_wishlist_message_wrapper">
+  <div class="cart__warnings empty_wishlist_message">
+    <h1 class="cart__empty-text-wishlist">Your Wishlist is empty</h1>
+    <a href="{{ routes.all_products_collection_url }}" class="button"> Continue shopping </a>
+
+    {%- if shop.customer_accounts_enabled and customer == null -%}
+      <h2 class="cart__login-title">{{ 'sections.cart.login.title' | t }}</h2>
+      <p class="cart__login-paragraph">
+        {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+      </p>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // money format
+    let formatMoney = function (cents, format) {
+      if (typeof cents == 'string') {
+        cents = cents.replace('.', '');
+      }
+      var value = '';
+      var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+      var formatString = format || this.money_format;
+
+      function defaultOption(opt, def) {
+        return typeof opt == 'undefined' ? def : opt;
+      }
+
+      function formatWithDelimiters(number, precision, thousands, decimal) {
+        precision = defaultOption(precision, 2);
+        thousands = defaultOption(thousands, ',');
+        decimal = defaultOption(decimal, '.');
+
+        if (isNaN(number) || number == null) {
+          return 0;
+        }
+
+        number = (number / 100.0).toFixed(precision);
+
+        var parts = number.split('.'),
+          dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands),
+          cents = parts[1] ? decimal + parts[1] : '';
+
+        return dollars + cents;
+      }
+
+      switch (formatString.match(placeholderRegex)[1]) {
+        case 'amount':
+          value = formatWithDelimiters(cents, 2);
+          break;
+        case 'amount_no_decimals':
+          value = formatWithDelimiters(cents, 0);
+          break;
+        case 'amount_with_comma_separator':
+          value = formatWithDelimiters(cents, 2, '.', ',');
+          break;
+        case 'amount_no_decimals_with_comma_separator':
+          value = formatWithDelimiters(cents, 0, '.', ',');
+          break;
+      }
+
+      return formatString.replace(placeholderRegex, value);
+    };
+
+    // Function to remove an item from local storage by its value
+    function removeFromLocalStorage(valueToRemove) {
+      const getLocalItem = localStorage.getItem('wishListAdd');
+      const GetArrayLocalItem = JSON.parse(getLocalItem);
+
+      // Item to remove
+      var itemToRemove = valueToRemove;
+
+      // Find the index of the item in the array
+      var indexToRemove = GetArrayLocalItem.indexOf(itemToRemove);
+
+      // Check if the item is in the array before removing
+      if (indexToRemove !== -1) {
+        // Use splice to remove the item
+        GetArrayLocalItem.splice(indexToRemove, 1);
+
+        const updateWishList = JSON.stringify(GetArrayLocalItem);
+        localStorage.setItem('wishListAdd', updateWishList);
+
+        const previousProduct = localStorage.getItem('wishListAdd');
+        const previousLocalStorage = JSON.parse(previousProduct);
+
+        document.querySelector('.wishlist_count_number').textContent = `${previousLocalStorage.length}`;
+        if (previousLocalStorage.length === 0) {
+          const wishlist_count_number = document.querySelector('.wishlist_count_number');
+          wishlist_count_number.style.setProperty('display', 'none', 'important');
+          updateEmptyWishlistVisibility();
+        }
+      } else {
+        console.log('Item not found in the array');
+      }
+    }
+
+    // Function to handle the click event on remove buttons
+    function handleRemoveButtonClick(removeButton) {
+      const productRemoveKey = removeButton.getAttribute(`product-handle-wishlist`);
+
+      removeFromLocalStorage(productRemoveKey);
+
+      const removeItem = removeButton.closest('.single_wishlist_product');
+      removeItem.remove();
+
+      const wishlistCount = document.querySelector('.wishlist_count_number');
+      const emptyWishlistMessage = document.querySelector('.empty_wishlist_message');
+
+      const previousProduct = localStorage.getItem('wishListAdd');
+      const previousLocalStorage = JSON.parse(previousProduct);
+
+      wishlistCount.textContent = `${previousLocalStorage.length}`;
+
+      if (previousLocalStorage.length === 0) {
+        updateEmptyWishlistVisibility();
+      }
+    }
+
+    // Function to update the visibility of empty wishlist elements
+    function updateEmptyWishlistVisibility() {
+      const wishlistCount = document.querySelector('.wishlist_count_number');
+      const emptyWishlistMessageWrapper = document.querySelector('.empty_wishlist_message_wrapper');
+      const wishlistProductContainer = document.querySelector('.wishlist_product_container');
+      const wishlistPageHeading = document.querySelector('.wishlist_page_heading');
+
+      if (!wishlistCount || !emptyWishlistMessageWrapper || !wishlistProductContainer || !wishlistPageHeading) {
+        console.error('One or more elements not found. Check class names and HTML structure.');
+        return;
+      }
+
+      const storedData = JSON.parse(localStorage.getItem('wishListAdd')) || [];
+
+      wishlistCount.textContent = `${storedData.length}`;
+
+      if (storedData.length === 0) {
+        emptyWishlistMessageWrapper.style.display = 'flex';
+        wishlistProductContainer.style.setProperty('display', 'none', 'important');
+        wishlistPageHeading.style.display = 'none';
+      } else {
+        emptyWishlistMessageWrapper.style.display = 'none';
+        wishlistProductContainer.style.display = 'block';
+        wishlistPageHeading.style.display = 'block';
+      }
+    }
+
+    // Call the function to update visibility
+    updateEmptyWishlistVisibility();
+
+    // Attach a single event listener to the parent element
+    const wishlistContainer = document.querySelector('.wishlist_product_container');
+
+    if (wishlistContainer) {
+      wishlistContainer.addEventListener('click', function (event) {
+        const removeButton = event.target.closest('.remove_wishlist_icon');
+        if (removeButton) {
+          handleRemoveButtonClick(removeButton);
+          updateEmptyWishlistVisibility();
+        }
+      });
+    }
+
+    // wishlist content
+    const wishlistList = localStorage.getItem('wishListAdd');
+    const getStoredData = JSON.parse(wishlistList) || [];
+    // console.log('wishlistList', getStoredData);
+
+    // Create a skeleton structure
+    const skeletonContainer = document.querySelector('.skeleton_container');
+    const skeletonHTML = `
+      <div class="skeleton_animation">
+      {{ shop.name }}
+      </div>
+    `;
+
+    // Append the skeleton structure to the skeleton container
+    for (let i = 0; i < getStoredData.length; i++) {
+      skeletonContainer.innerHTML += skeletonHTML;
+    }
+
+
+    document.querySelector('.wishlist_count_number').textContent = `${getStoredData.length}`;
+
+    async function fetchData(item) {
+      try {
+        // Add skeleton loading state for each wishlist item
+        const skeletonItem = document.querySelector('.skeleton_animation');
+        const clonedSkeletonItem = skeletonItem.cloneNode(true);
+        document.querySelector('.wishlist_product_container').appendChild(clonedSkeletonItem);
+
+        const response = await fetch(`/products/${item}.js`);
+        const product = await response.json();
+
+        // console.log(`Data for ${item}:`, product);
+        
+        // Remove the skeleton item
+        clonedSkeletonItem.remove();
+
+        const SinglewishListProduct = document.createElement('div');
+        SinglewishListProduct.classList.add('single_wishlist_product');
+        const price = product.price;
+        const compare_at_price = product.compare_at_price;
+
+        const currency = document.querySelector('.wishlist_product_container').getAttribute('shop-currency');
+
+        if (product.variants.length > 1 && product.compare_at_price == null) {
+          SinglewishListProduct.innerHTML = `
+          <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
+            <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
+              product.featured_image
+            }"></div>
+            <div class="wishlist_product_information_wrapper">
+              <span class="wishlist_product_name">${product.title}</span>
+              <span class="wishlist_product_price">From ${formatMoney(price, currency)}</span></div>
+            </div>
+          </a>
+
+          <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+            </svg>
+          </div>`;
+        } else if (product.variants.length > 1 && product.compare_at_price != null) {
+          SinglewishListProduct.innerHTML = `
+          <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
+            <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
+              product.featured_image
+            }"></div>
+            <div class="wishlist_product_information_wrapper">
+              <span class="wishlist_product_name">${product.title}</span>
+              <div class="product_price_wrapper"><span class="wishlist_product_compare_price"><del>${formatMoney(
+                compare_at_price,
+                currency
+              )}</del></span>
+              <span class="wishlist_product_price">From ${formatMoney(price, currency)}</span></div>
+            </div>
+            </div>
+          </a>
+
+          <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+            </svg>
+          </div>`;
+        } else if (product.variants.length == 1 && product.compare_at_price != null) {
+          SinglewishListProduct.innerHTML = `
+          <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
+            <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
+              product.featured_image
+            }"></div>
+            <div class="wishlist_product_information_wrapper">
+              <span class="wishlist_product_name">${product.title}</span>
+              <div class="product_price_wrapper"><span class="wishlist_product_compare_price"><del>${formatMoney(
+                compare_at_price,
+                currency
+              )}</del></span>
+              <span class="wishlist_product_price"> ${formatMoney(price, currency)}</span></div>
+            </div>
+            </div>
+          </a>
+
+          <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+            </svg>
+          </div>`;
+        } else {
+          SinglewishListProduct.innerHTML = `
+          <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
+            <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
+              product.featured_image
+            }"></div>
+            <div class="wishlist_product_information_wrapper">
+              <span class="wishlist_product_name">${product.title}</span>
+              <div class="product_price_wrapper">
+              <span class="wishlist_product_price">${formatMoney(price, currency)}</span></div>
+            </div>
+          </a>
+
+          <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+            </svg>
+          </div>`;
+        }
+
+        document.querySelector('.wishlist_product_container').appendChild(SinglewishListProduct);
+      } catch (error) {
+        console.error(`Error fetching data for ${item}:`, error);
+      }
+    }
+
+    async function fetchAllData() {
+      for (const item of getStoredData) {
+        await fetchData(item);
+      }
+      // Remove skeleton container once wishlist items are loaded
+      document.querySelector('.skeleton_container').innerHTML = '';
+      document.querySelector('.skeleton_container').style.setProperty("display","none","important");
+    }
+
+    // Call the function to start fetching data for each item
+    fetchAllData();
+
+    
+  });
+</script>
