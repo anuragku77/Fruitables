@@ -190,7 +190,6 @@
                           '<s>' + data.checkout.total_line_items_price + '</s>' + data.checkout.total_price;
                       if (!isReload) {
                         applyBtn.innerText = 'Remove Coupon';
-                        applyBtn.innerHTML = 'Remove Coupon';
                         applyBtn.style.pointerEvents = 'all';
                       }
                     } else {
@@ -200,7 +199,7 @@
                     }
                   })
                   .finally(function (params) {
-                    if (applyBtn) {
+                    if (applyBtn && !isReload) {
                       applyBtn.innerHTML = 'Apply Coupon';
                       applyBtn.style.pointerEvents = 'all';
                     }
