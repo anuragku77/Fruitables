@@ -206,6 +206,8 @@
                       applyBtn.innerHTML = 'Apply Coupon';
                       applyBtn.style.pointerEvents = 'all';
                     }
+                    // Update the cart total after applying the discount
+                    updateTotalCartValue();
                   });
               });
           });
@@ -216,7 +218,7 @@
           .then((res) => res.json())
           .then((data) => {
             if (totalCartSelector) {
-              totalCartSelector.innerHTML = data.total_price;
+              totalCartSelector.innerHTML = Shopify.formatMoney(data.total_price);
             }
           });
       }
