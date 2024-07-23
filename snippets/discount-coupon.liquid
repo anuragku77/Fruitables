@@ -2,41 +2,36 @@
     .cart-sidebar-discount {
       display: flex;
       flex-direction: column;
-      width:300px;
+      width: 300px;
       margin: 20px auto;
     }
+    .discount-input-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
     .cart-sidebar-discount input {
-      margin-top:20px;
       background: #eee;
       border: 1px solid #eee;
-      height:50px;
+      height: 50px;
       outline: none;
       font-size: 18px;
       letter-spacing: .75px;
       text-align: center;
+      flex-grow: 1;
     }
-    {% comment %} #apply-discount-btn {
+    .cart-sidebar-discount button {
       background-color: #000;
-      color:#fff;
+      color: #fff;
       border: 0;
-      height: 60px;
-      width: 100%;
+      height: 50px;
       font-size: 18px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .75px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-    } {% endcomment %}
-    span.applied-discount-code-value>small {
-      background: #eee;
-      padding: 0px 10px;
-      color: #000;
-      font-weight: bold;
-      border-radius: 20px;
+      padding: 0 20px;
+      margin-left: 10px;
     }
     .loader {
       border: 5px solid #f3f3f3;
@@ -53,22 +48,23 @@
       border-radius: 4px;
       font-size: 13px;
       line-height: 1;
+      margin-top: 10px;
     }
     .applied-discount-code-wrapper {
       display: none;
       background: #ddd;
       padding: 3px 6px;
       border-radius: 25px;
+      margin-top: 10px;
     }
     .applied-discount-code-value {
       font-size: 13px;
       text-transform: uppercase;
     }
-    
     #discount-code-error:empty {
       display: none;
     }
-    .applied-discount-code-value:empty+button {
+    .applied-discount-code-value:empty + button {
       display: none;
     }
     @keyframes spin {
