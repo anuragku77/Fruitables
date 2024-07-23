@@ -88,7 +88,6 @@
                       <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="rounded position-relative fruite-item">
                           <div class="fruite-img">
-                            {% for image in product.images %}
                                 <img
                                     src="{{ image.src | img_url: 'master' }}"
                                     class="img-fluid w-100 rounded-top"
@@ -97,7 +96,6 @@
                                     height="1200"
                                   >
                               {% comment %} {{ image.src | image_url: width: 300 | image_tag: class: 'img-fluid w-100 rounded-top' }} {% endcomment %}
-                            {% endfor %}
                           </div>
                           <div
                             class="text-white bg-secondary px-3 py-1 rounded position-absolute"
