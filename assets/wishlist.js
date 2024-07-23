@@ -1,5 +1,3 @@
-
-
 // Function to fetch wishlist items from local storage
 function getWishlistFromLocalStorage() {
   const previousProduct = localStorage.getItem("wishListAdd");
