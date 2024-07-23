@@ -425,14 +425,14 @@
         }
       }
 
-      function searchFilterPlp() {
+      function searchFilter() {
         var input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById('filterSearchKeywords_pdp');
+        input = document.getElementById('filterSearchKeywords');
         filter = input.value.toUpperCase();
         ul = document.getElementById("main-collection-product-grid");
         li = ul.getElementsByTagName('li');
         for (i = 0; i < li.length; i++) {
-          a = li[i].getElementsByTagName("span")[0];
+          a = li[i].getElementsByTagName("a")[0];
           txtValue = a.textContent || a.innerText;
           if (txtValue.toUpperCase().indexOf(filter) > -1) {
             li[i].style.display = "";
