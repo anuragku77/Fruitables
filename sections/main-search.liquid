@@ -11,6 +11,9 @@
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 <script src="{{ 'main-search.js' | asset_url }}" defer="defer"></script>
 
@@ -279,9 +282,8 @@
                           show_rating: section.settings.show_rating,
                           lazy_load: lazy_load,
                           skip_styles: skip_card_product_styles,
-                          quick_add: "standard",
+                          quick_add: 'standard',
                           section_id: section.id
-
                         %}
                         {%- assign skip_card_product_styles = true -%}
                       {%- when 'article' -%}
