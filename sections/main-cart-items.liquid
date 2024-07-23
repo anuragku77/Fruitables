@@ -365,7 +365,8 @@
                                     aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
                                     id="Quantity-{{ item.index | plus: 1 }}"
                                     data-index="{{ item.index | plus: 1 }}"
-                                    style = "flex: 0 0 30%";
+                                    style="flex: 0 0 30%"
+                                    ;
                                   >
                                   <button
                                     class="quantity__button btn btn-sm btn-plus rounded-circle bg-light border"
@@ -552,8 +553,7 @@
               </table>
             </div>
           {%- endif -%}
-            {% render 'discount-coupon' %}
-    
+          {% render 'discount-coupon' %}
           {% render 'custom-main-cart-footer' %}
         </div>
       </div>
@@ -577,18 +577,18 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-}
+  }
 
-.cart-table th, .cart-table td {
+  .cart-table th,
+  .cart-table td {
     width: 100%;
     display: flex;
     align-items: center;
-}
+  }
 
-.card-table tr:first-child{
-    width:140%;
-}
-
+  .card-table tr:first-child {
+    width: 140%;
+  }
 </style>
 
 {% schema %}
