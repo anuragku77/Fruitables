@@ -36,9 +36,6 @@
     #discount-code-error:empty {
       display: none;
     }
-    .applied-discount-code-value:empty + button {
-      display: none;
-    }
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -193,7 +190,8 @@
                           '<s>' + data.checkout.total_line_items_price + '</s>' + data.checkout.total_price;
                       if (!isReload) {
                         applyBtn.innerText = 'Remove Coupon';
-                        window.location.reload();
+                        applyBtn.innerHTML = 'Remove Coupon';
+                        applyBtn.style.pointerEvents = 'all';
                       }
                     } else {
                       if (discountCodeValue) discountCodeValue.innerHTML = '';
