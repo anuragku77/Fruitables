@@ -73,16 +73,19 @@
   {%- endif -%}
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
+  {% comment %} <div class="page-width"> {% endcomment %}
   <div class="page-width container-fluid py-5 mt-5">
     <div class="container py-5">
-      <div class="row g-4 mb-5">
+      <div class="row g-4 mb-5 ">
         <div class="col-lg-8 col-xl-9">
           <div class="row g-4">
             <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
               <div class="grid__item product__media-wrapper col-lg-6">
+                {% comment %} <div class="border rounded"> {% endcomment %}
                 {% render 'product-media-gallery', variant_images: variant_images %}
               </div>
-              <div class="col-lg-6 product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {% comment %} </div> {% endcomment %}
+              <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} col-lg-6">
                 <section
                   id="ProductInfo-{{ section.id }}"
                   class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
@@ -91,14 +94,15 @@
 
                   {%- for block in section.blocks -%}
                     {%- case block.type -%}
-                      {%- when '@app' -%}
-                        {% render block %}
+                      {% comment %} {%- when '@app' -%}
+                        {% render block %} {% endcomment %}
                       {%- when 'text' -%}
                         <p
                           class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
                           {{ block.shopify_attributes }}
-                        ></p>
-                        <p class="mb-3">{{- block.settings.text -}}</p>
+                        >
+                          {{- block.settings.text -}}
+                        </p>
                       {%- when 'title' -%}
                         <div class="product__title" {{ block.shopify_attributes }}>
                           <h4 class="fw-bold mb-3">{{ product.title | escape }}</h4>
@@ -119,11 +123,6 @@
                             -%}
                           </div>
                         </h5>
-                        <div class="d-flex my-3">
-                          <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
-                            {{ product.metafields.judgeme.badge }}
-                          </div>
-                        </div>
                         {%- if product.quantity_price_breaks_configured? -%}
                           <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                             <span>{{ 'products.product.volume_pricing.note' | t }}</span>
@@ -154,6 +153,7 @@
                             {{ form | payment_terms }}
                           {%- endform -%}
                         </div>
+
                       {%- when 'inventory' -%}
                         <p
                           class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -211,9 +211,8 @@
                         </p>
                       {%- when 'description' -%}
                         {%- if product.description != blank -%}
-                          <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                            <p class="mb-4">{{ product.description }}</p>
-                          </div>
+                          <p class="mb-4">{{ product.description }}</p>
+                          {% comment %} <p class="mb-4">{{ product.description }}</p> {% endcomment %}
                         {%- endif -%}
                       {%- when 'sku' -%}
                         <p
@@ -257,20 +256,22 @@
                             | item_count_for_variant: product.selected_or_first_available_variant.id
                           -%}
                           {% # theme-check-enable %}
-                          <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
-                            {{ 'products.product.quantity.label' | t }}
-                            <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}">
-                              {%- render 'loading-spinner' -%}
-                              <span
-                                >(
-                                {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
-                                )</span
-                              >
-                            </span>
-                          </label>
+                          {% comment %}
+                            <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
+                              {{ 'products.product.quantity.label' | t }}
+                              <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}">
+                                {%- render 'loading-spinner' -%}
+                                <span
+                                  >(
+                                  {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
+                                  )</span
+                                >
+                              </span>
+                            </label>
+                          {% endcomment %}
                           <div class="price-per-item__container">
                             <quantity-input
-                              class="quantity"
+                              class="input-group quantity mb-5"
                               data-url="{{ product.url }}"
                               data-section="{{ section.id }}"
                             >
@@ -299,6 +300,8 @@
                                 step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
                                 value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                                 form="{{ product_form_id }}"
+                                style="flex: 0 0 40%"
+                                ;
                               >
                               <button
                                 class="quantity__button btn btn-sm btn-plus rounded-circle bg-light border"
@@ -704,37 +707,88 @@
                   </a>
                 </section>
               </div>
-              <div id="products_tabs" style="display:block"></div>
+             
+             <div id="product_additional_details"></div>
+                          
             </div>
+
+            {% render 'product-media-modal', variant_images: variant_images %}
+
+            {% assign popups = section.blocks | where: 'type', 'popup' %}
+            {%- for block in popups -%}
+              <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
+                <div
+                  role="dialog"
+                  aria-label="{{ block.settings.text }}"
+                  aria-modal="true"
+                  class="product-popup-modal__content"
+                  tabindex="-1"
+                >
+                  <button
+                    id="ModalClose-{{ block.id }}"
+                    type="button"
+                    class="product-popup-modal__toggle"
+                    aria-label="{{ 'accessibility.close' | t }}"
+                  >
+                    {% render 'icon-close' %}
+                  </button>
+                  <div class="product-popup-modal__content-info">
+                    <h1 class="h2">{{ block.settings.page.title | escape }}</h1>
+                    {{ block.settings.page.content }}
+                  </div>
+                </div>
+              </modal-dialog>
+            {%- endfor -%}
+
+            {%- if product.media.size > 0 -%}
+              <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
+              <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
+            {%- endif -%}
+
+            {%- if first_3d_model -%}
+              <script type="application/json" id="ProductJSON-{{ product.id }}">
+                {{ product.media | where: 'media_type', 'model' | json }}
+              </script>
+              <script src="{{ 'product-model.js' | asset_url }}" defer></script>
+            {%- endif -%}
+
+            {%- liquid
+              if product.selected_or_first_available_variant.featured_media
+                assign seo_media = product.selected_or_first_available_variant.featured_media
+              else
+                assign seo_media = product.featured_media
+              endif
+            -%}
+
+            <script type="application/ld+json">
+              {{ product | structured_data }}
+            </script>
           </div>
         </div>
         <div class="col-lg-4 col-xl-3">
           <div class="row g-4 fruite">
             <div class="col-lg-12">
               <div class="input-group w-100 mx-auto d-flex mb-4">
-                <input
-                  type="search"
-                  class="form-control p-3"
-                  id="search_keyword"
-                  onkeyup="searchFilterPdp()"
-                  placeholder="keywords"
-                  aria-describedby="search-icon-1"
-                >
+                <input type="search" class="form-control p-3" id="filterSearchKeywords" onkeyup="searchFilter()" placeholder="keywords" aria-describedby="search-icon-1">
                 <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
               </div>
+              
               <div class="mb-4">
                 <h4>Categories</h4>
-                <ul class="list-unstyled fruite-categorie" id="cat_list">
+                <ul class="list-unstyled fruite-categorie" id="main-collection-product-grid">
                   {% for collection in collections %}
-                    <li>
-                      <div class="d-flex justify-content-between fruite-name">
-                        <a href="{{ collection.url }}"><i class="fas fa-apple-alt me-2"></i>{{ collection.title }}</a>
-                        <span>{{ collection.products_count }}</span>
-                      </div>
-                    </li>
+                    {% if collection.products_count > 0 %}
+                      <li>
+                        <div class="d-flex justify-content-between fruite-name">
+                          <a href="{{ collection.url }}"><i class="fas fa-apple-alt me-2"></i>{{ collection.title }}</a>
+                          <span>({{ collection.products_count }})</span>
+                        </div>
+                      </li>
+                    {% endif %}
                   {% endfor %}
                 </ul>
               </div>
+              
             </div>
             {%- liquid
               assign products_to_display = section.settings.collection.all_products_count
@@ -752,13 +806,15 @@
               {%- for product in collection.products limit: section.settings.products_to_show -%}
                 <div class="d-flex align-items-center justify-content-start">
                   <div class="rounded" style="width: 100px; height: 100px;">
-                    <img
-                      src="{{ product.featured_image | img_url: 'master' }}"
-                      class="img-fluid rounded"
-                      alt=""
-                      width="1200"
-                      height="1200"
-                    >
+                    {% for image in product.images %}
+                      <img
+                        src="{{ image.src | img_url: 'master' }}"
+                        class="img-fluid rounded"
+                        alt=""
+                        width="1200"
+                        height="1200"
+                      >
+                    {% endfor %}
                   </div>
                   <div>
                     <h6 class="mb-2">{{ product.title }}</h6>
@@ -768,8 +824,9 @@
                       </div>
                     </div>
                     <div class="d-flex mb-2">
-                      <h5 class="fw-bold me-2">
-                        {% render 'price', product: product, price_class: '', show_compare_at_price: true %}
+                      <h5 class="fw-bold me-2">{{ product.price | money_without_trailing_zeros }}</h5>
+                      <h5 class="text-danger text-decoration-line-through">
+                        {{ product.variants.first.compare_at_price | money_without_trailing_zeros }}
                       </h5>
                     </div>
                   </div>
@@ -814,56 +871,7 @@
       <div id="releted_product_section"></div>
     </div>
   </div>
-  {% render 'product-media-modal', variant_images: variant_images %}
-
-  {% assign popups = section.blocks | where: 'type', 'popup' %}
-  {%- for block in popups -%}
-    <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
-      <div
-        role="dialog"
-        aria-label="{{ block.settings.text }}"
-        aria-modal="true"
-        class="product-popup-modal__content"
-        tabindex="-1"
-      >
-        <button
-          id="ModalClose-{{ block.id }}"
-          type="button"
-          class="product-popup-modal__toggle"
-          aria-label="{{ 'accessibility.close' | t }}"
-        >
-          {% render 'icon-close' %}
-        </button>
-        <div class="product-popup-modal__content-info">
-          <h1 class="h2">{{ block.settings.page.title | escape }}</h1>
-          {{ block.settings.page.content }}
-        </div>
-      </div>
-    </modal-dialog>
-  {%- endfor -%}
-
-  {%- if product.media.size > 0 -%}
-    <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
-  {%- endif -%}
-
-  {%- if first_3d_model -%}
-    <script type="application/json" id="ProductJSON-{{ product.id }}">
-      {{ product.media | where: 'media_type', 'model' | json }}
-    </script>
-    <script src="{{ 'product-model.js' | asset_url }}" defer></script>
-  {%- endif -%}
-
-  {%- liquid
-    if product.selected_or_first_available_variant.featured_media
-      assign seo_media = product.selected_or_first_available_variant.featured_media
-    else
-      assign seo_media = product.featured_media
-    endif
-  -%}
-  <script type="application/ld+json">
-    {{ product | structured_data }}
-  </script>
+  {% comment %} </div> {% endcomment %}
 </product-info>
 
 {% schema %}
@@ -2236,6 +2244,7 @@
       "default": "t:sections.featured-collection.settings.title.default",
       "label": "t:sections.featured-collection.settings.title.label"
     },
+
     {
       "type": "collection",
       "id": "collection",
