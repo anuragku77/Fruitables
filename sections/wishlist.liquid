@@ -65,10 +65,10 @@
     }
     .wishlist_product_img {
       transition: all 0.3s linear;
-    }
-    .wishlist_product_img {
       transform: scale(1);
       overflow: hidden;
+      width: 100%;
+      height: 200px;
     }
     .single_wishlist_product:hover .wishlist_product_img {
       transform: scale(1.02);
@@ -77,7 +77,6 @@
     .remove_wishlist_icon {
       height: 40px;
       width: 40px;
-      /* background-color: rgb(255, 255, 255); */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -111,14 +110,6 @@
       display: flex;
       flex-direction: column;
       padding: 13px 0px;
-    }
-    .wishlist_product_img {
-      width: 100%;
-      height: auto;
-      display: block;
-      position: relative;
-      z-index: -10;
-      height: 200px;
     }
     .wishlist_product_info_wrapper {
       text-decoration: none;
@@ -177,6 +168,7 @@
       }
     }
   </style>
+  
   <div class="page-width wishlist_page_heading">
     <div class="title_wrapper_with_link">
       <h1 class="title title--primary">Your Wishlist</h1>
@@ -185,16 +177,19 @@
       </a>
     </div>
   </div>
+  
   <div class="skeleton_container" style="display:none !important"></div>
+  
   <div
     class="wishlist_section_container wishlist_product_container"
     shop-currency="{{ shop.money_format }}"
     currency-data="{{ shop.currency }}"
   ></div>
+  
   <div class="text-center mt-5 txt empty_wishlist_message_wrapper">
     <div class="cart__warnings empty_wishlist_message">
       <h1 class="cart__empty-text-wishlist">Your Wishlist is empty</h1>
-      <a href="{{ routes.all_products_collection_url }}" class="button"> Continue shopping </a>
+      <a href="{{ routes.all_products_collection_url }}" class="button">Continue shopping</a>
   
       {%- if shop.customer_accounts_enabled and customer == null -%}
         <h2 class="cart__login-title">{{ 'sections.cart.login.title' | t }}</h2>
@@ -204,204 +199,158 @@
       {%- endif -%}
     </div>
   </div>
+  
+  <script id="quick-add-template" type="text/template">
+    {% assign product_handle = 'product_handle' %}
+    {% assign product = collections.all.products | where: 'handle', product_handle | first %}
+    {% if product %}
+      {% render 'quick-add', product: product %}
+    {% endif %}
+  </script>
+  
   <script>
-      document.addEventListener('DOMContentLoaded', function () {
-          // money format
-          let formatMoney = function (cents, format) {
-            if (typeof cents == 'string') {
-              cents = cents.replace('.', '');
-            }
-            var value = '';
-            var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
-            var formatString = format || this.money_format;
-        
-            function defaultOption(opt, def) {
-              return typeof opt == 'undefined' ? def : opt;
-            }
-        
-            function formatWithDelimiters(number, precision, thousands, decimal) {
-              precision = defaultOption(precision, 2);
-              thousands = defaultOption(thousands, ',');
-              decimal = defaultOption(decimal, '.');
-        
-              if (isNaN(number) || number == null) {
-                return 0;
-              }
-        
-              number = (number / 100.0).toFixed(precision);
-        
-              var parts = number.split('.'),
-                dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands),
-                cents = parts[1] ? decimal + parts[1] : '';
-        
-              return dollars + cents;
-            }
-        
-            switch (formatString.match(placeholderRegex)[1]) {
-              case 'amount':
-                value = formatWithDelimiters(cents, 2);
-                break;
-              case 'amount_no_decimals':
-                value = formatWithDelimiters(cents, 0);
-                break;
-              case 'amount_with_comma_separator':
-                value = formatWithDelimiters(cents, 2, '.', ',');
-                break;
-              case 'amount_no_decimals_with_comma_separator':
-                value = formatWithDelimiters(cents, 0, '.', ',');
-                break;
-            }
-        
-            return formatString.replace(placeholderRegex, value);
-          };
-        
-          // Function to remove an item from local storage by its value
-          function removeFromLocalStorage(valueToRemove) {
-            const getLocalItem = localStorage.getItem('wishListAdd');
-            const GetArrayLocalItem = JSON.parse(getLocalItem);
-        
-            // Item to remove
-            var itemToRemove = valueToRemove;
-        
-            // Find the index of the item in the array
-            var indexToRemove = GetArrayLocalItem.indexOf(itemToRemove);
-        
-            // Check if the item is in the array before removing
-            if (indexToRemove !== -1) {
-              // Use splice to remove the item
-              GetArrayLocalItem.splice(indexToRemove, 1);
-        
-              // Update the local storage with the modified array
-              localStorage.setItem('wishListAdd', JSON.stringify(GetArrayLocalItem));
-            }
+    document.addEventListener('DOMContentLoaded', function () {
+      // money format
+      let formatMoney = function (cents, format) {
+        if (typeof cents == 'string') {
+          cents = cents.replace('.', '');
+        }
+        var value = '';
+        var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+        var formatString = format || this.money_format;
+    
+        function defaultOption(opt, def) {
+          return typeof opt == 'undefined' ? def : opt;
+        }
+    
+        function formatWithDelimiters(number, precision, thousands, decimal) {
+          precision = defaultOption(precision, 2);
+          thousands = defaultOption(thousands, ',');
+          decimal = defaultOption(decimal, '.');
+    
+          if (isNaN(number) || number == null) {
+            return 0;
           }
-        
-          const routes = {
-            all_products_collection_url: "{{ routes.all_products_collection_url }}",
-          };
-        
-          const customer = {{ customer | json }};
-          const show_price = {{ section.settings.show_price }};
-          const show_vendor = {{ section.settings.show_vendor }};
-          const show_compare_at_price = {{ section.settings.show_compare_at_price }};
-        
-          const skeletonContainer = document.querySelector('.skeleton_container');
-          const skeletons = Array.from(
-            document.querySelectorAll('.skeleton_animation')
-          );
-          const wishlistContainer = document.querySelector(
-            '.wishlist_product_container'
-          );
-          const emptyWishlistMessageWrapper = document.querySelector(
-            '.empty_wishlist_message_wrapper'
-          );
-        
-          let wishListAdd = localStorage.getItem('wishListAdd');
-          if (wishListAdd) {
-            wishListAdd = JSON.parse(wishListAdd);
-          } else {
-            wishListAdd = [];
-          }
-          skeletonContainer.style.display = 'grid';
-          fetchData();
-        
-          async function fetchData() {
-            try {
-              const limit = 15;
-              const requests = wishListAdd.map((productHandle) => {
-                const url = `/products/${productHandle}.js`;
-                return fetch(url).then((response) => response.json());
+    
+          number = (number / 100.0).toFixed(precision);
+    
+          var parts = number.split('.'),
+            dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands),
+            cents = parts[1] ? decimal + parts[1] : '';
+    
+          return dollars + cents;
+        }
+    
+        switch (formatString.match(placeholderRegex)[1]) {
+          case 'amount':
+            value = formatWithDelimiters(cents, 2);
+            break;
+          case 'amount_no_decimals':
+            value = formatWithDelimiters(cents, 0);
+            break;
+          case 'amount_with_comma_separator':
+            value = formatWithDelimiters(cents, 2, '.', ',');
+            break;
+          case 'amount_no_decimals_with_comma_separator':
+            value = formatWithDelimiters(cents, 0, '.', ',');
+            break;
+        }
+    
+        return formatString.replace(placeholderRegex, value);
+      };
+    
+      // Function to remove an item from local storage by its value
+      function removeFromLocalStorage(valueToRemove) {
+        const getLocalItem = localStorage.getItem('wishListAdd');
+        const GetArrayLocalItem = JSON.parse(getLocalItem);
+    
+        // Item to remove
+        var itemToRemove = valueToRemove;
+    
+        // Find the index of the item in the array
+        var indexToRemove = GetArrayLocalItem.indexOf(itemToRemove);
+    
+        // Check if the item is in the array before removing
+        if (indexToRemove !== -1) {
+          // Use splice to remove the item
+          GetArrayLocalItem.splice(indexToRemove, 1);
+    
+          // Update the local storage with the new array
+          localStorage.setItem('wishListAdd', JSON.stringify(GetArrayLocalItem));
+        }
+      }
+    
+      async function fetchWishlistProducts() {
+        try {
+          const wishlistProducts = JSON.parse(localStorage.getItem('wishListAdd')) || [];
+    
+          if (wishlistProducts.length > 0) {
+            let newHtml = '';
+    
+            for (const productHandle of wishlistProducts) {
+              const response = await fetch(`/products/${productHandle}.json`);
+              const data = await response.json();
+              const product = data.product;
+              const price = formatMoney(product.price, document.querySelector('.wishlist_product_container').getAttribute('shop-currency'));
+              const comparePrice = formatMoney(product.compare_at_price, document.querySelector('.wishlist_product_container').getAttribute('shop-currency'));
+    
+              // Construct HTML for each product
+              let newHtmlString = `
+                <a href="/products/${product.handle}" class="single_wishlist_product">
+                  <div class="remove_wishlist_icon" data-wishlist-remove>
+                    <svg fill="#000000" width="800px" height="800px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z"/>
+                    </svg>
+                  </div>
+                  <img src="${product.featured_image}" alt="" class="wishlist_product_img"/>
+                  <div class="wishlist_product_information_wrapper">
+                    <span class="wishlist_product_name">${product.title}</span>
+                    <div class="wishlist_product_price">
+                      ${price}
+                      ${product.compare_at_price > product.price ? `<span class="wishlist_product_compare_price">${comparePrice}</span>` : ''}
+                    </div>
+                  </div>
+                  <div id="quick-add-${product.handle}" class="quick-add-container" data-product-handle="${product.handle}"></div>
+                </a>
+              `;
+              newHtml += newHtmlString;
+            }
+    
+            const wishlistContainer = document.querySelector('.wishlist_product_container');
+            const emptyWishlistMessageWrapper = document.querySelector('.empty_wishlist_message_wrapper');
+    
+            wishlistContainer.innerHTML = newHtml;
+    
+            document.querySelectorAll('[data-wishlist-remove]').forEach((el) => {
+              el.addEventListener('click', (e) => {
+                e.preventDefault();
+                const productHandle = e.target.closest('.single_wishlist_product').getAttribute('href').split('/products/')[1];
+                removeFromLocalStorage(productHandle);
+                e.target.closest('.single_wishlist_product').remove();
+                if (wishlistContainer.children.length === 0) {
+                  wishlistContainer.style.display = 'none';
+                  emptyWishlistMessageWrapper.style.display = 'flex';
+                }
               });
-        
-              const products = await Promise.all(requests);
-              if (products.length > 0) {
-                emptyWishlistMessageWrapper.style.display = 'none';
-                wishlistContainer.style.display = 'grid';
-                skeletonContainer.style.display = 'none';
-        
-                let newHtml = '';
-        
-                products.forEach((product) => {
-                  const price = formatMoney(
-                    product.price,
-                    wishlistContainer.getAttribute('shop-currency')
-                  );
-        
-                  const comparePrice = formatMoney(
-                    product.compare_at_price,
-                    wishlistContainer.getAttribute('shop-currency')
-                  );
-                  let newHtmlString = `
-                    <a
-                      href="/products/${product.handle}"
-                      class="single_wishlist_product"
-                    >
-                      <div class="remove_wishlist_icon" data-wishlist-remove>
-                        <svg
-                          fill="#000000"
-                          width="800px"
-                          height="800px"
-                          viewBox="0 0 24 24"
-                          id="Layer_1"
-                          data-name="Layer 1"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M19,6.41,17.59,5,12,10.59,6.41,5,5,6.41,10.59,12,5,17.59,6.41,19,12,13.41,17.59,19,19,17.59,13.41,12Z"
-                          />
-                        </svg>
-                      </div>
-                      <img
-                        src="${product.featured_image}"
-                        alt=""
-                        class="wishlist_product_img"
-                      />
-                      <div class="wishlist_product_information_wrapper">
-                        <span class="wishlist_product_name"
-                          >${product.title}</span
-                        >
-                        <div class="wishlist_product_price">
-                          ${price}
-                          ${
-                            product.compare_at_price > product.price
-                              ? `<span class="wishlist_product_compare_price">${comparePrice}</span>`
-                              : ''
-                          }
-                        </div>
-                      </div>
-                    </a>
-                    <div id="quick-add-${product.handle}">{% render 'quick-add', product: product %}</div>
-                  `;
-                  newHtml += newHtmlString;
-                });
-        
-                wishlistContainer.innerHTML = newHtml;
-        
-                document.querySelectorAll('[data-wishlist-remove]').forEach((el) => {
-                  el.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const productHandle = e.target
-                      .closest('.single_wishlist_product')
-                      .getAttribute('href')
-                      .split('/products/')[1];
-                    removeFromLocalStorage(productHandle);
-                    e.target.closest('.single_wishlist_product').remove();
-                    if (wishlistContainer.children.length === 0) {
-                      wishlistContainer.style.display = 'none';
-                      emptyWishlistMessageWrapper.style.display = 'flex';
-                    }
-                  });
-                });
-              } else {
-                emptyWishlistMessageWrapper.style.display = 'flex';
-                wishlistContainer.style.display = 'none';
-              }
-            } catch (error) {
-              console.error('Error fetching products:', error);
-              emptyWishlistMessageWrapper.style.display = 'flex';
-              wishlistContainer.style.display = 'none';
-            }
+            });
+    
+            document.querySelectorAll('.quick-add-container').forEach((container) => {
+              const productHandle = container.getAttribute('data-product-handle');
+              const template = document.getElementById('quick-add-template').innerHTML.replace(/product_handle/g, productHandle);
+              container.innerHTML = Liquid.parse(template);
+            });
+          } else {
+            document.querySelector('.empty_wishlist_message_wrapper').style.display = 'flex';
+            document.querySelector('.wishlist_product_container').style.display = 'none';
           }
-        });
+        } catch (error) {
+          console.error('Error fetching products:', error);
+          document.querySelector('.empty_wishlist_message_wrapper').style.display = 'flex';
+          document.querySelector('.wishlist_product_container').style.display = 'none';
+        }
+      }
+    
+      fetchWishlistProducts();
+    });
   </script>
   
