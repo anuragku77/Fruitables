@@ -451,56 +451,27 @@
                   </svg>
                 </div>`;
         } else {
-                
-        SinglewishListProduct.innerHTML = `
-        <div class="col-md-6 col-lg-6 col-xl-4">
-          <div class="rounded position-relative fruite-item">
-            <div class="fruite-img">
-              <img src="${product.featured_image}" class="img-fluid w-100 rounded-top" alt="${product.title}">
-            </div>
-            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-              <h4>${product.title}</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-              <div class="d-flex justify-content-between flex-lg-wrap">
-                <p class="text-dark fs-5 fw-bold mb-0">From ${formatMoney(price, currency)}</p>
-                <a href="/products/${product.handle}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div title="Remove From Wishlist" product-handle-wishlist="${product.handle}" class="remove_wishlist_icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
-            </svg>
-          </div>
-        </div>
-      `;
+          SinglewishListProduct.innerHTML = `
+                <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
+                  <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
+                    product.featured_image
+                  }"></div>
+                  <div class="wishlist_product_information_wrapper">
+                    <span class="wishlist_product_name">${product.title}</span>
+                    <div class="product_price_wrapper">
+                    <span class="wishlist_product_price">${formatMoney(price, currency)}</span></div>
+                  </div>
+                </a>
+      
+                <div title="Remove From Wishlist" product-handle-wishlist=${
+                  product.handle
+                } class="remove_wishlist_icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                  </svg>
+                </div>`;
                 
         }
-
-        SinglewishListProduct.innerHTML = `
-        <div class="col-md-6 col-lg-6 col-xl-4">
-          <div class="rounded position-relative fruite-item">
-            <div class="fruite-img">
-              <img src="${product.featured_image}" class="img-fluid w-100 rounded-top" alt="${product.title}">
-            </div>
-            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-              <h4>${product.title}</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-              <div class="d-flex justify-content-between flex-lg-wrap">
-                <p class="text-dark fs-5 fw-bold mb-0">From ${formatMoney(price, currency)}</p>
-                <a href="/products/${product.handle}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-              </div>
-            </div>
-          </div>
-          <div title="Remove From Wishlist" product-handle-wishlist="${product.handle}" class="remove_wishlist_icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
-            </svg>
-          </div>
-        </div>
-      `;
 
         document.querySelector('.wishlist_product_container').appendChild(SinglewishListProduct);
       } catch (error) {
