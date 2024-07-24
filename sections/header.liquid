@@ -186,6 +186,23 @@
           </a>
 
           {% render 'header-search', input_id: 'Search-In-Modal' %}
+
+          <a href="/pages/wishlist" class="wishlist_icon_wrapper header__icon header__icon--wishlist link focus-inset">
+            <span class="visually-hidden">Wishlist</span>
+            <span aria-hidden="true" class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1 wishlist-count-bubble" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">2</span>
+            <svg
+              width="26px"
+              height="26px"
+              viewBox="0 0 64 64"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke-width="3"
+              stroke="#000000"
+              fill="none"
+            >
+              <path d="M9.06,25C7.68,17.3,12.78,10.63,20.73,10c7-.55,10.47,7.93,11.17,9.55a.13.13,0,0,0,.25,0c3.25-8.91,9.17-9.29,11.25-9.5C49,9.45,56.51,13.78,55,23.87c-2.16,14-23.12,29.81-23.12,29.81S11.79,40.05,9.06,25Z"></path>
+            </svg>
+          </a>
+          
        
           <a href="{{ routes.cart_url }}" class="position-relative me-4 my-auto" id="cart-icon-bubble">
             <i class="fa fa-shopping-bag fa-2x"></i>
