@@ -370,7 +370,7 @@
                         </div>
                       </div>
                     </a>
-                    <div id="quick-add-${product.handle}">{% render 'quick-add', product: product %}</div>
+                    <div id="quick-add-${product.handle}">{% render 'quick-add', product: product.id %}</div>
                   `;
                   newHtml += newHtmlString;
                 });
