@@ -43,9 +43,9 @@
     #applied-discount-code {
       display: none;
     }
-  </style>
-  
-  <div class="mt-5">
+</style>
+
+<div class="mt-5">
     <span id="applied-discount-code">
       Discount Code Applied:
       <span class="applied-discount-code-wrapper">
@@ -65,9 +65,9 @@
         Apply Coupon
       </button>
     </div>
-  </div>
-  
-  <script>
+</div>
+
+<script>
     document.addEventListener('DOMContentLoaded', function (event) {
       let applyBtn = document.querySelector('#apply-discount-btn');
       let discountCodeError = document.querySelector('#discount-code-error');
@@ -77,10 +77,7 @@
       let totalCartSelector = document.querySelector('.cart__subtotal .money'); // Total Cart Selector to update the total amount.
       let appliedDiscountCode = document.querySelector('#applied-discount-code');
       let authorization_token;
-  
-      let checkoutContainer = document.createElement('div');
-      document.body.appendChild(checkoutContainer);
-  
+
       // Set the button state based on localStorage
       if (localStorage.discountCode) {
         let discountCode = JSON.parse(localStorage.discountCode);
@@ -89,7 +86,7 @@
       } else {
         applyBtn.innerText = 'Apply Coupon';
       }
-  
+
       if (applyBtn) {
         applyBtn.addEventListener('click', function (e) {
           e.preventDefault();
@@ -100,7 +97,7 @@
           }
         });
       }
-  
+
       function clearDiscount() {
         discountCodeValue.innerHTML = '';
         discountCodeError.innerHTML = '';
@@ -110,7 +107,7 @@
           window.location.reload();
         });
       }
-  
+
       function clearLocalStorage() {
         if (discountCodeWrapper) discountCodeWrapper.style.display = 'none';
         if (appliedDiscountCode) appliedDiscountCode.style.display = 'none';
@@ -118,7 +115,7 @@
         localStorage.removeItem('discountCode');
         applyBtn.innerText = 'Apply Coupon';
       }
-  
+
       function applyDiscount(code, isReload = false) {
         if (applyBtn) {
           applyBtn.innerHTML = "APPLYING <div class='loader'></div>";
@@ -193,6 +190,8 @@
                       if (!isReload) {
                         applyBtn.innerText = 'Remove Coupon';
                       }
+                      // Reload the page to reflect the applied discount
+                      window.location.reload();
                     } else {
                       if (discountCodeValue) discountCodeValue.innerHTML = '';
                       clearLocalStorage();
@@ -212,5 +211,4 @@
           });
       }
     });
-  </script>
-  
+</script>
