@@ -204,6 +204,16 @@
     {%- endif -%}
   </div>
 </div>
+
+<script id="quick-add-template" type="text/template">
+    {% assign product_handle = 'product_handle' %}
+    {% assign product = collections.all.products | where: 'handle', product_handle | first %}
+    {% if product %}
+      {% render 'quick-add', product: product %}
+    {% endif %}
+  </script>
+
+  
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     // money format
