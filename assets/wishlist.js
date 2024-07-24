@@ -8,15 +8,15 @@ var WishAddedArray = getWishlistFromLocalStorage();
 
 // Function to update the wishlist UI based on the current wishlist state
 function updateWishlistUI() {
-//   document.querySelector(
-//     ".wishlist_count_number"
-//   ).textContent = `${WishAddedArray.length}`;
-//   if (WishAddedArray.length > 0) {
-//     const wishlist_count_number = document.querySelector(
-//       ".wishlist_count_number"
-//     );
-//     wishlist_count_number.style.setProperty("display", "flex", "important");
-//   }
+  document.querySelector(
+    ".wishlist_count_number"
+  ).textContent = `${WishAddedArray.length}`;
+  if (WishAddedArray.length > 0) {
+    const wishlist_count_number = document.querySelector(
+      ".wishlist_count_number"
+    );
+    wishlist_count_number.style.setProperty("display", "flex", "important");
+  }
 
   // Iterate through wishlist items and add 'active_wishlist' class to corresponding buttons
   document.querySelectorAll(".wishlist_btn").forEach((btn) => {
