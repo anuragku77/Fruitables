@@ -81,14 +81,13 @@
       let checkoutContainer = document.createElement('div');
       document.body.appendChild(checkoutContainer);
   
-      // Prevent infinite reload loop
-      let discountApplied = sessionStorage.getItem('discountApplied');
-  
-      if (localStorage.discountCode && !discountApplied) {
-        sessionStorage.setItem('discountApplied', 'true');
+      // Set the button state based on localStorage
+      if (localStorage.discountCode) {
         let discountCode = JSON.parse(localStorage.discountCode);
         applyDiscount(discountCode.code, true);
         applyBtn.innerText = 'Remove Coupon';
+      } else {
+        applyBtn.innerText = 'Apply Coupon';
       }
   
       if (applyBtn) {
