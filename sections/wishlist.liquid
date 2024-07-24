@@ -362,123 +362,126 @@
         }
       
         async function fetchData(item) {
-          try {
-            // Add skeleton loading state for each wishlist item
-            const skeletonItem = document.querySelector('.skeleton_animation');
-            const clonedSkeletonItem = skeletonItem.cloneNode(true);
-            document.querySelector('.wishlist_product_container').appendChild(clonedSkeletonItem);
+            try {
+              // Add skeleton loading state for each wishlist item
+              const skeletonItem = document.querySelector('.skeleton_animation');
+              const clonedSkeletonItem = skeletonItem.cloneNode(true);
+              document.querySelector('.wishlist_product_container').appendChild(clonedSkeletonItem);
       
-            const response = await fetch(`/products/${item}.js`);
-            const product = await response.json();
+              const response = await fetch(`/products/${item}.js`);
+              const product = await response.json();
       
-            // Remove the skeleton item
-            clonedSkeletonItem.remove();
+              // console.log(`Data for ${item}:`, product);
+              
+              // Remove the skeleton item
+              clonedSkeletonItem.remove();
       
-            const SinglewishListProduct = document.createElement('div');
-            SinglewishListProduct.classList.add('single_wishlist_product');
-            const price = product.price;
-            const compare_at_price = product.compare_at_price;
+              const SinglewishListProduct = document.createElement('div');
+              SinglewishListProduct.classList.add('single_wishlist_product');
+              const price = product.price;
+              const compare_at_price = product.compare_at_price;
       
-            const currency = document.querySelector('.wishlist_product_container').getAttribute('shop-currency');
+              const currency = document.querySelector('.wishlist_product_container').getAttribute('shop-currency');
       
-            if (product.variants.length > 1 && product.compare_at_price == null) {
-              SinglewishListProduct.innerHTML = `
-              <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
-                <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
-                  product.featured_image
-                }"></div>
-                <div class="wishlist_product_information_wrapper">
-                  <span class="wishlist_product_name">${product.title}</span>
-                  <span class="wishlist_product_price">From ${formatMoney(price, currency)}</span></div>
-                </div>
-              </a>
+              if (product.variants.length > 1 && product.compare_at_price == null) {
+                SinglewishListProduct.innerHTML = `
+                <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
+                  <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
+                    product.featured_image
+                  }"></div>
+                  <div class="wishlist_product_information_wrapper">
+                    <span class="wishlist_product_name">${product.title}</span>
+                    <span class="wishlist_product_price">From ${formatMoney(price, currency)}</span></div>
+                  </div>
+                </a>
       
-              <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
-                </svg>
-              </div>`;
-            } else if (product.variants.length > 1 && product.compare_at_price != null) {
-              SinglewishListProduct.innerHTML = `
-              <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
-                <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
-                  product.featured_image
-                }"></div>
-                <div class="wishlist_product_information_wrapper">
-                  <span class="wishlist_product_name">${product.title}</span>
-                  <div class="product_price_wrapper"><span class="wishlist_product_compare_price"><del>${formatMoney(
-                    compare_at_price,
-                    currency
-                  )}</del></span>
-                  <span class="wishlist_product_price">From ${formatMoney(price, currency)}</span></div>
-                </div>
-                </div>
-              </a>
+                <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                  </svg>
+                </div>`;
+              } else if (product.variants.length > 1 && product.compare_at_price != null) {
+                SinglewishListProduct.innerHTML = `
+                <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
+                  <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
+                    product.featured_image
+                  }"></div>
+                  <div class="wishlist_product_information_wrapper">
+                    <span class="wishlist_product_name">${product.title}</span>
+                    <div class="product_price_wrapper"><span class="wishlist_product_compare_price"><del>${formatMoney(
+                      compare_at_price,
+                      currency
+                    )}</del></span>
+                    <span class="wishlist_product_price">From ${formatMoney(price, currency)}</span></div>
+                  </div>
+                  </div>
+                </a>
       
-              <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
-                </svg>
-              </div>`;
-            } else if (product.variants.length === 1 && product.compare_at_price == null) {
-              SinglewishListProduct.innerHTML = `
-              <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
-                <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
-                  product.featured_image
-                }"></div>
-                <div class="wishlist_product_information_wrapper">
-                  <span class="wishlist_product_name">${product.title}</span>
-                  <span class="wishlist_product_price">${formatMoney(price, currency)}</span></div>
-                </div>
-              </a>
+                <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                  </svg>
+                </div>`;
+              } else if (product.variants.length == 1 && product.compare_at_price != null) {
+                SinglewishListProduct.innerHTML = `
+                <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
+                  <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
+                    product.featured_image
+                  }"></div>
+                  <div class="wishlist_product_information_wrapper">
+                    <span class="wishlist_product_name">${product.title}</span>
+                    <div class="product_price_wrapper"><span class="wishlist_product_compare_price"><del>${formatMoney(
+                      compare_at_price,
+                      currency
+                    )}</del></span>
+                    <span class="wishlist_product_price"> ${formatMoney(price, currency)}</span></div>
+                  </div>
+                  </div>
+                </a>
       
-              <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
-                </svg>
-              </div>`;
-            } else if (product.variants.length === 1 && product.compare_at_price != null) {
-              SinglewishListProduct.innerHTML = `
-              <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
-                <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
-                  product.featured_image
-                }"></div>
-                <div class="wishlist_product_information_wrapper">
-                  <span class="wishlist_product_name">${product.title}</span>
-                  <div class="product_price_wrapper"><span class="wishlist_product_compare_price"><del>${formatMoney(
-                    compare_at_price,
-                    currency
-                  )}</del></span>
-                  <span class="wishlist_product_price">From ${formatMoney(price, currency)}</span></div>
-                </div>
-                </div>
-              </a>
+                <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                  </svg>
+                </div>`;
+              } else {
+                SinglewishListProduct.innerHTML = `
+                <a class="wishlist_product_info_wrapper" href="/products/${product.handle}">
+                  <div class="wishlist_product_img_wrapper"> <img class="wishlist_product_img" src="${
+                    product.featured_image
+                  }"></div>
+                  <div class="wishlist_product_information_wrapper">
+                    <span class="wishlist_product_name">${product.title}</span>
+                    <div class="product_price_wrapper">
+                    <span class="wishlist_product_price">${formatMoney(price, currency)}</span></div>
+                  </div>
+                </a>
       
-              <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
-                </svg>
-              </div>`;
+                <div title="Remove From Wishlist" product-handle-wishlist=${product.handle} class="remove_wishlist_icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                  </svg>
+                </div>`;
+              }
+      
+              document.querySelector('.wishlist_product_container').appendChild(SinglewishListProduct);
+            } catch (error) {
+              console.error(`Error fetching data for ${item}:`, error);
             }
-      
-            document.querySelector('.wishlist_product_container').appendChild(SinglewishListProduct);
-          } catch (error) {
-            console.error('Error fetching data for ' + item, error);
           }
-        }
       
-        async function fetchAllData() {
-          const wishlistList = localStorage.getItem('wishListAdd');
-          const getStoredData = JSON.parse(wishlistList) || [];
-      
-          // Fetch data for all items
-          for (const item of getStoredData) {
-            await fetchData(item);
+          async function fetchAllData() {
+            for (const item of getStoredData) {
+              await fetchData(item);
+            }
+            // Remove skeleton container once wishlist items are loaded
+            document.querySelector('.skeleton_container').innerHTML = '';
+            document.querySelector('.skeleton_container').style.setProperty("display","none","important");
           }
-        }
       
-        // Initial call to fetch data
-        fetchAllData();
-      });
+          // Call the function to start fetching data for each item
+          fetchAllData();
       
-</script>  
+          
+        });
+      </script>
