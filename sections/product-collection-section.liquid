@@ -40,6 +40,7 @@
                     {% for product in collection.products %}
                       <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="rounded position-relative fruite-item">
+                          
                           <div class="fruite-img">
                             <img
                               src="{{ product.featured_image | img_url: 'master' }}"
@@ -105,7 +106,7 @@
                             <h4>{{ product.title }}</h4>
                             <p>{{ product.description }}</p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
-                              <p class="text-dark fs-5 fw-bold mb-0">{% render 'price', product: product, price_class: '', show_compare_at_price: true %} / kg</p>
+                              <p class="text-dark fs-5 fw-bold mb-0">{% render 'price', product: product, price_class: '', show_compare_at_price: true %}/ {{product.variants.first.weight_unit}}</p>
                               {% comment %}
                                 <a
                                   onclick="addToCart({{ product.selected_or_first_available_variant.id }})"
