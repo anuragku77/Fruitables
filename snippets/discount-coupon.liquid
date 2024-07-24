@@ -173,6 +173,7 @@
           })
           .then(response => response.json())
           .then(data => {
+            console.log('Discount application response:', data); // Log response
             if (data.checkout && data.checkout.applied_discounts.length > 0) {
               const discountApplyUrl = `/discount/${code}?v=${Date.now()}&redirect=/checkout/`;
               fetch(discountApplyUrl).then(() => {
@@ -190,6 +191,7 @@
   
                 applyBtn.style.display = 'none';
                 removeBtn.style.display = 'block';
+                console.log('Discount applied, reloading page');
                 window.location.reload(); // Add this line to reload the page
               });
             } else {
