@@ -382,7 +382,31 @@
   </script>
 {%- endif -%}
 
-<style><>
+<style>
+/* Ensure the container for icons is properly aligned */
+.d-flex {
+  align-items: center; /* Align items vertically in the center */
+}
+
+/* Adjust the styling of wishlist icon */
+.wishlist_icon_wrapper {
+  display: flex;
+  align-items: center; /* Center the icon vertically */
+  margin-right: 10px; /* Adjust spacing as needed */
+}
+
+/* Ensure the SVG inside the wishlist icon is centered */
+.wishlist_icon_wrapper svg {
+  vertical-align: middle; /* Align SVG with text if necessary */
+  width: 26px; /* Set the width of the SVG */
+  height: 26px; /* Set the height of the SVG */
+}
+
+/* Additional styling for the header to ensure alignment */
+.navbar-nav {
+  align-items: center; /* Ensure navbar items are centered vertically */
+}
+</style>
 
 {% schema %}
 {
