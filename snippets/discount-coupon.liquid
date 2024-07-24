@@ -117,6 +117,7 @@
         if (appliedDiscountCode) appliedDiscountCode.style.display = 'none';
         if (totalCartSelector) totalCartSelector.innerHTML = JSON.parse(localStorage.discountCode).totalCart;
         localStorage.removeItem('discountCode');
+        applyBtn.innerText = 'Apply Coupon';
       }
   
       function applyDiscount(code, isReload = false) {
