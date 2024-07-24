@@ -73,8 +73,11 @@
                             <h4>{{ product.title }}</h4>
                             <p>{{ product.description }}</p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
-                              <p class="text-dark fs-5 fw-bold mb-0">{% render 'price', product: product, price_class: '', show_compare_at_price: true %} / kg</p>
-                              {% render 'quick-add', product:product %}
+                              <p class="text-dark fs-5 fw-bold mb-0">
+                                {% render 'price', product: product, price_class: '', show_compare_at_price: true %} /
+                                kg
+                              </p>
+                              {% render 'quick-add', product: product %}
                             </div>
                           </div>
                         </div>
@@ -127,8 +130,11 @@
                             <h4>{{ product.title }}</h4>
                             <p>{{ product.description }}</p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
-                              <p class="text-dark fs-5 fw-bold mb-0">{% render 'price', product: product, price_class: '', show_compare_at_price: true %}/ {{product.variants.first.weight_unit}}</p>
-                              {% render 'quick-add', product:product %}
+                              <p class="text-dark fs-5 fw-bold mb-0">
+                                {% render 'price', product: product, price_class: '', show_compare_at_price: true %}/
+                                {{ product.variants.first.weight_unit }}
+                              </p>
+                              {% render 'quick-add', product: product %}
                             </div>
                           </div>
                         </div>
@@ -148,17 +154,17 @@
   .wishlist_btn {
     left: 210px;
     position: absolute;
-  top: 0;
-  z-index: 10;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: all 0.3s linear;
-  cursor: pointer;
+    top: 0;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s linear;
+    cursor: pointer;
   }
   @media screen and (min-width: 1024px) {
     .wishlist_btn {
