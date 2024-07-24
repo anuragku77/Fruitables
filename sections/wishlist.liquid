@@ -278,7 +278,7 @@
         const previousProduct = localStorage.getItem('wishListAdd');
         const previousLocalStorage = JSON.parse(previousProduct);
 
-        document.querySelector('.wishlist_count_number').textContent = `${previousLocalStorage.length}`;
+        {% comment %} document.querySelector('.wishlist_count_number').textContent = `${previousLocalStorage.length}`; {% endcomment %}
         if (previousLocalStorage.length === 0) {
           const wishlist_count_number = document.querySelector('.wishlist_count_number');
           wishlist_count_number.style.setProperty('display', 'none', 'important');
