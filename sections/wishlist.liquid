@@ -534,6 +534,11 @@
         }
 
         document.querySelector('.wishlist_product_container').appendChild(SinglewishListProduct);
+        document.querySelectorAll('.quick-add-container').forEach((container) => {
+            const productHandle = container.getAttribute('data-product-handle');
+            const template = document.getElementById('quick-add-template').innerHTML.replace(/product_handle/g, productHandle);
+            container.innerHTML = Liquid.parse(template);
+          });
       } catch (error) {
         console.error(`Error fetching data for ${item}:`, error);
       }
