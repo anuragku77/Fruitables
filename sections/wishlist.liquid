@@ -519,7 +519,7 @@
                   </svg>
                 </div> 
                 <a onclick="addToCart({{ product.selected_or_first_available_variant.id }})" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                <button class="view_details_button" onclick="addToCart(${product.id})">Add to Cart</button>
+                {% comment %} <button class="view_details_button" onclick="addToCart(${product.id})">Add to Cart</button> {% endcomment %}
                 `;
         }
 
