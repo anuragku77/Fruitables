@@ -211,6 +211,45 @@
     }
   }
 </style>
+
+  @media screen and (min-width: 500px) {
+    .wishlist_product_container {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .skeleton_container {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    @media screen and (min-width: 749px) {
+      .wishlist_section_container {
+        padding: 0px 50px;
+      }
+      .wishlist_product_container {
+        row-gap: 8px;
+        column-gap: 8px;
+      }
+      .skeleton_container {
+        row-gap: 8px;
+        column-gap: 8px;
+      }
+    }
+  }
+  @media screen and (min-width: 800px) {
+    .wishlist_product_container {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+    .skeleton_container {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+  @media screen and (min-width: 1124px) {
+    .wishlist_product_container {
+      grid-template-columns: repeat(4, 1fr) !important;
+    }
+    .skeleton_container {
+      grid-template-columns: repeat(4, 1fr) !important;
+    }
+  }
+</style>
 <div class="page-width wishlist_page_heading">
   <div class="title_wrapper_with_link">
     <h1 class="title title--primary">Your Wishlist</h1>
