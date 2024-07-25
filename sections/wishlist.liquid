@@ -22,50 +22,50 @@
     }
   }
 
-    /* product quick view  */
-    .product_name {
-        width: 200px;
-        height: 200px;
-        margin-top: 100px;
-        margin-bottom: 500px;
-      }
-      .wishlist_product_container {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        row-gap: 4px;
-        margin-bottom: 150px;
-        margin-top: 50px;
-        column-gap: 4px;
-      }
-      .skeleton_container {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        row-gap: 4px;
-        margin-bottom: 150px;
-        margin-top: 50px;
-        column-gap: 4px;
-      }
-      .single_wishlist_product {
-        position: relative;
-        text-decoration: none;
-        color: rgba(0, 0, 0, 90%);
-        z-index: 1;
-        overflow: hidden;
-        border: 1px solid #ddd;
-        padding: 10px;
-      }
+  /* product quick view  */
+  .product_name {
+    width: 200px;
+    height: 200px;
+    margin-top: 100px;
+    margin-bottom: 500px;
+  }
+  .wishlist_product_container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    row-gap: 4px;
+    margin-bottom: 150px;
+    margin-top: 50px;
+    column-gap: 4px;
+  }
+  .skeleton_container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    row-gap: 4px;
+    margin-bottom: 150px;
+    margin-top: 50px;
+    column-gap: 4px;
+  }
+  .single_wishlist_product {
+    position: relative;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 90%);
+    z-index: 1;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
   .wishlist_product_name {
     position: relative;
     font-size: 18px; /* Increased font size */
     font-weight: bold; /* Added font weight */
   }
-  
+
   .wishlist_product_price {
     font-size: 20px; /* Increased font size */
     color: #e60023; /* Changed color */
     margin-top: 10px; /* Added margin */
   }
-  
+
   .wishlist_product_compare_price {
     font-size: 16px;
     color: #999;
@@ -116,7 +116,7 @@
     margin-top: 10px; /* Added margin */
     text-decoration: none;
   }
-  
+
   .view_details_button:hover {
     background-color: #0056b3; /* Darker shade */
   }
@@ -507,7 +507,6 @@
                 </div> 
                 <button class="view_details_button" onclick="addToCart(${product.id})">Add to Cart</button>
                 `;
-                
         }
 
         document.querySelector('.wishlist_product_container').appendChild(SinglewishListProduct);
