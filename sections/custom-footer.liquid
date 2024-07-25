@@ -1,5 +1,3 @@
-
-
 {{ 'custom-footer.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
@@ -208,7 +206,7 @@
                   {%- if settings.brand_description != blank -%}
                     <div class="rte">{{ settings.brand_description }}</div>
                   {%- endif -%}
-                  {%- if block.settings.show_social and has_social_icons -%}
+                  {%- if block.settings.show_social -%}
                     {%- render 'social-icons', class: 'footer__list-social' -%}
                   {%- endif -%}
                 </div>
