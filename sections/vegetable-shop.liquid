@@ -31,8 +31,8 @@
             </svg>
           </span>
           <div class="p-4 rounded-bottom">
-            <h4>{{ product.title }}</h4>
-            <a href="{{ product.url }}" class="h5">{{ product.title }}</a>
+            {% comment %} <h4>{{ product.title }}</h4> {% endcomment %}
+            <a href="{{ product.url }}" class="h4">{{ product.title }}</a>
             <p>{{ product.description }}</p>
             <div class="d-flex justify-content-between flex-lg-wrap">
               <p class="text-dark fs-5 fw-bold mb-0">
