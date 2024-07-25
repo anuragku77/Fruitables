@@ -51,17 +51,13 @@
     color: rgba(0, 0, 0, 90%);
     z-index: 1;
     overflow: hidden;
-    border: 1px solid #ddd;
-    padding: 10px;
   }
   .wishlist_product_name {
     position: relative;
-    font-size: 18px;
-    margin-top: 10px;
+    font-size: 13px;
   }
   .wishlist_product_price {
-    font-size: 20px;
-    margin-top: 5px;
+    font-size: 16px;
   }
 
   .single_wishlist_product:hover .wishlist_product_name {
@@ -69,15 +65,10 @@
   }
   .wishlist_product_img {
     transition: all 0.3s linear;
+  }
+  .wishlist_product_img {
     transform: scale(1);
     overflow: hidden;
-    width: 100%;
-    height: auto;
-    max-height: 300px;
-    display: block;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    padding: 5px;
   }
   .single_wishlist_product:hover .wishlist_product_img {
     transform: scale(1.02);
@@ -86,15 +77,15 @@
   .remove_wishlist_icon {
     height: 40px;
     width: 40px;
+    /* background-color: rgb(255, 255, 255); */
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0px;
+    right: 0px;
     cursor: pointer;
-    background-color: white;
   }
 
   svg {
@@ -127,15 +118,14 @@
     display: block;
     position: relative;
     z-index: -10;
-    height: 300px;
+    height: 200px;
   }
   .wishlist_product_info_wrapper {
     text-decoration: none;
     color: unset;
   }
   .wishlist_product_compare_price {
-    font-size: 16px;
-    margin-top: 5px;
+    font-size: 13px;
   }
   .title_wrapper_with_link {
     display: flex;
@@ -147,17 +137,6 @@
   }
   .skeleton {
     visibility: hidden;
-  }
-
-  .add_to_cart_button {
-    background-color: #000;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-    margin-top: 10px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 14px;
   }
 
   @media screen and (min-width: 500px) {
