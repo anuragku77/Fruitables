@@ -264,6 +264,9 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
+    {{ 'wishlist.css' | asset_url | stylesheet_tag }}
+
+
      <!-- Google Web Fonts -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -385,6 +388,7 @@
     </script>
     <script>
       function addToCart(variant_id) {
+        console.log("Hello");
         let formData = {
           items: [
             {
@@ -408,14 +412,31 @@
     </script>
 
     <script>
+      function searchFilterPdp() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('filterSearchKeywords_pdp');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("main-collection-product-grid_pdp");
+        li = ul.getElementsByTagName('li');
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      }
       function searchFilter() {
         var input, filter, ul, li, a, i, txtValue;
         input = document.getElementById('filterSearchKeywords');
         filter = input.value.toUpperCase();
+        console.log(filter);
         ul = document.getElementById("main-collection-product-grid");
         li = ul.getElementsByTagName('li');
         for (i = 0; i < li.length; i++) {
-          a = li[i].getElementsByTagName("a")[0];
+          a = li[i].getElementsByTagName("span")[0];
           txtValue = a.textContent || a.innerText;
           if (txtValue.toUpperCase().indexOf(filter) > -1) {
             li[i].style.display = "";
@@ -436,6 +457,8 @@
   
       <!-- Template Javascript -->
       <script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
+
+      <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
