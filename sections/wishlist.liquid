@@ -479,7 +479,7 @@
                   </svg>
                 </div>
                 <div id="quick-add-${product.handle}" class="view_details_button" data-product-handle="${product.handle}"></div>
-                <button class="view_details_button">{% render 'quick-add', product:product %}</button>
+                {% comment %} <button class="view_details_button">{% render 'quick-add', product:product %}</button> {% endcomment %}
                 `;
         } else if (product.variants.length == 1 && product.compare_at_price != null) {
           SinglewishListProduct.innerHTML = `
