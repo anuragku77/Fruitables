@@ -18,13 +18,13 @@
               <h1 class="display-1">{{ 'templates.404.subtext' | t }}</h1>
               <h1 class="mb-4">{{ 'templates.404.title' | t }}</h1>
               <p class="mb-4">We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or try to use a search?</p>
-              <a class="btn border-secondary rounded-pill py-3 px-5" href="{{ routes.all_products_collection_url }}">Go Back To Home</a>
+              <a class="btn border-secondary rounded-pill py-3 px-5" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
           </div>
       </div>
   </div>
 </div>
 
-<div class="template-404 page-width page-margin center">
+{% comment %} <div class="template-404 page-width page-margin center">
   <p>
     {{ 'templates.404.subtext' | t }}
   </p>
@@ -34,4 +34,4 @@
   <a href="{{ routes.all_products_collection_url }}" class="button">
     {{ 'general.continue_shopping' | t }}
   </a>
-</div>
+</div> {% endcomment %}
