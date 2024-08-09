@@ -267,13 +267,13 @@
         "countdown_timer_WrNTe8": {
           "type": "countdown_timer",
           "settings": {
-            "timezone": "-05:00 ~ (GMT-05:00) Eastern Time (US & Canada)",
-            "start_month": "January",
-            "start_day": 1,
-            "start_year": "2021",
+            "timezone": "-05:00 ~ (GMT-05:00) Indiana (East)",
+            "start_month": "August",
+            "start_day": 9,
+            "start_year": "2024",
             "start_time": "23:30:00",
-            "end_month": "December",
-            "end_day": 1,
+            "end_month": "August",
+            "end_day": 13,
             "end_year": "2024",
             "end_time": "23:30:00"
           }
