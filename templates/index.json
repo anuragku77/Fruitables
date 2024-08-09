@@ -261,7 +261,7 @@
         "text_cyjj4M": {
           "type": "text",
           "settings": {
-            "text": "<p>Immerse Yourself in a World of Fruity Delights on Our Frutiable Website.<\/p>"
+            "text": "<p>Limited Time Offer<\/p>"
           }
         },
         "countdown_timer_WrNTe8": {
@@ -277,22 +277,12 @@
             "end_year": "2024",
             "end_time": "23:30:00"
           }
-        },
-        "collapsible_content_QtxNQp": {
-          "type": "collapsible_content",
-          "settings": {
-            "title": "Shipping information",
-            "text": "<p>Lorem ipsum dolor.<\/p>",
-            "icon_style": "plus_minus_square",
-            "show_open": false
-          }
         }
       },
       "block_order": [
         "heading_gKFbMC",
         "text_cyjj4M",
-        "countdown_timer_WrNTe8",
-        "collapsible_content_QtxNQp"
+        "countdown_timer_WrNTe8"
       ],
       "settings": {
         "video": "shopify:\/\/files\/videos\/78d233351dd34405929411228ec2c6b3.mp4",
