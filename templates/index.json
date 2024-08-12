@@ -243,6 +243,70 @@
         "testimonial_heading": "Our Testimonial",
         "testimonial_content": "Our Client Saying!"
       }
+    },
+    "autoplay_video_section_YXG889": {
+      "type": "autoplay-video-section",
+      "blocks": {
+        "heading_gKFbMC": {
+          "type": "heading",
+          "settings": {
+            "title": "Browse our latest products",
+            "block_heading_color": "",
+            "block_heading_size": "",
+            "enable_custom_font": false,
+            "custom_font": "abel_n4",
+            "heading_level": "h2"
+          }
+        },
+        "text_cyjj4M": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Limited Time Offer<\/p>"
+          }
+        },
+        "countdown_timer_WrNTe8": {
+          "type": "countdown_timer",
+          "settings": {
+            "timezone": "-05:00 ~ (GMT-05:00) Indiana (East)",
+            "start_month": "August",
+            "start_day": 7,
+            "start_year": "2024",
+            "start_time": "23:30:00",
+            "end_month": "August",
+            "end_day": 13,
+            "end_year": "2024",
+            "end_time": "23:30:00"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gKFbMC",
+        "text_cyjj4M",
+        "countdown_timer_WrNTe8"
+      ],
+      "disabled": true,
+      "settings": {
+        "video": "shopify:\/\/files\/videos\/78d233351dd34405929411228ec2c6b3.mp4",
+        "loop": true,
+        "image_crop": "1200:600",
+        "aspect_ratio": "16:9",
+        "text_size": 100,
+        "text_alignment": "center",
+        "text_position": "center center",
+        "text_width": 600,
+        "text_color": "#121212",
+        "text_background_color": "",
+        "image_overlay_color": "radial-gradient(rgba(251, 51, 166, 0), rgba(48, 145, 211, 0.4) 36%, rgba(0, 0, 0, 0.8) 100%)",
+        "animation": "fade-in-right",
+        "max_width": "",
+        "outer_margin_top": 40,
+        "outer_margin_bottom": 40,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "sans-serif"
+      }
     }
   },
   "order": [
@@ -254,6 +318,7 @@
     "custom_product_banner_tkktLp",
     "bestseller_product",
     "store_fact_section_yj4wmA",
-    "testimonial_bwnBBi"
+    "testimonial_bwnBBi",
+    "autoplay_video_section_YXG889"
   ]
 }
