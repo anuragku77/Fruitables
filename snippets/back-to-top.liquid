@@ -76,10 +76,9 @@
           } else {
             scrollTopButton.style.display = "none";
           }
-          scrollTopButton.style.background = `conic-gradient(var(--color-background) ${scrollValue}%, var(--color-foreground) ${scrollValue}%)`;
+          scrollTopButton.style.background = `conic-gradient(var(--color-foreground) ${scrollValue}%, var(--color-background) ${scrollValue}%)`;
         });
       }
-
       function scrollToTop() {
         window.scrollTo({
           top: 0,
