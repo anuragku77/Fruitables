@@ -10,11 +10,40 @@
     </span>
   </div>
   <style>
-    #scroll-top {
-        --scroll-top-background:{{ settings.btp_background }};
-        --scroll-top-color:{{ settings.btp_icon }};
+        #scroll-top {
+            --scroll-top-background:{{ settings.btp_background }};
+            --scroll-top-color:{{ settings.btp_icon }};
+        }
+
+        #scroll-top {
+      z-index: 9;
+      position: fixed;
+      bottom: 20px;
+      right: 10px;
+      height: 54px;
+      width: 54px;
+      display: none;
+      place-items: center;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    #scroll-value {
+      height: calc(105% - 6px);
+      width: calc(105% - 6px);
+      background-color: var(--scroll-top-background);
+      color: var(--scroll-top-color);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+
+    #scroll-value svg {
+      transform: rotate(-90deg);
     }
   </style>
+
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const scrollTopButton = document.getElementById("scroll-top");
