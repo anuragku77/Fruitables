@@ -72,6 +72,11 @@
             }
           }
         },
+        "header": {
+          "colors": {
+            "content": "Colors"
+          }
+        },
         "back_to_top_bottom_position": {
           "label": "Position bottom"
         },
