@@ -1,0 +1,57 @@
+{% if settings.enable_back_to_top %}
+  <div
+    id="scroll-top"
+    style="display: grid; background: conic-gradient(rgb(var(--scroll-top-color)) 60%, rgb(var(--scroll-top-background)) 60%);"
+  >
+    <span id="scroll-value">
+      <svg width="13" height="12" viewBox="0 0 13 12" fill="none">
+        <path d="M1 5.7619L11.5588 5.7619M7.58824 11L12 5.7619L7.58824 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </div>
+  <style>
+    #scroll-top {
+        --scroll-top-background:{{ settings.btp_background }};
+        --scroll-top-color:{{ settings.btp_icon }};
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const scrollTopButton = document.getElementById("scroll-top");
+      const scrollValueSpan = document.getElementById("scroll-value");
+      const pageHeight = window.innerHeight;
+
+      function checkVisible() {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > pageHeight) {
+            scrollTopButton.classList.add("back-to-top--active");
+          } else {
+            scrollTopButton.classList.remove("back-to-top--active");
+          }
+
+          let pos = document.documentElement.scrollTop;
+          let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          let scrollValue = Math.round((pos * 100) / calcHeight);
+          if (pos > 100) {
+            scrollTopButton.style.display = "grid";
+          } else {
+            scrollTopButton.style.display = "none";
+          }
+          scrollTopButton.style.background = `conic-gradient(var(--bodyTextColor) ${scrollValue}%, var(--bodyColor) ${scrollValue}%)`;
+        });
+      }
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        });
+      }
+
+      scrollTopButton.addEventListener("click", scrollToTop);
+      scrollTopButton.addEventListener("touchstart", scrollToTop, { passive: true });
+      window.addEventListener("scroll", checkVisible);
+    });
+  </script>
+{% endif %}
