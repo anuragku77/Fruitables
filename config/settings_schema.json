@@ -73,7 +73,7 @@
         },
         {
           "type": "header",
-          "content": "t:common.header.colors.content"
+          "content": "Colors"
         },
         {
           "type": "color",
