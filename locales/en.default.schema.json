@@ -52,6 +52,37 @@
         }
       }
     },
+    "scroll_to_top": {
+      "name": "Scroll to top",
+      "settings": {
+        "enable_back_to_top": {
+          "label": "Enable scroll to top"
+        },
+        "back_to_top_btn_position": {
+          "label": "Position",
+          "options": {
+            "left": {
+              "label": "Left"
+            },
+            "center": {
+              "label": "Center"
+            },
+            "right": {
+              "label": "Right"
+            }
+          }
+        },
+        "back_to_top_bottom_position": {
+          "label": "Position bottom"
+        },
+        "btp_icon": {
+          "label": "Icons"
+        },
+        "btp_background": {
+          "label": "Background"
+        }
+      }
+    },
     "cards": {
       "name": "Product cards",
       "settings": {
