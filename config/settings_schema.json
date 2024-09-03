@@ -34,6 +34,62 @@
     ]
   },
   {
+      "name": "t:settings_schema.scroll_to_top.name",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_back_to_top",
+          "label": "t:settings_schema.scroll_to_top.settings.enable_back_to_top.label",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "back_to_top_btn_position",
+          "label": "t:settings_schema.scroll_to_top.settings.back_to_top_btn_position.label",
+          "default": "right",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:settings_schema.scroll_to_top.settings.back_to_top_btn_position.options.left.label"
+            },
+            {
+              "value": "center",
+              "label": "t:settings_schema.scroll_to_top.settings.back_to_top_btn_position.options.center.label"
+            },
+            {
+              "value": "right",
+              "label": "t:settings_schema.scroll_to_top.settings.back_to_top_btn_position.options.right.label"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "back_to_top_bottom_position",
+          "label": "t:settings_schema.scroll_to_top.settings.back_to_top_bottom_position.label",
+          "min": 10,
+          "max": 100,
+          "step": 2,
+          "default": 10
+        },
+        {
+          "type": "header",
+          "content": "t:common.header.colors.content"
+        },
+        {
+          "type": "color",
+          "id": "btp_icon",
+          "label": "t:settings_schema.scroll_to_top.settings.btp_icon.label",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "btp_background",
+          "label": "t:settings_schema.scroll_to_top.settings.btp_background.label",
+          "default": "#FFFFFF"
+        }
+      ]
+    },
+  {
     "name": "t:settings_schema.colors.name",
     "settings": [
       {
