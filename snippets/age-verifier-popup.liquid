@@ -81,7 +81,7 @@
 
 <style>
       .side-drawer-panel,
-  .modal-drawer-panel {
+      .modal-drawer-panel {
     position: fixed;
     top: 0;
     right: 0;
@@ -98,10 +98,7 @@
   }
 
   .side-drawer-panel.active,
-  .modal-drawer-panel.active,
-  #pickup-available:target,
-  #minicart:target,
-  #add-newaddress:target {
+  .modal-drawer-panel.active {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
@@ -125,11 +122,8 @@
     cursor: none;
   }
 
-  .side-drawer-panel.active .blur-layer-bg,
-  .modal-drawer-panel.active .blur-layer-bg,
-  #pickup-available:target .blur-layer-bg,
-  #minicart:target .blur-layer-bg,
-  #add-newaddress:target .blur-layer-bg {
+  .modal-drawer-panel.active .blur-layer-bg
+  {
     opacity: 1;
     pointer-events: all;
   }
@@ -147,10 +141,8 @@
     cursor: auto;
   }
 
-  .side-drawer-panel.active .side-drawer-modal,
-  #minicart:target .side-drawer-modal,
-  .modal-drawer-panel.active .modal-drawer-card,
-  #add-newaddress:target .side-drawer-modal {
+
+  .modal-drawer-panel.active .modal-drawer-card {
     transform: scale(1) translate(0) !important;
   }
 
@@ -301,29 +293,6 @@
     width: 100%;
   }
 
-  .minicart-panel .side-drawer-modal-body {
-    padding: 0px;
-    height: calc(100% - 98px);
-  }
-
-  .minicart {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .minicart .cart-orders-box {
-    overflow: hidden;
-    overflow-y: auto;
-    flex: 1;
-    width: 100%;
-    min-height: 1px;
-    padding: 26px 32px;
-  }
-
-  .minicart .minicart-total-wrapper {
-    padding: 20px 0px 10px;
-  }
 
   .modal-drawer-card {
     display: flex;
@@ -395,32 +364,6 @@
     border: 1px solid var(--borderColor);
     border-radius: var(--boxRadius);
     overflow: hidden;
-  }
-
-  .popup-image {
-    height: 100%;
-    background-color: var(--imageBg);
-  }
-
-  .popup-image img {
-    display: block;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .signup-popup-cont {
-    padding: 40px;
-    align-self: center;
-  }
-
-  .signup-popup-cont .popup-descption,
-  .sign-popup-wrapper .form-field {
-    margin-bottom: 24px;
-  }
-
-  .sign-popup-wrapper .form-field:last-child {
-    margin: 0;
   }
 
   .age-verification-popup .blur-layer-bg {
