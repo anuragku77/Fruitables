@@ -115,6 +115,12 @@
       "min_error": "इस आइटम में न्यूनतम {{ min }} है",
       "max_error": "इस आइटम की अधिकतम सीमा {{ max }} है",
       "step_error": "आप इस आइटम को केवल {{ step }} की वृद्धि में ही जोड़ सकते हैं"
+    },
+    "autoplay-video-section": {
+      "days": "दिन",
+      "hours": "घंटे",
+      "minutes": "मिनट",
+      "seconds": "सेकंड"
     }
   },
   "general": {
