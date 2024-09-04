@@ -78,3 +78,43 @@
   </age-verification>
   <script src="{{ 'age-verification.js' | asset_url }}" defer></script>
 {% endif %}
+
+<style>
+    .age-verification-popup .blur-layer-bg {
+    cursor: auto;
+  }
+
+  .age-verification-popup .modal-drawer-card {
+    max-width: 730px;
+  }
+
+  .age-verification-popup .modal-drawer--body {
+    height: 100%;
+    padding: 15px;
+  }
+
+  .modal-content-box {
+    border: 1px solid var(--borderColor);
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .popup-logo {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .age-verification-popup-wrapper .popup-title {
+    padding: 0;
+  }
+
+  .age-verification-popup-wrapper > div:not(:last-child),
+  .age-verification-heading,
+  .age-verification-description {
+    margin-bottom: 18px;
+  }
+</style>
