@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     bodyClass: 'modal-popup-open',
     activeClass: 'active',
     closingClass: 'closing',
-    hiddenClass: 'hidden'
+    hiddenClass: 'hidden',
+    blurredClass: 'blurred' // Add this line
   };
 
   const popup = document.querySelector('.age-verification-popup');
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function openPopup() {
     if (!getCookie(cookieName)) {
       document.body.classList.add(classes.bodyClass);
+      document.body.classList.add(classes.blurredClass); // Add this line
       popup.classList.add(classes.activeClass);
     }
   }
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
       popup.classList.remove(classes.activeClass);
       popup.classList.remove(classes.closingClass);
       document.body.classList.remove(classes.bodyClass);
+      document.body.classList.remove(classes.blurredClass); // Add this line
     }, 500);
     setCookie(cookieName, popup.dataset.expiry);
   }
@@ -59,4 +62,3 @@ document.addEventListener('DOMContentLoaded', function() {
   const backButton = document.querySelector('[data-age-back-button]');
   if (backButton) backButton.addEventListener('click', backToOriginal);
 });
-
