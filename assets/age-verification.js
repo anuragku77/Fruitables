@@ -19,15 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.cookie = `${name}=true; max-age=${(expiry * 24 * 60 * 60)}; path=/`;
   }
 
-  function removeCookie(name) {
-    document.cookie = `${name}=; max-age=0`;
-  }
-
   function openPopup() {
-    document.body.classList.remove(classes.bodyClass);
-    popup.classList.add(classes.activeClass);
-    if (popup.dataset.ageverification === 'true') {
+    if (!getCookie(cookieName)) {
       document.body.classList.add(classes.bodyClass);
+      popup.classList.add(classes.activeClass);
     }
   }
 
@@ -36,21 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
       popup.classList.remove(classes.activeClass);
       popup.classList.remove(classes.closingClass);
-      if (popup.dataset.ageverification === 'true') {
-        document.body.classList.remove(classes.bodyClass);
-      }
+      document.body.classList.remove(classes.bodyClass);
     }, 500);
     setCookie(cookieName, popup.dataset.expiry);
   }
 
   function decline() {
-    popup.querySelector(".age-verification-popup-wrapper").classList.add(classes.hiddenClass);
+    popup.querySelector('.age-verification-popup-wrapper').classList.add(classes.hiddenClass);
     declineContent.classList.remove(classes.hiddenClass);
   }
 
   function backToOriginal() {
     declineContent.classList.add(classes.hiddenClass);
-    popup.querySelector(".age-verification-popup-wrapper").classList.remove(classes.hiddenClass);
+    popup.querySelector('.age-verification-popup-wrapper').classList.remove(classes.hiddenClass);
   }
 
   if (!getCookie(cookieName)) {
@@ -66,3 +59,4 @@ document.addEventListener('DOMContentLoaded', function() {
   const backButton = document.querySelector('[data-age-back-button]');
   if (backButton) backButton.addEventListener('click', backToOriginal);
 });
+
