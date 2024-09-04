@@ -270,22 +270,7 @@
           width: 100%;
       }
 
-      /* Modal Drawer Card */
-      .modal-drawer-card {
-          display: flex;
-          flex-direction: column;
-          border-radius: 10px; /* Border radius for boxes */
-          width: 100%;
-          max-width: 960px;
-          pointer-events: none;
-          margin: 0 auto;
-          position: relative;
-          max-height: calc(100vh - 10rem);
-          overflow: hidden;
-          transform: translate(-50%, -50%);
-          transition: transform 0.4s, all 0.4s ease-out;
-          will-change: transform;
-      }
+
 
       /* Popup Wrapper */
       .popup-wrapper {
@@ -385,6 +370,27 @@
   .popup-btns .btn:hover {
       background-color: #555;
   }
+
+   /* Modal Drawer Card */
+      .modal-drawer-card {
+          display: flex;
+          flex-direction: column;
+          border-radius: 10px; /* Border radius for boxes */
+          width: 100%;
+          max-width: 960px;
+          pointer-events: none;
+          margin: 0 auto;
+          position: relative;
+          max-height: calc(100vh - 10rem);
+          overflow: hidden;
+          /* transform: translate(-50%, -50%); */
+          /* transition: transform 0.4s, all 0.4s ease-out; */
+          will-change: transform;
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-50%);
+    top: 50%;
+    transition: transform 0.4s ease;
+      }
 
       /* Hidden Class */
       .hidden {
