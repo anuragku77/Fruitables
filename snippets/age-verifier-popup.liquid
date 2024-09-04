@@ -80,26 +80,7 @@
 {% endif %}
 
 <style>
-    .side-drawer-panel,
-  .modal-drawer-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 99;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-      pointer-events: none;
-  }
-
-  .modal-drawer-panel.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: all;
-  }
-
+     /* Background and blur layer */
   .blur-layer-bg {
       position: fixed;
       z-index: 1;
@@ -107,49 +88,46 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
-      backdrop-filter: blur(4px);
-      pointer-events: none;
+      background: rgba(0, 0, 0, 0.7); /* Darker background */
+      backdrop-filter: blur(5px); /* Initial blur */
+      transition: backdrop-filter 0.4s ease, opacity 0.4s ease;
   }
 
   .modal-drawer-panel.active .blur-layer-bg {
-      backdrop-filter: blur(15px);
-      pointer-events: all;
+      backdrop-filter: blur(20px); /* Increase blur when active */
   }
 
+  /* Popup styling */
   .modal-drawer-card {
-      position: relative;
-      margin: auto;
-      width: 90%;
-      max-width: 680px;
-      padding: 40px;
-      background-color: var(--bodyColor);
-      border-radius: var(--boxRadius);
-      box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
-      transform: translateY(-50%);
+      position: fixed;
+      z-index: 100;
       top: 50%;
-      transition: transform 0.4s ease;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 600px;
+      padding: 40px;
+      background-color: #fff;
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Drop shadow for depth */
+      text-align: center;
   }
 
-  .popup-logo {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
-  }
-
+  /* Popup title */
   .popup-title {
-      text-align: center;
+      font-size: 28px; /* Larger title */
+      font-weight: bold;
       margin-bottom: 20px;
-      font-size: 24px;
   }
 
+  /* Popup description */
   .popup-description {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 16px;
+      font-size: 18px; /* Slightly larger description text */
+      margin-bottom: 30px;
+      color: #555; /* Softer text color */
   }
 
+  /* Button styling */
   .popup-btns {
       display: flex;
       justify-content: center;
@@ -157,22 +135,25 @@
   }
 
   .popup-btns .btn {
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 12px 30px;
       font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      border: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .popup-btns .btn.fill-btn {
-      background-color: #333;
-      color: #fff;
+      background-color: #fff000; /* Bright yellow for prominence */
+      color: #000; /* Dark text for contrast */
   }
 
-  .popup-btns .btn:hover {
-      background-color: #555;
+  .popup-btns .btn.fill-btn:hover {
+      background-color: #f1e600; /* Slightly darker yellow on hover */
   }
 
+  /* Hidden class */
   .hidden {
       display: none;
   }
