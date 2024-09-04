@@ -80,296 +80,300 @@
 {% endif %}
 
 <style>
-              /* General Drawer Panel Styles */
-       /* Panel Styles */
-      .modal-drawer-panel {
-          position: fixed;
-          top: 0;
-          right: 0;
-          display: flex;
-          align-items: center;
-          width: 100%;
-          height: 100%;
-          z-index: 99;
-          visibility: hidden;
-          opacity: 0;
-          transition: 0.2s ease;
-          pointer-events: none;
-          cursor: none;
-      }
-
-      .modal-drawer-panel.active {
-          opacity: 1;
-          visibility: visible;
-          pointer-events: all;
-          cursor: auto;
-      }
-
-      /* Background Blur Layer */
-      .blur-layer-bg {
-          position: fixed;
-          z-index: 1; /* Adjusted z-index */
-          top: 0;
-          left: 0;
-          display: block;
-          width: 100%;
-          height: 100%;
-          opacity: 0;
-          transition: 0.4s ease;
-          pointer-events: none;
-          background: rgba(0, 0, 0, 0.7); /* Darker background for better visibility */
-          backdrop-filter: blur(9px);
-          -webkit-backdrop-filter: blur(9px);
-          cursor: none;
-      }
-
-      .modal-drawer-panel.active .blur-layer-bg {
-          opacity: 1;
-          pointer-events: all;
-      }
-
-      .modal-drawer-panel.active .modal-drawer-card {
-          transform: scale(1) translate(0) !important;
-      }
-
-      /* Drawer Modal Inner */
-      .modal-drawer-inner {
-          position: relative;
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          width: 100%;
-          height: 100%;
-          pointer-events: auto;
-          background-color: #f5f5f5; /* Light background color */
-          color: #333; /* Dark text color */
-          overflow: hidden;
-          overflow-y: auto;
-          cursor: auto;
-      }
-
-      .quickview .modal-drawer-inner {
-          padding: 12px;
-          border-radius: 10px; /* Border radius for boxes */
-      }
-
-      .size-chart-popup .modal-drawer-inner {
-          border-radius: 10px; /* Border radius for boxes */
-      }
-
-      /* Close Button */
-      .close-btn {
-          position: absolute;
-          top: 15px;
-          right: 15px;
-          color: #333; /* Dark text color */
-          z-index: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          min-width: 40px;
-          height: 40px;
-          padding: 11px;
-          border-radius: 50%;
-      }
-
-      .close-btn:hover svg line,
-      .facet-close-btn:hover svg line,
-      .filter-remove:hover svg line,
-      .search-close:hover svg line {
-          -webkit-animation: cross 0.5s ease-in-out forwards;
-          animation: cross 0.5s ease-in-out forwards;
-      }
-
-      .close-btn:hover svg path,
-      .facet-close-btn:hover svg path,
-      .filter-remove:hover svg path,
-      .search-close:hover svg path {
-          -webkit-animation: cross 0.5s ease-in-out forwards;
-          animation: cross 0.5s ease-in-out forwards;
-          -webkit-animation-delay: 0.1s;
-          animation-delay: 0.1s;
-      }
-
-      /* Keyframes for Button Animation */
-      @keyframes cross {
-          0%,
-          100% {
-              -webkit-clip-path: inset(0 0 0 0);
-              clip-path: inset(0 0 0 0);
-          }
-
-          42% {
-              -webkit-clip-path: inset(0 0 0 100%);
-              clip-path: inset(0 0 0 100%);
-          }
-
-          43% {
-              -webkit-clip-path: inset(0 100% 0 0);
-              clip-path: inset(0 100% 0 0);
-          }
-      }
-
-      .close-btn .close-icon {
-          width: 100%;
-          height: 100%;
-      }
-
-      .modal-drawer-inner .close-btn {
-          top: 0px;
-          right: 0px;
-      }
-
-      /* Moving Cursor */
-      .moving-cursor {
-          background-color: #f5f5f5; /* Light background color */
-          position: fixed;
-          top: var(--mouse-top);
-          left: var(--mouse-left);
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          height: 70px;
-          width: 70px;
-          border-radius: 50%;
-          transition: opacity 0.2s ease-in-out;
-          will-change: height, width;
-          cursor: none;
-          opacity: 0;
-      }
-
-      .moving-cursor svg {
-          width: 20px;
-          height: 20px;
-      }
-
-      .blur-layer-bg:hover ~ .moving-cursor {
-          opacity: 1;
-      }
-
-      /* Drawer Modal Title */
-      .side-drawer-modal-head .close-btn {
-          position: static;
-      }
-
-      .side-drawer-modal-title span {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 14px;
-          flex: 0 0 auto;
-      }
-
-      /* Modal Body */
-      .modal-drawer--body,
-      .side-drawer-modal-body {
-          padding: 25px;
-          height: calc(100% - 0px);
-          max-height: 100%;
-          width: 100%;
-      }
-
-      /* Modal Drawer Card */
-      .modal-drawer-card {
-          display: flex;
-          flex-direction: column;
-          border-radius: 10px; /* Border radius for boxes */
-          width: 100%;
-          max-width: 960px;
-          pointer-events: none;
-          margin: 0 auto;
-          position: relative;
-          max-height: calc(100vh - 10rem);
-          overflow: hidden;
-          transform: translate(-50%, -50%);
-          transition: transform 0.4s, all 0.4s ease-out;
-          will-change: transform;
-      }
-
-      /* Popup Wrapper */
-      .popup-wrapper {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 1; /* Adjusted z-index */
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          visibility: hidden;
-          opacity: 1;
-          pointer-events: none;
-          transition: all 0.5s ease-in-out;
-          z-index: 9;
-      }
-
-      .popup-wrapper.active,
-      .popup-wrapper.active .blur-layer-bg {
-          visibility: visible;
-          opacity: 1;
-          pointer-events: auto;
-      }
-
-      /* Age Verification Popup Specific Styles */
-      .age-verification-popup .blur-layer-bg {
-          cursor: auto;
-      }
-
-      .age-verification-popup .modal-drawer-card {
-          max-width: 730px;
-      }
-
-      .age-verification-popup .modal-drawer--body {
-          height: 100%;
-          padding: 15px;
-      }
-
-      .modal-content-box {
-          border: 1px solid #dcdcdc; /* Light grey border color */
-          padding: 24px;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-      }
-
-      /* Popup Logo */
-      .popup-logo {
-          width: 100%;
-          margin-bottom: 50px;
-      }
-
-      .age-verification-popup-wrapper .popup-title {
-          padding: 0;
-      }
-
-      .age-verification-popup-wrapper > div:not(:last-child),
-      .age-verification-heading,
-      .age-verification-description {
-          margin-bottom: 18px;
-      },
-
-
-    .popup-btns {
+  /* General Drawer Panel Styles */
+  /* Panel Styles */
+  .modal-drawer-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
       display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      z-index: 99;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s ease;
+      pointer-events: none;
+      cursor: none;
+  }
+
+  .modal-drawer-panel.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+      cursor: auto;
+  }
+
+  /* Background Blur Layer */
+  .blur-layer-bg {
+      position: fixed;
+      z-index: 1; /* Adjusted z-index */
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: 0.4s ease;
+      pointer-events: none;
+      background: rgba(0, 0, 0, 0.7); /* Darker background for better visibility */
+      backdrop-filter: blur(9px);
+      -webkit-backdrop-filter: blur(9px);
+      cursor: none;
+  }
+
+  .modal-drawer-panel.active .blur-layer-bg {
+      opacity: 1;
+      pointer-events: all;
+  }
+
+  .modal-drawer-panel.active .modal-drawer-card {
+      transform: scale(1) translate(0) !important;
+  }
+
+  /* Drawer Modal Inner */
+  .modal-drawer-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+      background-color: #f5f5f5; /* Light background color */
+      color: #333; /* Dark text color */
+      overflow: hidden;
+      overflow-y: auto;
+      cursor: auto;
+  }
+
+  .quickview .modal-drawer-inner {
+      padding: 12px;
+      border-radius: 10px; /* Border radius for boxes */
+  }
+
+  .size-chart-popup .modal-drawer-inner {
+      border-radius: 10px; /* Border radius for boxes */
+  }
+
+  /* Close Button */
+  .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: #333; /* Dark text color */
+      z-index: 1;
+      display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 20px;
+      width: 40px;
+      min-width: 40px;
+      height: 40px;
+      padding: 11px;
+      border-radius: 50%;
   }
 
-  .popup-btns .btn {
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      background-color: #333;
-      color: #fff;
+  .close-btn:hover svg line,
+  .facet-close-btn:hover svg line,
+  .filter-remove:hover svg line,
+  .search-close:hover svg line {
+      -webkit-animation: cross 0.5s ease-in-out forwards;
+      animation: cross 0.5s ease-in-out forwards;
   }
 
+  .close-btn:hover svg path,
+  .facet-close-btn:hover svg path,
+  .filter-remove:hover svg path,
+  .search-close:hover svg path {
+      -webkit-animation: cross 0.5s ease-in-out forwards;
+      animation: cross 0.5s ease-in-out forwards;
+      -webkit-animation-delay: 0.1s;
+      animation-delay: 0.1s;
+  }
+
+  /* Keyframes for Button Animation */
+  @keyframes cross {
+      0%,
+      100% {
+          -webkit-clip-path: inset(0 0 0 0);
+          clip-path: inset(0 0 0 0);
+      }
+
+      42% {
+          -webkit-clip-path: inset(0 0 0 100%);
+          clip-path: inset(0 0 0 100%);
+      }
+
+      43% {
+          -webkit-clip-path: inset(0 100% 0 0);
+          clip-path: inset(0 100% 0 0);
+      }
+  }
+
+  .close-btn .close-icon {
+      width: 100%;
+      height: 100%;
+  }
+
+  .modal-drawer-inner .close-btn {
+      top: 0px;
+      right: 0px;
+  }
+
+  /* Moving Cursor */
+  .moving-cursor {
+      background-color: #f5f5f5; /* Light background color */
+      position: fixed;
+      top: var(--mouse-top);
+      left: var(--mouse-left);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      transition: opacity 0.2s ease-in-out;
+      will-change: height, width;
+      cursor: none;
+      opacity: 0;
+  }
+
+  .moving-cursor svg {
+      width: 20px;
+      height: 20px;
+  }
+
+  .blur-layer-bg:hover ~ .moving-cursor {
+      opacity: 1;
+  }
+
+  /* Drawer Modal Title */
+  .side-drawer-modal-head .close-btn {
+      position: static;
+  }
+
+  .side-drawer-modal-title span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 14px;
+      flex: 0 0 auto;
+  }
+
+  /* Modal Body */
+  .modal-drawer--body,
+  .side-drawer-modal-body {
+      padding: 25px;
+      height: calc(100% - 0px);
+      max-height: 100%;
+      width: 100%;
+  }
+
+  /* Modal Drawer Card */
+  .modal-drawer-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px; /* Border radius for boxes */
+      width: 100%;
+      max-width: 960px;
+      pointer-events: none;
+      margin: 0 auto;
+      position: relative;
+      max-height: calc(100vh - 10rem);
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      transition: transform 0.4s, all 0.4s ease-out;
+      will-change: transform;
+  }
+
+  /* Popup Wrapper */
+  .popup-wrapper {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1; /* Adjusted z-index */
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 1;
+      pointer-events: none;
+      transition: all 0.5s ease-in-out;
+      z-index: 9;
+  }
+
+  .popup-wrapper.active,
+  .popup-wrapper.active .blur-layer-bg {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+  }
+
+  /* Age Verification Popup Specific Styles */
+  .age-verification-popup .blur-layer-bg {
+      cursor: auto;
+  }
+
+  .age-verification-popup .modal-drawer-card {
+      max-width: 730px;
+  }
+
+  .age-verification-popup .modal-drawer--body {
+      height: 100%;
+      padding: 15px;
+  }
+
+  .modal-content-box {
+      border: 1px solid #dcdcdc; /* Light grey border color */
+      padding: 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+
+  /* Popup Logo */
+  .popup-logo {
+      width: 100%;
+      margin-bottom: 50px;
+  }
+
+  .age-verification-popup-wrapper .popup-title {
+      padding: 0;
+  }
+
+  .age-verification-popup-wrapper > div:not(:last-child),
+  .age-verification-heading,
+  .age-verification-description {
+      margin-bottom: 18px;
+  }
+
+  /* Button Styles for Age Verification Decline Button */
+  .age-verifiction-button .btn {
+      background-color: #333; /* Background color for the button */
+      color: #fff; /* Text color for the button */
+      padding: 10px 20px; /* Padding for the button */
+      border-radius: 5px; /* Border radius for rounded corners */
+      font-size: 16px; /* Font size */
+      cursor: pointer; /* Cursor style */
+      transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+
+  .age-verifiction-button .btn.fill-btn {
+      background-color: #333; /* Background color for fill-btn class */
+      color: #fff; /* Text color for fill-btn class */
+  }
+
+  .age-verifiction-button .btn:hover {
+      background-color: #555; /* Background color on hover */
+  }
+
+  /* Ensure this doesn't conflict with existing button styles */
   .popup-btns .btn.fill-btn {
       background-color: #333;
       color: #fff;
@@ -379,13 +383,8 @@
       background-color: #555;
   }
 
-  .age-verifiction-button .btn fill-btn {
-     background-color: #333;
-      color: #fff;
+  /* Hidden Class */
+  .hidden {
+      display: none;
   }
-
-      /* Hidden Class */
-      .hidden {
-          display: none;
-      }
 </style>
