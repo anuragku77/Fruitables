@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     bodyClass: 'modal-popup-open',
     activeClass: 'active',
     closingClass: 'closing',
-    hiddenClass: 'hidden',
-    blurredClass: 'blurred' // Add this line
+    hiddenClass: 'hidden'
   };
 
   const popup = document.querySelector('.age-verification-popup');
@@ -21,24 +20,21 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function openPopup() {
-  if (!getCookie(cookieName)) {
-    document.body.classList.add(classes.bodyClass);
-    popup.classList.add(classes.activeClass);
-    document.querySelector('.blur-layer-bg').classList.add(classes.activeClass); // Activate blur
+    if (!getCookie(cookieName)) {
+      document.body.classList.add(classes.bodyClass);
+      popup.classList.add(classes.activeClass);
+    }
   }
-}
 
-function closePopup() {
-  popup.classList.add(classes.closingClass);
-  setTimeout(() => {
-    popup.classList.remove(classes.activeClass);
-    popup.classList.remove(classes.closingClass);
-    document.body.classList.remove(classes.bodyClass);
-    document.querySelector('.blur-layer-bg').classList.remove(classes.activeClass); // Deactivate blur
-  }, 500);
-  setCookie(cookieName, popup.dataset.expiry);
-}
-
+  function closePopup() {
+    popup.classList.add(classes.closingClass);
+    setTimeout(() => {
+      popup.classList.remove(classes.activeClass);
+      popup.classList.remove(classes.closingClass);
+      document.body.classList.remove(classes.bodyClass);
+    }, 500);
+    setCookie(cookieName, popup.dataset.expiry);
+  }
 
   function decline() {
     popup.querySelector('.age-verification-popup-wrapper').classList.add(classes.hiddenClass);
@@ -63,3 +59,4 @@ function closePopup() {
   const backButton = document.querySelector('[data-age-back-button]');
   if (backButton) backButton.addEventListener('click', backToOriginal);
 });
+
