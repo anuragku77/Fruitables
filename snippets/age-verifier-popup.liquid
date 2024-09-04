@@ -80,327 +80,109 @@
 {% endif %}
 
 <style>
-      .side-drawer-panel,
-      .modal-drawer-panel {
+  .modal-drawer-panel {
     position: fixed;
     top: 0;
     right: 0;
-    display: flex;
-    align-items: center;
     width: 100%;
     height: 100%;
     z-index: 99;
     visibility: hidden;
     opacity: 0;
-    transition: 0.2s ease;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
     pointer-events: none;
-    cursor: none;
   }
 
-  .side-drawer-panel.active,
   .modal-drawer-panel.active {
-    opacity: 1;
     visibility: visible;
-    pointer-events: all;
-    cursor: auto;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .blur-layer-bg {
     position: fixed;
-    z-index: 0;
     top: 0;
     left: 0;
-    display: block;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: 0.4s ease;
-    pointer-events: none;
-    background: rgb(var(--sideLayerBg), 0.5);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(9px);
-    -webkit-backdrop-filter: blur(9px);
-    cursor: none;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
   }
 
-  .modal-drawer-panel.active .blur-layer-bg
-  {
+  .modal-drawer-panel.active .blur-layer-bg {
     opacity: 1;
     pointer-events: all;
   }
 
-  .side-drawer-modal {
-    position: relative;
-    width: 100%;
-    background: var(--bodyColor);
-    max-height: 100%;
-    height: 100%;
-    max-width: 680px;
-    transition: 0.6s ease;
-    margin-left: auto;
-    transform: translate(100%);
-    cursor: auto;
-  }
-
-
-  .modal-drawer-panel.active .modal-drawer-card {
-    transform: scale(1) translate(0) !important;
-  }
-
-  .side-drawer-modal-head {
-    padding: 10px 32px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--borderColor);
-  }
-
-  .modal-drawer-inner {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    pointer-events: auto;
-    background-color: var(--bodyColor);
-    color: var(--bodyTextColor);
-    overflow: hidden;
-    overflow-y: auto;
-    cursor: auto;
-  }
-
-  .quickview .modal-drawer-inner {
-    padding: 12px;
-    border-radius: var(--boxRadius);
-  }
-
-  .size-chart-popup .modal-drawer-inner {
-    border-radius: var(--boxRadius);
-  }
-
-  .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: var(--bodyTextColor);
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    min-width: 40px;
-    height: 40px;
-    padding: 11px;
-    border-radius: 50%;
-  }
-
-  .close-btn:hover svg line,
-  .facet-close-btn:hover svg line,
-  .filter-remove:hover svg line,
-  .search-close:hover svg line {
-    -webkit-animation: cross 0.5s ease-in-out forwards;
-    animation: cross 0.5s ease-in-out forwards;
-  }
-
-  .close-btn:hover svg path,
-  .facet-close-btn:hover svg path,
-  .filter-remove:hover svg path,
-  .search-close:hover svg path {
-    -webkit-animation: cross 0.5s ease-in-out forwards;
-    animation: cross 0.5s ease-in-out forwards;
-    -webkit-animation-delay: 0.1s;
-    animation-delay: 0.1s;
-  }
-
-  @keyframes cross {
-    0%,
-    100% {
-      -webkit-clip-path: inset(0 0 0 0);
-      clip-path: inset(0 0 0 0);
-    }
-
-    42% {
-      -webkit-clip-path: inset(0 0 0 100%);
-      clip-path: inset(0 0 0 100%);
-    }
-
-    43% {
-      -webkit-clip-path: inset(0 100% 0 0);
-      clip-path: inset(0 100% 0 0);
-    }
-  }
-
-  .close-btn .close-icon {
-    width: 100%;
-    height: 100%;
-  }
-
-  .modal-drawer-inner .close-btn {
-    top: 0px;
-    right: 0px;
-  }
-
-  .moving-cursor {
-    background-color: var(--bodyColor);
-    position: fixed;
-    top: var(--mouse-top);
-    left: var(--mouse-left);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
-    transition: opacity 0.2s ease-in-out;
-    will-change: height, width;
-    cursor: none;
-    opacity: 0;
-  }
-
-  .moving-cursor svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .blur-layer-bg:hover ~ .moving-cursor {
-    opacity: 1;
-  }
-
-  .side-drawer-modal-head .close-btn {
-    position: static;
-  }
-
-  .side-drawer-modal-title {
-    display: flex;
-    align-items: center;
-    align-self: center;
-    padding: 0;
-  }
-
-  .side-drawer-modal-title span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 14px;
-    flex: 0 0 auto;
-  }
-
-  .modal-drawer--body,
-  .side-drawer-modal-body {
-    padding: 25px;
-    height: calc(100% - 0px);
-    max-height: 100%;
-    width: 100%;
-  }
-
-
   .modal-drawer-card {
     display: flex;
     flex-direction: column;
-    border-radius: var(--boxRadius);
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 960px;
-    pointer-events: none;
-    margin: 0 auto;
-    position: relative;
-    max-height: calc(100vh - 10rem);
-    overflow: hidden;
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.4s ease;
     transform: scale(0.95);
-    transition: transform 0.4s, all 0.4s ease-out;
-    will-change: transform;
-  }
-
-  .popup-wrapper {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    visibility: hidden;
-    opacity: 1;
     pointer-events: none;
-    transition: all 0.5s ease-in-out;
-    z-index: 9;
   }
 
-  .popup-wrapper.active,
-  .popup-wrapper.active .blur-layer-bg {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
+  .modal-drawer-panel.active .modal-drawer-card {
+    transform: scale(1);
+    pointer-events: all;
   }
 
-  .popup-content-box {
-    border: 1px solid var(--bodyTextColor);
-    padding: 50px;
+  .popup-logo img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
   }
 
-  .popup-content-box > div:not(:last-child) {
-    margin-bottom: 30px;
+  .popup-heading {
+    margin-bottom: 15px;
+    text-align: center;
   }
 
-  .popup-inner-card .popup-content-box .popup-heading {
-    margin-bottom: 13px;
+  .popup-title {
+    font-size: 24px;
+    font-weight: bold;
   }
 
-  .popup-inner-card .social-icons-wrapper {
-    display: inline-flex;
+  .popup-descption {
+    margin-bottom: 20px;
+    text-align: center;
   }
 
-  .newsletter-popup .close-btn {
-    top: 26px;
-    right: 26px;
-  }
-
-  .sign-popup-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    align-items: flex-start;
-    border: 1px solid var(--borderColor);
-    border-radius: var(--boxRadius);
-    overflow: hidden;
-  }
-
-  .age-verification-popup .blur-layer-bg {
-    cursor: auto;
-  }
-
-  .age-verification-popup .modal-drawer-card {
-    max-width: 730px;
-  }
-
-  .age-verification-popup .modal-drawer--body {
-    height: 100%;
-    padding: 15px;
-  }
-
-  .modal-content-box {
-    border: 1px solid var(--borderColor);
-    padding: 24px;
-    height: 100%;
+  .popup-btns {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    gap: 15px;
   }
 
-  .popup-logo {
-    width: 100%;
-    margin-bottom: 50px;
+  .popup-btns .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
   }
 
-  .age-verification-popup-wrapper .popup-title {
-    padding: 0;
+  .popup-btns .btn.fill-btn {
+    background-color: #007BFF;
+    color: #fff;
   }
 
-  .age-verification-popup-wrapper > div:not(:last-child),
-  .age-verification-heading,
-  .age-verification-description {
-    margin-bottom: 18px;
+  .popup-btns .btn:hover {
+    background-color: #0056b3;
+  }
+
+  .hidden {
+    display: none;
   }
 </style>
