@@ -21,23 +21,24 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function openPopup() {
-    if (!getCookie(cookieName)) {
-      document.body.classList.add(classes.bodyClass);
-      document.body.classList.add(classes.blurredClass); // Add this line
-      popup.classList.add(classes.activeClass);
-    }
+  if (!getCookie(cookieName)) {
+    document.body.classList.add(classes.bodyClass);
+    popup.classList.add(classes.activeClass);
+    document.querySelector('.blur-layer-bg').classList.add(classes.activeClass); // Activate blur
   }
+}
 
-  function closePopup() {
-    popup.classList.add(classes.closingClass);
-    setTimeout(() => {
-      popup.classList.remove(classes.activeClass);
-      popup.classList.remove(classes.closingClass);
-      document.body.classList.remove(classes.bodyClass);
-      document.body.classList.remove(classes.blurredClass); // Add this line
-    }, 500);
-    setCookie(cookieName, popup.dataset.expiry);
-  }
+function closePopup() {
+  popup.classList.add(classes.closingClass);
+  setTimeout(() => {
+    popup.classList.remove(classes.activeClass);
+    popup.classList.remove(classes.closingClass);
+    document.body.classList.remove(classes.bodyClass);
+    document.querySelector('.blur-layer-bg').classList.remove(classes.activeClass); // Deactivate blur
+  }, 500);
+  setCookie(cookieName, popup.dataset.expiry);
+}
+
 
   function decline() {
     popup.querySelector('.age-verification-popup-wrapper').classList.add(classes.hiddenClass);
