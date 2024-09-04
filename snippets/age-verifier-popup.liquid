@@ -43,11 +43,15 @@
               <button class="btn fill-btn" data-age-back-button><span>{{ section.settings.age_decline_button_text }}</span></button>
           </div> 
 	</div>
+    
+    {% comment %}
      {% if section.section.settings.show_social %}
           <div class="social-icons-wrapper">
                 {% render 'social-media' %}
           </div>
       {% endif %}
+    {% endcomment %}}
+    
     
 {% endcapture %}
   <age-verification
