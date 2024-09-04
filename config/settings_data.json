@@ -206,7 +206,7 @@
       "age-verification-popup": {
         "type": "age-verification-popup",
         "settings": {
-          "enable_age_verification": true,
+          "enable_age_verification": false,
           "age_verification_heading": "Confirm your age",
           "age_verification_content": "Are you 18 years old or older?",
           "decline_text": "No, I'm not",
