@@ -373,7 +373,22 @@
       background-color: #555; /* Background color on hover */
   }
 
-  /* Ensure this doesn't conflict with existing button styles */
+  .popup-btns {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+  }
+
+  .popup-btns .btn {
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      background-color: #333;
+      color: #fff;
+  }
+
   .popup-btns .btn.fill-btn {
       background-color: #333;
       color: #fff;
