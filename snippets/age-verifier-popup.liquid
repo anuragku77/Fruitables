@@ -132,6 +132,19 @@
         transform: scale(1) translate(0) !important;
     }
 
+    /* Age Verification Popup */
+  .age-verification-popup.modal-drawer-panel {
+    z-index: 100; /* Ensure the popup is above the blur layer */
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal-drawer-card {
+    z-index: 101; /* Ensure the popup content is above everything else */
+    transform: translate(-50%, -50%);
+  }
+
     /* Drawer Modal Inner */
     .modal-drawer-inner {
         position: relative;
