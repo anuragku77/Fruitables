@@ -97,6 +97,39 @@
         }
       }
     },
+    "age_verification_popup": {
+      "name": "Age Verification Popup",
+      "settings": {
+        "enable_age_verification": {
+          "label": "Enable age verification popup"
+        },
+        "age_logo_img": {
+          "label": "Logo image"
+        },
+        "decline_text": {
+          "label": "Decline button text"
+        },
+        "approve_text": {
+          "label": "Approve button text"
+        },
+        "paragraph_verification_requirment": {
+          "content": "This content will display if the user does not meet the age verification requirements."
+        },
+        "decline_heading": {
+          "label": "Under 18 title"
+        },
+        "decline_subheading": {
+          "label": "Under 18 description"
+        },
+        "age_decline_button_text": {
+          "label": "Decline button text"
+        },
+        "agepopup_cookie_set": {
+          "label": "Frequency",
+          "info": "Number of days before a dismissed popup reappears."
+        }
+      }
+    },
     "collection_cards": {
       "name": "Collection cards",
       "settings": {
