@@ -29,7 +29,7 @@
             <a href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
           </li>
 
-        {% when 'collection' and collection.handle %}
+        {% when 'collection' %}
           {% if current_tags %}
             <li class="breadcrumb-item">{{ collection.title | link_to: collection.url }}</li>
             <li class="breadcrumb-item">
@@ -108,3 +108,13 @@
     text-decoration: underline;
   }
 </style>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% when 'collection' and collection.handle %}"
+  to: "{% when 'collection' %}"
+  position: 1033..1056
+{% endcomment %}
